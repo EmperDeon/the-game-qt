@@ -29,6 +29,7 @@ extern GVars GV_VARS;
 #define varG(cl, s) qobject_cast<cl>(GV_VARS.get(s))
 #define varS(cl, s) GV_VARS.set(cl, s)
 
+
 void init();
 void destroy();
 //QT_FORWARD_DECLARE_CLASS(QOpenGLShaderProgram)
