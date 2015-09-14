@@ -3,7 +3,7 @@
 
 #include <QtCore>
 #include <QtNetwork>
-#include <gmain.h>
+#include <../Global/gmain.h>
 
 class Utils{
 public:
@@ -11,7 +11,7 @@ public:
 };
 
 enum class GLogLevel{
-	ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5
+	ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7
 };
 
 class GLogger : public QObject{
@@ -25,7 +25,6 @@ private slots:
 	void disc();
 public:
 	GLogger();
-	~GLogger();
 	void log(GLogLevel lv, QString cl, QString ms);
 	void sendM(QString s);
 	void connec();

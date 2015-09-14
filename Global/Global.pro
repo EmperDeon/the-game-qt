@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += webkitwidgets core gui network gui-private
 CONFIG   += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -22,7 +22,6 @@ SOURCES +=\
 		gwidgets.cpp
 
 HEADERS  += \
-		gheaders.h \
 		gcontainers.h \
 		gmain.h \
 		gmods.h \

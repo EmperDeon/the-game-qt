@@ -1,5 +1,4 @@
 #include "lwidgets.h"
-#include <iostream>
 
 //Logger
 LLogWidget::LLogWidget():QWidget(){

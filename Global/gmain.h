@@ -4,13 +4,12 @@
 #include <QApplication>
 #include <gutils.h>
 #include <grender.h>
-#include <gwidgets.h>
+#include <../Global/gwidgets.h>
 
 class GLogger;
 class GSettings;
 class GDeveloper;
 class GVars;
-class GVar;
 
 extern GLogger GV_LOGGER;
 extern GRenderer GV_RENDER;
@@ -25,6 +24,8 @@ extern GVars GV_VARS;
 #define logI(ms) GV_LOGGER.log(GLogLevel::INFO,  CLASS_NAME, ms)
 #define logD(ms) GV_LOGGER.log(GLogLevel::DEBUG, CLASS_NAME, ms)
 #define logF(ms) GV_LOGGER.log(GLogLevel::FINE,  CLASS_NAME, ms)
+#define logFF(ms) GV_LOGGER.log(GLogLevel::FFINE,  CLASS_NAME, ms)
+#define logA(ms) GV_LOGGER.log(GLogLevel::ALL,  CLASS_NAME, ms)
 
 #define varG(cl, s) qobject_cast<cl>(GV_VARS.get(s))
 #define varS(cl, s) GV_VARS.set(cl, s)

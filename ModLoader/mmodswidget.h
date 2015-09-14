@@ -5,9 +5,9 @@
 #include <QtWidgets>
 #include <QtGui>
 #include <../Launcher/lwidgets.h>
-#include <mmodloader.h>
-#include <mparser.h>
-#include <mutils.h>
+#include <../ModLoader/mmodloader.h>
+#include <../ModLoader/mparser.h>
+#include <../ModLoader/mutils.h>
 
 class ModLoader;
 class MListModel;

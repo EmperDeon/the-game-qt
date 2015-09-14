@@ -1,4 +1,6 @@
 #include "lutils.h"
+
+//Logs
 QString getLevelName(GLogLevel lv){
 	switch(lv){
 	case GLogLevel::ERR  : return "[E]";
@@ -6,7 +8,8 @@ QString getLevelName(GLogLevel lv){
 	case GLogLevel::INFO : return "[I]";
 	case GLogLevel::DEBUG: return "[D]";
 	case GLogLevel::FINE : return "[F]";
-
+	case GLogLevel::FFINE: return "[F]";
+	case GLogLevel::ALL  : return "[A]";
 		//	case GLogLevel::ERR  : return "[ERROR]";
 		//	case GLogLevel::WARN : return "[WARNING]";
 		//	case GLogLevel::INFO : return "[INFO]";
@@ -37,16 +40,18 @@ QString GLogE::toString(){
 	QString r = "<div ";
 
 	switch(lv){
-	case GLogLevel::ERR  : r += "style=\"color:red"; break;
-	case GLogLevel::WARN : r += "style=\"color:#ff9c00"; break;
-	case GLogLevel::INFO : r += "style=\"color:blue"; break;
-	case GLogLevel::DEBUG: r += "style=\"color:black"; break;
-	case GLogLevel::FINE : r += "style=\"color:gray"; break;
+		case GLogLevel::ERR  : r += "style=\"color:red"; break;
+		case GLogLevel::WARN : r += "style=\"color:#ff9c00"; break;
+		case GLogLevel::INFO : r += "style=\"color:blue"; break;
+		case GLogLevel::DEBUG: r += "style=\"color:black"; break;
+		case GLogLevel::FINE : r += "style=\"color:gray"; break;
+		case GLogLevel::FFINE: r += "style=\"color:gray"; break;
+		case GLogLevel::ALL  : r += "style=\"color:gray"; break;
 	}
 
 	r.append("\">[");
-	//r.append(engine ? t : d.toString("HH:mm:ss"));
-	r.append(engine ? t : d.toString("HH:mm:ss dd.MM.yyyy"));
+	r.append(engine ? t : d.toString("HH:mm:ss"));
+	//r.append(engine ? t : d.toString("HH:mm:ss dd.MM.yyyy"));
 	r.append("]" + getLevelName(lv));
 	r.append("["+cl+"]");
 	r.append(": "+ms);
@@ -54,6 +59,7 @@ QString GLogE::toString(){
 	r.append("</div>");
 	return r;
 }
+//Logs
 
 //ModModel
 GModLoaderSelect::GModLoaderSelect(QMap<QString, QString> &m, QObject *pobj):QAbstractTableModel(pobj), mp(m){
@@ -227,7 +233,6 @@ MLocalServer::MLocalServer(LLogWidget* l){
 	connect(timer, SIGNAL(timeout()), this, SLOT(readyRead()));
 	timer->start(500);
 }
-
 void MLocalServer::addLog(QString s){
 	if(s.indexOf("#Launcher") == 0){
 		if(s.indexOf("#Launcher#Disconnect") == 0){
@@ -244,7 +249,6 @@ void MLocalServer::newConnection(){
 	clients->append(client);
 	log->addL(GLogLevel::DEBUG, "L-MLocalServer", "Engine connected");
 }
-
 void MLocalServer::readyRead(){
 	foreach(QLocalSocket* client , *clients){
 		if(client->isOpen()){

@@ -1,9 +1,9 @@
 #ifndef MODLOADER_H
 #define MODLOADER_H
 
-#include <mparser.h>
-#include <mutils.h>
-#include <mmodswidget.h>
+#include <../ModLoader/mparser.h>
+#include <../ModLoader/mutils.h>
+#include <../ModLoader/mmodswidget.h>
 #include <../Global/gmodinterfaces.h>
 #include <../Launcher/lutils.h>
 

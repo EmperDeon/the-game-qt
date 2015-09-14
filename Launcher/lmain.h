@@ -1,6 +1,6 @@
 #ifndef H_MAIN
 #define H_MAIN
-
+#include <QApplication>
 #include <../Launcher/lutils.h>
 #include <../Launcher/lwidgets.h>
 #include <../Global/gmodinterfaces.h>
@@ -10,6 +10,9 @@
 class GDevelop;
 class MLocalServer;
 class GModLoaderSelect;
+class GModLoaderInterface;
+class LLogWidget;
+
 // Widgets
 class LMainWindow : public QMainWindow{
 	Q_OBJECT

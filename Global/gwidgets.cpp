@@ -48,11 +48,11 @@ GDeveloper::GDeveloper(){
 }
 
 void GDeveloper::showSett(){
-	logI("Test");
+
 }
 
 void GDeveloper::showLevl(){
-	GV_LOGGER.connec();
+
 }
 
 void GDeveloper::showMods(){

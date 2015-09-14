@@ -4,7 +4,7 @@
 #include <QtGui/private/qzipreader_p.h>
 #include <QtGui/private/qzipwriter_p.h>
 #include <../Launcher/lwidgets.h>
-#include <mmodloader.h>
+#include <../ModLoader/mmodloader.h>
 
 class ModLoader;
 
