@@ -1,7 +1,7 @@
 #ifndef G_MODINTERFACES
 #define G_MODINTERFACES
 #include <QString>
-#include <../Launcher/lwidgets.h>
+#include <Launcher/lwidgets.h>
 
 class LLogWidget;
 
@@ -26,9 +26,8 @@ public:
 
 QT_BEGIN_NAMESPACE
 
-#define ModLoaderInterface_iid "org.ilzcorp.GModLoaderInterface"
+Q_DECLARE_INTERFACE(GModLoaderInterface, "org.ilzcorp.GModLoaderInterface")
 
-Q_DECLARE_INTERFACE(GModLoaderInterface, ModLoaderInterface_iid)
 QT_END_NAMESPACE
 
 #endif

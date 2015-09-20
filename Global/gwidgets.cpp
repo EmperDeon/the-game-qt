@@ -1,4 +1,4 @@
-#include <gwidgets.h>
+#include <Global/gwidgets.h>
 
 #undef CLASS_NAME
 #define CLASS_NAME "GMWidget"

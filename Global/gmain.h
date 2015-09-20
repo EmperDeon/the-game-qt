@@ -2,9 +2,9 @@
 #define G_MAIN
 
 #include <QApplication>
-#include <gutils.h>
-#include <grender.h>
-#include <../Global/gwidgets.h>
+#include <Global/gutils.h>
+#include <Global/grender.h>
+#include <Global/gwidgets.h>
 
 class GLogger;
 class GSettings;
@@ -13,7 +13,7 @@ class GVars;
 
 extern GLogger GV_LOGGER;
 extern GRenderer GV_RENDER;
-extern GSettings GV_SETTINGS;
+//extern GSettings GV_SETTINGS("settings.dat");
 extern GVars GV_VARS;
 
 #define SETTINGS_FILE "settings.dat"

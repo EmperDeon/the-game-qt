@@ -3,7 +3,7 @@
 
 #include <QtCore>
 #include <QtWidgets>
-#include <../ModLoader/mmodloader.h>
+#include <ModLoader/mmodloader.h>
 
 class ModLoader;
 

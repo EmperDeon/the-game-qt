@@ -1,4 +1,4 @@
-#include "lwidgets.h"
+#include "Launcher/lwidgets.h"
 
 //Logger
 LLogWidget::LLogWidget():QWidget(){

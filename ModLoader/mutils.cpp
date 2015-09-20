@@ -1,6 +1,24 @@
-#include "mutils.h"
+#include "ModLoader/mutils.h"
 
 // Json
+void saveJsonA(QJsonArray o, QString file) {
+	QFile f(file);
+	if (!f.open(QIODevice::WriteOnly)) { return; }
+
+	QJsonDocument doc(o);
+	f.write(qCompress(doc.toBinaryData(), 5));
+	f.flush();
+	f.close();
+}
+
+QJsonArray loadJsonA(QString file) {
+	QFile loadFile(file);
+	loadFile.open(QIODevice::ReadOnly);
+
+	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
+	return loadDoc.array();
+}
+
 QJsonObject loadJson(QString file){
 	QFile loadFile(file);
 	qDebug() << "loading " << file;
@@ -37,13 +55,14 @@ QString getLevelName(GLogLevel lv){
 	case GLogLevel::FINE : return "[F]";
 	case GLogLevel::FFINE: return "[F]";
 	case GLogLevel::ALL  : return "[A]";
+		default:
+			return "";
 		//	case GLogLevel::ERR  : return "[ERROR]";
 		//	case GLogLevel::WARN : return "[WARNING]";
 		//	case GLogLevel::INFO : return "[INFO]";
 		//	case GLogLevel::DEBUG: return "[DEBUG]";
 		//	case GLogLevel::FINE : return "[FINE]";
 	}
-	return "";
 }
 GLogE::GLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss):lv(lvl), d(dt), cl(cls), ms(mss){
 
@@ -109,12 +128,12 @@ void MListModel::del(QListView* i){
 
 	foreach(const QModelIndex &index, l){
 		QString s = index.data(Qt::DisplayRole ).toString();
-		int i = 0;
+			int j = 0;
 		foreach(QJsonValue v, obj){
 			if(s == v.toString()){
-				obj.removeAt(i);
+				obj.removeAt(j);
 			}
-			i++;
+					j++;
 		}
 	}
 	emit dataChanged(index(0,0), index(obj.size(), 0));
@@ -306,11 +325,7 @@ void MModsList::load(){
 void MModsList::save(){
 	foreach(QJsonValue e, *list){
 		QJsonObject o = e.toObject();
-		if(lst.contains(o["name"].toString())){
-			o["enabled"] = true;
-		}else{
-			o["enabled"] = false;
-		}
+			o["enabled"] = lst.contains(o["name"].toString()) ? true : false;
 	}
 	saveJsonA(*list, "mods/mods.dat");
 }

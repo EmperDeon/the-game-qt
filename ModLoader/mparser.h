@@ -1,10 +1,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 #include <QtCore>
-#include <QtGui/private/qzipreader_p.h>
-#include <QtGui/private/qzipwriter_p.h>
-#include <../Launcher/lwidgets.h>
-#include <../ModLoader/mmodloader.h>
+#include <Launcher/lwidgets.h>
+#include <ModLoader/mmodloader.h>
 
 class ModLoader;
 
@@ -15,6 +13,7 @@ struct ZipEntry{
 	QString site;
 	QString type;
 	QJsonArray depn;
+	QJsonArray ower;
 	QString ver;
 	QString rev;
 	QString file;

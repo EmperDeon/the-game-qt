@@ -3,7 +3,7 @@
 
 #include <QtCore>
 #include <QtWidgets>
-#include <../Global/gutils.h>
+#include <Global/gutils.h>
 
 class Widgets{
 public:

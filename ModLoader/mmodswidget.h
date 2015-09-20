@@ -4,10 +4,12 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
-#include <../Launcher/lwidgets.h>
-#include <../ModLoader/mmodloader.h>
-#include <../ModLoader/mparser.h>
-#include <../ModLoader/mutils.h>
+#include <Launcher/lwidgets.h>
+#include <ModLoader/mmodloader.h>
+#include <ModLoader/mparser.h>
+#include <ModLoader/mutils.h>
+#include <ModLoader/qzipreader_p.h>
+#include <ModLoader/qzipwriter_p.h>
 
 class ModLoader;
 class MListModel;

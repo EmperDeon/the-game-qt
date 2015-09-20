@@ -4,15 +4,13 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtNetwork>
-#include <../Launcher/lwidgets.h>
-#include <../Launcher/lmain.h>
+#include <Global/gutils.h>
+#include <Launcher/lwidgets.h>
+#include <Launcher/lmain.h>
 
 class LLogWidget;
 class LMainWindow;
 
-enum class GLogLevel{
-	ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7
-};
 struct GLogE{
 	GLogLevel lv;
 	QDateTime d;
@@ -84,15 +82,15 @@ class MLocalServer : public QObject{
 	QString lastMsg;
 	quint16 blockSize;
 	QLocalServer *server;
-	QVector<QLocalSocket*>* clients;
+
 private:
 	void addLog(QString s);
 private slots:
 	void newConnection();
 	void readyRead();
 public:
+	QVector<QLocalSocket *> *clients;
 	MLocalServer(LLogWidget* l);
-	friend LMainWindow;
 };
 
 void createJson();

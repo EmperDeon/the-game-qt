@@ -3,7 +3,7 @@
 
 #include <QtCore>
 #include <QtNetwork>
-#include <../Global/gmain.h>
+#include <Global/gmain.h>
 
 class Utils{
 public:

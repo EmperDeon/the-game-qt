@@ -2,7 +2,7 @@
 #define G_MODS
 
 #include <QtCore>
-#include <../Global/gmodinterfaces.h>
+#include <Global/gmodinterfaces.h>
 
 class mods : public QObject
 {

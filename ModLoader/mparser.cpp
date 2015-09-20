@@ -1,4 +1,4 @@
-#include "mparser.h"
+#include "ModLoader/mparser.h"
 #define ParserVer "0.1"
 //Zip
 ZipEntry::ZipEntry(QJsonObject o, QString f){
@@ -8,15 +8,19 @@ ZipEntry::ZipEntry(QJsonObject o, QString f){
 	site = o["site"].toString();
 	type = o["type"].toString();
 	depn = o["depend"].toArray();
+	ower = o["owerwr"].toArray();
 	ver  = o["version"].toString();
 	rev  = o["revision"].toString();
 	this->file = f;
 }
 QString ZipEntry::toString(){
-	QString dep;
+	QString dep, owr;
 	foreach(QJsonValue e, depn){
 		dep += e.toString() + "; ";
 	}
+			foreach(QJsonValue e, ower) {
+			owr += e.toString() + "; ";
+		}
 	return
 			"Name: " + name +
 			", Description: " + desc +
@@ -24,6 +28,7 @@ QString ZipEntry::toString(){
 			", Site: " + site +
 			", Type: " + type +
 			", Dependency:[" + dep +
+					"], Owerwriting classes:[" + owr +
 			"], Version: " + ver +
 			", Revision: " + rev;
 }

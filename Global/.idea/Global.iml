@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Debug/zlib/zconf.h">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Debug/zlib/zconf.h" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/MinSizeRel/zlib/zconf.h">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/MinSizeRel/zlib/zconf.h" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/RelWithDebInfo/zlib/zconf.h">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/RelWithDebInfo/zlib/zconf.h" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Release/zlib/zconf.h">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Release/zlib/zconf.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gcontainers.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gcontainers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gmain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gmain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gmodinterfaces.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gmods.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gmods.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grender.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gutils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gwidgets.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gwidgets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/qzip.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/qzipreader_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/qzipwriter_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/adler32.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/compress.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/crc32.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/crc32.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/gzclose.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/gzguts.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/gzlib.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/gzread.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/gzwrite.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/infback.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inffixed.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inflate.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inflate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inftrees.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/inftrees.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/test/example.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/test/minigzip.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/trees.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/trees.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/uncompr.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zconf.h.cmakein" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.pc.cmakein" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.h" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://C:/Qt/Tools/mingw491_32/i686-w64-mingw32/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Debug" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/MinSizeRel" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/RelWithDebInfo" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Release" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://C:/Qt/Tools/mingw491_32/i686-w64-mingw32/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
+          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Debug" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/MinSizeRel" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/RelWithDebInfo" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Release" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Debug/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/MinSizeRel/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/RelWithDebInfo/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/6c0c6f3f/6c0c6f3f/Release/zlib/zconf.h" />
+        </excluded>
+      </library>
+    </orderEntry>
+  </component>
+</module>

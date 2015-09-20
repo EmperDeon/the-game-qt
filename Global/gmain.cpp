@@ -1,4 +1,4 @@
-#include <gmain.h>
+#include <Global/gmain.h>
 
 #undef CLASS_NAME
 #define CLASS_NAME "Main"

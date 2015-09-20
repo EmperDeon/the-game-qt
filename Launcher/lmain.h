@@ -1,9 +1,9 @@
 #ifndef H_MAIN
 #define H_MAIN
 #include <QApplication>
-#include <../Launcher/lutils.h>
-#include <../Launcher/lwidgets.h>
-#include <../Global/gmodinterfaces.h>
+#include <Launcher/lutils.h>
+#include <Launcher/lwidgets.h>
+#include <Global/gmodinterfaces.h>
 
 #define CLASS_NAME "Not_Defined"
 

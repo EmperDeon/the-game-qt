@@ -1,4 +1,4 @@
-#include "mmodswidget.h"
+#include "ModLoader/mmodswidget.h"
 
 MModsWidget::MModsWidget(ModLoader *l){
 	loader = l;
@@ -30,12 +30,10 @@ MModsWidget::MModsWidget(ModLoader *l){
 	this->setLayout(layout);
 	log->addL(GLogLevel::DEBUG, "ModsList", "Constructed");
 }
-
 void MModsWidget::closeEvent(QCloseEvent *event){
 	loader->modsMap->save();
 	event->accept();
 }
-
 void MModsWidget::reload(){
 	loader->modsMap->reload();
 }
@@ -45,8 +43,6 @@ void MModsWidget::add(){
 void MModsWidget::del(){
 	model->del(list);
 }
-
-
 
 MModEditor::MModEditor(ModLoader *l){
 	REVISION = QString("0.1");
@@ -102,7 +98,7 @@ MModEditor::MModEditor(ModLoader *l){
 
 	setLayout(lay);
 	setWindowTitle("Mod editor");
-	log->addL(GLogLevel::DEBUG, "ModEditor", "Constructed");
+	log->addL(GLogLevel::FINE, "ModEditor", "Constructed");
 }
 void MModEditor::bcreate(){
 	QJsonObject o;
@@ -187,20 +183,4 @@ MPacker::MPacker(ModLoader *l){
 
 
 //Redefine
-void saveJsonA(QJsonArray o, QString file){
-	QFile f(file);
-	if (!f.open(QIODevice::WriteOnly)) {return;}
-
-	QJsonDocument doc(o);
-	f.write(qCompress(doc.toBinaryData(),5));
-	f.flush();
-	f.close();
-}
-QJsonArray loadJsonA(QString file){
-	QFile loadFile(file);
-	loadFile.open(QIODevice::ReadOnly);
-
-	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
-	return loadDoc.array();
-}
 

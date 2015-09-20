@@ -1,11 +1,11 @@
 #ifndef MODLOADER_H
 #define MODLOADER_H
 
-#include <../ModLoader/mparser.h>
-#include <../ModLoader/mutils.h>
-#include <../ModLoader/mmodswidget.h>
-#include <../Global/gmodinterfaces.h>
-#include <../Launcher/lutils.h>
+#include <ModLoader/mparser.h>
+#include <ModLoader/mutils.h>
+#include <ModLoader/mmodswidget.h>
+#include <Global/gmodinterfaces.h>
+#include <Launcher/lutils.h>
 
 class Parser;
 class MModsWidget;

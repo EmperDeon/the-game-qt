@@ -8,10 +8,9 @@
 #include <QtWebKitWidgets>
 #include <QtCore>
 #include <QtGui>
-#include <QtGui/private/qzipwriter_p.h>
-#include <../Launcher/lutils.h>
-#include <../Launcher/lmain.h>
-#include <../Global/gmodinterfaces.h>
+#include <Launcher/lutils.h>
+#include <Launcher/lmain.h>
+#include <Global/gmodinterfaces.h>
 
 
 class LMainWindow;

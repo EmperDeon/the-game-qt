@@ -1,4 +1,4 @@
-#include "lutils.h"
+#include "Launcher/lutils.h"
 
 //Logs
 QString getLevelName(GLogLevel lv){
@@ -10,13 +10,14 @@ QString getLevelName(GLogLevel lv){
 	case GLogLevel::FINE : return "[F]";
 	case GLogLevel::FFINE: return "[F]";
 	case GLogLevel::ALL  : return "[A]";
+		default:
+			return "";
 		//	case GLogLevel::ERR  : return "[ERROR]";
 		//	case GLogLevel::WARN : return "[WARNING]";
 		//	case GLogLevel::INFO : return "[INFO]";
 		//	case GLogLevel::DEBUG: return "[DEBUG]";
 		//	case GLogLevel::FINE : return "[FINE]";
 	}
-	return "";
 }
 GLogE::GLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss):lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
 GLogE::GLogE(QString s){
@@ -161,12 +162,12 @@ void LListModel::del(QListView* i){
 
 	foreach(const QModelIndex &index, l){
 		QString s = index.data(Qt::DisplayRole ).toString();
-		int i = 0;
+			int j = 0;
 		foreach(QJsonValue v, obj){
 			if(s == v.toString()){
-				obj.removeAt(i);
+				obj.removeAt(j);
 			}
-			i++;
+					j++;
 		}
 	}
 }

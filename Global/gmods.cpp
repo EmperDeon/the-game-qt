@@ -1,4 +1,4 @@
-#include <gmods.h>
+#include <Global/gmods.h>
 
 GMods::GMods()
 {
