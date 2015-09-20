@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Debug/Launcher_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Debug/Launcher_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lmain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lmain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lutils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lwidgets.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lwidgets.h" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://C:/Qt/5.4/mingw491_32/include" />
+          <root url="file://C:/Qt/5.4/mingw491_32/mkspecs/win32-g++" />
+          <root url="file://C:/Qt/Tools/mingw492_32/i686-w64-mingw32/include" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include/objc" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include/ssp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Debug" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/MinSizeRel" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/RelWithDebInfo" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Release" />
+          <root url="file://$MODULE_DIR$/../Global" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://C:/Qt/5.4/mingw491_32/include" />
+          <root url="file://C:/Qt/5.4/mingw491_32/mkspecs/win32-g++" />
+          <root url="file://C:/Qt/Tools/mingw492_32/i686-w64-mingw32/include" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include/objc" />
+          <root url="file://C:/Qt/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include/ssp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Debug" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/MinSizeRel" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/RelWithDebInfo" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Release" />
+          <root url="file://$MODULE_DIR$/../Global" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/90e794be/90e794be/Debug/Launcher_automoc.cpp" />
+        </excluded>
+      </library>
+    </orderEntry>
+  </component>
+</module>
