@@ -89,6 +89,36 @@ QString GLogE::toString(){
 	t.append("</div>");
 	return t;
 }
+void GLogger:: log(GLogLevel lv, QString cl, QString ms){
+	//QString s = QDateTime::currentDateTime().toString("HH:mm:ss dd.MM.yyyy") + "^";
+	QString s = QDateTime::currentDateTime().toString("HH:mm:ss") + "^";
+	s += getLevelName(lv) + "^M-";
+	s += cl + "^";
+	s += ms;
+
+	sendM(s);
+}
+void GLogger::sendM(QString s){
+	if(!conn){
+		socket->connectToServer("GameLogServer");
+	}
+
+	QByteArray block;
+	QDataStream out(&block, QIODevice::WriteOnly);
+	out.setVersion(QDataStream::Qt_5_4);
+
+	out << (quint16)0;
+	out << s;
+	out.device()->seek(0);
+	out << (quint16)(block.size() - sizeof(quint16));
+
+	socket->write(block);
+	socket->flush();
+}
+QObject *GVars::get(QString name){
+	return (*map)[name];
+}
+
 //
 
 //ListModel

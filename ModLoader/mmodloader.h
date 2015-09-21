@@ -19,16 +19,18 @@ class ModLoader : public QObject, GModLoaderInterface{
 	Q_INTERFACES(GModLoaderInterface)
 
 public:
+// Launcher
 	LLogWidget* w_log;
 	MModsList* modsMap;
-
 	Parser* parser;
 	MModsWidget* w_mod;
 	MModEditor* w_mode;
 	MPacker* w_pack;
 
-//	ModLauncher();
-	QString getName() Q_DECL_OVERRIDE;
+	GVars* vars;
+	GLogger* log;
+
+ QString getName() Q_DECL_OVERRIDE;
 	//Launcher
 	void parseZips() Q_DECL_OVERRIDE;
 	void setLogger(LLogWidget *log) Q_DECL_OVERRIDE;
@@ -36,6 +38,7 @@ public:
 	void showModEditor() Q_DECL_OVERRIDE;
 	void showPacker() Q_DECL_OVERRIDE;
 	// Engine
+	void setVars(GVars* v) Q_DECL_OVERRIDE;
 	void corePreInit() Q_DECL_OVERRIDE;
 	void coreInit() Q_DECL_OVERRIDE;
 	void corePostInit() Q_DECL_OVERRIDE;

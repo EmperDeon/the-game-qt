@@ -37,8 +37,8 @@ void GLogger:: log(GLogLevel lv, QString cl, QString ms){
 
 	sendM(s);
 }
-void GLogger::sendM(QString s){
-	if(!conn){
+void GLogger::sendM(QString s) {
+	if (!conn) {
 		socket->connectToServer("GameLogServer");
 	}
 
@@ -46,10 +46,10 @@ void GLogger::sendM(QString s){
 	QDataStream out(&block, QIODevice::WriteOnly);
 	out.setVersion(QDataStream::Qt_5_4);
 
-	out << (quint16)0;
+	out << (quint16) 0;
 	out << s;
 	out.device()->seek(0);
-	out << (quint16)(block.size() - sizeof(quint16));
+	out << (quint16) (block.size() - sizeof(quint16));
 
 	socket->write(block);
 	socket->flush();

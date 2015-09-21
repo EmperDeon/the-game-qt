@@ -16,6 +16,7 @@ public:
 	virtual void showModEditor() = 0;
 	virtual void showPacker() = 0;
 	// Engine
+	virtual void setVars(GVars* v) = 0;
 	virtual void corePreInit() = 0;
 	virtual void coreInit() = 0;
 	virtual void corePostInit() = 0;

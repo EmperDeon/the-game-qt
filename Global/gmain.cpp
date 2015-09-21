@@ -1,4 +1,5 @@
 #include <Global/gmain.h>
+#include "gmods.h"
 
 #undef CLASS_NAME
 #define CLASS_NAME "Main"
@@ -10,14 +11,18 @@ int main(int argc, char *argv[]){
 
 	init();
 
-
+	varS(&GV_LOGGER, "logger");
+	GMods* mods = new GMods();
 		wdev = new GDeveloper();
 		wdev->show();
 
+	//mods->coreInit();
 	return a.exec();
 }
 
 void init(){
+
+
 //	GVar* s = new GVar;
 
 //	s->set("Test");

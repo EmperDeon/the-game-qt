@@ -221,8 +221,8 @@ void LMainWindow::initModLoaderList(){
 void LMainWindow::loadModLoader(QString s){
 	if(modloaderlist->contains(s)){
 		QDir modloaderdir("modloaders");
-		QPluginLoader pluginLoader(modloaderdir.absoluteFilePath(modloaderlist->value(s)));
-		QObject *plugin = pluginLoader.instance();
+		pluginLoader = new QPluginLoader(modloaderdir.absoluteFilePath(modloaderlist->value(s)));
+		QObject *plugin = pluginLoader->instance();
 		if (plugin) {
 			GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
 			if (t){
@@ -248,6 +248,7 @@ void LMainWindow::download(){
 
 }
 void LMainWindow::launch(){
+	pluginLoader->unload();
 	this->hide();
 	srv->clients->clear();
 	proc->start(dir+"/game.exe");

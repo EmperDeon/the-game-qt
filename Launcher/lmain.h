@@ -51,6 +51,7 @@ class LMainWindow : public QMainWindow{
 
 	GModLoaderInterface* modloader;
 	QMap<QString, QString>* modloaderlist;
+	QPluginLoader* pluginLoader;
 
 	QTableView* selectmodv;
 	GModLoaderSelect* selectmodl;
