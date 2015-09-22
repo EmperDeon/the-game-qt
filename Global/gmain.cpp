@@ -6,6 +6,10 @@
 
 int main(int argc, char *argv[]){
 	QApplication a(argc, argv);
+	QCoreApplication::setOrganizationName("IlzSoft");
+	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
+	QCoreApplication::setApplicationName("The game");
+
 	GDeveloper* wdev;
 
 
@@ -16,7 +20,7 @@ int main(int argc, char *argv[]){
 		wdev = new GDeveloper();
 		wdev->show();
 
-	//mods->coreInit();
+	mods->coreInit();
 	return a.exec();
 }
 

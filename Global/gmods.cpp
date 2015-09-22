@@ -29,12 +29,11 @@ void GMods::initModLoaders() {
 	if(sett.contains("modloader")){
 		loadModLoader(sett.value("modloader").toString());
 	}else{
-
 	}
 }
 void GMods::initModLoaderList() {
 	modloaderlist->clear();
-	logD("ModLoaderList: ");
+	logF("ModLoaderList: ");
 	QDir dir("modloaders");
 			foreach(QString f, dir.entryList(getPluginFilter())){
 			QPluginLoader pluginLoader(dir.absoluteFilePath(f));
@@ -42,7 +41,7 @@ void GMods::initModLoaderList() {
 			if (plugin) {
 				GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
 				if (t){
-					logD(t->getName() + " : " + f);
+					logF(t->getName() + " : " + f);
 					modloaderlist->insert(t->getName(), f);
 				}
 			}
@@ -57,7 +56,6 @@ void GMods::loadModLoader(QString s) {
 			GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
 			if (t){
 				modloader = t;
-				logI(" modloader loaded");
 				modloader->setVars(&GV_VARS);
 				logI(modloader->getName() + " modloader loaded");
 			}
