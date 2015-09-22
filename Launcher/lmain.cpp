@@ -23,9 +23,6 @@ LMainWindow::LMainWindow(){
 	//	createJson();
 	launch();
 }
-GModLoaderInterface *LMainWindow::getModLoader(){
-	return this->modloader;
-}
 
 void LMainWindow::showDev(){
 	int resize = 150;
@@ -42,12 +39,15 @@ void LMainWindow::showDev(){
 	}
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "InfiniteRecursion"
 void LMainWindow::procF(int e){
 	this->show();
 	if(e)
 		w_log->addL(GLogLevel::ERR, "L-Main", "The game crashed with code "+QString::number(e));
 	disconnect(proc, SIGNAL(finished(int)),this, SLOT(procF(int)));
 }
+#pragma clang diagnostic pop
 
 void LMainWindow::initWebKit(){
 	progress = 0;
@@ -84,28 +84,26 @@ void LMainWindow::initWebKit(){
 	}
 }
 void LMainWindow::initLog(){
+	w_log = new LLogWidget;
+	modsMap = new MModsList(this);
+
 	dev    = new GDevelop    (this);
 	proc   = new QProcess    (this);
+ parser = new LParser     (this);
 
 	devvis = false;
 	dev->setVisible(false);
 
-	modloaderlist = new QMap<QString, QString>;
-	selectmodv = new QTableView;
-	selectmodl = new GModLoaderSelect(*modloaderlist);
 
-	w_log = new LLogWidget;
 	srv = new MLocalServer(w_log);
 
 	bstart	= new QPushButton  ("Start");
 	bdev	= new QPushButton    ("+");
 	elog	= new QLineEdit      ("admin");
 	epas	= new QLineEdit      ("admin");
-	log     = new QCheckBox   ("Show log");
+	log  = new QCheckBox   ("Show log");
 	list	= new QListView      ();
 	prog    = new QProgressBar();
-
-	selectmodv->setModel(selectmodl);
 
 	w_log->showMaximized();
 	bdev->setMaximumWidth(25);
@@ -161,7 +159,6 @@ void LMainWindow::collectWidgets(){
 }
 void LMainWindow::check(){
 	checkSettings();
-	dev->reloadModLoader();
 	checkDir();
 }
 void LMainWindow::checkSettings(){
@@ -193,62 +190,14 @@ void LMainWindow::checkDir(){
 	}
 }
 
-void LMainWindow::initModLoaders(){
-	QSettings sett;
-	initModLoaderList();
-	if(sett.contains("modloader")){
-		loadModLoader(sett.value("modloader").toString());
-	}else{
-		selectModLoader();
-	}
-}
-void LMainWindow::initModLoaderList(){
-	modloaderlist->clear();
-	w_log->addL(GLogLevel::DEBUG, "L-Main", "ModLoaderList: ");
-	QDir dir("modloaders");
-	foreach(QString f, dir.entryList(getPluginFilter())){
-		QPluginLoader pluginLoader(dir.absoluteFilePath(f));
-		QObject *plugin = pluginLoader.instance();
-		if (plugin) {
-			GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
-			if (t){
-				w_log->addL(GLogLevel::DEBUG, "L-Main", t->getName() + " : " + f);
-				modloaderlist->insert(t->getName(), f);
-			}
-		}
-	}
-}
-void LMainWindow::loadModLoader(QString s){
-	if(modloaderlist->contains(s)){
-		QDir modloaderdir("modloaders");
-		pluginLoader = new QPluginLoader(modloaderdir.absoluteFilePath(modloaderlist->value(s)));
-		QObject *plugin = pluginLoader->instance();
-		if (plugin) {
-			GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
-			if (t){
-				modloader = t;
-				modloader->setLogger(w_log);
-				w_log->addL(GLogLevel::INFO, "L-Main", modloader->getName() + " modloader loaded");
-			}
-		}
-	}else{
-		w_log->addL(GLogLevel::INFO, "L-Main", s + " modloader don't loaded");
-	}
-}
-void LMainWindow::selectModLoader(){
-	//selectmodv->show();
-	QSettings sett;
-	sett.setValue("modloader","BaseModLoader");
-}
 void LMainWindow::parse(){
-	this->modloader->parseZips();
+	this->parser->parse();
 }
 
 void LMainWindow::download(){
 
 }
 void LMainWindow::launch(){
-	pluginLoader->unload();
 	this->hide();
 	srv->clients->clear();
 	proc->start(dir+"/game.exe");

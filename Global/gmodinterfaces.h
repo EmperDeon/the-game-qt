@@ -1,20 +1,12 @@
 #ifndef G_MODINTERFACES
 #define G_MODINTERFACES
 #include <QString>
-#include <Launcher/lwidgets.h>
-
-class LLogWidget;
+#include <GLobal/gmain.h>
 
 class GModLoaderInterface{
 public:
 	virtual QString getName() = 0;
 	virtual ~GModLoaderInterface() {}
-	// Launcher
-	virtual void parseZips() = 0;
-	virtual void setLogger(LLogWidget* log) = 0;
-	virtual void showMods() = 0;
-	virtual void showModEditor() = 0;
-	virtual void showPacker() = 0;
 	// Engine
 	virtual void setVars(GVars* v) = 0;
 	virtual void corePreInit() = 0;

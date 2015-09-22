@@ -7,6 +7,8 @@
 #include <Global/gutils.h>
 #include <Launcher/lwidgets.h>
 #include <Launcher/lmain.h>
+#include <Launcher/qzipreader_p.h>
+#include <Launcher/qzipwriter_p.h>
 
 class LLogWidget;
 class LMainWindow;
@@ -102,4 +104,27 @@ void saveJson(QJsonObject o, QString file);
 void saveJsonA(QJsonArray o, QString file);
 
 QStringList getPluginFilter();
+
+class MModsList : public QObject{
+Q_OBJECT
+
+	LMainWindow* loader;
+	QJsonArray* list;
+
+	void update();
+	void fillList();
+	void addToList(QJsonObject);
+	bool contains(QString);
+	void disable(QString n);
+public:
+	QJsonArray lst;
+
+	MModsList(LMainWindow*);
+	void addNew();
+	void load();
+	void save();
+	void reload();
+
+};
+
 #endif // LUTILS_H

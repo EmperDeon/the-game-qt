@@ -4,6 +4,7 @@
 #include <Launcher/lutils.h>
 #include <Launcher/lwidgets.h>
 #include <Global/gmodinterfaces.h>
+#include "Launcher/lparser.h"
 
 #define CLASS_NAME "Not_Defined"
 
@@ -12,6 +13,8 @@ class MLocalServer;
 class GModLoaderSelect;
 class GModLoaderInterface;
 class LLogWidget;
+class MModsList;
+class LParser;
 
 // Widgets
 class LMainWindow : public QMainWindow{
@@ -20,7 +23,6 @@ class LMainWindow : public QMainWindow{
 	QString site;
 	QString rfile;
 	QProcess* proc;
-	GDevelop* dev;
 	bool devvis;
 
 	MLocalServer* srv;
@@ -48,18 +50,12 @@ class LMainWindow : public QMainWindow{
 	QProgressBar* prog;
 
 	int progress;
-
-	GModLoaderInterface* modloader;
-	QMap<QString, QString>* modloaderlist;
-	QPluginLoader* pluginLoader;
-
-	QTableView* selectmodv;
-	GModLoaderSelect* selectmodl;
 public:
+	GDevelop* dev;
+	MModsList* modsMap;
+	LParser * parser;
 	LLogWidget* w_log;
 	LMainWindow();
-	GModLoaderInterface* getModLoader();
-	void initModLoaders();
 public slots:
 	void showDev();
 	void launch();

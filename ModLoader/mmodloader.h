@@ -1,16 +1,14 @@
 #ifndef MODLOADER_H
 #define MODLOADER_H
 
-#include <ModLoader/mparser.h>
 #include <ModLoader/mutils.h>
-#include <ModLoader/mmodswidget.h>
 #include <Global/gmodinterfaces.h>
 #include <Launcher/lutils.h>
 
-class Parser;
-class MModsWidget;
-class MModEditor;
-class MPacker;
+class LParser;
+class LModsWidget;
+class LModEditor;
+class LPacker;
 class MModsList;
 
 class ModLoader : public QObject, GModLoaderInterface{
@@ -19,24 +17,10 @@ class ModLoader : public QObject, GModLoaderInterface{
 	Q_INTERFACES(GModLoaderInterface)
 
 public:
-// Launcher
-	LLogWidget* w_log;
-	MModsList* modsMap;
-	Parser* parser;
-	MModsWidget* w_mod;
-	MModEditor* w_mode;
-	MPacker* w_pack;
-
 	GVars* vars;
 	GLogger* log;
 
  QString getName() Q_DECL_OVERRIDE;
-	//Launcher
-	void parseZips() Q_DECL_OVERRIDE;
-	void setLogger(LLogWidget *log) Q_DECL_OVERRIDE;
-	void showMods() Q_DECL_OVERRIDE;
-	void showModEditor() Q_DECL_OVERRIDE;
-	void showPacker() Q_DECL_OVERRIDE;
 	// Engine
 	void setVars(GVars* v) Q_DECL_OVERRIDE;
 	void corePreInit() Q_DECL_OVERRIDE;

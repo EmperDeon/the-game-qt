@@ -351,3 +351,84 @@ QStringList getPluginFilter(){
 
 	return r;
 }
+
+
+//MModsList
+MModsList::MModsList(LMainWindow *l):loader(l){
+	this->list = new QJsonArray;
+	this->lst = QJsonArray();
+}
+void MModsList::update(){
+	QDir mods("mods");
+			foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+			if(f.fileName() != "." && f.fileName() != ".."){
+				loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "parsing "+f.filePath());
+				addToList(loadJson(QDir("mods/"+f.fileName()).filePath("pack.dat")));
+			}
+		}
+
+}
+void MModsList::fillList(){
+	lst = QJsonArray();
+			foreach(QJsonValue o, *list){
+			if(o.toObject()["enabled"].toBool() && !lst.contains(o.toObject()["name"].toString())){
+				lst << o.toObject()["name"].toString();
+			}
+		}
+}
+void MModsList::addToList(QJsonObject o){
+	if(contains(o["name"].toString())){
+		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", o["name"].toString()+" has already added, ignoring ");
+	}else{
+		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "found new mod, adding "+o["name"].toString());
+		QJsonObject t;
+		t["name"] = o["name"];
+		t["desc"] = o["desc"];
+		t["enabled"] = true;
+		*list << t;
+		this->lst << o["name"].toString();
+	}
+}
+bool MModsList::contains(QString s){
+			foreach(QJsonValue v, *list){
+			if( (v.toObject())["name"] == s ) return true;
+		}
+	return false;
+}
+void MModsList::disable(QString n){
+			foreach(QJsonValue v, *list){
+			if(v.toObject()["name"] == n){
+				v.toObject()["enabled"] = false;
+			}
+		}
+}
+void MModsList::addNew(){
+	QString file = QFileDialog::getOpenFileName(loader->dev->w_mod, tr("Open File"),"/home",qPrintable("Mod (*"+ME_SAVE+")"));
+	QString ffile = QStringRef(&file, file.lastIndexOf("/")+1, file.indexOf(".zip")).toString();
+	QZipReader z(file);
+	loader->w_log->addL(GLogLevel::DEBUG, "BaseModLoader", "unzipping "+file + " to " + ffile);
+	//z.extractAll("mods/");
+}
+void MModsList::load(){
+	QFile f("mods/mods.dat");
+	if(f.exists()){
+		list = new QJsonArray(loadJsonA(f.fileName()));
+	}else{
+		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "file mods/mods.dat not exist");
+		list = new QJsonArray();
+	}
+	update();
+	fillList();
+}
+void MModsList::save(){
+			foreach(QJsonValue e, *list){
+			QJsonObject o = e.toObject();
+			o["enabled"] = lst.contains(o["name"].toString());
+		}
+	saveJsonA(*list, "mods/mods.dat");
+}
+void MModsList::reload(){
+	this->list = new QJsonArray();
+	update();
+}
+//!MModsList

@@ -50,10 +50,14 @@
       <sourceFolder url="file://$MODULE_DIR$/Global/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodswidget.cpp" isTestSource="false" />
@@ -62,8 +66,6 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qzipreader_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/adler32.c" isTestSource="false" />

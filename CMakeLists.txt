@@ -22,8 +22,8 @@ find_package(Qt5WebKitWidgets)
 find_package(Qt5Declarative)
 find_package(OpenGL REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}")
-
+set(CMAKE_CXX_FLAGS "-std=c++11")
+# -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}
 include_directories(zlib)
 include_directories(Global)
 include_directories(Launcher)
@@ -58,28 +58,26 @@ set(L_SOURCE_FILES
 		Launcher/lmain.cpp
 		Launcher/lutils.cpp
 		Launcher/lwidgets.cpp
+		Launcher/lparser.cpp
 )
 
 set(L_HEADERS
 		Launcher/lmain.h
 		Launcher/lutils.h
 		Launcher/lwidgets.h
+		Launcher/lparser.h
+		Launcher/qzipreader_p.h
+		Launcher/qzipwriter_p.h
 )
 
 set(M_SOURCE_FILES
 		ModLoader/mmodloader.cpp
-		ModLoader/mmodswidget.cpp
-		ModLoader/mparser.cpp
 		ModLoader/mutils.cpp
 )
 
 set(M_HEADERS
 		ModLoader/mmodloader.h
-		ModLoader/mmodswidget.h
-		ModLoader/mparser.h
 		ModLoader/mutils.h
-		ModLoader/qzipreader_p.h
-		ModLoader/qzipwriter_p.h
 )
 
 qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})
@@ -106,5 +104,5 @@ add_definitions(-DQT_SHARED)
 add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
 qt5_use_modules(ModLoader Core Widgets Network WebKitWidgets)
 target_compile_features(ModLoader PRIVATE cxx_range_for)
-target_link_libraries(ModLoader zlib ${Qt5Core_QTMAIN_LIBRARIES})
+#target_link_libraries(ModLoader zlib ${Qt5Core_QTMAIN_LIBRARIES})
 

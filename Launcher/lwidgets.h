@@ -24,6 +24,9 @@ class LTableModel;
 enum class GLogLevel;
 class GLogE;
 class GSettingsModel;
+class LModsWidget;
+class LModEditor;
+class LPacker;
 
 class LJsonAWidget : public QWidget{
 	Q_OBJECT
@@ -166,7 +169,8 @@ class GDevelop : public QWidget{
 	QPushButton* bparse;
 	QPushButton* binit;
 
-
+	LModEditor * w_mode;
+	LPacker * w_pac;
 	GSettWidget* wsett;
 	GLevlWidget* wlevl;
 	GModelWidget* wmodel;
@@ -174,13 +178,10 @@ class GDevelop : public QWidget{
 	LJsonOWidget* jsono;
 	LJsonAWidget* jsona;
 
-public slots:
-	void reloadModLoader();
+private slots:
 	void parse();
-	void showModEditor();
-	void showModList();
-	void showPacker();
 public:
+	LModsWidget * w_mod;
 	GDevelop(LMainWindow *w);
 };
 
@@ -198,5 +199,73 @@ public:
 };
 
 
+class LModsWidget : public QWidget{
+Q_OBJECT
+	LMainWindow* loader;
+	LLogWidget* log;
+	LListModel* model;
+	QString curr;
+
+	QVBoxLayout* layout;
+	QHBoxLayout* l_model;
+	QHBoxLayout* l_wgt;
+	QPushButton* b_rl;
+	QPushButton* b_add;
+	QPushButton* b_del;
+	QListView* list;
+public slots:
+	void reload();
+	void add();
+	void del();
+public:
+	LModsWidget(LMainWindow* l);
+protected:
+	void closeEvent(QCloseEvent *event);
+};
+
+class LModEditor : public QWidget{// Mods Editor
+Q_OBJECT
+
+	QFormLayout* lay;
+	QLineEdit* e_file;
+	QLineEdit* e_name;
+	QLineEdit* e_devl;
+	QLineEdit* e_site;
+	QTextEdit* e_desc;
+	QLineEdit* e_ver;
+	QLineEdit* e_dep;
+	QLineEdit* e_scr;
+	QLineEdit* e_plg;
+	QPushButton* b_create;
+	QPushButton* b_clear;
+	QPushButton* b_dep;
+	QPushButton* b_other;
+	QComboBox* c_type;
+	LTableManager* w_oth;
+	LListManager* w_dep;
+
+	QString type;
+	QJsonArray* depend;
+	QJsonObject* other;
+	LLogWidget* log;
+	LMainWindow* loader;
+public slots:
+	void bcreate();
+	void bclear();
+	void bdep();
+	void bother();
+	void ctype(int i);
+public:
+	QString REVISION;
+	LModEditor(LMainWindow* l);
+};
+
+class LPacker : public QWidget{
+Q_OBJECT
+	LMainWindow* loader;
+	LLogWidget* log;
+public:
+	LPacker(LMainWindow* l);
+};
 
 #endif // WIDGETS_H
