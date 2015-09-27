@@ -178,13 +178,13 @@ inline QString LParser::getDir(QString type, QString name){
 	static QString s = QDir().absolutePath() + "/";
 	QString t;
 	if(type == "Coremod"){
-		t = "coremods/";
+		t = "mods/coremods/";
 	}else if(type == "Mod"){
-		t = "mods/";
+		t = "mods/mods/";
 	}else if(type == "ResourcePack"){
-		t = "resources/";
+		t = "mods/resources/";
 	}else{
-		t = "unknown/";
+		t = "mods/unknown/";
 	}
 	return s + t + name;
 }

@@ -4,16 +4,18 @@
 #include <QtCore>
 #include <Global/gmodinterfaces.h>
 
-class mods : public QObject
-{
-    Q_OBJECT
-public:
-    explicit mods(QObject *parent = 0);
+class GModLoaderInterface;
 
-signals:
-
-public slots:
-};
+//class mods : public QObject
+//{
+//    Q_OBJECT
+//public:
+//    explicit mods(QObject *parent = 0);
+//
+//signals:
+//
+//public slots:
+//};
 
 class GMods : public QObject {
 	Q_OBJECT

@@ -1,10 +1,10 @@
-#include <Global/gwidgets.h>
-
 #undef CLASS_NAME
 #define CLASS_NAME "GMWidget"
+#include <Global/gwidgets.h>
 
 GMWidget::GMWidget():QOpenGLWidget(){
 	setAutoFillBackground(false);
+	this->render = varG(IRender*, "render");
 }
 
 void GMWidget::animate(){
@@ -12,7 +12,11 @@ void GMWidget::animate(){
 }
 
 void GMWidget::paintEvent(QPaintEvent *event){
-	GV_RENDER.render(this);
+	if(render)
+		render->render(this);
+
+
+
 	event->accept();
 }
 
@@ -73,3 +77,7 @@ void GDeveloper::showResm(){
 
 #undef CLASS_NAME
 #define CLASS_NAME "Not_Defined"
+
+void GMWidget::closeEvent(QCloseEvent *event) {
+	varG(GMain*, "emain")->destroy();
+}

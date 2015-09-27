@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Runner_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Runner_automoc.cpp" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h">
       <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h" isTestSource="false" />
     </content>
@@ -60,10 +63,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodswidget.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodswidget.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mrender.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mrender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />
@@ -128,15 +131,16 @@
         </SOURCES>
         <excluded>
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/MinSizeRel/zlib/zconf.h" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo/zlib/zconf.h" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlib_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/ModLoader_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Global_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Runner_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/ModLoader_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlib_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>

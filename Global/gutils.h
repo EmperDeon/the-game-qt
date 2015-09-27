@@ -3,19 +3,15 @@
 
 #include <QtCore>
 #include <QtNetwork>
-#include <Global/gmain.h>
-
-class Utils{
-public:
-	Utils();
-};
+#include <Global/gmodinterfaces.h>
 
 enum class GLogLevel{
 	ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7
 };
 
-class GLogger : public QObject{
-	Q_OBJECT
+class GLogger : public QObject, public ILogger{
+	Q_INTERFACES(ILogger)
+ Q_OBJECT
 
 	QStringList lst;
 	bool conn;
@@ -25,10 +21,9 @@ private slots:
 	void disc();
 public:
 	GLogger();
-	void log(GLogLevel lv, QString cl, QString ms);
-	void sendM(QString s);
+	void log(GLogLevel lv, QString cl, QString ms)  Q_DECL_OVERRIDE;
+	void sendM(QString s)  Q_DECL_OVERRIDE;
 	void connec();
-	void discon();
 };
 
 class GSettings : public QObject{
@@ -49,15 +44,17 @@ public:
 	void saveTo(QString f);
 };
 
-class GVars : public QObject{
-	Q_OBJECT
-	QMap<QString, QObject*>* map;
+class GVars : public IVars{
+	Q_INTERFACES(IVars)
+
+	QMap<QString, void*>* map;
+	QStringList* owlist;
 public:
 	GVars();
-	bool contains(QString name);
-	QObject* get(QString name);
-	void set(QObject* o, QString n);
-
+	bool contains(QString name)  Q_DECL_OVERRIDE;
+	void* get(QString name)  Q_DECL_OVERRIDE;
+	void set(void* o, QString n)  Q_DECL_OVERRIDE;
+ void setOverwriteList(QStringList l)  Q_DECL_OVERRIDE;
 };
 
 QString getLevelName(GLogLevel lv);

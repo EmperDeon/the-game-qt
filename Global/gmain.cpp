@@ -1,5 +1,4 @@
 #include <Global/gmain.h>
-#include "gmods.h"
 
 #undef CLASS_NAME
 #define CLASS_NAME "Main"
@@ -10,55 +9,46 @@ int main(int argc, char *argv[]){
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");
 
-	GDeveloper* wdev;
+	GV_LOGGER = new GLogger;
+	GV_VARS = new GVars;
+ logI("Test");
+ GMain* gMain = new GMain();
+	gMain->init();
+ gMain->show();
 
-
-	init();
-
-	varS(&GV_LOGGER, "logger");
-	GMods* mods = new GMods();
-		wdev = new GDeveloper();
-		wdev->show();
-
-	mods->coreInit();
 	return a.exec();
 }
 
-void init(){
+#undef CLASS_NAME
+#define  CLASS_NAME "Main"
+GMain::GMain() {
+ varS(this, "emain");
+	varS(GV_LOGGER, "elogger");
 
+	mods = new GMods();
 
-//	GVar* s = new GVar;
-
-//	s->set("Test");
-
-//	varS(s, "settings");
-
-//	GVar* t = varG(GVar*, "settings");
-//	logI(t->get());
-
-	//GV_SETTINGS.load();
-	//GMWidget w;
-	//w.show();
-
-//	GSettings s("settings.dat");
-//s.load();
-//logI(s["Window"]["height"].toString());
-
-//	s.addNewCategory("Main");
-//	s.addNewCategory("Window");
-
-//	s["Main"]["debug"] = "true";
-//	s["Main"]["show_log"] = "true";
-//	s["Window"]["height"] = "100";
-//	s["Window"]["width"] = "200";
-
-//	s.save();
+//	varS(wgt, "emainwindow");
+//	varS(wdev, "edev");
+	varS(mods, "emods");
 }
 
+void GMain::init() {
+	mods->coreInit();
+ mods->init();
 
-void destroy(){
+	wgt = new GMWidget();
+	wdev = new GDeveloper();
+}
+
+void GMain::show() {
+	//wdev->show();
+	wgt->show();
+}
+
+void GMain::destroy() {
 
 }
+
 
 //QSize GMWidget::minimumSizeHint() const
 //{
@@ -214,4 +204,3 @@ void destroy(){
 //				vbo.allocate(vertData.constData(), vertData.count() * sizeof(GLfloat));
 //}
 
-#undef CLASS_NAME

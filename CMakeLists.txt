@@ -37,7 +37,6 @@ set(G_SOURCE_FILES
 		Global/gcontainers.cpp
 		Global/gmain.cpp
 		Global/gmods.cpp
-		Global/grender.cpp
 		Global/gutils.cpp
 		Global/gwidgets.cpp
 )
@@ -47,7 +46,6 @@ set(G_HEADERS
 		Global/gmodinterfaces.h
 		Global/gmain.h
 		Global/gmods.h
-		Global/grender.h
 		Global/gutils.h
 		Global/gwidgets.h
 		Global/qzipreader_p.h
@@ -73,11 +71,15 @@ set(L_HEADERS
 set(M_SOURCE_FILES
 		ModLoader/mmodloader.cpp
 		ModLoader/mutils.cpp
+		ModLoader/mparser.cpp
+		ModLoader/mrender.cpp
 )
 
 set(M_HEADERS
 		ModLoader/mmodloader.h
 		ModLoader/mutils.h
+		ModLoader/mparser.h
+		ModLoader/mrender.h
 )
 
 qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})
@@ -104,5 +106,5 @@ add_definitions(-DQT_SHARED)
 add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
 qt5_use_modules(ModLoader Core Widgets Network WebKitWidgets)
 target_compile_features(ModLoader PRIVATE cxx_range_for)
-#target_link_libraries(ModLoader zlib ${Qt5Core_QTMAIN_LIBRARIES})
+target_link_libraries(ModLoader ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 

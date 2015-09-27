@@ -3,36 +3,47 @@
 
 #include <QApplication>
 #include <Global/gutils.h>
-#include <Global/grender.h>
 #include <Global/gwidgets.h>
+#include <Global/gmods.h>
 
 class GLogger;
 class GSettings;
 class GDeveloper;
 class GVars;
+class GMods;
+class GMWidget;
 
-extern GLogger GV_LOGGER;
-extern GRenderer GV_RENDER;
-//extern GSettings GV_SETTINGS("settings.dat");
-extern GVars GV_VARS;
+extern ILogger* GV_LOGGER;
+extern IVars* GV_VARS;
 
 #define SETTINGS_FILE "settings.dat"
+#undef  CLASS_NAME
 #define CLASS_NAME "Not_Defined"
 
-#define logE(ms) GV_LOGGER.log(GLogLevel::ERR,   CLASS_NAME, ms)
-#define logW(ms) GV_LOGGER.log(GLogLevel::WARN,  CLASS_NAME, ms)
-#define logI(ms) GV_LOGGER.log(GLogLevel::INFO,  CLASS_NAME, ms)
-#define logD(ms) GV_LOGGER.log(GLogLevel::DEBUG, CLASS_NAME, ms)
-#define logF(ms) GV_LOGGER.log(GLogLevel::FINE,  CLASS_NAME, ms)
-#define logFF(ms) GV_LOGGER.log(GLogLevel::FFINE,  CLASS_NAME, ms)
-#define logA(ms) GV_LOGGER.log(GLogLevel::ALL,  CLASS_NAME, ms)
+#define logE(ms) GV_LOGGER->log(GLogLevel::ERR,   CLASS_NAME, ms)
+#define logW(ms) GV_LOGGER->log(GLogLevel::WARN,  CLASS_NAME, ms)
+#define logI(ms) GV_LOGGER->log(GLogLevel::INFO,  CLASS_NAME, ms)
+#define logD(ms) GV_LOGGER->log(GLogLevel::DEBUG, CLASS_NAME, ms)
+#define logF(ms) GV_LOGGER->log(GLogLevel::FINE,  CLASS_NAME, ms)
+#define logFF(ms) GV_LOGGER->log(GLogLevel::FFINE,  CLASS_NAME, ms)
+#define logA(ms) GV_LOGGER->log(GLogLevel::ALL,  CLASS_NAME, ms)
 
-#define varG(cl, s) qobject_cast<cl>(GV_VARS.get(s))
-#define varS(cl, s) GV_VARS.set(cl, s)
+#define varG(cl, s) reinterpret_cast<cl>(GV_VARS->get(s))
+#define varS(cl, s) GV_VARS->set(cl, s)
 
+class GMain : public IMain{
+	Q_INTERFACES(IMain)
 
-void init();
-void destroy();
+	GDeveloper* wdev;
+	GMWidget* wgt;
+	GMods* mods;
+public:
+	GMain();
+	void init();
+	void show();
+	void destroy();
+};
+
 //QT_FORWARD_DECLARE_CLASS(QOpenGLShaderProgram)
 //QT_FORWARD_DECLARE_CLASS(QOpenGLTexture)
 

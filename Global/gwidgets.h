@@ -4,6 +4,8 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <Global/gutils.h>
+#include <Global/gmodinterfaces.h>
+class IRender;
 
 class Widgets{
 public:
@@ -12,15 +14,19 @@ public:
 
 class GMWidget : public QOpenGLWidget {// QOpenGLWidget
 	Q_OBJECT
-
+ IRender* render;
 public:
 	GMWidget();
+
+protected:
+
 
 public slots:
 	void animate();
 
 protected:
 	virtual void paintEvent(QPaintEvent *event);
+	virtual void closeEvent(QCloseEvent *qCloseEvent);
 };
 
 class GDeveloper : public QWidget{

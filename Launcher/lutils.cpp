@@ -359,11 +359,11 @@ MModsList::MModsList(LMainWindow *l):loader(l){
 	this->lst = QJsonArray();
 }
 void MModsList::update(){
-	QDir mods("mods");
+	QDir mods("mods/mods");
 			foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
 			if(f.fileName() != "." && f.fileName() != ".."){
 				loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "parsing "+f.filePath());
-				addToList(loadJson(QDir("mods/"+f.fileName()).filePath("pack.dat")));
+				addToList(loadJson(QDir("mods/mods/"+f.fileName()).filePath("pack.dat")));
 			}
 		}
 

@@ -1,6 +1,5 @@
 #include <Global/gutils.h>
 #undef CLASS_NAME
-
 #define CLASS_NAME "Logger"
 
 QString getLevelName(GLogLevel lv){
@@ -21,7 +20,7 @@ void GLogger::connected(){
 void GLogger::disc(){
 	conn = false;
 }
-GLogger::GLogger():QObject(){
+GLogger::GLogger(){
 	socket = new QLocalSocket();
 	connect(socket, SIGNAL(connected()), this, SLOT(connected()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disc()));
@@ -31,7 +30,7 @@ GLogger::GLogger():QObject(){
 void GLogger:: log(GLogLevel lv, QString cl, QString ms){
 	//QString s = QDateTime::currentDateTime().toString("HH:mm:ss dd.MM.yyyy") + "^";
 	QString s = QDateTime::currentDateTime().toString("HH:mm:ss") + "^";
-	s += getLevelName(lv) + "^E-";
+	s += getLevelName(lv) + (cl.startsWith("M-") ? "^" : "^E-");
 	s += cl + "^";
 	s += ms;
 
@@ -58,7 +57,7 @@ void GLogger::connec(){
 
 }
 
-GLogger GV_LOGGER;
+ILogger* GV_LOGGER;
 
 #undef CLASS_NAME
 #define CLASS_NAME "Settings"
@@ -127,26 +126,38 @@ void GSettings::saveTo(QString f){
 	saveFile.write(qCompress(doc.toBinaryData(),5));
 }
 
-GSettings GV_SETTINGS("settings.dat");
 
 #undef CLASS_NAME
 #define CLASS_NAME "GVars"
 
 
 GVars::GVars(){
-	map = new QMap<QString, QObject*>;
+	map = new QMap<QString, void*>;
+	owlist = new QStringList;
 }
 bool GVars::contains(QString name){
 	return map->contains(name);
 }
-QObject *GVars::get(QString name){
+void* GVars::get(QString name){
+	if(!contains(name))
+		logE("No " + name + " in GVars");
 	return (*map)[name];
 }
-void GVars::set(QObject *o, QString n){
-	(*map)[n] = o;
+void GVars::set(void *o, QString n){
+	if(!map->contains(n)){
+		(*map)[n] = o;
+	}else{
+		if(owlist->contains(n)){
+			(*map)[n] = o;
+		}
+	}
 }
-
-GVars GV_VARS;
+void GVars::setOverwriteList(QStringList l) {
+	this->owlist = new QStringList(l);
+}
+IVars* GV_VARS;
 
 #undef CLASS_NAME
 #define CLASS_NAME "Not_Defined"
+
+

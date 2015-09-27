@@ -1,5 +1,16 @@
-//
-// Created by ilz20 on 24.09.2015.
-//
+#include "mparser.h"
 
-#include "MParser.h"
+MParser::MParser(ModLoader *m) {
+ this->loader = m;
+}
+
+void MParser::parse() {
+ parse("mods/coremods");
+	parse("mods/mods");
+}
+void MParser::parse(QString s){
+ QDir dir(s);
+	foreach(QFileInfo i, dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+		*(loader->jsons) << loadJson(QDir(s+"/"+i.fileName()).filePath("pack.dat"));
+		}
+}

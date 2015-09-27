@@ -69,9 +69,6 @@ private:
 	void checkSettings();
 	void checkDir();
 
-	void initModLoaderList();
-	void loadModLoader(QString s);
-	void selectModLoader();
 	void parse();
 
 	void download();

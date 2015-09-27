@@ -43,6 +43,7 @@ void LMainWindow::showDev(){
 #pragma ide diagnostic ignored "InfiniteRecursion"
 void LMainWindow::procF(int e){
 	this->show();
+	w_log->addL(GLogLevel::INFO, "E", QString(proc->readAll()));
 	if(e)
 		w_log->addL(GLogLevel::ERR, "L-Main", "The game crashed with code "+QString::number(e));
 	disconnect(proc, SIGNAL(finished(int)),this, SLOT(procF(int)));

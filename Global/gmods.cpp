@@ -56,7 +56,7 @@ void GMods::loadModLoader(QString s) {
 			GModLoaderInterface* t = qobject_cast<GModLoaderInterface *>(plugin);
 			if (t){
 				modloader = t;
-				modloader->setVars(&GV_VARS);
+				modloader->setVars(GV_VARS);
 				logI(modloader->getName() + " modloader loaded");
 			}
 		}
