@@ -1,5 +1,4 @@
 #include "mmodloader.h"
-#include "mrender.h"
 
 QString ModLoader::getName(){
 	return "BaseModLoader";
@@ -53,5 +52,3 @@ void ModLoader::postInit(){
 
 	this->log->log(GLogLevel::FINE, "Main", "postInit finished");
 }
-
-

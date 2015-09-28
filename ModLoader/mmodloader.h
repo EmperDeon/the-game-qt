@@ -4,6 +4,7 @@
 #include <QtCore>
 #include <ModLoader/mutils.h>
 #include <Global/gmodinterfaces.h>
+#include <Global/gcontainers.h>
 #include <Launcher/lutils.h>
 #include <ModLoader/mparser.h>
 #include <ModLoader/mrender.h>

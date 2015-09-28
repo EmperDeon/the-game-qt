@@ -1,16 +1,17 @@
 #ifndef G_CONTAINERS
 #define G_CONTAINERS
-#include <QObject>
+#include <QtCore>
+#include <Global/gmain.h>
 
-class Containers : public QObject
-{
-    Q_OBJECT
+class Emiks{
+	quint32 c;
 public:
-    explicit Containers(QObject *parent = 0);
-
-signals:
-
-public slots:
+	Emiks(int m, int i, int k, int s);
+ quint32 m();
+	quint32 i();
+	quint32 k();
+	quint32 s();
 };
+
 
 #endif
