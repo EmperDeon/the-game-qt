@@ -43,8 +43,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Global/gmodinterfaces.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gmods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gmods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Global/grender.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Global/grender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gwidgets.cpp" isTestSource="false" />
@@ -61,12 +59,14 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mrender.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mrender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mrender.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mrender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />

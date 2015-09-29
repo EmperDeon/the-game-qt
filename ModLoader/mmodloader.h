@@ -7,7 +7,7 @@
 #include <Global/gcontainers.h>
 #include <Launcher/lutils.h>
 #include <ModLoader/mparser.h>
-#include <ModLoader/mrender.h>
+#include <ModLoader/core/mrender.h>
 
 class LModsWidget;
 class LModEditor;
@@ -20,7 +20,7 @@ class ModLoader : public QObject, GModLoaderInterface{
 	Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.GModLoaderInterface" FILE "coremod.json")
 	Q_INTERFACES(GModLoaderInterface)
-
+ QMap<QString, Emiks*> map;
 	MParser *parser;
 public:
 	IVars* vars;
@@ -35,7 +35,7 @@ public:
 	void corePreInit() Q_DECL_OVERRIDE;
 	void coreInit() Q_DECL_OVERRIDE;
 	void corePostInit() Q_DECL_OVERRIDE;
-
+ void test(unsigned int i);
 	void preInit() Q_DECL_OVERRIDE;
 	void init() Q_DECL_OVERRIDE;
 	void postInit() Q_DECL_OVERRIDE;

@@ -45,10 +45,30 @@ void ModLoader::preInit(){
 	this->log->log(GLogLevel::FINE, "Main", "preInit finished");
 }
 void ModLoader::init(){
+//
+//	QTime t, t1;
+//	t.start();
+////hash - 387 mb, 8 sec
+//	QString ts;
+// for(int m = 0 ; m < 16 ; m++)
+//	 for(int i = 0 ; i < 256 ; i++)
+//		 for(int k = 0 ; k < 256 ; k++)
+//			 for(int s = 0 ; s < 2 ; s++){
+//				 ts = "mod" + QString::number(m) +
+//						 "item" + QString::number(i) +
+//						 "kind" + QString::number(k) +
+//						 "state" + QString::number(s);
+//			  map[ts] = new Emiks(m,i,k,s);
+//			 }
+//
+//	int j = t.elapsed();
+//	t1.start();
+//
+//	this->log->log(GLogLevel::INFO, "Main", "added in: "+QString::number(j) +	", getted in " + QString::number(t1.elapsed()));
 
-	this->log->log(GLogLevel::FINE, "Main", "init finished");
+this->log->log(GLogLevel::FINE, "Main", "init finished");
 }
-void ModLoader::postInit(){
 
+void ModLoader::postInit(){
 	this->log->log(GLogLevel::FINE, "Main", "postInit finished");
 }

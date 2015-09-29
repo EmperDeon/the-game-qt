@@ -3,6 +3,8 @@
 #include <QtCore>
 #include <Global/gmain.h>
 
+
+
 class Emiks{
 	quint32 c;
 public:

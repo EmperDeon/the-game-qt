@@ -5,6 +5,7 @@
 
 enum class GLogLevel;
 class IVars;
+class Emiks;
 
 class GModLoaderInterface{
 public:
@@ -51,8 +52,16 @@ public:
 	virtual ~IVars(){};
 };
 
+
+class IModsIds {
+public:
+	virtual Emiks* get(QString m, QString i, QString k, int s) = 0;
+	
+};
+
 #include <GLobal/gmain.h>
 #include <Global/gutils.h>
+#include <Global/gcontainers.h>
 
 QT_BEGIN_NAMESPACE
 
