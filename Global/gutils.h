@@ -5,10 +5,6 @@
 #include <QtNetwork>
 #include <Global/gmodinterfaces.h>
 
-enum class GLogLevel{
-	ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7
-};
-
 class GLogger : public QObject, public ILogger{
 	Q_INTERFACES(ILogger)
  Q_OBJECT
@@ -52,6 +48,7 @@ class GVars : public IVars{
 public:
 	GVars();
 	bool contains(QString name)  Q_DECL_OVERRIDE;
+	bool contains(QStringList l) Q_DECL_OVERRIDE;
 	void* get(QString name)  Q_DECL_OVERRIDE;
 	void set(void* o, QString n)  Q_DECL_OVERRIDE;
  void setOverwriteList(QStringList l)  Q_DECL_OVERRIDE;

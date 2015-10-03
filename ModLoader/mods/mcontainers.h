@@ -3,25 +3,24 @@
 
 #include <QtCore>
 #include <Global/gmodinterfaces.h>
+#include <ModLoader/mmodloader.h>
 
-class MModIds {
- QMap<QString, Emiks*> map;
- QString name;
-	int last, num;
+class MModsParser{
+	ModLoader* loader;
 
 public:
-	MModIds(QString m, int i);
-	Emiks* get(QString i, QString k, int s);
+	MModsParser(ModLoader* m);
 
 };
 
 class MIds : public IModsIds {
  Q_INTERFACES(IItemIds)
+ ModLoader* loader;
+	QMap<QString, Emiks*>* mods;
+ Emiks* mnull;
 
-	QMap<QString, MModIds*> mods;
-	int last;
 public:
- MIds();
+ MIds(ModLoader *m, QMap<QString, Emiks*>* l);
 	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
 

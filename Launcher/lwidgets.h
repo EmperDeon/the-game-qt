@@ -27,6 +27,8 @@ class GSettingsModel;
 class LModsWidget;
 class LModEditor;
 class LPacker;
+class QJsonObject;
+
 
 class LJsonAWidget : public QWidget{
 	Q_OBJECT
@@ -234,6 +236,7 @@ Q_OBJECT
 	QTextEdit* e_desc;
 	QLineEdit* e_ver;
 	QLineEdit* e_dep;
+	QLineEdit* e_txt;
 	QLineEdit* e_scr;
 	QLineEdit* e_plg;
 	QPushButton* b_create;
@@ -249,7 +252,7 @@ Q_OBJECT
 	QJsonObject* other;
 	LLogWidget* log;
 	LMainWindow* loader;
-public slots:
+private slots:
 	void bcreate();
 	void bclear();
 	void bdep();
@@ -258,6 +261,56 @@ public slots:
 public:
 	QString REVISION;
 	LModEditor(LMainWindow* l);
+};
+
+
+class LTextModItemEditor : public QWidget{
+ Q_OBJECT
+
+class LTextModItemModel : public QAbstractTableModel{
+ public:
+ 	QJsonArray& obj;
+	 LTextModItemModel(QJsonArray& o, QObject *pobj = 0);
+	 QVariant data(const QModelIndex& index, int nRole) const;
+	 bool setData(const QModelIndex& index,const QVariant& value, int nRole );
+	 int rowCount(const QModelIndex&) const;
+	 int columnCount(const QModelIndex&) const;
+	 Qt::ItemFlags flags(const QModelIndex& index)const;
+	 void add(LTextModItemEditor *e);
+	 void del(LTextModItemEditor *e);
+ };
+
+	LMainWindow* launcher;
+	LLogWidget* log;
+
+	QVBoxLayout* l;
+	QHBoxLayout* l_h;
+	QFormLayout* f_r;
+ QFormLayout* f_l;
+	QTableView* table;
+	LTextModItemModel* model;
+
+	QLineEdit* l_ii;
+	QLineEdit* l_ik;
+	QLineEdit* l_is;
+
+	QLineEdit* l_type;
+	QLineEdit* l_drb;
+
+	QPushButton* b_add;
+	QPushButton* b_del;
+	QPushButton* b_save;
+	QPushButton* b_rest;
+	friend void LTextModItemModel::add(LTextModItemEditor *e);
+private slots:
+	void sadd();
+	void sdel();
+	void ssave();
+	void srest();
+
+public:
+ LTextModItemEditor(LMainWindow* m, QJsonArray& a);
+
 };
 
 class LPacker : public QWidget{

@@ -1,30 +1,25 @@
 #include <ModLoader/mods/mcontainers.h>
 
-MIds::MIds() {
 
+MModsParser::MModsParser(ModLoader *m) {
+ this->loader = m;
+
+
+
+}
+
+MIds::MIds(ModLoader *m, QMap<QString, Emiks*>* l) {
+ this->loader = m;
+	this->mods = l;
+	this->mnull = new Emiks(0,0,0,0);
 }
 Emiks* MIds::get(QString m, QString i, QString k, int s) {
-	if(mods.contains(m))
-  return mods[m];
+	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
+	if(mods->contains(t))
+  return mods->value(t);
 	else{
-		MModIds* t = new MModIds(m, last++);
-		mods[m] = t;
-		return t->get(i, k, s);
-	}
-}
-
-MModIds::MModIds(QString m, int i) {
- this->name = m;
-	this->num = i;
-}
-Emiks* MModIds::get(QString i, QString k, int s) {
-	QString ti = i + "^";
-	if(map.contains(i))
-		return map[i];
-	else{
-		MModIds* t = new MModIds(i, last++);
-		map[i] = t;
-		return t->get(i, k, s);
+		loader->log->log(GLogLevel::ERR, "MIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		return mnull;
 	}
 }
 

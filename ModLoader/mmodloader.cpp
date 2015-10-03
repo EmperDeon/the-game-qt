@@ -5,8 +5,12 @@ QString ModLoader::getName(){
 }
 
 void ModLoader::setVars(IVars *v) {
- this->vars = v;
+	this->vars = v;
 	this->log = reinterpret_cast<ILogger*>(vars->get("elogger"));
+
+	this->lmods = new QList<IMod*>;
+	this->lcmods = new QList<ICoreMod*>;
+
 	this->jsons = new QList<QJsonObject>;
 
 	this->parser = new MParser(this);
@@ -17,13 +21,13 @@ void ModLoader::setVars(IVars *v) {
 void ModLoader::corePreInit(){
 	parser->parse();
 	QStringList owr;
-	foreach(QJsonObject o, *jsons){
-		if(o.contains("owerwr")){
-			foreach(QJsonValue a, o["owerwr"].toArray()){
-			 owr << a.toString();
+			foreach(QJsonObject o, *jsons){
+			if(o.contains("owerwr")){
+						foreach(QJsonValue a, o["owerwr"].toArray()){
+						owr << a.toString();
+					}
 			}
 		}
-	}
 	owr << "render";
 
 	vars->setOverwriteList(owr);
@@ -32,7 +36,7 @@ void ModLoader::corePreInit(){
 	this->log->log(GLogLevel::FINE, "Main", "corePreInit finished");
 }
 void ModLoader::coreInit(){
- render->init();
+	render->init();
 	this->log->log(GLogLevel::FINE, "Main", "coreInit finished");
 }
 void ModLoader::corePostInit(){
@@ -63,12 +67,37 @@ void ModLoader::init(){
 //
 //	int j = t.elapsed();
 //	t1.start();
-//
-//	this->log->log(GLogLevel::INFO, "Main", "added in: "+QString::number(j) +	", getted in " + QString::number(t1.elapsed()));
 
-this->log->log(GLogLevel::FINE, "Main", "init finished");
+//	this->log->log(GLogLevel::INFO, "Main", "added in: "+QString::number(j) +	", getted in " + QString::number(t1.elapsed()));
+	QMap<QString, quint32>* tm  = new QMap<QString, quint32>;
+	for(quint32 i = 0 ; i < 131072 ; i++)
+		tm->insert(QString::number(i)+"^"+QString::number(i)+"^"+QString::number(i)+"^"+QString::number(i), i);
+
+	this->log->log(GLogLevel::FINE, "Main", "init finished");
 }
 
 void ModLoader::postInit(){
 	this->log->log(GLogLevel::FINE, "Main", "postInit finished");
+}
+
+void ModLoader::addModInstance(QJsonObject o) {
+	if(o["type"].toString() == "Mod"){
+		if(o.contains("ftxt")){
+
+		}else if(o.contains("fscr")){
+
+		}else if(o.contains("fplg")){
+   *(this->lmods) << qobject_cast<IMod*>(instance(""+o["fplg"].toString()));
+		}
+	}
+}
+void ModLoader::addCoreModInstance(QJsonObject o) {
+	if(o["type"].toString() == "CoreMod"){
+
+	}
+}
+
+QObject *ModLoader::instance(QString f) {
+		QPluginLoader pluginLoader(f);
+		return pluginLoader.instance();
 }

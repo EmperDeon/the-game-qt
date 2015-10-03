@@ -412,6 +412,7 @@ LModEditor::LModEditor(LMainWindow *l){
 	e_name = new QLineEdit;
 	e_ver = new QLineEdit;
 	e_dep = new QLineEdit;
+	e_txt = new QLineEdit;
 	e_scr = new QLineEdit;
 	e_plg = new QLineEdit;
 	e_devl = new QLineEdit;
@@ -444,6 +445,7 @@ LModEditor::LModEditor(LMainWindow *l){
 	lay->addRow("Site:", e_site);
 	lay->addRow("Description:", e_desc);
 	lay->addRow("Type:", c_type);
+	lay->addRow("TextFile: ", e_txt);
 	lay->addRow("Script file:", e_scr);
 	lay->addRow("Plugin file:", e_plg);
 	lay->addRow("Version:", e_ver);
@@ -461,17 +463,26 @@ void LModEditor::bcreate(){
 	o["devl"] = e_devl->text();
 	o["site"] = e_site->text();
 	o["type"] = type;
+
+	o["btxt"] = e_txt->text() != "";
+	o["bscr"] = e_scr->text() != "";
+	o["bplg"] = e_plg->text() != "";
+
+	o["ftxt"] = e_txt->text();
+	o["fscr"] = e_scr->text();
+	o["fplg"] = e_plg->text();
+
 	o["depend"] = *depend;
 	o["version"] = e_ver->text();
 	o["revision"] = this->REVISION;
-			foreach(QString k, other->keys()){
+		foreach(QString k, other->keys()){
 			o[k] = (*other)[k];
 		}
 
 	QString tmp = "modEditor/tmp/";
 	QString out = "modEditor/out/";
 	QDir dir;
-	QString mess = "Now you can copy mod resources to " + dir.absolutePath() + "/" + tmp + "\n Press OK when you ready to comress";
+	QString mess = "Now you can copy mod resources to " + dir.absolutePath() + "/" + tmp + "\n Press OK when you ready to compress";
 	dir.mkpath(tmp);
 	dir.mkpath(out);
 	dir.cd(tmp);
@@ -534,3 +545,121 @@ LPacker::LPacker(LMainWindow *l){
 	loader = l;
 	log = loader->w_log;
 }
+
+LTextModItemEditor::LTextModItemModel::LTextModItemModel(QJsonArray& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){
+	this->setHeaderData(0, Qt::Horizontal, "Item");
+	this->setHeaderData(1, Qt::Horizontal, "Kind");
+	this->setHeaderData(2, Qt::Horizontal, "State");
+	this->setHeaderData(3, Qt::Horizontal, "Type");
+	this->setHeaderData(4, Qt::Horizontal, "Durability");
+}
+QVariant LTextModItemEditor::LTextModItemModel::data(const QModelIndex &index, int nRole) const{
+	if (!index.isValid()) {
+		return QVariant();
+	}else if (nRole == Qt::DisplayRole || nRole == Qt::EditRole)
+	 switch (index.column()){
+		 case 0 : return (obj[index.row()].toObject())["ii"].toString();
+		 case 1 : return (obj[index.row()].toObject())["ik"].toString();
+		 case 2 : return (obj[index.row()].toObject())["is"].toString();
+		 case 3 : return (obj[index.row()].toObject())["type"].toString();
+		 case 4 : return (obj[index.row()].toObject())["drb"].toString();
+		 default: return QVariant("error");
+	}
+	else return QVariant();
+}
+bool LTextModItemEditor::LTextModItemModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
+	if (index.isValid() && nRole == Qt::EditRole) {
+			switch (index.column()){
+				case 0: (obj[index.row()].toObject())["ii"] = value.toString(); break;
+				case 1: (obj[index.row()].toObject())["ik"] = value.toString(); break;
+				case 2: (obj[index.row()].toObject())["is"] = value.toString(); break;
+				case 3: (obj[index.row()].toObject())["type"]= value.toString(); break;
+				case 4: (obj[index.row()].toObject())["drb"] = value.toString(); break;
+				default: break;
+			}
+		emit dataChanged(index, index);
+		}
+	return false;
+}
+Qt::ItemFlags LTextModItemEditor::LTextModItemModel::flags(const QModelIndex &index) const{
+	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
+	return (index.isValid()) ? (flags | Qt::ItemIsEditable) : flags;
+}
+void LTextModItemEditor::LTextModItemModel::add(LTextModItemEditor *e){
+	QJsonObject o;
+	o["ii"] = e->l_ii->text();
+	o["ik"] = e->l_ik->text();
+	o["is"] = e->l_is->text();
+	o["type"] = e->l_type->text();
+	o["drb"] = e->l_drb->text();
+
+	obj << o;
+}
+void LTextModItemEditor::LTextModItemModel::del(LTextModItemEditor *e){
+	foreach(QModelIndex i, e->table->selectionModel()->selectedIndexes()){
+	 e->log->addL(GLogLevel::INFO, "TextModEditor", "deleting "+QString::number(i.row())+" "+QString::number(i.column()));
+	}
+}
+int LTextModItemEditor::LTextModItemModel::rowCount(const QModelIndex&) const{
+	return obj.size();
+}
+int LTextModItemEditor::LTextModItemModel::columnCount(const QModelIndex&) const{
+	return 5;
+}
+
+LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray &a) {
+	this->launcher = m;
+	this->log = m->w_log;
+
+ this->l = new QVBoxLayout;
+	this->l_h = new QHBoxLayout;
+ f_r = new QFormLayout;
+	f_l = new QFormLayout;
+
+	this->table = new QTableView;
+	this->model = new LTextModItemModel(a);
+
+	l_ii     = new QLineEdit;
+	l_ik     = new QLineEdit;
+	l_is     = new QLineEdit;
+
+	l_type   = new QLineEdit;
+	l_drb    = new QLineEdit;
+
+	b_add    = new QPushButton(tr("Add"));
+	b_del    = new QPushButton(tr("Delete"));
+	b_save   = new QPushButton(tr("Save"));
+	b_rest   = new QPushButton(tr("Reset"));
+
+	f_r->addRow("Item name:", l_ii);
+	f_r->addRow("Item kind:", l_ik);
+	f_r->addRow("Item state:",l_is);
+
+	f_l->addRow("Type: ", l_type);
+	f_l->addRow("Durability: ", l_drb);
+
+	l_h->addLayout(f_r);
+	l_h->addLayout(f_l);
+
+	this->l->addLayout(l_h);
+	this->l->addWidget(table);
+
+	this->setLayout(l);
+}
+
+void LTextModItemEditor::sadd() {
+
+}
+
+void LTextModItemEditor::sdel() {
+
+}
+
+void LTextModItemEditor::ssave() {
+
+}
+
+void LTextModItemEditor::srest() {
+
+}
+

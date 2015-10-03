@@ -20,3 +20,4 @@ quint32 Emiks::m() {	return c >> 22 & 1023;}
 quint32 Emiks::i() {	return c >> 13 & 1023;}
 quint32 Emiks::k() {	return c >> 5 & 255;  }
 quint32 Emiks::s() {	return c >> 1 & 15;   }
+

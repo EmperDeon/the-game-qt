@@ -102,7 +102,7 @@ void LMainWindow::initLog(){
 	bdev	= new QPushButton    ("+");
 	elog	= new QLineEdit      ("admin");
 	epas	= new QLineEdit      ("admin");
-	log  = new QCheckBox   ("Show log");
+	log  = new QCheckBox      ("Show log");
 	list	= new QListView      ();
 	prog    = new QProgressBar();
 

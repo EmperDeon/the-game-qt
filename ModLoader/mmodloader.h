@@ -3,11 +3,10 @@
 
 #include <QtCore>
 #include <ModLoader/mutils.h>
-#include <Global/gmodinterfaces.h>
-#include <Global/gcontainers.h>
-#include <Launcher/lutils.h>
 #include <ModLoader/mparser.h>
 #include <ModLoader/core/mrender.h>
+#include <Global/gcontainers.h>
+#include <Launcher/lutils.h>
 
 class LModsWidget;
 class LModEditor;
@@ -20,12 +19,17 @@ class ModLoader : public QObject, GModLoaderInterface{
 	Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.GModLoaderInterface" FILE "coremod.json")
 	Q_INTERFACES(GModLoaderInterface)
+
+
  QMap<QString, Emiks*> map;
 	MParser *parser;
 public:
 	IVars* vars;
 	ILogger* log;
 	QList<QJsonObject>* jsons;
+
+	QList<IMod*>* lmods;
+	QList<ICoreMod*>* lcmods;
 
 	MRender *render;
 
@@ -35,13 +39,15 @@ public:
 	void corePreInit() Q_DECL_OVERRIDE;
 	void coreInit() Q_DECL_OVERRIDE;
 	void corePostInit() Q_DECL_OVERRIDE;
- void test(unsigned int i);
+
 	void preInit() Q_DECL_OVERRIDE;
 	void init() Q_DECL_OVERRIDE;
 	void postInit() Q_DECL_OVERRIDE;
 
-
-
+private:
+	void addModInstance(QJsonObject o);
+	void addCoreModInstance(QJsonObject o);
+	QObject* instance(QString f);
 };
 
 #endif // MODLOADER_H

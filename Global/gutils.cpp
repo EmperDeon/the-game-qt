@@ -138,6 +138,14 @@ GVars::GVars(){
 bool GVars::contains(QString name){
 	return map->contains(name);
 }
+bool GVars::contains(QStringList l) {
+	bool c = true;
+	foreach(QString n, l){
+		c = c && map->contains(n);
+	}
+	return c;
+}
+
 void* GVars::get(QString name){
 	if(!contains(name))
 		logE("No " + name + " in GVars");
