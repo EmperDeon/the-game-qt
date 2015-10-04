@@ -225,44 +225,8 @@ protected:
 	void closeEvent(QCloseEvent *event);
 };
 
-class LModEditor : public QWidget{// Mods Editor
-Q_OBJECT
 
-	QFormLayout* lay;
-	QLineEdit* e_file;
-	QLineEdit* e_name;
-	QLineEdit* e_devl;
-	QLineEdit* e_site;
-	QTextEdit* e_desc;
-	QLineEdit* e_ver;
-	QLineEdit* e_dep;
-	QLineEdit* e_txt;
-	QLineEdit* e_scr;
-	QLineEdit* e_plg;
-	QPushButton* b_create;
-	QPushButton* b_clear;
-	QPushButton* b_dep;
-	QPushButton* b_other;
-	QComboBox* c_type;
-	LTableManager* w_oth;
-	LListManager* w_dep;
-
-	QString type;
-	QJsonArray* depend;
-	QJsonObject* other;
-	LLogWidget* log;
-	LMainWindow* loader;
-private slots:
-	void bcreate();
-	void bclear();
-	void bdep();
-	void bother();
-	void ctype(int i);
-public:
-	QString REVISION;
-	LModEditor(LMainWindow* l);
-};
-
+// ModEditor
 
 class LTextModItemEditor : public QWidget{
  Q_OBJECT
@@ -279,14 +243,15 @@ class LTextModItemModel : public QAbstractTableModel{
 	 void add(LTextModItemEditor *e);
 	 void del(LTextModItemEditor *e);
  };
-
 	LMainWindow* launcher;
 	LLogWidget* log;
 
 	QVBoxLayout* l;
 	QHBoxLayout* l_h;
 	QFormLayout* f_r;
- QFormLayout* f_l;
+ QFormLayout* f_c;
+	QHBoxLayout *f_l;
+
 	QTableView* table;
 	LTextModItemModel* model;
 
@@ -305,13 +270,89 @@ class LTextModItemModel : public QAbstractTableModel{
 private slots:
 	void sadd();
 	void sdel();
-	void ssave();
-	void srest();
-
 public:
  LTextModItemEditor(LMainWindow* m, QJsonArray& a);
 
+
 };
+class LTextModEditor : public QWidget{
+Q_OBJECT
+	LMainWindow* launcher;
+	LLogWidget* log;
+
+	QJsonObject* obj;
+	QJsonArray items;
+
+	QVBoxLayout* l;
+	QTabWidget* tabs;
+ LTextModItemEditor* w_items;
+
+	QPushButton* bsave;
+private slots:
+	void ssave();
+public:
+	LTextModEditor(LMainWindow* t, QJsonObject* o);
+};
+
+class LScriptModEditor : public QWidget{
+	Q_OBJECT
+ LMainWindow* launcher;
+	LLogWidget* log;
+
+	QJsonObject* obj;
+public:
+	LScriptModEditor(LMainWindow *t, QJsonObject* o);
+};
+
+class LModEditor : public QWidget{// Mods Editor
+Q_OBJECT
+
+	QFormLayout* lay;
+	QLineEdit* e_file;
+	QLineEdit* e_name;
+	QLineEdit* e_devl;
+	QLineEdit* e_site;
+	QTextEdit* e_desc;
+	QLineEdit* e_ver;
+	QLineEdit* e_dep;
+	QLineEdit* e_plg;
+	QPushButton* b_textMod;
+	QPushButton* b_scriptMod;
+	QPushButton* b_plugin;
+	QPushButton* b_create;
+	QPushButton* b_clear;
+	QPushButton* b_dep;
+	QPushButton* b_other;
+	QPushButton* b_text;
+	QComboBox* c_type;
+	LTableManager* w_oth;
+	LListManager* w_dep;
+
+	QString type;
+	QJsonArray* depend;
+	QJsonObject* other;
+
+	QJsonObject* textMod;
+	LTextModEditor* textModE;
+
+	QJsonObject* scriptMod;
+	LScriptModEditor* scriptModE;
+
+	QString pluginFile;
+	LLogWidget* log;
+	LMainWindow* loader;
+private slots:
+	void splugin();
+	void bcreate();
+	void bclear();
+	void bdep();
+	void bother();
+	void ctype(int i);
+public:
+	QString REVISION;
+	LModEditor(LMainWindow* l);
+};
+//!ModEditor
 
 class LPacker : public QWidget{
 Q_OBJECT
