@@ -403,13 +403,7 @@ LPacker::LPacker(LMainWindow *l){
 	log = loader->w_log;
 }
 
-LTextModItemEditor::LTextModItemModel::LTextModItemModel(QJsonArray& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){
-	this->setHeaderData(0, Qt::Horizontal, "Item");
-	this->setHeaderData(1, Qt::Horizontal, "Kind");
-	this->setHeaderData(2, Qt::Horizontal, "State");
-	this->setHeaderData(3, Qt::Horizontal, "Type");
-	this->setHeaderData(4, Qt::Horizontal, "Durability");
-}
+LTextModItemEditor::LTextModItemModel::LTextModItemModel(QJsonArray& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){}
 QVariant LTextModItemEditor::LTextModItemModel::data(const QModelIndex &index, int nRole) const{
 	if (!index.isValid()) {
 		return QVariant();
@@ -426,14 +420,17 @@ QVariant LTextModItemEditor::LTextModItemModel::data(const QModelIndex &index, i
 }
 bool LTextModItemEditor::LTextModItemModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
 	if (index.isValid() && nRole == Qt::EditRole) {
+		QJsonObject o(obj[index.row()].toObject());
 		switch (index.column()){
-			case 0: (obj[index.row()].toObject())["ii"] = value.toString(); break;
-			case 1: (obj[index.row()].toObject())["ik"] = value.toString(); break;
-			case 2: (obj[index.row()].toObject())["is"] = value.toString(); break;
-			case 3: (obj[index.row()].toObject())["type"]= value.toString(); break;
-			case 4: (obj[index.row()].toObject())["drb"] = value.toString(); break;
+			case 0: o["ii"] = value.toString(); break;
+			case 1: o["ik"] = value.toString(); break;
+			case 2: o["is"] = value.toString(); break;
+			case 3: o["type"]= value.toString(); break;
+			case 4: o["drb"] = value.toString(); break;
 			default: break;
 		}
+		obj.removeAt(index.row());
+		obj.insert(index.row(), o);
 		emit dataChanged(index, index);
 	}
 	return false;
@@ -463,10 +460,24 @@ int LTextModItemEditor::LTextModItemModel::rowCount(const QModelIndex&) const{
 int LTextModItemEditor::LTextModItemModel::columnCount(const QModelIndex&) const{
 	return 5;
 }
+QVariant LTextModItemEditor::LTextModItemModel::headerData(int section, Qt::Orientation orientation, int role) const {
+	if(orientation == Qt::Horizontal && role == 0){
+		switch(section){
+			case 0: return QVariant("Item");
+			case 1: return QVariant("Kind");
+			case 2: return QVariant("State");
+			case 3: return QVariant("Type");
+			case 4: return QVariant("Durability");
+		}
+	}else {
+		return QAbstractTableModel::headerData(section, orientation, role);
+	}
+}
 
-LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray &a) {
+LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 	this->launcher = m;
 	this->log = m->w_log;
+ this->ob = a;
 
 	this->l = new QVBoxLayout;
 	this->l_h = new QHBoxLayout;
@@ -475,7 +486,7 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray &a) {
  f_l = new QHBoxLayout;
 
 	this->table = new QTableView;
-	this->model = new LTextModItemModel(a);
+	this->model = new LTextModItemModel(*ob);
 
 	l_ii     = new QLineEdit;
 	l_ik     = new QLineEdit;
@@ -504,14 +515,19 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray &a) {
 	this->l->addLayout(l_h);
 	this->l->addWidget(table);
 
+	connect(b_add, SIGNAL(clicked()), this, SLOT(sadd()));
+	connect(b_del, SIGNAL(clicked()), this, SLOT(sdel()));
+
 	this->setLayout(l);
 }
 void LTextModItemEditor::sadd() {
  model->add(this);
+	model = new LTextModItemModel(*ob);
 	this->table->setModel(model);
 }
 void LTextModItemEditor::sdel() {
  model->del(this);
+	model = new LTextModItemModel(*ob);
 	this->table->setModel(model);
 }
 
@@ -524,7 +540,7 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	tabs = new QTabWidget;
 
 	obj = o;
-	items = QJsonArray();
+	items = new QJsonArray();
 
 	w_items = new LTextModItemEditor(t, items);
 	bsave = new QPushButton(tr("Save"));
@@ -534,10 +550,14 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	l->addWidget(tabs);
 	l->addWidget(bsave);
 
+	connect(bsave, SIGNAL(clicked()), this, SLOT(ssave()));
+
 	this->setLayout(l);
 }
 void LTextModEditor::ssave() {
-	obj->insert("items", items);
+	qDebug() << this->items;
+	obj->insert("items", *items);
+	qDebug() << this->obj;
 }
 
 LScriptModEditor::LScriptModEditor(LMainWindow *t, QJsonObject *o) {
@@ -633,15 +653,16 @@ void LModEditor::bcreate(){
 	QString tmp = "modEditor/tmp/";
 	QString out = "modEditor/out/";
 	QDir dir;
-	QString mess = "Now you can copy mod resources to " + dir.absolutePath() + "/" + tmp + "\n Press OK when you ready to compress";
+	QString mess = "Now you can copy mod resources to " + dir.absolutePath() + "/" + tmp + e_file->text() +
+			"/\n Press OK when you ready to compress";
 	dir.mkpath(tmp);
 	dir.mkpath(out);
 	dir.cd(tmp);
 	dir.mkdir(e_file->text());
 
 	saveJson(o, tmp + e_file->text() + "/pack.dat");
-	if(!textMod->empty())   saveJson(*textMod,   tmp + e_file->text() + "/text.dat");
-	if(!scriptMod->empty()) saveJson(*scriptMod, tmp + e_file->text() + "/scripts.dat");
+	saveJson(*textMod,   tmp + e_file->text() + "/text.dat");
+	saveJson(*scriptMod, tmp + e_file->text() + "/scripts.dat");
  if(pluginFile != "") QFile(pluginFile).rename(tmp + e_file->text() + "/plugin.dll");
 
 	QMessageBox::StandardButton reply;

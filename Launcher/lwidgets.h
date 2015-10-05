@@ -230,6 +230,7 @@ protected:
 
 class LTextModItemEditor : public QWidget{
  Q_OBJECT
+	friend class LTextModItemModel;
 
 class LTextModItemModel : public QAbstractTableModel{
  public:
@@ -239,7 +240,9 @@ class LTextModItemModel : public QAbstractTableModel{
 	 bool setData(const QModelIndex& index,const QVariant& value, int nRole );
 	 int rowCount(const QModelIndex&) const;
 	 int columnCount(const QModelIndex&) const;
-	 Qt::ItemFlags flags(const QModelIndex& index)const;
+	 virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+	Qt::ItemFlags flags(const QModelIndex& index)const;
 	 void add(LTextModItemEditor *e);
 	 void del(LTextModItemEditor *e);
  };
@@ -266,12 +269,13 @@ class LTextModItemModel : public QAbstractTableModel{
 	QPushButton* b_del;
 	QPushButton* b_save;
 	QPushButton* b_rest;
-	friend void LTextModItemModel::add(LTextModItemEditor *e);
+
+	QJsonArray* ob;
 private slots:
 	void sadd();
 	void sdel();
 public:
- LTextModItemEditor(LMainWindow* m, QJsonArray& a);
+ LTextModItemEditor(LMainWindow* m, QJsonArray* a);
 
 
 };
@@ -281,7 +285,7 @@ Q_OBJECT
 	LLogWidget* log;
 
 	QJsonObject* obj;
-	QJsonArray items;
+	QJsonArray* items;
 
 	QVBoxLayout* l;
 	QTabWidget* tabs;
