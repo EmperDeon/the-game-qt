@@ -253,7 +253,7 @@ class LTextModItemModel : public QAbstractTableModel{
 	QHBoxLayout* l_h;
 	QFormLayout* f_r;
  QFormLayout* f_c;
-	QHBoxLayout *f_l;
+	QVBoxLayout *f_l;
 
 	QTableView* table;
 	LTextModItemModel* model;
@@ -267,13 +267,13 @@ class LTextModItemModel : public QAbstractTableModel{
 
 	QPushButton* b_add;
 	QPushButton* b_del;
-	QPushButton* b_save;
-	QPushButton* b_rest;
+ QPushButton* b_fill;
 
 	QJsonArray* ob;
 private slots:
 	void sadd();
 	void sdel();
+	void sfill();
 public:
  LTextModItemEditor(LMainWindow* m, QJsonArray* a);
 

@@ -477,13 +477,13 @@ QVariant LTextModItemEditor::LTextModItemModel::headerData(int section, Qt::Orie
 LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 	this->launcher = m;
 	this->log = m->w_log;
- this->ob = a;
+	this->ob = a;
 
 	this->l = new QVBoxLayout;
 	this->l_h = new QHBoxLayout;
 	f_r = new QFormLayout;
 	f_c = new QFormLayout;
- f_l = new QHBoxLayout;
+	f_l = new QVBoxLayout;
 
 	this->table = new QTableView;
 	this->model = new LTextModItemModel(*ob);
@@ -497,6 +497,7 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 
 	b_add    = new QPushButton(tr("Add"));
 	b_del    = new QPushButton(tr("Delete"));
+	b_fill   = new QPushButton(tr("Fill"));
 
 	f_r->addRow("Item name:", l_ii);
 	f_r->addRow("Item kind:", l_ik);
@@ -507,30 +508,48 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 
 	f_l->addWidget(b_add);
 	f_l->addWidget(b_del);
+ f_l->addWidget(b_fill);
 
 	l_h->addLayout(f_r);
 	l_h->addLayout(f_c);
- l_h->addLayout(f_l);
+	l_h->addLayout(f_l);
 
 	this->l->addLayout(l_h);
 	this->l->addWidget(table);
 
 	connect(b_add, SIGNAL(clicked()), this, SLOT(sadd()));
 	connect(b_del, SIGNAL(clicked()), this, SLOT(sdel()));
+ connect(b_fill,SIGNAL(clicked()), this, SLOT(sfill()));
 
 	this->setLayout(l);
 }
 void LTextModItemEditor::sadd() {
- model->add(this);
+	model->add(this);
 	model = new LTextModItemModel(*ob);
 	this->table->setModel(model);
 }
 void LTextModItemEditor::sdel() {
- model->del(this);
+	model->del(this);
 	model = new LTextModItemModel(*ob);
 	this->table->setModel(model);
 }
-
+void LTextModItemEditor::sfill() {
+	for(int i = 0 ; i < 256 ; i++) {
+		for(int k = 0 ; k < 256 ; k++) {
+			for(int s = 0 ; s < 2 ; s++) {
+				QJsonObject o;
+				o["ii"] = "Item" + QString::number(i);
+				o["ik"] = "Kind" + QString::number(k);
+				o["is"] = "State" + QString::number(s);
+				o["type"] = "Item";
+				o["drb"] = 100;
+				o["tex"] = "null.png";
+				o["add"] = "";
+				(*ob) << o;
+			}
+		}
+	}
+}
 
 LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	this->launcher = t;
@@ -555,9 +574,7 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	this->setLayout(l);
 }
 void LTextModEditor::ssave() {
-	qDebug() << this->items;
 	obj->insert("items", *items);
-	qDebug() << this->obj;
 }
 
 LScriptModEditor::LScriptModEditor(LMainWindow *t, QJsonObject *o) {
@@ -570,7 +587,7 @@ LModEditor::LModEditor(LMainWindow *l){
 	this->REVISION = QString("0.1");
 	this->loader = l;
 	this->log = loader->w_log;
- this->pluginFile = "";
+	this->pluginFile = "";
 
 	this->other = new QJsonObject();
 	this->textMod = new QJsonObject();
@@ -654,7 +671,7 @@ void LModEditor::bcreate(){
 	QString out = "modEditor/out/";
 	QDir dir;
 	QString mess = "Now you can copy mod resources to " + dir.absolutePath() + "/" + tmp + e_file->text() +
-			"/\n Press OK when you ready to compress";
+	               "/\n Press OK when you ready to compress";
 	dir.mkpath(tmp);
 	dir.mkpath(out);
 	dir.cd(tmp);
@@ -663,7 +680,7 @@ void LModEditor::bcreate(){
 	saveJson(o, tmp + e_file->text() + "/pack.dat");
 	saveJson(*textMod,   tmp + e_file->text() + "/text.dat");
 	saveJson(*scriptMod, tmp + e_file->text() + "/scripts.dat");
- if(pluginFile != "") QFile(pluginFile).rename(tmp + e_file->text() + "/plugin.dll");
+	if(pluginFile != "") QFile(pluginFile).rename(tmp + e_file->text() + "/plugin.dll");
 
 	QMessageBox::StandardButton reply;
 	reply = QMessageBox::information(this, tr("QMessageBox::information()"), tr(qPrintable(mess)));
