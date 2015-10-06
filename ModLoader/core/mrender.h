@@ -4,16 +4,16 @@
 #include <Global/gmodinterfaces.h>
 #include <QtWidgets>
 #include <QtOpenGL/QtOpenGL>
-#include <ModLoader/mmodloader.h>
+#include <ModLoader/core/mcoremods.h>
 
-class ModLoader;
+class MCoreMods;
 
 class MRender : public IRender{
 	Q_INTERFACES(IRender)
 
-	ModLoader* loader;
+	MCoreMods* loader;
 public:
-	MRender(ModLoader* m);
+	MRender(MCoreMods* m);
 	void init() Q_DECL_OVERRIDE;
 	void render(QPaintDevice* dev) Q_DECL_OVERRIDE;
 

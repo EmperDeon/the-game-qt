@@ -39,7 +39,7 @@ public:
 
 	virtual void setVars(IVars* v) = 0;
 	virtual void preInit() = 0;
-	virtual void inti() = 0;
+	virtual void init() = 0;
 	virtual void postInit() = 0;
 };
 class IRender{
@@ -59,7 +59,7 @@ public:
 
 	virtual void setVars(IVars* v) = 0;
 	virtual void preInit() = 0;
-	virtual void inti() = 0;
+	virtual void init() = 0;
 	virtual void postInit() = 0;
 };
 

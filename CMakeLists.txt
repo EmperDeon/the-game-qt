@@ -71,17 +71,29 @@ set(L_HEADERS
 set(M_SOURCE_FILES
 		ModLoader/mmodloader.cpp
 		ModLoader/mutils.cpp
-		ModLoader/mparser.cpp
+
+		ModLoader/core/mcoremods.cpp
 		ModLoader/core/mrender.cpp
+
+		ModLoader/mods/mmods.cpp
 		ModLoader/mods/mcontainers.cpp
+		ModLoader/mods/mtext.cpp
+		ModLoader/mods/mscript.cpp
+		ModLoader/mods/mplugin.cpp
 )
 
 set(M_HEADERS
 		ModLoader/mmodloader.h
 		ModLoader/mutils.h
-		ModLoader/mparser.h
+
+		ModLoader/core/mcoremods.h
 		ModLoader/core/mrender.h
+
+		ModLoader/mods/mmods.h
 		ModLoader/mods/mcontainers.h
+		ModLoader/mods/mtext.h
+		ModLoader/mods/mscript.h
+		ModLoader/mods/mplugin.h
 )
 
 qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})

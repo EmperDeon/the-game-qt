@@ -1,6 +1,6 @@
 #include <ModLoader/core/mrender.h>
 
-MRender::MRender(ModLoader* m){
+MRender::MRender(MCoreMods* m){
  this->loader = m;
 }
 
@@ -9,7 +9,7 @@ MRender::~MRender(){
 }
 
 void MRender::init(){
-	loader->vars->set((IRender*)this, "render");
+
 }
 
 void MRender::render(QPaintDevice* dev){
