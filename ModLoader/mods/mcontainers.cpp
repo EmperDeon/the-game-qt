@@ -1,14 +1,6 @@
 #include <ModLoader/mods/mcontainers.h>
 
-
-MModsParser::MModsParser(ModLoader *m) {
- this->loader = m;
-
-
-
-}
-
-MIds::MIds(ModLoader *m, QMap<QString, Emiks*>* l) {
+MIds::MIds(MMods *m, QMap<QString, Emiks*>* l) {
  this->loader = m;
 	this->mods = l;
 	this->mnull = new Emiks(0,0,0,0);

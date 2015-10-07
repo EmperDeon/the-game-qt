@@ -6,7 +6,7 @@ QString ModLoader::getName(){
 
 void ModLoader::setVars(IVars *v) {
 	this->vars = v;
-	this->log = reinterpret_cast<ILogger*>(vars->get("elogger"));
+	this->log = reinterpret_cast<ILogger*>(vars->get("eLogger"));
 
 	this->core = new MCoreMods(this);
 	this->mods = new MMods(this);

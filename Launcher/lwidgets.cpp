@@ -677,6 +677,8 @@ void LModEditor::bcreate(){
 	dir.cd(tmp);
 	dir.mkdir(e_file->text());
 
+	(*textMod)["name"] = e_name->text();
+
 	saveJson(o, tmp + e_file->text() + "/pack.dat");
 	saveJson(*textMod,   tmp + e_file->text() + "/text.dat");
 	saveJson(*scriptMod, tmp + e_file->text() + "/scripts.dat");

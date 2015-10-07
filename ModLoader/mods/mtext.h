@@ -15,7 +15,9 @@ public:
 	MTextContainer(MMods* l);
 
 	void preInit();
+
 	void init();
+
 	void postInit();
 };
 

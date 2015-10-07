@@ -22,14 +22,14 @@ int main(int argc, char *argv[]){
 #undef CLASS_NAME
 #define  CLASS_NAME "Main"
 GMain::GMain() {
- varS(this, "emain");
-	varS(GV_LOGGER, "elogger");
+ varS(this, "eMain");
+	varS(GV_LOGGER, "eLogger");
 
 	mods = new GMods();
 
 //	varS(wgt, "emainwindow");
 //	varS(wdev, "edev");
-	varS(mods, "emods");
+	varS(mods, "eMods");
 }
 
 void GMain::init() {
