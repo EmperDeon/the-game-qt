@@ -1,16 +1,16 @@
 #include <ModLoader/mods/mcontainers.h>
 
-MIds::MIds(MMods *m, QMap<QString, Emiks*>* l) {
+MIIds::MIIds(MMods *m, QMap<QString, Emiks*>* l) {
  this->loader = m;
 	this->mods = l;
 	this->mnull = new Emiks(0,0,0,0);
 }
-Emiks* MIds::get(QString m, QString i, QString k, int s) {
+Emiks*MIIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
   return mods->value(t);
 	else{
-		loader->log->log(GLogLevel::ERR, "MIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		loader->log->log(GLogLevel::ERR, "MIIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
 		return mnull;
 	}
 }
@@ -49,6 +49,22 @@ Emiks *MItemsContainer::get(IItem *id) {
  }
 }
 
+MBIds::MBIds(MMods *m, QMap<QString, Emiks*>* l){
+	this->loader = m;
+	this->mods = l;
+	this->mnull = new Emiks(0,0,0,0);
+}
+Emiks*MBIds::get(QString m, QString i, QString k, int s) {
+	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
+	if(mods->contains(t))
+		return mods->value(t);
+	else{
+		loader->log->log(GLogLevel::ERR, "MIIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		return mnull;
+	}
+}
+
+
 MBlock::MBlock(QJsonObject o) {
  weight = 0.0;
 }
@@ -78,5 +94,3 @@ Emiks *MBlocksContainer::get(IBlock *id) {
 		return mNull;
 	}
 }
-
-

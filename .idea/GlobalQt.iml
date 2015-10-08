@@ -114,26 +114,26 @@
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://C:/Qt/Tools/mingw491_32/i686-w64-mingw32/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
-          <root url="file://C:/Qt/Tools/mingw491_32/mkspecs/win32-g++" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/i686-w64-mingw32/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/mkspecs/win32-g++" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/MinSizeRel" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release" />
         </CLASSES>
         <SOURCES>
-          <root url="file://C:/Qt/Tools/mingw491_32/i686-w64-mingw32/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
-          <root url="file://C:/Qt/Tools/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
-          <root url="file://C:/Qt/Tools/mingw491_32/mkspecs/win32-g++" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/i686-w64-mingw32/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include-fixed" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/objc" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/lib/gcc/i686-w64-mingw32/4.9.1/include/ssp" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw491_32/mkspecs/win32-g++" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/MinSizeRel" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo" />
@@ -145,12 +145,12 @@
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/MinSizeRel/zlib/zconf.h" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo/zlib/zconf.h" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Global_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlib_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/ModLoader_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlib_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>

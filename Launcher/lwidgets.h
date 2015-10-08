@@ -277,6 +277,57 @@ public:
 
 
 };
+class LTextModBlockEditor : public QWidget{
+Q_OBJECT
+	friend class LTextModBlockModel;
+
+	class LTextModBlockModel : public QAbstractTableModel{
+	public:
+		QJsonArray& obj;
+		LTextModBlockModel(QJsonArray& o, QObject *pobj = 0);
+		QVariant data(const QModelIndex& index, int nRole) const;
+		bool setData(const QModelIndex& index,const QVariant& value, int nRole );
+		int rowCount(const QModelIndex&) const;
+		int columnCount(const QModelIndex&) const;
+		virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+		Qt::ItemFlags flags(const QModelIndex& index)const;
+		void add(LTextModBlockEditor *e);
+		void del(LTextModBlockEditor *e);
+	};
+	LMainWindow* launcher;
+	LLogWidget* log;
+
+	QVBoxLayout* l;
+	QHBoxLayout* l_h;
+	QFormLayout* f_r;
+	QFormLayout* f_c;
+	QVBoxLayout *f_l;
+
+	QTableView* table;
+	LTextModBlockModel* model;
+
+	QLineEdit* l_ii;
+	QLineEdit* l_ik;
+	QLineEdit* l_is;
+
+	QLineEdit* l_type;
+	QLineEdit* l_drb;
+
+	QPushButton* b_add;
+	QPushButton* b_del;
+	QPushButton* b_fill;
+
+	QJsonArray* ob;
+private slots:
+	void sadd();
+	void sdel();
+	void sfill();
+public:
+	LTextModBlockEditor(LMainWindow* m, QJsonArray* a);
+
+
+};
 class LTextModEditor : public QWidget{
 Q_OBJECT
 	LMainWindow* launcher;

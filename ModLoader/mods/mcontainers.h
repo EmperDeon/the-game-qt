@@ -8,17 +8,16 @@
 
 class MMods;
 
-class MIds : public IModsIds {
+class MIIds : public IModsIds {
  Q_INTERFACES(IItemIds)
  MMods* loader;
 	QMap<QString, Emiks*>* mods;
  Emiks* mnull;
 
 public:
- MIds(MMods *m, QMap<QString, Emiks*>* l);
+ MIIds(MMods *m, QMap<QString, Emiks*>* l);
 	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
-
 class MItem : public IItem{
 	int durability;
 	QString type;
@@ -45,13 +44,22 @@ public:
 	Emiks* get(IItem* id) Q_DECL_OVERRIDE;
 };
 
+class MBIds : public IModsIds {
+	Q_INTERFACES(IItemIds)
+	MMods* loader;
+	QMap<QString, Emiks*>* mods;
+	Emiks* mnull;
+
+public:
+	MBIds(MMods *m, QMap<QString, Emiks*>* l);
+	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
+};
 class MBlock : public IBlock{
 	float weight;
 public:
 	MBlock(QJsonObject o);
 	float getWeight() Q_DECL_OVERRIDE;
 };
-
 class MBlocksContainer : public IBlocksContainer{
 	Q_INTERFACES(IBlocksContainer)
 	MMods* loader;
