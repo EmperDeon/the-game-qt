@@ -6,7 +6,6 @@
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/mods/mmods.h>
 #include <Global/gcontainers.h>
-#include <Launcher/lutils.h>
 
 class MCoreMods;
 class MMods;

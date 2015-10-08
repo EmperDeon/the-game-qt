@@ -5,4 +5,5 @@
 #include <QtWidgets>
 #include <ModLoader/mmodloader.h>
 
+QJsonObject loadJson(QString file);
 #endif // MUTILS_H

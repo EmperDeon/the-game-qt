@@ -2,6 +2,7 @@
 #define GLOBALQT_MCOREMODS_H
 #include <ModLoader/mmodloader.h>
 #include <ModLoader/core/mrender.h>
+#include <ModLoader/mutils.h>
 
 class ModLoader;
 class ILogger;

@@ -3,7 +3,6 @@
 #include <QApplication>
 #include <Launcher/lutils.h>
 #include <Launcher/lwidgets.h>
-#include <Global/gmodinterfaces.h>
 #include "Launcher/lparser.h"
 
 #define CLASS_NAME "Not_Defined"

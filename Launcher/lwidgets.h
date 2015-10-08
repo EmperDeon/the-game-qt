@@ -10,7 +10,6 @@
 #include <QtGui>
 #include <Launcher/lutils.h>
 #include <Launcher/lmain.h>
-#include <Global/gmodinterfaces.h>
 
 
 class LMainWindow;
@@ -155,7 +154,6 @@ public:
 class GDevelop : public QWidget{
 	Q_OBJECT
 	LMainWindow* launcher;
-	GModLoaderInterface* modloader;
 	QVBoxLayout* lay;
 
 	QPushButton* bsett;

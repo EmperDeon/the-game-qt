@@ -4,7 +4,7 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtNetwork>
-#include <Global/gutils.h>
+//#include <Global/gutils.h>
 #include <Launcher/lwidgets.h>
 #include <Launcher/lmain.h>
 #include <Launcher/qzipreader_p.h>
@@ -12,6 +12,7 @@
 
 class LLogWidget;
 class LMainWindow;
+enum class GLogLevel{ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
 
 struct GLogE{
 	GLogLevel lv;

@@ -11,7 +11,8 @@ void MTextContainer::preInit() {
 			lst << loadJson(QDir("mods/mods/"+i.fileName()).filePath("text.dat"));
 		}
 
-	// Mids
+
+	// MIds
 	QMap<QString, Emiks*>* itemsMap = new QMap<QString, Emiks*>;
 	QJsonObject t;
 	QString lm = "", li = "", lk = "", ls = "";
@@ -30,7 +31,7 @@ void MTextContainer::preInit() {
 		}
 	MIds* mids = new MIds(loader, itemsMap);
 	this->vars->set(mids, "mIds");
-	//!Mids
+	//!MIds
 
 
 }
