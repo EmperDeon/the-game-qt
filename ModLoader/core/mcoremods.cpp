@@ -5,7 +5,6 @@ MCoreMods::MCoreMods(ModLoader *l) : loader(l), log(l->log), vars(l->vars){
 }
 
 void MCoreMods::parseOwerwrites(){
-	QList<QJsonObject> lst;
 	QDir dir("mods/coremods");
 	QStringList owr;
 

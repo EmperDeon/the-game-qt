@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <iostream>
 
 int main(int argc, char *argv[]) {
  system("copy ..\\GameTmp\\Launcher.exe Launcher.exe /Y");

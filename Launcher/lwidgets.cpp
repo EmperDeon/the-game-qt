@@ -403,81 +403,60 @@ LPacker::LPacker(LMainWindow *l){
 	log = loader->w_log;
 }
 
-LTextModItemEditor::LTextModItemModel::LTextModItemModel(QJsonArray& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){}
-QVariant LTextModItemEditor::LTextModItemModel::data(const QModelIndex &index, int nRole) const{
+LTextModWidgetEditor::LTextModWidgetModel::LTextModWidgetModel(LTextModWidgetEditor* e, QObject *pobj):QAbstractTableModel(pobj),wgt(e){}
+QVariant LTextModWidgetEditor::LTextModWidgetModel::data(const QModelIndex &index, int nRole) const{
 	if (!index.isValid()) {
 		return QVariant();
 	}else if (nRole == Qt::DisplayRole || nRole == Qt::EditRole)
-		switch (index.column()){
-			case 0 : return (obj[index.row()].toObject())["ii"].toString();
-			case 1 : return (obj[index.row()].toObject())["ik"].toString();
-			case 2 : return (obj[index.row()].toObject())["is"].toString();
-			case 3 : return (obj[index.row()].toObject())["type"].toString();
-			case 4 : return (obj[index.row()].toObject())["drb"].toString();
-			default: return QVariant("error");
-		}
+		return ((*wgt->ob)[index.row()].toObject())[wgt->nameVals.value(index.column())].toString();
+
 	else return QVariant();
 }
-bool LTextModItemEditor::LTextModItemModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
+bool LTextModWidgetEditor::LTextModWidgetModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
 	if (index.isValid() && nRole == Qt::EditRole) {
-		QJsonObject o(obj[index.row()].toObject());
-		switch (index.column()){
-			case 0: o["ii"] = value.toString(); break;
-			case 1: o["ik"] = value.toString(); break;
-			case 2: o["is"] = value.toString(); break;
-			case 3: o["type"]= value.toString(); break;
-			case 4: o["drb"] = value.toString(); break;
-			default: break;
-		}
-		obj.removeAt(index.row());
-		obj.insert(index.row(), o);
+		QJsonObject o((*wgt->ob)[index.row()].toObject());
+		o[wgt->nameVals.value(index.column())] = value.toString();
+		wgt->ob->removeAt(index.row());
+		wgt->ob->insert(index.row(), o);
 		emit dataChanged(index, index);
 	}
 	return false;
 }
-Qt::ItemFlags LTextModItemEditor::LTextModItemModel::flags(const QModelIndex &index) const{
+Qt::ItemFlags LTextModWidgetEditor::LTextModWidgetModel::flags(const QModelIndex &index) const{
 	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
 	return (index.isValid()) ? (flags | Qt::ItemIsEditable) : flags;
 }
-void LTextModItemEditor::LTextModItemModel::add(LTextModItemEditor *e){
+void LTextModWidgetEditor::LTextModWidgetModel::add(){
 	QJsonObject o;
-	o["ii"] = e->l_ii->text();
-	o["ik"] = e->l_ik->text();
-	o["is"] = e->l_is->text();
-	o["type"] = e->l_type->text();
-	o["drb"] = e->l_drb->text();
-
-	obj << o;
+ for(int i = 0 ; i < wgt->list->size() ; i++)
+	 o.insert(wgt->nameVals.value(i), wgt->list->value(i)->text());
+	(*wgt->ob) << o;
 }
-void LTextModItemEditor::LTextModItemModel::del(LTextModItemEditor *e){
-			foreach(QModelIndex i, e->table->selectionModel()->selectedIndexes()){
-			e->log->addL(GLogLevel::INFO, "TextModEditor", "deleting "+QString::number(i.row())+" "+QString::number(i.column()));
+void LTextModWidgetEditor::LTextModWidgetModel::del(){
+			foreach(QModelIndex i, wgt->table->selectionModel()->selectedIndexes()){
+			wgt->log->addL(GLogLevel::INFO, "TextModEditor", "deleting "+QString::number(i.row())+" "+QString::number(i.column()));
 		}
 }
-int LTextModItemEditor::LTextModItemModel::rowCount(const QModelIndex&) const{
-	return obj.size();
+int LTextModWidgetEditor::LTextModWidgetModel::rowCount(const QModelIndex&) const{
+	return wgt->ob->size();
 }
-int LTextModItemEditor::LTextModItemModel::columnCount(const QModelIndex&) const{
+int LTextModWidgetEditor::LTextModWidgetModel::columnCount(const QModelIndex&) const{
 	return 5;
 }
-QVariant LTextModItemEditor::LTextModItemModel::headerData(int section, Qt::Orientation orientation, int role) const {
+QVariant LTextModWidgetEditor::LTextModWidgetModel::headerData(int section, Qt::Orientation orientation, int role) const {
 	if(orientation == Qt::Horizontal && role == 0){
-		switch(section){
-			case 0: return QVariant("Item");
-			case 1: return QVariant("Kind");
-			case 2: return QVariant("State");
-			case 3: return QVariant("Type");
-			case 4: return QVariant("Durability");
-		}
+		return wgt->nameKeys.value(section);
 	}else {
 		return QAbstractTableModel::headerData(section, orientation, role);
 	}
 }
 
-LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
+LTextModWidgetEditor::LTextModWidgetEditor(LMainWindow *m, QStringList keys, QStringList vals, QJsonArray* a) {
 	this->launcher = m;
 	this->log = m->w_log;
 	this->ob = a;
+ this->nameKeys = keys;
+	this->nameVals = vals;
 
 	this->l = new QVBoxLayout;
 	this->l_h = new QHBoxLayout;
@@ -486,29 +465,26 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 	f_l = new QVBoxLayout;
 
 	this->table = new QTableView;
-	this->model = new LTextModItemModel(*ob);
-
-	l_ii     = new QLineEdit;
-	l_ik     = new QLineEdit;
-	l_is     = new QLineEdit;
-
-	l_type   = new QLineEdit;
-	l_drb    = new QLineEdit;
+	this->model = new LTextModWidgetModel(this);
 
 	b_add    = new QPushButton(tr("Add"));
 	b_del    = new QPushButton(tr("Delete"));
-	b_fill   = new QPushButton(tr("Fill"));
 
-	f_r->addRow("Item name:", l_ii);
-	f_r->addRow("Item kind:", l_ik);
-	f_r->addRow("Item state:",l_is);
+	this->list = new QList<QLineEdit*>;
 
-	f_c->addRow("Type: ", l_type);
-	f_c->addRow("Durability: ", l_drb);
+	for(int i = 0 ; i < keys.size() ; i++)
+		(*list) << new QLineEdit;
+
+	int k = keys.size();
+
+	for(int i = 0 ; i < k/2 + (k%2==0 ? 0 : 1); i++)
+		f_r->addRow(keys.value(i), list->value(i));
+
+	for(int i = k/2 + (k%2==0 ? 0 : 1); i < k ; i++)
+		f_c->addRow(keys.value(i), list->value(i));
 
 	f_l->addWidget(b_add);
 	f_l->addWidget(b_del);
- f_l->addWidget(b_fill);
 
 	l_h->addLayout(f_r);
 	l_h->addLayout(f_c);
@@ -519,182 +495,18 @@ LTextModItemEditor::LTextModItemEditor(LMainWindow *m, QJsonArray* a) {
 
 	connect(b_add, SIGNAL(clicked()), this, SLOT(sadd()));
 	connect(b_del, SIGNAL(clicked()), this, SLOT(sdel()));
- connect(b_fill,SIGNAL(clicked()), this, SLOT(sfill()));
 
 	this->setLayout(l);
 }
-void LTextModItemEditor::sadd() {
-	model->add(this);
-	model = new LTextModItemModel(*ob);
+void LTextModWidgetEditor::sadd() {
+	model->add();
+	model = new LTextModWidgetModel(this);
 	this->table->setModel(model);
 }
-void LTextModItemEditor::sdel() {
-	model->del(this);
-	model = new LTextModItemModel(*ob);
+void LTextModWidgetEditor::sdel() {
+	model->del();
+	model = new LTextModWidgetModel(this);
 	this->table->setModel(model);
-}
-void LTextModItemEditor::sfill() {
-	for(int i = 0 ; i < 256 ; i++) {
-		for(int k = 0 ; k < 256 ; k++) {
-			for(int s = 0 ; s < 2 ; s++) {
-				QJsonObject o;
-				o["ii"] = "Item" + QString::number(i);
-				o["ik"] = "Kind" + QString::number(k);
-				o["is"] = "State" + QString::number(s);
-				o["type"] = "Item";
-				o["drb"] = 100;
-				o["tex"] = "null.png";
-				o["add"] = "";
-				(*ob) << o;
-			}
-		}
-	}
-}
-
-LTextModBlockEditor::LTextModBlockModel::LTextModBlockModel(QJsonArray& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){}
-QVariant LTextModBlockEditor::LTextModBlockModel::data(const QModelIndex &index, int nRole) const{
-	if (!index.isValid()) {
-		return QVariant();
-	}else if (nRole == Qt::DisplayRole || nRole == Qt::EditRole)
-		switch (index.column()){
-			case 0 : return (obj[index.row()].toObject())["ii"].toString();
-			case 1 : return (obj[index.row()].toObject())["ik"].toString();
-			case 2 : return (obj[index.row()].toObject())["is"].toString();
-			case 3 : return (obj[index.row()].toObject())["type"].toString();
-			case 4 : return (obj[index.row()].toObject())["drb"].toString();
-			default: return QVariant("error");
-		}
-	else return QVariant();
-}
-bool LTextModBlockEditor::LTextModBlockModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
-	if (index.isValid() && nRole == Qt::EditRole) {
-		QJsonObject o(obj[index.row()].toObject());
-		switch (index.column()){
-			case 0: o["ii"] = value.toString(); break;
-			case 1: o["ik"] = value.toString(); break;
-			case 2: o["is"] = value.toString(); break;
-			case 3: o["type"]= value.toString(); break;
-			case 4: o["drb"] = value.toString(); break;
-			default: break;
-		}
-		obj.removeAt(index.row());
-		obj.insert(index.row(), o);
-		emit dataChanged(index, index);
-	}
-	return false;
-}
-Qt::ItemFlags LTextModBlockEditor::LTextModBlockModel::flags(const QModelIndex &index) const{
-	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
-	return (index.isValid()) ? (flags | Qt::ItemIsEditable) : flags;
-}
-void LTextModBlockEditor::LTextModBlockModel::add(LTextModBlockEditor *e){
-	QJsonObject o;
-	o["ii"] = e->l_ii->text();
-	o["ik"] = e->l_ik->text();
-	o["is"] = e->l_is->text();
-	o["type"] = e->l_type->text();
-	o["drb"] = e->l_drb->text();
-//	this->stackSize = o["stackSize"].toDouble(1.0);
-//	this->stackType = o["stackType"].toInt(1);
-	obj << o;
-}
-void LTextModBlockEditor::LTextModBlockModel::del(LTextModBlockEditor *e){
-		foreach(QModelIndex i, e->table->selectionModel()->selectedIndexes()){
-			e->log->addL(GLogLevel::INFO, "TextModEditor", "deleting "+QString::number(i.row())+" "+QString::number(i.column()));
-		}
-}
-int LTextModBlockEditor::LTextModBlockModel::rowCount(const QModelIndex&) const{
-	return obj.size();
-}
-int LTextModBlockEditor::LTextModBlockModel::columnCount(const QModelIndex&) const{
-	return 5;
-}
-QVariant LTextModBlockEditor::LTextModBlockModel::headerData(int section, Qt::Orientation orientation, int role) const {
-	if(orientation == Qt::Horizontal && role == 0){
-		switch(section){
-			case 0: return QVariant("Item");
-			case 1: return QVariant("Kind");
-			case 2: return QVariant("State");
-			case 3: return QVariant("Type");
-			case 4: return QVariant("Durability");
-		}
-	}else {
-		return QAbstractTableModel::headerData(section, orientation, role);
-	}
-}
-
-LTextModBlockEditor::LTextModBlockEditor(LMainWindow *m, QJsonArray* a) {
-	this->launcher = m;
-	this->log = m->w_log;
-	this->ob = a;
-
-	this->l = new QVBoxLayout;
-	this->l_h = new QHBoxLayout;
-	f_r = new QFormLayout;
-	f_c = new QFormLayout;
-	f_l = new QVBoxLayout;
-
-	this->table = new QTableView;
-	this->model = new LTextModBlockModel(*ob);
-
-	l_ii     = new QLineEdit;
-	l_ik     = new QLineEdit;
-	l_is     = new QLineEdit;
-
-	l_type   = new QLineEdit;
-	l_drb    = new QLineEdit;
-
-	b_add    = new QPushButton(tr("Add"));
-	b_del    = new QPushButton(tr("Delete"));
-	b_fill   = new QPushButton(tr("Fill"));
-
-	f_r->addRow("Item name:", l_ii);
-	f_r->addRow("Item kind:", l_ik);
-	f_r->addRow("Item state:",l_is);
-	f_r->addRow("Type: ", l_type);
-
-	f_c->addRow("Durability: ", l_drb);
-
-	f_l->addWidget(b_add);
-	f_l->addWidget(b_del);
-	f_l->addWidget(b_fill);
-
-	l_h->addLayout(f_r);
-	l_h->addLayout(f_c);
-	l_h->addLayout(f_l);
-
-	this->l->addLayout(l_h);
-	this->l->addWidget(table);
-
-	connect(b_add, SIGNAL(clicked()), this, SLOT(sadd()));
-	connect(b_del, SIGNAL(clicked()), this, SLOT(sdel()));
-	connect(b_fill,SIGNAL(clicked()), this, SLOT(sfill()));
-
-	this->setLayout(l);
-}
-void LTextModBlockEditor::sadd() {
-	model->add(this);
-	model = new LTextModBlockModel(*ob);
-	this->table->setModel(model);
-}
-void LTextModBlockEditor::sdel() {
-	model->del(this);
-	model = new LTextModBlockModel(*ob);
-	this->table->setModel(model);
-}
-void LTextModBlockEditor::sfill() {
-	for(int i = 0 ; i < 256 ; i++) {
-		for(int k = 0 ; k < 256 ; k++) {
-			for(int s = 0 ; s < 2 ; s++) {
-				QJsonObject o;
-				o["ii"] = "Block" + QString::number(i);
-				o["ik"] = "Kind" + QString::number(k);
-				o["is"] = "State" + QString::number(s);
-				o["weight"] = 0.0;
-				(*ob) << o;
-			}
-		}
-	}
 }
 
 LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
@@ -705,22 +517,89 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	tabs = new QTabWidget;
 
 	obj = o;
-	items = new QJsonArray();
 
-	w_items = new LTextModItemEditor(t, items);
+	jItems = new QJsonArray();
+ jBlocks = new QJsonArray();
+	jTools = new QJsonArray();
+
+ QStringList k;
+	QStringList v;
+	k << "Item" ;      v << "ii"       ;
+	k << "Kind" ;      v << "ik"       ;
+	k << "State";      v << "is"       ;
+	k << "Stack size"; v << "stackSize";
+	k << "Stack Type"; v << "stackType";
+	w_items = new LTextModWidgetEditor(t, k, v, jItems);
+
+	k.clear(); v.clear();
+	k << "Block";  v << "ii"    ;
+	k << "Kind";   v << "ik"    ;
+	k << "State";  v << "is"    ;
+	k << "Weight"; v << "weight";
+	w_blocks = new LTextModWidgetEditor(t, k, v, jBlocks);
+
+	k.clear(); v.clear();
+	k << "Tool";       v <<  "ii"  ;
+	k << "Kind";       v <<  "ik"  ;
+	k << "State";      v <<  "is"  ;
+	k << "Type";       v <<  "type";
+	k << "Durability"; v <<  "drb" ;
+	w_tools = new LTextModWidgetEditor(t, k, v, jTools);
+
 	bsave = new QPushButton(tr("Save"));
+	bfill = new QPushButton(tr("Fill"));
 
 	tabs->addTab(w_items, "Items");
+	tabs->addTab(w_blocks, "Blocks");
+	tabs->addTab(w_tools, "Tools");
 
 	l->addWidget(tabs);
 	l->addWidget(bsave);
+	l->addWidget(bfill);
 
 	connect(bsave, SIGNAL(clicked()), this, SLOT(ssave()));
+	connect(bfill, SIGNAL(clicked()), this, SLOT(sfill()));
 
 	this->setLayout(l);
 }
 void LTextModEditor::ssave() {
-	obj->insert("items", *items);
+	obj->insert("items", *jItems);
+	obj->insert("blocks", *jBlocks);
+	obj->insert("tools", *jTools);
+}
+void LTextModEditor::sfill() {
+	for(int i = 0 ; i < 256 ; i++) {
+		for(int k = 0 ; k < 256 ; k++) {
+			QJsonObject o;
+			o["ii"       ] = "Item" + QString::number(i);
+			o["ik"       ] = "Kind" + QString::number(k);
+			o["is"       ] = "State0";
+			o["stackSize"] = 10;
+			o["stackType"] = 0;
+			(*jItems) << o;
+		}
+	}
+	for(int i = 0 ; i < 256 ; i++) {
+		for(int k = 0 ; k < 256 ; k++) {
+			QJsonObject o;
+			o["ii"    ] = "Block" + QString::number(i);
+			o["ik"    ] = "Kind" + QString::number(k);
+			o["is"    ] = "State0";
+			o["weight"] = 1.0;
+			(*jBlocks) << o;
+		}
+	}
+	for(int i = 0 ; i < 256 ; i++) {
+		for(int k = 0 ; k < 256 ; k++) {
+			QJsonObject o;
+			o["ii"  ] = "Tool" + QString::number(i);
+			o["ik"  ] = "Kind" + QString::number(k);
+			o["is"  ] = "State0";
+			o["type"] = "Type0";
+			o["drb" ] = 10;
+			(*jTools) << o;
+		}
+	}
 }
 
 LScriptModEditor::LScriptModEditor(LMainWindow *t, QJsonObject *o) {
