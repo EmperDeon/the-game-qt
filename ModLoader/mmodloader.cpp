@@ -20,4 +20,4 @@ void ModLoader::corePostInit(){	core->postInit();}
 
 void ModLoader::preInit(){	 mods->preInit();}
 void ModLoader::init(){	    mods->init();}
-void ModLoader::postInit(){	mods->postInit();}
+void ModLoader::postInit(){	mods->postInit(); }

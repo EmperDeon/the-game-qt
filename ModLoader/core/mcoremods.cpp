@@ -17,7 +17,7 @@ void MCoreMods::parseOwerwrites(){
 			}
 		}
 
-	owr << "render";
+	owr << "mRender";
 
 	vars->setOverwriteList(owr);
 }
@@ -29,7 +29,7 @@ void MCoreMods::preInit() {
  loadPlugins();
 
 	this->render = new MRender(this);
-	this->vars->set((IRender*)render, "render");
+	this->vars->set((IRender*)render, "mRender");
 
 	foreach(ICoreMod* p, *plugins){
 	 p->preInit();

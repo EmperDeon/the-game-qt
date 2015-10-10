@@ -1,6 +1,6 @@
 #include "Launcher/lparser.h"
 #define ParserVer "0.1"
-//Zip
+
 ZipEntry::ZipEntry(QJsonObject o, QString f){
 	name = o["name"].toString();
 	desc = o["desc"].toString();
@@ -43,7 +43,6 @@ bool ZipEntry::isValid(){
 			(type == "Pack"));
 }
 
-//Zip
 LParser::LParser(LMainWindow* l){
 	list = new QList<ZipEntry>;
 
@@ -190,6 +189,8 @@ inline QString LParser::getDir(QString type, QString name){
 }
 void LParser::write(){
 	QDir dir;
+ dir.mkdir("mods");
+	dir.cd("mods");
 
 	dir.mkdir("coremods");
 	writeT("CoreMod", coremods);
@@ -214,13 +215,16 @@ void LParser::writeT(QString type, QStringList* list){
 		}
 }
 void LParser::clear(){
-	log->addL(GLogLevel::DEBUG, "LParser", "Clearing tmp/");
-	QDir t("tmp/");
+	QDir t("downloads");
+
+	QStringList l;l << "*.*";
+ foreach(QFileInfo s, t.entryInfoList(l)){
+	 QFile(s.absoluteFilePath()).remove();
+	}
+
+	t = QDir("tmp");
 	t.removeRecursively();
-	log->addL(GLogLevel::DEBUG, "LParser", "Clearing downloads/");
-	t.cdUp();
-	t.cd("downloads");
-	t.removeRecursively();
+	log->addL(GLogLevel::DEBUG, "LParser", "Clearing tmp/ and downloads/ ");
 }
 
 ZipEntry LParser::search(QString n){
@@ -229,6 +233,4 @@ ZipEntry LParser::search(QString n){
 		}
 	return not_found;
 }
-//Zip
 
-//Utils

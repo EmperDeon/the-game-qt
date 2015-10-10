@@ -20,13 +20,11 @@ LMainWindow::LMainWindow(){
 
 	check();
 
-
-	//	createJson();
 	//launch();
 }
 
 void LMainWindow::showDev(){
-	int resize = 150;
+	int resize = 160;
 	if(devvis){
 		dev->setVisible(false);
 		bdev->setText("+");
@@ -162,6 +160,7 @@ void LMainWindow::collectWidgets(){
 void LMainWindow::check(){
 	checkSettings();
 	checkDir();
+	parse();
 }
 void LMainWindow::checkSettings(){
 	QSettings sett;
@@ -193,7 +192,7 @@ void LMainWindow::checkDir(){
 }
 
 void LMainWindow::parse(){
-	this->parser->parse();
+	this->parser->parseZip();
 }
 
 void LMainWindow::download(){

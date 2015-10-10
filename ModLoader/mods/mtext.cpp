@@ -57,6 +57,7 @@ void MTextContainer::preInit() {
 
 		this->vars->set(mids, "mIds");
 		this->vars->set(mic, "mItems");
+		log->log(GLogLevel::DEBUG, "MTextContainer", "Items count: "+QString::number(itemsMap->size()));
 	}
 	//!MItemsContainer
 	//MBlocksContainer
@@ -105,9 +106,12 @@ void MTextContainer::preInit() {
 
 		this->vars->set(mids, "mIds");
 		this->vars->set(mic, "mItems");
+		log->log(GLogLevel::DEBUG, "MTextContainer", "Blocks count: "+QString::number(blocksMap->size()));
 	}
 	//!MBlocksContainer
+ // Debug
 
+	//!Debug
 }
 void MTextContainer::init() {
 

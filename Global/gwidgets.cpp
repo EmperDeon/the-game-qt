@@ -4,7 +4,7 @@
 
 GMWidget::GMWidget():QOpenGLWidget(){
 	setAutoFillBackground(false);
-	this->render = varG(IRender*, "render");
+	this->render = varG(IRender*, "mRender");
 }
 
 void GMWidget::animate(){
@@ -79,5 +79,5 @@ void GDeveloper::showResm(){
 #define CLASS_NAME "Not_Defined"
 
 void GMWidget::closeEvent(QCloseEvent *event) {
-	varG(GMain*, "emain")->destroy();
+	varG(GMain*, "eMain")->destroy();
 }
