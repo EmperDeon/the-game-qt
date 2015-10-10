@@ -1,5 +1,7 @@
 #ifndef GLOBALQT_MCOREMODS_H
 #define GLOBALQT_MCOREMODS_H
+
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 #include <ModLoader/core/mrender.h>
 #include <ModLoader/mutils.h>
@@ -11,6 +13,7 @@ class MRender;
 
 class MCoreMods {
 	MRender *render;
+	QString className = "M-CoreMods";
  QList<ICoreMod*>* plugins;
 
 public:

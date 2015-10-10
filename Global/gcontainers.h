@@ -1,9 +1,7 @@
 #ifndef G_CONTAINERS
 #define G_CONTAINERS
 #include <QtCore>
-#include <Global/gmain.h>
-
-
+#include <Global/gdefines.h>
 
 class Emiks{
 	quint32 c;

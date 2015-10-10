@@ -3,12 +3,12 @@
 
 #include <QtCore>
 #include <QtNetwork>
-#include <Global/gmodinterfaces.h>
+#include <Global/gdefines.h>
 
 class GLogger : public QObject, public ILogger{
 	Q_INTERFACES(ILogger)
  Q_OBJECT
-
+	QString className = "E-Logger";
 	QStringList lst;
 	bool conn;
 	QLocalSocket* socket;
@@ -24,7 +24,7 @@ public:
 
 class GSettings : public QObject{
 	Q_OBJECT
-
+	QString className = "E-Settings";
 	QMap<QString, QJsonObject> map;
 	QString file;
 
@@ -42,7 +42,7 @@ public:
 
 class GVars : public IVars{
 	Q_INTERFACES(IVars)
-
+	QString className = "E-Vars";
 	QMap<QString, void*>* map;
 	QStringList* owlist;
 public:

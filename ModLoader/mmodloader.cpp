@@ -5,13 +5,14 @@ QString ModLoader::getName(){
 }
 
 void ModLoader::setVars(IVars *v) {
+	this->loader = this;
 	this->vars = v;
 	this->log = reinterpret_cast<ILogger*>(vars->get("eLogger"));
 
 	this->core = new MCoreMods(this);
 	this->mods = new MMods(this);
 
-	log->log(GLogLevel::INFO, "Main", "ModLoader Inited");
+	mLogI("ModLoader Inited");
 }
 
 void ModLoader::corePreInit(){  core->preInit(); }

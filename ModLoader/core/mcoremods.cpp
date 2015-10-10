@@ -29,13 +29,13 @@ void MCoreMods::preInit() {
  loadPlugins();
 
 	this->render = new MRender(this);
-	this->vars->set((IRender*)render, "mRender");
+	mVarS(render, "mRender");
 
 	foreach(ICoreMod* p, *plugins){
 	 p->preInit();
 	}
 
-	this->loader->log->log(GLogLevel::FINE, "MCoreMods", "preInit finished");
+	mLogF("preInit finished");
 }
 
 void MCoreMods::init() {
@@ -43,7 +43,7 @@ void MCoreMods::init() {
 		p->init();
 	}
 
-	this->loader->log->log(GLogLevel::FINE, "MCoreMods", "init finished");
+	mLogF("init finished");
 }
 
 void MCoreMods::postInit() {
@@ -51,7 +51,7 @@ void MCoreMods::postInit() {
  	p->postInit();
 	}
 
-	this->loader->log->log(GLogLevel::FINE, "MCoreMods", "postInit finished");
+	mLogF("postInit finished");
 }
 
 

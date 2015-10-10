@@ -3,17 +3,15 @@
 
 #include <QtCore>
 #include <QtWidgets>
+#include <Global/gdefines.h>
 #include <Global/gutils.h>
-#include <Global/gmodinterfaces.h>
-class IRender;
+#include <Global/gmain.h>
 
-class Widgets{
-public:
-	Widgets();
-};
+class IRender;
 
 class GMWidget : public QOpenGLWidget {// QOpenGLWidget
 	Q_OBJECT
+	QString className = "E-MWidget";
  IRender* render;
 public:
 	GMWidget();
@@ -31,6 +29,7 @@ protected:
 
 class GDeveloper : public QWidget{
 	Q_OBJECT
+	QString className = "E-Developer";
 	QVBoxLayout* lay;
 	QPushButton* bsett;
 	QPushButton* blevl;

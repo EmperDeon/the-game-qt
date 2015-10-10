@@ -30,7 +30,7 @@ GLogger::GLogger(){
 void GLogger:: log(GLogLevel lv, QString cl, QString ms){
 	//QString s = QDateTime::currentDateTime().toString("HH:mm:ss dd.MM.yyyy") + "^";
 	QString s = QDateTime::currentDateTime().toString("HH:mm:ss") + "^";
-	s += getLevelName(lv) + (cl.startsWith("M-") ? "^" : "^E-");
+	s += getLevelName(lv) +  "^";
 	s += cl + "^";
 	s += ms;
 

@@ -19,14 +19,13 @@ int main(int argc, char *argv[]){
 	return a.exec();
 }
 
-#undef CLASS_NAME
-#define  CLASS_NAME "Main"
 GMain::GMain() {
+
  varS(this, "eMain");
 	varS(GV_LOGGER, "eLogger");
 
 	mods = new GMods();
-
+	logW("test");
 //	varS(wgt, "emainwindow");
 //	varS(wdev, "edev");
 	varS(mods, "eMods");

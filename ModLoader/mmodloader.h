@@ -2,6 +2,7 @@
 #define MODLOADER_H
 
 #include <QtCore>
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mutils.h>
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/mods/mmods.h>
@@ -14,10 +15,10 @@ class ModLoader : public QObject, GModLoaderInterface{
 	Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.GModLoaderInterface" FILE "coremod.json")
 	Q_INTERFACES(GModLoaderInterface)
-
+ QString className = "M-ModLoader";
 	MCoreMods* core;
 	MMods* mods;
-
+ ModLoader* loader;
 public:
 	IVars* vars;
 	ILogger* log;

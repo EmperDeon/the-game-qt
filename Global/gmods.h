@@ -2,7 +2,7 @@
 #define G_MODS
 
 #include <QtCore>
-#include <Global/gmodinterfaces.h>
+#include <Global/gdefines.h>
 
 class GModLoaderInterface;
 
@@ -19,13 +19,11 @@ class GModLoaderInterface;
 
 class GMods : public QObject {
 	Q_OBJECT
+	QString className = "E-Mods";
 	GModLoaderInterface* modloader;
 	QMap<QString, QString>* modloaderlist;
 private:
-	QStringList getPluginFilter();
 	void initModLoaders();
-	void initModLoaderList();
-	void loadModLoader(QString s);
 public:
 	GMods();
 	void coreInit();

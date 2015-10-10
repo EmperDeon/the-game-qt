@@ -2,6 +2,7 @@
 #define GLOBALQT_MCONTAINERS_H
 
 #include <QtCore>
+#include <ModLoader/mdefines.h>
 #include <Global/gmodinterfaces.h>
 #include <ModLoader/mmodloader.h>
 #include <wingdi.h>
@@ -11,6 +12,7 @@ class MMods;
 class MIIds : public IModsIds {
  Q_INTERFACES(IItemIds)
  MMods* loader;
+	QString className = "M-IIds";
 	QMap<QString, Emiks*>* mods;
  Emiks* mnull;
 
@@ -30,6 +32,7 @@ public:
 class MItemsContainer : public IItemsContainer{
 	Q_INTERFACES(IItemsContainer)
 	MMods* loader;
+	QString className = "M-ItemsContainer";
  QMap<Emiks*, IItem*>* map;
  Emiks* mNull;
 	IItem* iNull;
@@ -43,6 +46,7 @@ public:
 class MBIds : public IModsIds {
 	Q_INTERFACES(IItemIds)
 	MMods* loader;
+	QString className = "M-BIds";
 	QMap<QString, Emiks*>* mods;
 	Emiks* mnull;
 
@@ -59,6 +63,7 @@ public:
 class MBlocksContainer : public IBlocksContainer{
 	Q_INTERFACES(IBlocksContainer)
 	MMods* loader;
+	QString className = "M-BlocksContainer";
 	QMap<Emiks*, IBlock*>* map;
 	Emiks* mNull;
 	IBlock* iNull;
@@ -72,6 +77,7 @@ public:
 class MTIds : public IModsIds {
 	Q_INTERFACES(IItemIds)
 	MMods* loader;
+	QString className = "M-TIds";
 	QMap<QString, Emiks*>* mods;
 	Emiks* mnull;
 
@@ -91,6 +97,7 @@ public:
 class MToolsContainer : public IToolsContainer{
 	Q_INTERFACES(IToolsContainer)
 	MMods* loader;
+	QString className = "M-ToolsContainer";
 	QMap<Emiks*, ITool*>* map;
 	Emiks* mNull;
 	ITool* iNull;

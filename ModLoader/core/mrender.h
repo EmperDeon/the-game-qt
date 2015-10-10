@@ -1,6 +1,7 @@
 #ifndef M_RENDER
 #define M_RENDER
 
+#include <ModLoader/mdefines.h>
 #include <Global/gmodinterfaces.h>
 #include <QtWidgets>
 #include <QtOpenGL/QtOpenGL>
@@ -10,7 +11,7 @@ class MCoreMods;
 
 class MRender : public IRender{
 	Q_INTERFACES(IRender)
-
+	QString className = "M-Render";
 	MCoreMods* loader;
 public:
 	MRender(MCoreMods* m);

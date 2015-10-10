@@ -2,8 +2,8 @@
 #define G_MODINTERFACES
 #include <QString>
 #include <QtWidgets>
+#include <Global/gdefines.h>
 
-enum class GLogLevel{ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
 class IVars;
 class Emiks;
 
@@ -121,7 +121,6 @@ public:
 
 //!Engine
 
-#include <GLobal/gmain.h>
 #include <Global/gcontainers.h>
 
 QT_BEGIN_NAMESPACE

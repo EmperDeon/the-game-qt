@@ -1,5 +1,7 @@
 #ifndef GLOBALQT_MSCRIPT_H
 #define GLOBALQT_MSCRIPT_H
+
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 
 class MMods;
@@ -8,6 +10,7 @@ class IVars;
 
 class MScriptsContainer {
 	MMods* loader;
+	QString className = "M-ScriptsContainer";
 	ILogger* log;
 	IVars* vars;
 

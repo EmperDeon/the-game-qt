@@ -1,5 +1,7 @@
 #ifndef GLOBALQT_MPLUGIN_H
 #define GLOBALQT_MPLUGIN_H
+
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 #include <Global/gmodinterfaces.h>
 
@@ -9,6 +11,7 @@ class IVars;
 
 class MPluginsContainer {
 	MMods* loader;
+	QString className = "M-PluginsContainer";
 	ILogger* log;
 	IVars* vars;
 

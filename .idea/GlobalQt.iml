@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Runner_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Runner_automoc.cpp" isTestSource="false" />
-    </content>
     <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h">
       <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h" isTestSource="false" />
     </content>
@@ -38,6 +35,7 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gcontainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gcontainers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Global/gdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gmain.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gmain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Global/gmodinterfaces.h" isTestSource="false" />
@@ -63,6 +61,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mrender.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mrender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
@@ -75,8 +74,6 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mscript.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mparser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />

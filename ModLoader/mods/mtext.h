@@ -1,5 +1,7 @@
 #ifndef GLOBALQT_MTEXT_H
 #define GLOBALQT_MTEXT_H
+
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 
 class MMods;
@@ -8,6 +10,7 @@ class IVars;
 
 class MTextContainer {
  MMods* loader;
+	QString className = "M-TextContainer";
 	ILogger* log;
 	IVars* vars;
 

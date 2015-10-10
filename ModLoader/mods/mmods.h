@@ -1,5 +1,7 @@
 #ifndef GLOBALQT_MMODS_H
 #define GLOBALQT_MMODS_H
+
+#include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 #include <ModLoader/mods/mtext.h>
 #include <ModLoader/mods/mscript.h>
@@ -15,6 +17,7 @@ class MPluginsContainer;
 
 class MMods{
  ModLoader* loader;
+	QString className = "M-Mods";
 
 	MTextContainer*    text;
 	MScriptsContainer* script;

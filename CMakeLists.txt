@@ -43,6 +43,7 @@ set(G_SOURCE_FILES
 
 set(G_HEADERS
 		Global/gcontainers.h
+		Global/gdefines.h
 		Global/gmodinterfaces.h
 		Global/gmain.h
 		Global/gmods.h
@@ -85,6 +86,7 @@ set(M_SOURCE_FILES
 set(M_HEADERS
 		ModLoader/mmodloader.h
 		ModLoader/mutils.h
+		ModLoader/mdefines.h
 
 		ModLoader/core/mcoremods.h
 		ModLoader/core/mrender.h

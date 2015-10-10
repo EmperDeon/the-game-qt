@@ -10,8 +10,6 @@ QString getLevelName(GLogLevel lv){
 	case GLogLevel::FINE : return "[F]";
 	case GLogLevel::FFINE: return "[F]";
 	case GLogLevel::ALL  : return "[A]";
-		default:
-			return "";
 		//	case GLogLevel::ERR  : return "[ERROR]";
 		//	case GLogLevel::WARN : return "[WARNING]";
 		//	case GLogLevel::INFO : return "[INFO]";

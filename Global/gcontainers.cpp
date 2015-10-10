@@ -12,12 +12,12 @@ Emiks::Emiks(int m, int i, int k, int s) {
 	 c |= k << 5;
 	 c |= s << 1;
  }else{
-	 logE("One of parameters is greater then 1024");
+	 GV_LOGGER->log(GLogLevel::ERR, "Emiks", "One of parameters is greater then 1024");
  }
 }
 
-quint32 Emiks::m() {	return c >> 22 & 1023;}
-quint32 Emiks::i() {	return c >> 13 & 1023;}
-quint32 Emiks::k() {	return c >> 5 & 255;  }
-quint32 Emiks::s() {	return c >> 1 & 15;   }
+quint32 Emiks::m() {	return this->c >> 22 & 1023;}
+quint32 Emiks::i() {	return this->c >> 13 & 1023;}
+quint32 Emiks::k() {	return this->c >> 5 & 255;  }
+quint32 Emiks::s() {	return this->c >> 1 & 15;   }
 

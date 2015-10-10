@@ -4,7 +4,6 @@
 #include <QtCore>
 #include <QtWidgets>
 #include <QtNetwork>
-//#include <Global/gutils.h>
 #include <Launcher/lwidgets.h>
 #include <Launcher/lmain.h>
 #include <Launcher/qzipreader_p.h>

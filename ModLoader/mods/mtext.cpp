@@ -43,9 +43,9 @@ void MTextContainer::preInit() {
 		MIIds *mids = new MIIds(loader, iidsMap);
 		MItemsContainer *mic = new MItemsContainer(loader, itemsMap);
 
-		this->vars->set(mids, "mIIds");
-		this->vars->set(mic, "mItems");
-		log->log(GLogLevel::DEBUG, "MTextContainer", "Items count: "+QString::number(itemsMap->size()));
+		mVarS(mids, "mIIds");
+		mVarS(mic, "mItems");
+		mLogD("Items count: "+QString::number(itemsMap->size()));
 	}
 	//!MItemsContainer
 	//MBlocksContainer
@@ -80,9 +80,9 @@ void MTextContainer::preInit() {
 		MBIds *mids = new MBIds(loader, bidsMap);
 		MBlocksContainer *mic = new MBlocksContainer(loader, blocksMap);
 
-		this->vars->set(mids, "mBIds");
-		this->vars->set(mic, "mItems");
-		log->log(GLogLevel::DEBUG, "MTextContainer", "Blocks count: "+QString::number(blocksMap->size()));
+		mVarS(mids, "mBIds");
+		mVarS(mic, "mItems");
+		mLogD("Blocks count: "+QString::number(blocksMap->size()));
 	}
 	//!MBlocksContainer
  //MToolsContainer
@@ -117,9 +117,9 @@ void MTextContainer::preInit() {
 		MTIds *mids = new MTIds(loader, tidsMap);
 		MToolsContainer *mic = new MToolsContainer(loader, toolsMap);
 
-		this->vars->set(mids, "mTIds");
-		this->vars->set(mic, "mTools");
-		log->log(GLogLevel::DEBUG, "MTextContainer", "Tools count: "+QString::number(toolsMap->size()));
+		mVarS(mids, "mTIds");
+		mVarS(mic, "mTools");
+		mLogD("Tools count: "+QString::number(toolsMap->size()));
 	}
 	//!MToolsContainer
 }

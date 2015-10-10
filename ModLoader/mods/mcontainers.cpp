@@ -10,7 +10,7 @@ Emiks*MIIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
   return mods->value(t);
 	else{
-		loader->log->log(GLogLevel::ERR, "MIIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
 		return mnull;
 	}
 }
@@ -32,7 +32,7 @@ IItem *MItemsContainer::get(Emiks *id) {
  if(map->contains(id))
 	 return map->value(id);
  else {
-	 loader->log->log(GLogLevel::ERR, "MItemsContainer", "Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+	 mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 	 return iNull;
  }
 }
@@ -40,7 +40,7 @@ Emiks *MItemsContainer::get(IItem *id) {
  if(map->values().contains(id))
 	 return map->key(id);
  else{
-	 loader->log->log(GLogLevel::ERR, "MItemsContainer","Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+	 mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 	 return mNull;
  }
 }
@@ -55,7 +55,7 @@ Emiks*MBIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
-		loader->log->log(GLogLevel::ERR, "MIIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
 		return mnull;
 	}
 }
@@ -78,7 +78,7 @@ IBlock* MBlocksContainer::get(Emiks *id) {
 	if(map->contains(id))
 		return map->value(id);
 	else {
-		loader->log->log(GLogLevel::ERR, "MBlocksContainer", "Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return iNull;
 	}
 }
@@ -86,7 +86,7 @@ Emiks *MBlocksContainer::get(IBlock *id) {
 	if(map->values().contains(id))
 		return map->key(id);
 	else{
-		loader->log->log(GLogLevel::ERR, "MBlocksContainer","Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
@@ -102,7 +102,7 @@ Emiks*MTIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
-		loader->log->log(GLogLevel::ERR, "MTIds","Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
 		return mnull;
 	}
 }
@@ -124,7 +124,7 @@ ITool *MToolsContainer::get(Emiks *id) {
 	if(map->contains(id))
 		return map->value(id);
 	else {
-		loader->log->log(GLogLevel::ERR, "MToolsContainer", "Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return iNull;
 	}
 }
@@ -132,7 +132,7 @@ Emiks *MToolsContainer::get(ITool *id) {
 	if(map->values().contains(id))
 		return map->key(id);
 	else{
-		loader->log->log(GLogLevel::ERR, "MToolsContainer","Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
