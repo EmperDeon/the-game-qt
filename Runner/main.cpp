@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[]) {
  system("copy ..\\GameTmp\\Launcher.exe Launcher.exe /Y");
- system("copy ..\\GameTmp\\Global.exe game.exe /Y");
+ system("copy ..\\GameTmp\\Engine.exe game.exe /Y");
  system("copy ..\\GameTmp\\libzlib.dll libzlib.dll /Y");
  system("copy ..\\GameTmp\\libModLoader.dll modLoader.dll /Y");
 	if(argc == 1) system("Launcher.exe");

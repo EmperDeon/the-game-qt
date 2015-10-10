@@ -3,7 +3,7 @@
 
 #include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
-#include <Global/gmodinterfaces.h>
+#include <Engine/emodinterfaces.h>
 
 class MMods;
 class ILogger;

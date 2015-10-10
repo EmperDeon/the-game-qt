@@ -1,8 +1,8 @@
 Engine:
 
 ILogger - eLogger
-GMain - eMain
-GMods - eMods
+EMain - eMain
+EMods - eMods
 
 
 ModLoader:

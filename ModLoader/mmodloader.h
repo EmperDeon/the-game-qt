@@ -6,14 +6,14 @@
 #include <ModLoader/mutils.h>
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/mods/mmods.h>
-#include <Global/gcontainers.h>
+#include "Engine/econtainers.h"
 
 class MCoreMods;
 class MMods;
 
-class ModLoader : public QObject, GModLoaderInterface{
+class ModLoader : public QObject, IModLoader {
 	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "org.ilzcorp.GModLoaderInterface" FILE "coremod.json")
+	Q_PLUGIN_METADATA(IID "org.ilzcorp.IModLoader" FILE "coremod.json")
 	Q_INTERFACES(GModLoaderInterface)
  QString className = "M-ModLoader";
 	MCoreMods* core;

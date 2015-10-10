@@ -3,9 +3,8 @@
 
 #include <QtCore>
 #include <ModLoader/mdefines.h>
-#include <Global/gmodinterfaces.h>
+#include <Engine/emodinterfaces.h>
 #include <ModLoader/mmodloader.h>
-#include <wingdi.h>
 
 class MMods;
 

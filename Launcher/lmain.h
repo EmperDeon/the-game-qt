@@ -10,7 +10,7 @@
 class GDevelop;
 class MLocalServer;
 class GModLoaderSelect;
-class GModLoaderInterface;
+class IModLoader;
 class LLogWidget;
 class MModsList;
 class LParser;

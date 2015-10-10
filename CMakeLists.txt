@@ -25,7 +25,7 @@ find_package(OpenGL REQUIRED)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 # -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}
 include_directories(zlib)
-include_directories(Global)
+include_directories(Engine)
 include_directories(Launcher)
 include_directories(ModLoader)
 
@@ -34,23 +34,23 @@ add_subdirectory(zlib)
 #Sets
 
 set(G_SOURCE_FILES
-		Global/gcontainers.cpp
-		Global/gmain.cpp
-		Global/gmods.cpp
-		Global/gutils.cpp
-		Global/gwidgets.cpp
+		Engine/econtainers.cpp
+		Engine/emain.cpp
+		Engine/emods.cpp
+		Engine/eutils.cpp
+		Engine/ewidgets.cpp
 )
 
 set(G_HEADERS
-		Global/gcontainers.h
-		Global/gdefines.h
-		Global/gmodinterfaces.h
-		Global/gmain.h
-		Global/gmods.h
-		Global/gutils.h
-		Global/gwidgets.h
-		Global/qzipreader_p.h
-		Global/qzipwriter_p.h
+		Engine/econtainers.h
+		Engine/edefines.h
+		Engine/emodinterfaces.h
+		Engine/emain.h
+		Engine/emods.h
+		Engine/eutils.h
+		Engine/ewidgets.h
+		Engine/qzipreader_p.h
+		Engine/qzipwriter_p.h
 )
 
 set(L_SOURCE_FILES
@@ -103,10 +103,10 @@ qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
 
 
-add_executable(Global ${G_SOURCE_FILES} ${G_HEADERS})
-qt5_use_modules(Global Core Widgets Network WebKitWidgets OpenGL)
-target_compile_features(Global PRIVATE cxx_range_for)
-target_link_libraries(Global zlib ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
+add_executable(Engine ${G_SOURCE_FILES} ${G_HEADERS})
+qt5_use_modules(Engine Core Widgets Network WebKitWidgets OpenGL)
+target_compile_features(Engine PRIVATE cxx_range_for)
+target_link_libraries(Engine zlib ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 
 add_executable(Launcher ${L_SOURCE_FILES} ${L_HEADERS})
 qt5_use_modules(Launcher Core Widgets Network WebKitWidgets)

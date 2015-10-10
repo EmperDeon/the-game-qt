@@ -1,10 +1,10 @@
 #ifndef M_RENDER
 #define M_RENDER
 
-#include <ModLoader/mdefines.h>
-#include <Global/gmodinterfaces.h>
 #include <QtWidgets>
 #include <QtOpenGL/QtOpenGL>
+#include <ModLoader/mdefines.h>
+#include <Engine/emodinterfaces.h>
 #include <ModLoader/core/mcoremods.h>
 
 class MCoreMods;
