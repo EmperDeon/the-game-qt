@@ -30,8 +30,6 @@ public:
 
 class IItem{
 public:
-	virtual int getDurability() = 0;
-	virtual QString getType() = 0;
 	virtual float getStackSize() = 0;
 	virtual int getStackType() = 0;
 };
@@ -51,6 +49,16 @@ public:
 	virtual Emiks* get(IBlock* id) = 0;
 };
 
+class ITool{
+public:
+	virtual QString getType() = 0;
+	virtual int getDurability() = 0;
+};
+class IToolsContainer{
+public:
+	virtual ITool* get(Emiks* id) = 0;
+	virtual Emiks* get(ITool* id) = 0;
+};
 //!ModLoader
 //CoreMods
 

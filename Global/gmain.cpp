@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
 
 	GV_LOGGER = new GLogger;
 	GV_VARS = new GVars;
- logI("Test");
+
  GMain* gMain = new GMain();
 	gMain->init();
  gMain->show();

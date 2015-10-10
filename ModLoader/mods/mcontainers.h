@@ -19,15 +19,11 @@ public:
 	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
 class MItem : public IItem{
-	int durability;
-	QString type;
 	float stackSize;
 	int stackType;
 
 public:
 	MItem(QJsonObject o);
-	int getDurability() Q_DECL_OVERRIDE;
-	QString getType() Q_DECL_OVERRIDE;
 	float getStackSize() Q_DECL_OVERRIDE;
 	int getStackType() Q_DECL_OVERRIDE;
 };
@@ -72,4 +68,37 @@ public:
 	IBlock* get(Emiks* id) Q_DECL_OVERRIDE;
 	Emiks* get(IBlock* id) Q_DECL_OVERRIDE;
 };
+
+class MTIds : public IModsIds {
+	Q_INTERFACES(IItemIds)
+	MMods* loader;
+	QMap<QString, Emiks*>* mods;
+	Emiks* mnull;
+
+public:
+	MTIds(MMods *m, QMap<QString, Emiks*>* l);
+	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
+};
+class MTool : public ITool{
+	int durability;
+	QString type;
+
+public:
+	MTool(QJsonObject o);
+	int getDurability() Q_DECL_OVERRIDE;
+	QString getType() Q_DECL_OVERRIDE;
+};
+class MToolsContainer : public IToolsContainer{
+	Q_INTERFACES(IToolsContainer)
+	MMods* loader;
+	QMap<Emiks*, ITool*>* map;
+	Emiks* mNull;
+	ITool* iNull;
+
+public:
+	MToolsContainer(MMods* l, QMap<Emiks*, ITool*>* m);
+	ITool* get(Emiks* id) Q_DECL_OVERRIDE;
+	Emiks* get(ITool* id) Q_DECL_OVERRIDE;
+};
+
 #endif //GLOBALQT_MCONTAINERS_H
