@@ -14,17 +14,19 @@ class MMods;
 class ModLoader : public QObject, IModLoader {
 	Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.IModLoader" FILE "coremod.json")
-	Q_INTERFACES(GModLoaderInterface)
+	Q_INTERFACES(IModLoader)
  QString className = "M-ModLoader";
+
 	MCoreMods* core;
 	MMods* mods;
+
  ModLoader* loader;
 public:
 	IVars* vars;
 	ILogger* log;
 
  QString getName() Q_DECL_OVERRIDE;
-	// Engine
+
 	void setVars(IVars* v) Q_DECL_OVERRIDE;
 	void corePreInit() Q_DECL_OVERRIDE;
 	void coreInit() Q_DECL_OVERRIDE;

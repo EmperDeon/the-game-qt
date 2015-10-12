@@ -13,15 +13,15 @@ class LLogWidget;
 class LMainWindow;
 enum class GLogLevel{ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
 
-struct GLogE{
+struct LLogE {
 	GLogLevel lv;
 	QDateTime d;
 	QString t;
 	QString cl;
 	QString ms;
 	bool engine;
-	GLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss);
-	GLogE(QString);
+	LLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss);
+	LLogE(QString);
 	QString toString();
 };
 
@@ -36,13 +36,13 @@ public:
 	int columnCount(const QModelIndex&) const;
 	Qt::ItemFlags flags(const QModelIndex& index)const;
 };
-class GSettingsModel :public QAbstractTableModel{
+class LSettingsModel :public QAbstractTableModel{
 private:
 	QString cat;
 	QMap<QString, QJsonObject>& mp;
 	QStringList ind;
 public:
-	GSettingsModel(QString c, QMap<QString, QJsonObject>& m , QObject *pobj = 0);
+	LSettingsModel(QString c, QMap<QString, QJsonObject>& m , QObject *pobj = 0);
 
 	QVariant data(const QModelIndex& index, int nRole) const;
 	bool setData(const QModelIndex& index,const QVariant& value, int nRole );

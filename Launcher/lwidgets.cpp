@@ -2,7 +2,7 @@
 
 //Logger
 LLogWidget::LLogWidget():QWidget(){
-	list = new QList<GLogE>;
+	list = new QList<LLogE>;
 	last = "";
 
 	vlay = new QVBoxLayout();
@@ -10,22 +10,26 @@ LLogWidget::LLogWidget():QWidget(){
 
 	w_edit = new QTextEdit();
 
-	w_l = new QLabel("Show log level:");
-	be = new QPushButton("Errors");
-	bw = new QPushButton("Warnings");
-	bi = new QPushButton("Info");
-	bd = new QPushButton("Debug");
-	bf = new QPushButton("All");
-	w_l1 = new QLabel("Current collect value:");
+	w_l = new QLabel(tr("Show log level:"));
+	be = new QPushButton(tr("Errors"));
+	bw = new QPushButton(tr("Warnings"));
+	bi = new QPushButton(tr("Info"));
+	bd = new QPushButton(tr("Debug"));
+	bf = new QPushButton(tr("Fine"));
+	bff = new QPushButton(tr("FFine"));
+	ba = new QPushButton(tr("All"));
+	w_l1 = new QLabel(tr("Current collect value:"));
 	w_c = new QLabel("-- ms");
-	br = new QPushButton("Refresh");
+	br = new QPushButton(tr("Refresh"));
 
-	QObject::connect(be,SIGNAL(clicked()),this,SLOT(switchE()));
-	QObject::connect(bw,SIGNAL(clicked()),this,SLOT(switchW()));
-	QObject::connect(bi,SIGNAL(clicked()),this,SLOT(switchI()));
-	QObject::connect(bd,SIGNAL(clicked()),this,SLOT(switchD()));
-	QObject::connect(bf,SIGNAL(clicked()),this,SLOT(switchF()));
-	QObject::connect(br,SIGNAL(clicked()),this,SLOT(refresh()));
+	connect(be, SIGNAL(clicked()), this, SLOT(switchE()));
+	connect(bw, SIGNAL(clicked()), this, SLOT(switchW()));
+	connect(bi, SIGNAL(clicked()), this, SLOT(switchI()));
+	connect(bd, SIGNAL(clicked()), this, SLOT(switchD()));
+	connect(bf, SIGNAL(clicked()), this, SLOT(switchF()));
+	connect(bff,SIGNAL(clicked()), this, SLOT(switchFF()));
+	connect(ba, SIGNAL(clicked()), this, SLOT(switchA()));
+	connect(br, SIGNAL(clicked()), this, SLOT(refresh()));
 
 	hlay->addWidget(w_l);
 	hlay->addWidget(be);
@@ -33,6 +37,8 @@ LLogWidget::LLogWidget():QWidget(){
 	hlay->addWidget(bi);
 	hlay->addWidget(bd);
 	hlay->addWidget(bf);
+	hlay->addWidget(bff);
+	hlay->addWidget(ba);
 	hlay->addSpacing(20);
 	hlay->addWidget(w_l1);
 	hlay->addWidget(w_c);
@@ -41,18 +47,15 @@ LLogWidget::LLogWidget():QWidget(){
 	vlay->addLayout(hlay);
 	vlay->addWidget(w_edit);
 
-	w_edit->setStyleSheet("font: 10pt \"Courier\";");
+	w_edit->setStyleSheet("font: 10pt \"Fantasque Sans Mono\";");
 	this->setLayout(vlay);
 
 	switchL(GLogLevel::FINE);
 }
-LLogWidget::~LLogWidget(){
-
-}
 void LLogWidget::addL(GLogLevel lv, QString cl, QString m){
-	addL(GLogE(lv, QDateTime::currentDateTime(), cl, m ));
+	addL(LLogE(lv, QDateTime::currentDateTime(), cl, m ));
 }
-void LLogWidget::addL(GLogE e){
+void LLogWidget::addL(LLogE e){
 	if(e.lv <= curr){
 		last += e.toString();
 		w_edit->setHtml(last);
@@ -69,7 +72,7 @@ void LLogWidget::refresh(){
 
 	QTime st;
 	st.start();
-			foreach (GLogE e, *list) {
+			foreach (LLogE e, *list) {
 			if(curr >= e.lv){
 				last += e.toString();
 			}
@@ -95,10 +98,16 @@ void LLogWidget::switchD(){
 void LLogWidget::switchF(){
 	switchL(GLogLevel::FINE);
 }
+void LLogWidget::switchFF(){
+	switchL(GLogLevel::FFINE);
+}
+void LLogWidget::switchA(){
+	switchL(GLogLevel::ALL);
+}
 //Logger
 
 //Settings
-GSettWidget::GSettWidget():tabs(),wgts(),mdls(),map(){
+LSettWidget::LSettWidget():tabs(),wgts(),mdls(),map(){
 	b_save = new QPushButton("Save settings");
 	b_load = new QPushButton("Load settings");
 	tabs = new QTabWidget();
@@ -118,23 +127,23 @@ GSettWidget::GSettWidget():tabs(),wgts(),mdls(),map(){
 
 	init();
 }
-void GSettWidget::clear(){
+void LSettWidget::clear(){
 	this->map.clear();
 	this->wgts.clear();
 	this->mdls.clear();
 	this->tabs->clear();
 }
-void GSettWidget::init(){
+void LSettWidget::init(){
 			foreach(QString k, map.keys()){
 			wgts[k] = new QTableView();
-			mdls[k] = new GSettingsModel(k, map, wgts[k]);
+			mdls[k] = new LSettingsModel(k, map, wgts[k]);
 
 			wgts[k]->setModel(mdls[k]);
 
 			tabs->addTab(wgts[k],k);
 		}
 }
-void GSettWidget::saveS(){
+void LSettWidget::saveS(){
 	QFile saveFile("settings.dat");
 
 	if (!saveFile.open(QIODevice::WriteOnly)) {
@@ -150,7 +159,7 @@ void GSettWidget::saveS(){
 	QJsonDocument doc(obj);
 	saveFile.write(qCompress(doc.toBinaryData(),5));
 }
-void GSettWidget::loadS(){
+void LSettWidget::loadS(){
 	clear();
 	QFile loadFile("settings.dat");
 
@@ -170,11 +179,11 @@ void GSettWidget::loadS(){
 }
 //!Settings
 
-//GDevelop
-void GDevelop::parse(){
+//LDevelop
+void LDevelop::parse(){
 	this->launcher->parser->parse();
 }
-GDevelop::GDevelop(LMainWindow* w){
+LDevelop::LDevelop(LMainWindow* w){
 	this->launcher = w;
 	lay = new QVBoxLayout();
 
@@ -182,10 +191,10 @@ GDevelop::GDevelop(LMainWindow* w){
 	w_mode = new LModEditor(w);
 	w_pac = new LPacker(w);
 
-	wsett = new GSettWidget();
-	wlevl = new GLevlWidget();
-	wmodel = new GModelWidget();
-	wresm = new GResmWidget();
+	wsett = new LSettWidget();
+	wlevl = new LLevlWidget();
+	wmodel = new LModelWidget();
+	wresm = new LResmWidget();
 
 	jsono = new LJsonOWidget();
 	jsona = new LJsonAWidget();
@@ -237,18 +246,18 @@ GDevelop::GDevelop(LMainWindow* w){
 	connect(bparse, SIGNAL(clicked()), this, SLOT(parse()));
 }
 
-GResmWidget::GResmWidget(){
+LResmWidget::LResmWidget(){
 
 }
 
-GLevlWidget::GLevlWidget(){
+LLevlWidget::LLevlWidget(){
 
 }
 
-GModelWidget::GModelWidget(){
+LModelWidget::LModelWidget(){
 
 }
-//!GDevelop
+//!LDevelop
 
 //ListManager
 LListManager::LListManager(QJsonArray &o, QString t){

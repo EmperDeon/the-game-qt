@@ -44,7 +44,14 @@ set(G_SOURCE_FILES
 set(G_HEADERS
 		Engine/econtainers.h
 		Engine/edefines.h
-		Engine/emodinterfaces.h
+
+		Engine/interfaces/iinventory.h
+		Engine/interfaces/ilevel.h
+		Engine/interfaces/imain.h
+		Engine/interfaces/imods.h
+		Engine/interfaces/irender.h
+		Engine/einterfaces.h
+
 		Engine/emain.h
 		Engine/emods.h
 		Engine/eutils.h
@@ -76,6 +83,7 @@ set(M_SOURCE_FILES
 		ModLoader/core/mcoremods.cpp
 		ModLoader/core/mrender.cpp
 
+		ModLoader/mods/mactions.cpp
 		ModLoader/mods/mmods.cpp
 		ModLoader/mods/mcontainers.cpp
 		ModLoader/mods/mtext.cpp
@@ -91,6 +99,7 @@ set(M_HEADERS
 		ModLoader/core/mcoremods.h
 		ModLoader/core/mrender.h
 
+		ModLoader/mods/mactions.h
 		ModLoader/mods/mmods.h
 		ModLoader/mods/mcontainers.h
 		ModLoader/mods/mtext.h

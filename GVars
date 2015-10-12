@@ -3,6 +3,8 @@ Engine:
 ILogger - eLogger
 EMain - eMain
 EMods - eMods
+EMWidget - eMainWindow
+EDeveloper - eDev
 
 
 ModLoader:

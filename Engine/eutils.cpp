@@ -7,10 +7,9 @@ QString getLevelName(GLogLevel lv){
 		case GLogLevel::INFO : return "[I]";
 		case GLogLevel::DEBUG: return "[D]";
 		case GLogLevel::FINE : return "[F]";
-		case GLogLevel::FFINE: return "[F]";
+		case GLogLevel::FFINE: return "[FF]";
 		case GLogLevel::ALL  : return "[A]";
 	}
-	return "";
 }
 void ELogger::connected(){
 	conn = true;

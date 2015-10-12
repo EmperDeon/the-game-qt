@@ -20,6 +20,6 @@ extern IVars* GV_VARS;
 #define varG(cl, s) reinterpret_cast<cl>(GV_VARS->get(s))
 #define varS(cl, s) GV_VARS->set(cl, s)
 
-#include <Engine/emodinterfaces.h>
+#include "einterfaces.h"
 
 #endif //GLOBALQT_GDEFINES_H

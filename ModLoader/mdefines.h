@@ -10,7 +10,7 @@
 #define mLogA(ms)  this->loader->log->log(GLogLevel::ALL,   this->className, ms)
 
 
-#define mVarG(cl, s) reinterpret_cast<cl*>(this->loader->vars->get(s))
+#define mVarG(cl, s) reinterpret_cast<cl>(this->loader->vars->get(s))
 #define mVarS(cl, s) this->loader->vars->set(cl, s)
 
 #endif //GLOBALQT_MDEFINES_H

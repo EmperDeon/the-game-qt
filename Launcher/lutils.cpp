@@ -8,7 +8,7 @@ QString getLevelName(GLogLevel lv){
 	case GLogLevel::INFO : return "[I]";
 	case GLogLevel::DEBUG: return "[D]";
 	case GLogLevel::FINE : return "[F]";
-	case GLogLevel::FFINE: return "[F]";
+	case GLogLevel::FFINE: return "[FF]";
 	case GLogLevel::ALL  : return "[A]";
 		//	case GLogLevel::ERR  : return "[ERROR]";
 		//	case GLogLevel::WARN : return "[WARNING]";
@@ -17,8 +17,8 @@ QString getLevelName(GLogLevel lv){
 		//	case GLogLevel::FINE : return "[FINE]";
 	}
 }
-GLogE::GLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss):lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
-GLogE::GLogE(QString s){
+LLogE::LLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss):lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
+LLogE::LLogE(QString s){
 	QStringList lst = s.split("^");
 	t = lst.takeFirst();
 	QString level = lst.takeFirst();
@@ -27,6 +27,8 @@ GLogE::GLogE(QString s){
 	}else if (level == "[I]"){ lv = GLogLevel::INFO ;
 	}else if (level == "[D]"){ lv = GLogLevel::DEBUG;
 	}else if (level == "[F]"){ lv = GLogLevel::FINE ;
+	}else if (level == "[FF]"){ lv = GLogLevel::FFINE ;
+	}else if (level == "[A]"){ lv = GLogLevel::ALL ;
 	}else{
 
 	}
@@ -35,7 +37,7 @@ GLogE::GLogE(QString s){
 	ms = lst.takeFirst();
 	engine = true;
 }
-QString GLogE::toString(){
+QString LLogE::toString(){
 	QString r = "<div ";
 
 	switch(lv){
@@ -84,13 +86,13 @@ int GModLoaderSelect::columnCount(const QModelIndex&) const     {
 }
 //ModModel
 
-//GSettingsModel
-GSettingsModel::GSettingsModel(QString c, QMap<QString, QJsonObject> &m, QObject *pobj):QAbstractTableModel(pobj), cat(c), mp(m){
+//LSettingsModel
+LSettingsModel::LSettingsModel(QString c, QMap<QString, QJsonObject> &m, QObject *pobj):QAbstractTableModel(pobj), cat(c), mp(m){
 	foreach(QString s, mp[cat].keys()){if(s != "name") ind << s;}
 	this->setHeaderData(0, Qt::Horizontal, "Key");
 	this->setHeaderData(1, Qt::Horizontal, "Value");
 }
-QVariant GSettingsModel::data(const QModelIndex &index, int nRole) const{
+QVariant LSettingsModel::data(const QModelIndex &index, int nRole) const{
 	if (!index.isValid()) {
 		return QVariant(); }
 	QString str = QString("%1,%2").arg(index.row() + 1).arg(index.column() + 1);
@@ -98,7 +100,7 @@ QVariant GSettingsModel::data(const QModelIndex &index, int nRole) const{
 				(index.column()==1 ?  mp[cat][ind[index.row()]].toString() : ind[index.row()] )
 			: QVariant();
 	}
-	bool GSettingsModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
+	bool LSettingsModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
 	if (index.isValid() && nRole == Qt::EditRole) {
 	//	if(index.column() == 0){
 	//	QString old = ind[index.row()];
@@ -112,17 +114,17 @@ QVariant GSettingsModel::data(const QModelIndex &index, int nRole) const{
 }
 return false;
 }
-Qt::ItemFlags GSettingsModel::flags(const QModelIndex &index) const{
+Qt::ItemFlags LSettingsModel::flags(const QModelIndex &index) const{
 	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
 	return (index.isValid() && index.column() == 1) ? (flags | Qt::ItemIsEditable) : flags;
 }
-int GSettingsModel::rowCount(const QModelIndex&) const     {
+int LSettingsModel::rowCount(const QModelIndex&) const     {
 	return ind.size();
 }
-int GSettingsModel::columnCount(const QModelIndex&) const     {
+int LSettingsModel::columnCount(const QModelIndex&) const     {
 	return 2;
 }
-//GSettingsModel
+//LSettingsModel
 
 //ListModel
 LListModel::LListModel(const QJsonArray &o, QObject *pobj):QAbstractListModel(pobj),obj(o){}
@@ -238,7 +240,7 @@ void MLocalServer::addLog(QString s){
 			clients->clear();
 		}
 	}else{
-		log->addL(GLogE(s));
+		log->addL(LLogE(s));
 	}
 }
 void MLocalServer::newConnection(){

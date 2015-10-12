@@ -22,9 +22,9 @@ EMain::EMain() {
 	varS(GV_LOGGER, "eLogger");
 
 	mods = new EMods();
-	logW("test");
-//	varS(wgt, "emainwindow");
-//	varS(wdev, "edev");
+
+	varS(wgt, "eMainWindow");
+	varS(wdev, "eDev");
 	varS(mods, "eMods");
 }
 

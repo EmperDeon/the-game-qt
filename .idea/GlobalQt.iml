@@ -10,6 +10,9 @@
     <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo/zlib/zconf.h">
       <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo/zlib/zconf.h" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Engine_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Engine_automoc.cpp" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" isTestSource="false" />
     </content>
@@ -33,15 +36,20 @@
       <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/edefines.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/einterfaces.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emodinterfaces.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/irender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipreader_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.cpp" isTestSource="false" />
@@ -61,6 +69,8 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mactions.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mactions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
@@ -143,6 +153,7 @@
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Engine_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>

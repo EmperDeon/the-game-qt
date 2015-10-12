@@ -11,18 +11,17 @@
 #include <Launcher/lutils.h>
 #include <Launcher/lmain.h>
 
-
 class LMainWindow;
-class GDevelop;
-class GSettWidget;
-class GLevlWidget;
-class GModelWidget;
-class GResmWidget;
+class LDevelop;
+class LSettWidget;
+class LLevlWidget;
+class LModelWidget;
+class LResmWidget;
 class LListModel;
 class LTableModel;
 enum class GLogLevel;
-class GLogE;
-class GSettingsModel;
+class LLogE;
+class LSettingsModel;
 class LModsWidget;
 class LModEditor;
 class LPacker;
@@ -58,7 +57,7 @@ class LLogWidget : public QWidget{
 	Q_OBJECT
 	GLogLevel curr;
 	QString last;
-	QList<GLogE>* list;
+	QList<LLogE>* list;
 
 	QTextEdit* w_edit;
 	QVBoxLayout* vlay;
@@ -71,6 +70,8 @@ class LLogWidget : public QWidget{
 	QPushButton* bi;
 	QPushButton* bd;
 	QPushButton* bf;
+	QPushButton* bff;
+	QPushButton* ba;
 	QPushButton* br;
 
 public slots:
@@ -79,21 +80,21 @@ public slots:
 	void switchI();
 	void switchD();
 	void switchF();
-
+ void switchFF();
+	void switchA();
 	void refresh();
 public:
 	LLogWidget();
-	~LLogWidget();
 	void addL(GLogLevel lv, QString cl, QString m);
-	void addL(GLogE e);
+	void addL(LLogE e);
 	void switchL(GLogLevel lv);
 };
-class GSettWidget : public QWidget{
+class LSettWidget : public QWidget{
 	Q_OBJECT
 
 	QTabWidget* tabs;
 	QMap<QString, QTableView*> wgts;
-	QMap<QString, GSettingsModel*> mdls;
+	QMap<QString, LSettingsModel *> mdls;
 	QMap<QString, QJsonObject> map;
 	QPushButton* b_save;
 	QPushButton* b_load;
@@ -106,7 +107,7 @@ public slots:
 public:
 	void clear();
 	void init();
-	GSettWidget();
+	LSettWidget();
 
 };
 
@@ -151,7 +152,7 @@ public:
 
 };
 
-class GDevelop : public QWidget{
+class LDevelop : public QWidget{
 	Q_OBJECT
 	LMainWindow* launcher;
 	QVBoxLayout* lay;
@@ -171,10 +172,10 @@ class GDevelop : public QWidget{
 
 	LModEditor * w_mode;
 	LPacker * w_pac;
-	GSettWidget* wsett;
-	GLevlWidget* wlevl;
-	GModelWidget* wmodel;
-	GResmWidget* wresm;
+	LSettWidget * wsett;
+	LLevlWidget * wlevl;
+	LModelWidget * wmodel;
+	LResmWidget * wresm;
 	LJsonOWidget* jsono;
 	LJsonAWidget* jsona;
 
@@ -182,20 +183,20 @@ private slots:
 	void parse();
 public:
 	LModsWidget * w_mod;
-	GDevelop(LMainWindow *w);
+	LDevelop(LMainWindow *w);
 };
 
-class GLevlWidget : public QWidget{// Level Editor
+class LLevlWidget : public QWidget{// Level Editor
 public:
-	GLevlWidget();
+	LLevlWidget();
 };
-class GModelWidget : public QWidget{// Level Editor
+class LModelWidget : public QWidget{// Level Editor
 public:
-	GModelWidget();
+	LModelWidget();
 };
-class GResmWidget : public QWidget{// Resource manager
+class LResmWidget : public QWidget{// Resource manager
 public:
-	GResmWidget();
+	LResmWidget();
 };
 
 

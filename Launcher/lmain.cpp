@@ -87,7 +87,7 @@ void LMainWindow::initLog(){
 	w_log = new LLogWidget;
 	modsMap = new MModsList(this);
 
-	dev    = new GDevelop    (this);
+	dev    = new LDevelop(this);
 	proc   = new QProcess    (this);
  parser = new LParser     (this);
 

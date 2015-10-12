@@ -25,6 +25,7 @@ void MCoreMods::loadPlugins() {
 
 }
 void MCoreMods::preInit() {
+	mLogFF("preInit started");
 	parseOwerwrites();
  loadPlugins();
 
@@ -35,23 +36,27 @@ void MCoreMods::preInit() {
 	 p->preInit();
 	}
 
-	mLogF("preInit finished");
+	mLogFF("preInit finished");
 }
 
 void MCoreMods::init() {
+	mLogFF("init started");
+
 	foreach(ICoreMod* p, *plugins){
 		p->init();
 	}
 
-	mLogF("init finished");
+	mLogFF("init finished");
 }
 
 void MCoreMods::postInit() {
+	mLogFF("postInit started");
+
 	foreach(ICoreMod* p, *plugins){
  	p->postInit();
 	}
 
-	mLogF("postInit finished");
+	mLogFF("postInit finished");
 }
 
 

@@ -7,7 +7,7 @@
 
 #define CLASS_NAME "Not_Defined"
 
-class GDevelop;
+class LDevelop;
 class MLocalServer;
 class GModLoaderSelect;
 class IModLoader;
@@ -50,7 +50,7 @@ class LMainWindow : public QMainWindow{
 
 	int progress;
 public:
-	GDevelop* dev;
+	LDevelop * dev;
 	MModsList* modsMap;
 	LParser * parser;
 	LLogWidget* w_log;

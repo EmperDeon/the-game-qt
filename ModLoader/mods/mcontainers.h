@@ -3,7 +3,7 @@
 
 #include <QtCore>
 #include <ModLoader/mdefines.h>
-#include <Engine/emodinterfaces.h>
+#include "einterfaces.h"
 #include <ModLoader/mmodloader.h>
 
 class MMods;

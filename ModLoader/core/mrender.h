@@ -4,7 +4,7 @@
 #include <QtWidgets>
 #include <QtOpenGL/QtOpenGL>
 #include <ModLoader/mdefines.h>
-#include <Engine/emodinterfaces.h>
+#include "einterfaces.h"
 #include <ModLoader/core/mcoremods.h>
 
 class MCoreMods;
