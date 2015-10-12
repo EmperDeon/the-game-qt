@@ -4,16 +4,20 @@
 #include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
 #include <ModLoader/core/mrender.h>
+#include <ModLoader/core/mactions.h>
 #include <ModLoader/mutils.h>
 
 class ModLoader;
 class ILogger;
 class IVars;
 class MRender;
+class MActions;
 
 class MCoreMods {
-	MRender *render;
 	QString className = "M-CoreMods";
+	MRender *render;
+	MActions* actions;
+
  QList<ICoreMod*>* plugins;
 
 public:

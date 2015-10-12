@@ -32,6 +32,9 @@ void MCoreMods::preInit() {
 	this->render = new MRender(this);
 	mVarS(render, "mRender");
 
+	this->actions = new MActions(this);
+	mVarS(actions, "mActions");
+
 	foreach(ICoreMod* p, *plugins){
 	 p->preInit();
 	}

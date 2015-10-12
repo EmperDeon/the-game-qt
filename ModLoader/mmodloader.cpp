@@ -12,7 +12,7 @@ void ModLoader::setVars(IVars *v) {
 	this->core = new MCoreMods(this);
 	this->mods = new MMods(this);
 
-	mLogI("ModLoader Inited");
+	mLogD("ModLoader Inited");
 }
 
 void ModLoader::corePreInit(){  core->preInit(); }

@@ -83,7 +83,7 @@ set(M_SOURCE_FILES
 		ModLoader/core/mcoremods.cpp
 		ModLoader/core/mrender.cpp
 
-		ModLoader/mods/mactions.cpp
+		ModLoader/core/mactions.cpp
 		ModLoader/mods/mmods.cpp
 		ModLoader/mods/mcontainers.cpp
 		ModLoader/mods/mtext.cpp
@@ -99,7 +99,7 @@ set(M_HEADERS
 		ModLoader/core/mcoremods.h
 		ModLoader/core/mrender.h
 
-		ModLoader/mods/mactions.h
+		ModLoader/core/mactions.h
 		ModLoader/mods/mmods.h
 		ModLoader/mods/mcontainers.h
 		ModLoader/mods/mtext.h

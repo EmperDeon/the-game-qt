@@ -69,8 +69,8 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mactions.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mactions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mactions.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mactions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
