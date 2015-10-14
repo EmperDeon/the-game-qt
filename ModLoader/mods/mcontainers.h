@@ -12,12 +12,12 @@ class MIIds : public IModsIds {
  Q_INTERFACES(IItemIds)
  MMods* loader;
 	QString className = "M-IIds";
-	QMap<QString, Emiks*>* mods;
- Emiks* mnull;
+	QMap<QString, Imiks>* mods;
+ Imiks mnull;
 
 public:
- MIIds(MMods *m, QMap<QString, Emiks*>* l);
-	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
+ MIIds(MMods *m, QMap<QString, Imiks>* l);
+	Imiks get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
 class MItem : public IItem{
 	float stackSize;
@@ -32,26 +32,26 @@ class MItemsContainer : public IItemsContainer{
 	Q_INTERFACES(IItemsContainer)
 	MMods* loader;
 	QString className = "M-ItemsContainer";
- QMap<Emiks*, IItem*>* map;
- Emiks* mNull;
+ QMap<Imiks, IItem*>* map;
+ Imiks mNull;
 	IItem* iNull;
 
 public:
-	MItemsContainer(MMods* l, QMap<Emiks*, IItem*>* m);
- IItem* get(Emiks* id) Q_DECL_OVERRIDE;
-	Emiks* get(IItem* id) Q_DECL_OVERRIDE;
+	MItemsContainer(MMods* l, QMap<Imiks, IItem*>* m);
+ IItem* get(Imiks id) Q_DECL_OVERRIDE;
+	Imiks get(IItem* id) Q_DECL_OVERRIDE;
 };
 
 class MBIds : public IModsIds {
 	Q_INTERFACES(IItemIds)
 	MMods* loader;
 	QString className = "M-BIds";
-	QMap<QString, Emiks*>* mods;
-	Emiks* mnull;
+	QMap<QString, Imiks>* mods;
+	Imiks mnull;
 
 public:
-	MBIds(MMods *m, QMap<QString, Emiks*>* l);
-	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
+	MBIds(MMods *m, QMap<QString, Imiks>* l);
+	Imiks get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
 class MBlock : public IBlock{
 	float weight;
@@ -63,26 +63,26 @@ class MBlocksContainer : public IBlocksContainer{
 	Q_INTERFACES(IBlocksContainer)
 	MMods* loader;
 	QString className = "M-BlocksContainer";
-	QMap<Emiks*, IBlock*>* map;
-	Emiks* mNull;
+	QMap<Imiks, IBlock*>* map;
+	Imiks mNull;
 	IBlock* iNull;
 
 public:
-	MBlocksContainer(MMods* l, QMap<Emiks*, IBlock*>* m);
-	IBlock* get(Emiks* id) Q_DECL_OVERRIDE;
-	Emiks* get(IBlock* id) Q_DECL_OVERRIDE;
+	MBlocksContainer(MMods* l, QMap<Imiks, IBlock*>* m);
+	IBlock* get(Imiks id) Q_DECL_OVERRIDE;
+	Imiks get(IBlock* id) Q_DECL_OVERRIDE;
 };
 
 class MTIds : public IModsIds {
 	Q_INTERFACES(IItemIds)
 	MMods* loader;
 	QString className = "M-TIds";
-	QMap<QString, Emiks*>* mods;
-	Emiks* mnull;
+	QMap<QString, Imiks>* mods;
+	Imiks mnull;
 
 public:
-	MTIds(MMods *m, QMap<QString, Emiks*>* l);
-	Emiks* get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
+	MTIds(MMods *m, QMap<QString, Imiks>* l);
+	Imiks get(QString m, QString i, QString k, int s) Q_DECL_OVERRIDE;
 };
 class MTool : public ITool{
 	int durability;
@@ -97,14 +97,14 @@ class MToolsContainer : public IToolsContainer{
 	Q_INTERFACES(IToolsContainer)
 	MMods* loader;
 	QString className = "M-ToolsContainer";
-	QMap<Emiks*, ITool*>* map;
-	Emiks* mNull;
+	QMap<Imiks, ITool*>* map;
+	Imiks mNull;
 	ITool* iNull;
 
 public:
-	MToolsContainer(MMods* l, QMap<Emiks*, ITool*>* m);
-	ITool* get(Emiks* id) Q_DECL_OVERRIDE;
-	Emiks* get(ITool* id) Q_DECL_OVERRIDE;
+	MToolsContainer(MMods* l, QMap<Imiks, ITool*>* m);
+	ITool* get(Imiks id) Q_DECL_OVERRIDE;
+	Imiks get(ITool* id) Q_DECL_OVERRIDE;
 };
 
 #endif //GLOBALQT_MCONTAINERS_H

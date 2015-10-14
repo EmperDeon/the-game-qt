@@ -3,7 +3,8 @@
 
 #include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
-#include <ModLoader/core/mrender.h>
+#include <ModLoader/core/level/mchunk.h>
+#include <ModLoader/core/render/mrender.h>
 #include <ModLoader/core/mactions.h>
 #include <ModLoader/mutils.h>
 

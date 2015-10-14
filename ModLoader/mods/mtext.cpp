@@ -13,10 +13,10 @@ void MTextContainer::preInit() {
 
 	//MItemsContainer
 	{
-		QMap<QString, Emiks *> *iidsMap = new QMap<QString, Emiks *>;
-		QMap<Emiks *, IItem *> *itemsMap = new QMap<Emiks *, IItem *>;
+		QMap<QString, Imiks> *iidsMap = new QMap<QString, Imiks>;
+		QMap<Imiks, IItem *> *itemsMap = new QMap<Imiks, IItem *>;
 		QJsonObject t;
-		Emiks *e;
+		Imiks e;
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
@@ -34,7 +34,7 @@ void MTextContainer::preInit() {
 						if (s != ls) { cs++;ls = s; }
 
 						n = lm + "^" + li + "^" + lk + "^" + ls;
-						e = new Emiks(cm, ci, ck, cs);
+						e = Imiks(cm, ci, ck, cs);
 
 						iidsMap->insert(n, e);
 						itemsMap->insert(e, new MItem(t));
@@ -50,10 +50,10 @@ void MTextContainer::preInit() {
 	//!MItemsContainer
 	//MBlocksContainer
 	{
-		QMap<QString, Emiks *> *bidsMap = new QMap<QString, Emiks *>;
-		QMap<Emiks *, IBlock *> *blocksMap = new QMap<Emiks *, IBlock *>;
+		QMap<QString, Imiks> *bidsMap = new QMap<QString, Imiks>;
+		QMap<Imiks, IBlock *> *blocksMap = new QMap<Imiks, IBlock *>;
 		QJsonObject t;
-		Emiks *e;
+		Imiks e;
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
@@ -71,7 +71,7 @@ void MTextContainer::preInit() {
 						if (s != ls) { cs++;ls = s; }
 
 						n = lm + "^" + li + "^" + lk + "^" + ls;
-						e = new Emiks(cm, ci, ck, cs);
+						e = Imiks(cm, ci, ck, cs);
 
 						bidsMap->insert(n, e);
 						blocksMap->insert(e, new MBlock(t));
@@ -87,10 +87,10 @@ void MTextContainer::preInit() {
 	//!MBlocksContainer
  //MToolsContainer
 	{
-		QMap<QString, Emiks *> *tidsMap = new QMap<QString, Emiks *>;
-		QMap<Emiks *, ITool *> *toolsMap = new QMap<Emiks *, ITool *>;
+		QMap<QString, Imiks> *tidsMap = new QMap<QString, Imiks>;
+		QMap<Imiks, ITool *> *toolsMap = new QMap<Imiks, ITool *>;
 		QJsonObject t;
-		Emiks *e;
+		Imiks e;
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
@@ -108,7 +108,7 @@ void MTextContainer::preInit() {
 						if (s != ls) {cs++;	ls = s;	}
 
 						n = lm + "^" + li + "^" + lk + "^" + ls;
-						e = new Emiks(cm, ci, ck, cs);
+						e = Imiks(cm, ci, ck, cs);
 
 						tidsMap->insert(n, e);
 						toolsMap->insert(e, new MTool(t));

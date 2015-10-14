@@ -11,9 +11,9 @@ class MActions : public IActions{
  Q_INTERFACES(IActions)
 	MCoreMods* loader;
 
-	QMap <Emiks*, IItemActions*>* itemScripts;
-	QMap <Emiks*, IToolActions*>* toolScripts;
-	QMap <Emiks*, IBlockActions*>* blockScripts;
+	QMap <Imiks, IItemActions*>* itemScripts;
+	QMap <Imiks, IToolActions*>* toolScripts;
+	QMap <Imiks, IBlockActions*>* blockScripts;
 
 	QMap <int, IPluginActions*>* plugins;
 public:

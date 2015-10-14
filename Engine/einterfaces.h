@@ -5,13 +5,60 @@
 #include <QtWidgets>
 
 #include "Engine/edefines.h"
+#include "Engine/interfaces/imain.h"
+
+class Imiks {
+	//bytes - mod:10, item:10, kind:8, state:4
+	quint32 d;
+public:
+	Imiks(){d = 0;}
+	Imiks(int m, int i, int k, int s){
+		d = 0;
+		if((m < 1024)||(i < 1024)||(k < 256)||(s < 16)){
+			d |= m << 23;
+			d |= i << 13;
+			d |= k << 5;
+			d |= s << 1;
+		}else{
+			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+		}
+	}
+	quint32 c()const { return d;}
+	quint32 m()const {	return this->d >> 22 & 1023;}
+	quint32 i()const {	return this->d >> 13 & 1023;}
+	quint32 k()const {	return this->d >> 5 & 255;  }
+	quint32 s()const {	return this->d >> 1 & 15;   }
+	bool operator< (Imiks o)const {return d < o.d;}
+};
+class IBlockPos {
+	// bytes - x:5, y:5, z:5
+	quint16 d;
+public:
+	IBlockPos(){d = 0;}
+	IBlockPos(int x, int y, int z){
+		d = 0;
+		if((x < 32)||(y < 32)||(z < 32)){
+			d |= x << 11;
+			d |= y << 6;
+			d |= z << 1;
+		}else{
+			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+		}
+	}
+	quint16 c()const { return d;}
+	int x()const {	return this->d >> 11 & 32;}
+	int y()const {	return this->d >> 6 & 32;}
+	int z()const {	return this->d >> 1 & 32;  }
+	bool operator< (IBlockPos o)const {return d < o.d;}
+};
+
 #include "Engine/interfaces/iinventory.h"
 #include "Engine/interfaces/ilevel.h"
-#include "Engine/interfaces/imain.h"
 #include "Engine/interfaces/imods.h"
 #include "Engine/interfaces/irender.h"
+#include "Engine/interfaces/itext.h"
 
-#include "Engine/econtainers.h"
+
 
 QT_BEGIN_NAMESPACE
 // ModLoader

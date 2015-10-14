@@ -50,6 +50,7 @@ set(G_HEADERS
 		Engine/interfaces/imain.h
 		Engine/interfaces/imods.h
 		Engine/interfaces/irender.h
+		Engine/interfaces/itext.h
 		Engine/einterfaces.h
 
 		Engine/emain.h
@@ -81,7 +82,8 @@ set(M_SOURCE_FILES
 		ModLoader/mutils.cpp
 
 		ModLoader/core/mcoremods.cpp
-		ModLoader/core/mrender.cpp
+		ModLoader/core/level/mchunk.cpp
+		ModLoader/core/render/mrender.cpp
 
 		ModLoader/core/mactions.cpp
 		ModLoader/mods/mmods.cpp
@@ -97,7 +99,8 @@ set(M_HEADERS
 		ModLoader/mdefines.h
 
 		ModLoader/core/mcoremods.h
-		ModLoader/core/mrender.h
+		ModLoader/core/level/mchunk.h
+		ModLoader/core/render/mrender.h
 
 		ModLoader/core/mactions.h
 		ModLoader/mods/mmods.h
