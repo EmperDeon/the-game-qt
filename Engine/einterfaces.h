@@ -12,6 +12,7 @@ class Imiks {
 	quint32 d;
 public:
 	Imiks(){d = 0;}
+	Imiks(quint32 c){this->d = c;}
 	Imiks(int m, int i, int k, int s){
 		d = 0;
 		if((m < 1024)||(i < 1024)||(k < 256)||(s < 16)){
@@ -24,10 +25,10 @@ public:
 		}
 	}
 	quint32 c()const { return d;}
-	quint32 m()const {	return this->d >> 22 & 1023;}
-	quint32 i()const {	return this->d >> 13 & 1023;}
-	quint32 k()const {	return this->d >> 5 & 255;  }
-	quint32 s()const {	return this->d >> 1 & 15;   }
+	int m()const {	return this->d >> 22 & 1023;}
+	int i()const {	return this->d >> 13 & 1023;}
+	int k()const {	return this->d >> 5 & 255;  }
+	int s()const {	return this->d >> 1 & 15;   }
 	bool operator< (Imiks o)const {return d < o.d;}
 };
 class IBlockPos {
@@ -50,6 +51,27 @@ public:
 	int y()const {	return this->d >> 6 & 32;}
 	int z()const {	return this->d >> 1 & 32;  }
 	bool operator< (IBlockPos o)const {return d < o.d;}
+};
+class IChunkPos {
+	// bytes - x:5, y:5, z:5
+	quint16 d;
+public:
+	IChunkPos(){d = 0;}
+	IChunkPos(int x, int y, int z){
+		d = 0;
+		if((x < 32)||(y < 32)||(z < 32)){
+			d |= x << 11;
+			d |= y << 6;
+			d |= z << 1;
+		}else{
+			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+		}
+	}
+	quint16 c()const { return d;}
+	int x()const {	return this->d >> 11 & 32;}
+	int y()const {	return this->d >> 6 & 32;}
+	int z()const {	return this->d >> 1 & 32;  }
+	bool operator< (IChunkPos o)const {return d < o.d;}
 };
 
 #include "Engine/interfaces/iinventory.h"

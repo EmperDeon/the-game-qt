@@ -3,9 +3,7 @@
 #define ME_SAVE QString(".zip")
 
 #include <QtWidgets>
-#include <QWebView>
 #include <QtNetwork>
-#include <QtWebKitWidgets>
 #include <QtCore>
 #include <QtGui>
 #include <Launcher/lutils.h>

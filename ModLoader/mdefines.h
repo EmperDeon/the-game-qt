@@ -1,5 +1,6 @@
 #ifndef GLOBALQT_MDEFINES_H
 #define GLOBALQT_MDEFINES_H
+#include <Engine/einterfaces.h>
 
 #define mLogE(ms)  this->loader->log->log(GLogLevel::ERR,   this->className, ms)
 #define mLogW(ms)  this->loader->log->log(GLogLevel::WARN,  this->className, ms)

@@ -18,7 +18,6 @@ SET(CMAKE_CACHEFILE_DIR ${dir})
 find_package(Qt5Core)
 find_package(Qt5Widgets)
 find_package(Qt5Network)
-find_package(Qt5WebKitWidgets)
 find_package(Qt5Declarative)
 find_package(OpenGL REQUIRED)
 
@@ -114,14 +113,13 @@ qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
 
-
 add_executable(Engine ${G_SOURCE_FILES} ${G_HEADERS})
-qt5_use_modules(Engine Core Widgets Network WebKitWidgets OpenGL)
+qt5_use_modules(Engine Core Widgets Network OpenGL)
 target_compile_features(Engine PRIVATE cxx_range_for)
 target_link_libraries(Engine zlib ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 
 add_executable(Launcher ${L_SOURCE_FILES} ${L_HEADERS})
-qt5_use_modules(Launcher Core Widgets Network WebKitWidgets)
+qt5_use_modules(Launcher Core Widgets Network)
 target_compile_features(Launcher PRIVATE cxx_range_for)
 target_link_libraries(Launcher ${Qt5Core_QTMAIN_LIBRARIES})
 
@@ -132,7 +130,7 @@ add_definitions(-DQT_PLUGIN)
 add_definitions(-DQT_NO_DEBUG)
 add_definitions(-DQT_SHARED)
 add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
-qt5_use_modules(ModLoader Core Widgets Network WebKitWidgets)
+qt5_use_modules(ModLoader Core Widgets Network)
 target_compile_features(ModLoader PRIVATE cxx_range_for)
 target_link_libraries(ModLoader ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 

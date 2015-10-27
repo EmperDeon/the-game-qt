@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Launcher_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Launcher_automoc.cpp" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h">
       <sourceFolder url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h" isTestSource="false" />
     </content>
@@ -148,14 +151,15 @@
         </SOURCES>
         <excluded>
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/zlib/zconf.h" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Debug/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/MinSizeRel/zlib/zconf.h" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/RelWithDebInfo/zlib/zconf.h" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Runner_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/ModLoader_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlib_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zconf.h" />
-          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/zlib/zlibstatic_automoc.cpp" />
+          <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.clion11/system/cmake/generated/9ce32fe0/9ce32fe0/Release/Engine_automoc.cpp" />
         </excluded>
       </library>

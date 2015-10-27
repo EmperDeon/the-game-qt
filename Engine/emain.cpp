@@ -1,3 +1,4 @@
+#include <time.h>
 #include "Engine/emain.h"
 
 int main(int argc, char *argv[]){
@@ -17,6 +18,7 @@ int main(int argc, char *argv[]){
 }
 
 EMain::EMain() {
+ srand(time(NULL));
 
  varS(this, "eMain");
 	varS(GV_LOGGER, "eLogger");

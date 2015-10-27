@@ -50,38 +50,38 @@ void LMainWindow::procF(int e){
 #pragma clang diagnostic pop
 
 void LMainWindow::initWebKit(){
-	progress = 0;
-
-	QFile file;
-	file.setFileName(":/jquery.min.js");
-	file.open(QIODevice::ReadOnly);
-	jQuery = file.readAll();
-	jQuery.append("\nvar qt = { 'jQuery': jQuery.noConflict(true) };");
-	file.close();
-
-	QNetworkProxyFactory::setUseSystemConfiguration(true);
-
-	view = new QWebView(this);
-
-	connect(view, SIGNAL(loadFinished(bool)), SLOT(adjustLocation()));
-	connect(view, SIGNAL(titleChanged(QString)), SLOT(adjustTitle()));
-	connect(view, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
-	connect(view, SIGNAL(loadFinished(bool)), SLOT(finishLoading(bool)));
-
-	locationEdit = new QLineEdit(this);
-	locationEdit->setSizePolicy(QSizePolicy::Expanding, locationEdit->sizePolicy().verticalPolicy());
-	connect(locationEdit, SIGNAL(returnPressed()), SLOT(changeLocation()));
-
-	QToolBar *toolBar = addToolBar(tr("Navigation"));
-	toolBar->addAction(view->pageAction(QWebPage::Back));
-	toolBar->addAction(view->pageAction(QWebPage::Forward));
-	toolBar->addAction(view->pageAction(QWebPage::Reload));
-	toolBar->addAction(view->pageAction(QWebPage::Stop));
-	toolBar->addWidget(locationEdit);
-
-	if(site != ""){
-		view->load(QUrl(site));
-	}
+//	progress = 0;
+//
+//	QFile file;
+//	file.setFileName(":/jquery.min.js");
+//	file.open(QIODevice::ReadOnly);
+//	jQuery = file.readAll();
+//	jQuery.append("\nvar qt = { 'jQuery': jQuery.noConflict(true) };");
+//	file.close();
+//
+//	QNetworkProxyFactory::setUseSystemConfiguration(true);
+//
+//	view = new QWebView(this);
+//
+//	connect(view, SIGNAL(loadFinished(bool)), SLOT(adjustLocation()));
+//	connect(view, SIGNAL(titleChanged(QString)), SLOT(adjustTitle()));
+//	connect(view, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
+//	connect(view, SIGNAL(loadFinished(bool)), SLOT(finishLoading(bool)));
+//
+//	locationEdit = new QLineEdit(this);
+//	locationEdit->setSizePolicy(QSizePolicy::Expanding, locationEdit->sizePolicy().verticalPolicy());
+//	connect(locationEdit, SIGNAL(returnPressed()), SLOT(changeLocation()));
+//
+//	QToolBar *toolBar = addToolBar(tr("Navigation"));
+//	toolBar->addAction(view->pageAction(QWebPage::Back));
+//	toolBar->addAction(view->pageAction(QWebPage::Forward));
+//	toolBar->addAction(view->pageAction(QWebPage::Reload));
+//	toolBar->addAction(view->pageAction(QWebPage::Stop));
+//	toolBar->addWidget(locationEdit);
+//
+//	if(site != ""){
+//		view->load(QUrl(site));
+//	}
 }
 void LMainWindow::initLog(){
 	w_log = new LLogWidget;
@@ -145,7 +145,6 @@ void LMainWindow::collectWidgets(){
 	hlay->addSpacing(50);
 	hlay->addLayout(slay);
 
-	vlay->addWidget(view);
 	vlay->addLayout(hlay);
 
 	layout->addLayout(vlay);
@@ -204,29 +203,6 @@ void LMainWindow::launch(){
 	proc->start(dir+"/game.exe");
 
 	connect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
-}
-void LMainWindow::adjustLocation(){
-	locationEdit->setText(view->url().toString());
-}
-void LMainWindow::changeLocation(){
-	QUrl url = QUrl::fromUserInput(locationEdit->text());
-	view->load(url);
-	view->setFocus();
-}
-void LMainWindow::adjustTitle(){
-	if (progress <= 0 || progress >= 100)
-		setWindowTitle(view->title());
-	else
-		setWindowTitle(QString("%1 (%2%)").arg(view->title()).arg(progress));
-}
-void LMainWindow::setProgress(int p){
-	progress = p;
-	adjustTitle();
-}
-void LMainWindow::finishLoading(bool){
-	progress = 100;
-	adjustTitle();
-	view->page()->mainFrame()->evaluateJavaScript(jQuery);
 }
 void LMainWindow::closeEvent(QCloseEvent *event){
 	w_log->close();

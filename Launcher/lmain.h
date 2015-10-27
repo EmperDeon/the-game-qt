@@ -27,9 +27,6 @@ class LMainWindow : public QMainWindow{
 	MLocalServer* srv;
 	QString lastMsg;
 
-	QString jQuery;
-	QWebView *view;
-	QLineEdit *locationEdit;
 	QWidget* wgt;
 
 	QHBoxLayout* layout;
@@ -71,12 +68,6 @@ private:
 	void parse();
 
 	void download();
-protected slots:
-	void adjustLocation();
-	void changeLocation();
-	void adjustTitle();
-	void setProgress(int p);
-	void finishLoading(bool);
 protected:
 	void closeEvent(QCloseEvent *event);
 };
