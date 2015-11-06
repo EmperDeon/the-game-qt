@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]){
 	QApplication a(argc, argv);
 	LMainWindow w;
-	w.show();
+	//w.show();
 
 	return a.exec();
 }
@@ -20,7 +20,7 @@ LMainWindow::LMainWindow(){
 
 	check();
 
-	//launch();
+	launch();
 }
 
 void LMainWindow::showDev(){

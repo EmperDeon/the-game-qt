@@ -7,6 +7,9 @@
 #include <ModLoader/mods/mscript.h>
 #include <ModLoader/mods/mplugin.h>
 
+#include <QtCore>
+#include <ModLoader/core/level/mlevel.h>
+
 class ModLoader;
 class ILogger;
 class IVars;
@@ -22,6 +25,8 @@ class MMods{
 	MTextContainer*    text;
 	MScriptsContainer* script;
 	MPluginsContainer* plugin;
+
+	MLevel* l;
 public:
 	ILogger* log;
 	IVars* vars;

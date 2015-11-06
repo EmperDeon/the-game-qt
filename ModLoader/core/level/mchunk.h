@@ -19,15 +19,18 @@ public:
 	virtual bool isParams();
 };
 class MChunk : public IChunk{
-	MWorldBlock chunk[32][32][32];
+	static const int size = 32;
+	IWorldBlock* chunk[size][size][size];
  IChunkPos id;
+	int c;
 public:
 	MChunk(IChunkPos p);
+	MChunk(QByteArray a, QJsonObject o, IChunkPos pos);
  int getType();
 	virtual IChunkPos getId();
 	virtual IWorldBlock *getBlock(IBlockPos p);
-	virtual void read(QByteArray a);
-	virtual void write(QDataStream &a);
+	virtual void setBlock(IWorldBlock* b);
+	void write(QDataStream &a, QJsonObject& o);
 };
 
 #endif //GLOBALQT_MCHUNK_H

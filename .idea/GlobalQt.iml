@@ -68,6 +68,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mregion.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mactions.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mactions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.cpp" isTestSource="false" />

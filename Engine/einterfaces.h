@@ -68,10 +68,19 @@ public:
 		}
 	}
 	quint16 c()const { return d;}
-	int x()const {	return this->d >> 11 & 32;}
-	int y()const {	return this->d >> 6 & 32;}
-	int z()const {	return this->d >> 1 & 32;  }
+	int x()const {	return this->d >> 11 & 31;}
+	int y()const {	return this->d >> 6 & 31;}
+	int z()const {	return this->d >> 1 & 31;  }
 	bool operator< (IChunkPos o)const {return d < o.d;}
+};
+class IRegionPos{
+	long int px;
+	long int py;
+public:
+	IRegionPos(){ px = 0; py = 0; }
+	IRegionPos(long int x, long int y){ this->px = x; this->py = y; }
+	long int x(){ return px; }
+	long int y(){ return py; }
 };
 
 #include "Engine/interfaces/iinventory.h"

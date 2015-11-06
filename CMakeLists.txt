@@ -81,8 +81,11 @@ set(M_SOURCE_FILES
 		ModLoader/mutils.cpp
 
 		ModLoader/core/mcoremods.cpp
-		ModLoader/core/level/mchunk.cpp
-		ModLoader/core/render/mrender.cpp
+		 ModLoader/core/level/mchunk.cpp
+		 ModLoader/core/level/mregion.cpp
+		 ModLoader/core/level/mlevel.cpp
+
+	 	ModLoader/core/render/mrender.cpp
 
 		ModLoader/core/mactions.cpp
 		ModLoader/mods/mmods.cpp
@@ -98,8 +101,11 @@ set(M_HEADERS
 		ModLoader/mdefines.h
 
 		ModLoader/core/mcoremods.h
-		ModLoader/core/level/mchunk.h
-		ModLoader/core/render/mrender.h
+	 	ModLoader/core/level/mchunk.h
+		 ModLoader/core/level/mregion.h
+		 ModLoader/core/level/mlevel.h
+
+	 	ModLoader/core/render/mrender.h
 
 		ModLoader/core/mactions.h
 		ModLoader/mods/mmods.h

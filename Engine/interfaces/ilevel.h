@@ -12,19 +12,24 @@ public:
 	virtual bool isParams() = 0;
 };
 
-class IRegon{
-
-};
-
 class IChunk{
 public:
 	virtual IChunkPos getId() = 0;
+	virtual void setBlock(IWorldBlock* b) = 0;
 	virtual IWorldBlock* getBlock(IBlockPos p) = 0;
-	virtual void read(QByteArray a) = 0;
-	virtual void write(QDataStream &a) = 0;
-//	virtual void load(QDataStream& a) = 0;
-//	virtual void save(QDataStream& a) = 0;
 };
 
+class IRegion{
+public:
+	virtual IRegionPos getId() = 0;
+	virtual IChunk* getChunk(IChunkPos p) = 0;
+};
 
+class ILevel{
+public:
+	virtual QString getName() = 0;
+	virtual void load() = 0;
+	virtual void save() = 0;
+
+};
 #endif //GLOBALQT_ILEVEL_H

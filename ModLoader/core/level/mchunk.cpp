@@ -8,26 +8,61 @@ IBlockPos MWorldBlock::getPos() { return pos; }
 QString MWorldBlock::getParams(){ return param; }
 void MWorldBlock::addParam(QString s){ this->param += s; }
 void MWorldBlock::setParam(QString s){ this->param = s; }
-bool MWorldBlock::isParams(){return param == "";}
+bool MWorldBlock::isParams(){return param != "";}
 
 MChunk::MChunk(IChunkPos p): id(p){
-	for(int x = 24 ; x < 32; x++)
-		for(int y = 0 ; y < 32 ; y++)
-			for(int z = 0 ; z < 32 ; z++)
-				if(rand() % 2 == 0)
-				 chunk[x][y][z] = MWorldBlock(Imiks(1,1,1,1), IBlockPos(x,y,z));
-				else
-					chunk[x][y][z] = MWorldBlock(Imiks(1,1,1,1), IBlockPos(x,y,z), "Parameter1;");
+	for(int x = 0 ; x < size; x++)
+		for(int y = 0 ; y < size ; y++)
+			for(int z = 0 ; z < size ; z++)
+				if(x > 24){
+					if(rand() % 2 == 0) {
+						chunk[x][y][z] = new MWorldBlock(Imiks(1, 1, 1, 1), IBlockPos(x, y, z));
+					}else{
+						chunk[x][y][z] = new MWorldBlock(Imiks(1,1,1,1), IBlockPos(x,y,z), "Parameter1;");
+						c++;
+					}
+				}else{
+					chunk[x][y][z] = NULL;
+				}
+
+}
+MChunk::MChunk(QByteArray a, QJsonObject o, IChunkPos pos): id(pos){
+	quint32 id;
+	int pr, type, count = 0, par = 0, npar = 0;
+	QJsonArray arr = o["params"].toArray();
+	QDataStream in(a);
+	in.setVersion(QDataStream::Qt_5_4);
+
+	in >> type;
+	for ( int x = 0; x < size; x++ )
+		for ( int y = 0; y < size; y++ )
+			for ( int z = 0; z < size; z++ ){
+				in >> id;
+				in >> pr;
+				if(id == 0 ){
+					this->chunk[x][y][z] = NULL;
+					count++;
+				}else if(pr == 0){
+					this->chunk[x][y][z] = new MWorldBlock(
+						Imiks(id),
+						IBlockPos(x, y, z)
+					);
+					npar++;
+				}else{
+					this->chunk[x][y][z] = new MWorldBlock(
+						Imiks(id),
+						IBlockPos(x, y, z),
+						arr.at(pr).toString()
+					);
+					par++;
+				}
+			}
 }
 IChunkPos MChunk::getId() {	return this->id;}
-IWorldBlock *MChunk::getBlock(IBlockPos p) { return &chunk[p.x()][p.y()][p.z()];}
+IWorldBlock *MChunk::getBlock(IBlockPos p) { return chunk[p.x()][p.y()][p.z()];}
+void MChunk::setBlock(IWorldBlock* b){ this->chunk[b->getPos().x()][b->getPos().y()][b->getPos().z()] = b;}
 int MChunk::getType() {
-	int type, c = 0;
-	for ( int x = 0; x < 32; x++ )
-		for ( int y = 0; y < 32; y++ )
-			for ( int z = 0; z < 32; z++ )
-				if(chunk[x][y][z].isParams())
-					c++;
+	int type;
 
 	if(c == 0) type = 1;
 	else if(c <= 256) type = 2;
@@ -35,96 +70,32 @@ int MChunk::getType() {
 
 	return type;
 }
-void MChunk::write(QDataStream& a) {
+void MChunk::write(QDataStream& out, QJsonObject& o) {
 	QJsonArray arr;
-	{
-		QByteArray outp;
-		QDataStream out(outp);
-		out.setVersion(QDataStream::Qt_5_4);
-		int type = getType();
 
-		for ( int x = 0; x < 32; x++ )
-			for ( int y = 0; y < 32; y++ )
-				for ( int z = 0; z < 32; z++ ) {
-					if (chunk[x][y][z].isParams()) {
-						arr << chunk[x][y][z].getParams();
-						out << chunk[x][y][z].getId().c() ;
-						switch (type){
-							case 1: break;
-							case 2: out << (byte)arr.size(); break;
-							case 3: out << (int)arr.size(); break;
-							default:;
-						}
-					} else {
-						out << chunk[x][y][z].getId().c();
-						switch (type){
-							case 1: break;
-							case 2: out << (byte)0; break;
-							case 3: out << (int)0; break;
-							default:;
-						}
-					}
-				}
+	int count = 0, nPar = 0, par = 0;
 
-		a << type << outp;
-	}{
-		QByteArray outp;
-		QDataStream out(outp);
-		out.setVersion(QDataStream::Qt_5_4);
-
-		QJsonObject obj;
-		obj["x"] = id.x();
-		obj["y"] = id.y();
-		obj["z"] = id.z();
-		obj["params"] = arr;
-
-		out << QJsonDocument(obj).toBinaryData();
-
-		a << outp.size() << outp;
-	}
-}
-void MChunk::read(QByteArray a) {
-	struct MSmallWorldBlock{quint32 id; int pr;};
-	int type;
-	MSmallWorldBlock arr[32][32][32];
-	QDataStream in(a);
-	in.setVersion(QDataStream::Qt_5_4);
-
-	in >> type;
-	for ( int x = 0; x < 32; x++ )
-		for ( int y = 0; y < 32; y++ )
-			for ( int z = 0; z < 32; z++ ){
-				in >> arr[x][y][z].id;
-				switch(type){
-					case 1: arr[x][y][z].pr = 0; break;
-					case 2: byte t; in >> t; arr[x][y][z].pr = t; break;
-					case 3: in >> arr[x][y][z].pr; break;
-					default:;
+	for ( int x = 0; x < size; x++ )
+		for ( int y = 0; y < size; y++ )
+			for ( int z = 0; z < size; z++ ) {
+				if(chunk[x][y][z] == NULL){ count++;
+					out << int(0) << int(0);
+				}else	if (chunk[x][y][z]->isParams()) {	nPar++;
+					arr << chunk[x][y][z]->getParams();
+					out << chunk[x][y][z]->getId().c() << arr.size();
+				} else {	par++;
+					out << chunk[x][y][z]->getId().c() << int(0);
 				}
 			}
 
- in >> type;
-	QByteArray json(a.right(type));
-	QJsonObject o = QJsonDocument::fromBinaryData(json).object();
-	this->id = IChunkPos(o["x"].toInt(), o["y"].toInt(), o["z"].toInt());
-
-	QJsonArray arr1 = o["params"].toArray();
-
-	for ( int x = 0; x < 32; x++ )
-		for ( int y = 0; y < 32; y++ )
-			for ( int z = 0; z < 32; z++ )
-			if(arr[x][y][z].pr == 0){
-				this->chunk[x][y][z] = MWorldBlock(
-					Imiks(arr[x][y][z].id),
-					IBlockPos(x, y, z)
-				);
-			}else{
-				this->chunk[x][y][z] = MWorldBlock(
-					Imiks(arr[x][y][z].id),
-					IBlockPos(x, y, z),
-					arr1.at(arr[x][y][z].pr).toString()
-				);
-			}
+	QJsonObject obj;
+	obj["params"] = arr;
+	o["chunk"
+	  +QString::number(this->id.x())
+	  +QString::number(this->id.y())
+	  +QString::number(this->id.z())
+	] = obj;
 }
+
 
 
