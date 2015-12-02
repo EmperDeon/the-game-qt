@@ -83,6 +83,10 @@ public:
 	long int y(){ return py; }
 };
 
+template<typename Base, typename T> inline bool instanceOf(const T *ptr) {
+	return dynamic_cast<const Base*>(ptr) != nullptr;
+}
+
 #include "Engine/interfaces/iinventory.h"
 #include "Engine/interfaces/ilevel.h"
 #include "Engine/interfaces/imods.h"

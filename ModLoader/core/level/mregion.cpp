@@ -13,13 +13,27 @@ MRegion::MRegion(IRegionPos p, QString name) { // saves/name/dim0/ for name "nam
 //		for ( int y = 0; y < ySize; y++ )
 //			for ( int z = 0; z < zSize; z++ )
 //				reg[x][y][z] = new MChunk(IChunkPos(x, y, z));
-
+ edited = new QList<IChunk*>;
 }
 IRegionPos MRegion::getId() {	return pos;}
-IChunk* MRegion::getChunk(IChunkPos p) {	return reg[p.x()][p.y()][p.z()];}
+IChunk* MRegion::getChunk(IChunkPos p) {	edited->append(reg[p.x()][p.y()][p.z()]); return reg[p.x()][p.y()][p.z()]; }
+IChunk *MRegion::getConstChunk(IChunkPos p) const {	return reg[p.x()][p.y()][p.z()];}
+void MRegion::setChunk(IChunk *ch) { this->reg[ch->getId().x()][ch->getId().y()][ch->getId().z()] = ch; edited->append(ch);}
+
+void MRegion::write(IChunk* ch, QDataStream& out){
+	if(ch != NULL){
+		if(instanceOf<MChunk>(ch)){
+			MChunk* t = dynamic_cast<MChunk*>(ch);
+ 		QByteArray ta;
+ 		QDataStream ts(&ta, QIODevice::WriteOnly);
+ 		t->write(ts, obj);
+	 	out << ta.size() << ta;
+	 }
+	}
+}
+
 void MRegion::write() {
  QFile o(file);
-	QJsonObject obj;
 
  o.open(QFile::WriteOnly);
 	QDataStream out(&o);
@@ -28,13 +42,7 @@ void MRegion::write() {
 	for ( int x = 0; x < xSize; x++ )
 		for ( int y = 0; y < ySize; y++ )
 			for ( int z = 0; z < zSize; z++ )
-			 if(reg[x][y][z] != NULL){
-				 QByteArray ta;
-			 	QDataStream ts(&ta, QIODevice::WriteOnly);
-			 	reg[x][y][z]->write(ts, obj);
-
-			 	out << ta.size() << ta;
-		 	}
+			 write(reg[x][y][z], out);
 
 	QByteArray outa;
 	QByteArray arr(QJsonDocument(obj).toBinaryData());
@@ -88,6 +96,11 @@ void MRegion::read() {
 			}
 
 	i.close();
+}
+
+
+void MRegion::rewrite() {
+
 }
 
 

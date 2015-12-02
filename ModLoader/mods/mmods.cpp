@@ -29,11 +29,11 @@ QString toHex(QJsonObject o){
 }
 
 void MMods::init() {
-//	mLogFF("init started");
-//	this->text->  init();
-//	this->script->init();
-//	this->plugin->init();
-//	mLogFF("init finished");
+	mLogFF("init started");
+	this->text->  init();
+	this->script->init();
+	this->plugin->init();
+	mLogFF("init finished");
 
 	/*QJsonObject obj;
 
@@ -58,16 +58,16 @@ void MMods::init() {
 	mLogW(toHex(n));*/
 	///*
 
- QTime t;
-	t.start();
-	l = new MLevel("test2");
-	int i = t.elapsed();
-	mLogI("Creating Finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
-
-	t.start();
-	l->load();
-	i = t.elapsed();
-	mLogI("Loading finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
+// QTime t;
+//	t.start();
+//	l = new MLevel("test2");
+//	int i = t.elapsed();
+//	mLogI("Creating Finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
+//
+//	t.start();
+//	l->load();
+//	i = t.elapsed();
+//	mLogI("Loading finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
 
 //	t.start();
 //	 l->save();
