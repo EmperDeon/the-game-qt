@@ -33,10 +33,10 @@ public:
 class ILevelInfo{
 public:
 	virtual QString getName() = 0;
-	virtual QString getFile() = 0;
+	virtual QString getDir() = 0;
 
 	virtual void setName(QString name) = 0;
-	virtual void setFile(QString file) = 0;
+	virtual void setDir(QString file) = 0;
 };
 
 class ILevel{

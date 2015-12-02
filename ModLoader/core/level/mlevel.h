@@ -5,27 +5,32 @@
 
 class MLevelInfo : public ILevelInfo{
 	QString name;
-	QString file;
+	QString dir;
 public:
-	MLevelInfo(QString name);
+	MLevelInfo();
+
+	virtual static QJsonObject toJson(MLevelInfo *info);
+	virtual static ILevelInfo * fromJson(QJsonObject obj);
+
 	virtual QString getName();
-	virtual QString getFile();
+	virtual QString getDir();
 
 	virtual void setName(QString name);
-	virtual void setFile(QString file);
+	virtual void setDir(QString file);
 };
 
 class MLevel : public ILevel{
 	MRegion* reg;
 	ILevelInfo* info;
 
- QList<IChunk*> chunkList;
+ QMap<IChunkPos, IChunk*>* chunkList;
 
 
 public:
 	MLevel(ILevelInfo* info);
 	virtual QString getName();
 	virtual void load();
+	void load(QJsonObject obj);
 	virtual void save();
  virtual void saveInfo();
 

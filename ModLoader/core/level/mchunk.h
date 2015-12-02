@@ -9,6 +9,7 @@ class MChunk : public IChunk{
  IChunkPos id;
 	int c;
 public:
+	MChunk();
 	MChunk(IChunkPos p);
 	MChunk(QByteArray a, QJsonObject o, IChunkPos pos);
  int getType();
