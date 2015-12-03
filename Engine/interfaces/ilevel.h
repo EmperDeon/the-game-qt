@@ -37,6 +37,10 @@ public:
 
 	virtual void setName(QString name) = 0;
 	virtual void setDir(QString file) = 0;
+
+	virtual QJsonObject * getCustom() = 0;
+	virtual void addCustom(QJsonObject) = 0;
+	virtual void addToCustom(QString key, QJsonValue value) = 0;
 };
 
 class ILevel{
@@ -51,7 +55,7 @@ public:
 	virtual IChunk * getChunk(IChunkPos pos) = 0;
 };
 
-class ILevelManager{
+class ILevelManager {
 public:
 	virtual QList<ILevelInfo*> getList() = 0;
 	virtual ILevel* getCurrentLevel() = 0;

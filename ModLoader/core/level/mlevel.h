@@ -6,17 +6,23 @@
 class MLevelInfo : public ILevelInfo{
 	QString name;
 	QString dir;
+	QJsonObject* custom;
+
 public:
 	MLevelInfo();
 
-	virtual static QJsonObject toJson(MLevelInfo *info);
-	virtual static ILevelInfo * fromJson(QJsonObject obj);
+	static QJsonObject toJson(MLevelInfo *info);
+	static ILevelInfo * fromJson(QJsonObject obj);
 
 	virtual QString getName();
 	virtual QString getDir();
 
 	virtual void setName(QString name);
 	virtual void setDir(QString file);
+
+	virtual QJsonObject * getCustom();
+	virtual void addCustom(QJsonObject);
+	virtual void addToCustom(QString key, QJsonValue value);
 };
 
 class MLevel : public ILevel{

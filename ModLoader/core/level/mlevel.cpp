@@ -10,22 +10,31 @@ void MLevelInfo::setName(QString name) {	this->name = name;}
 void MLevelInfo::setDir(QString file) { this->dir = file;}
 
 QJsonObject MLevelInfo::toJson(MLevelInfo *info) {
-	QJsonObject obj;
-
+	QJsonObject obj(*info->custom);
 	obj["name"] = info->name;
 	obj["dir"] = info->dir;
 
 	return obj;
 }
-
 ILevelInfo * MLevelInfo::fromJson(QJsonObject obj) {
 	MLevelInfo* info = new MLevelInfo();
-
 	info->name = obj.value("name").toString();
 	info->dir = obj.value("dir").toString();
-
+ foreach(QString k, obj.keys()){
+			if((k.compare("name") != 0)
+			 ||(k.compare("dir")  != 0)
+				)
+				info->custom->insert(k, obj.value(k));
+		}
 	return info;
 }
+QJsonObject * MLevelInfo::getCustom() {	return custom;}
+void MLevelInfo::addCustom(QJsonObject object) {
+		foreach(QString s, object.keys()){
+			this->custom->insert(s, object.value(s));
+		}
+}
+void MLevelInfo::addToCustom(QString key, QJsonValue value) { this->custom->insert(key, value);}
 //MLevelInfo
 
 //MLevel
@@ -90,6 +99,3 @@ void MLevelManager::exitLevel(ILevelInfo* i) {
 void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
-
-
-
