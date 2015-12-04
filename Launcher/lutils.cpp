@@ -232,7 +232,7 @@ MLocalServer::MLocalServer(LLogWidget* l){
 
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(readyRead()));
-	timer->start(500);
+	timer->start(50);
 }
 void MLocalServer::addLog(QString s){
 	if(s.indexOf("#Launcher") == 0){
