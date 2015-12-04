@@ -1,4 +1,5 @@
 #include "mmods.h"
+#include <ModLoader/core/level/mlevel.h>
 
 MMods::MMods(ModLoader *l) : loader(l), log(l->log), vars(l->vars){
 	this->text   = new MTextContainer   (this);
@@ -34,6 +35,39 @@ void MMods::init() {
 	this->script->init();
 	this->plugin->init();
 	mLogFF("init finished");
+
+//	MRegion reg(IRegionPos(0,0), "saves/TestWorld_1/dim0/");
+//	reg.write();
+ QTime t;
+	t.start();
+
+	QFile file("saves/TestWorld_1/level.dat");file.open(QIODevice::ReadOnly);
+	ILevelInfo* info = MLevelInfo::fromJson(QJsonDocument::fromBinaryData(file.readAll()).object());
+//	MLevelInfo* info = new MLevelInfo();
+	info->setName("TestWorld_1");
+
+	MLevel* level = new MLevel(info);
+
+	int i = t.elapsed();
+	mLogI("Creating Finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
+	t.start();
+
+	for ( int x = 0; x < 4; x++ )
+		for ( int y = 0; y < 4; y++ )
+			for ( int z = 0; z < 3; z++ )
+				level->addNewChunk(IChunkPos(x, y, z));
+
+	i = t.elapsed();
+	mLogI("Filling Finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
+	t.start();
+
+//	level->save();
+	level->load();
+
+	i = t.elapsed();
+	mLogI("Loading Finished in "+QString::number(i/1000) + "." + QString::number(i%1000));
+
+
 
 	/*QJsonObject obj;
 

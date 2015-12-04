@@ -1,4 +1,5 @@
-#include "mchunk.h"
+#include "ModLoader/core/level/mchunk.h"
+#include <iostream>
 
 MChunk::MChunk(){}
 MChunk::MChunk(IChunkPos p): id(p){
@@ -17,41 +18,39 @@ MChunk::MChunk(IChunkPos p): id(p){
 				}
 
 }
+MChunk::MChunk(IWorldGenerator *gen, IChunkPos p): id(p){ gen->generateChunk(this);}
 MChunk::MChunk(QByteArray a, QJsonObject o, IChunkPos pos): id(pos){
 	quint32 id;
-	int pr, type, count = 0, par = 0, npar = 0;
+	int pr, type, count=0, par=0, npar=0;
 	QJsonArray arr = o["params"].toArray();
 	QDataStream in(a);
 	in.setVersion(QDataStream::Qt_5_4);
 
 	in >> type;
-	for ( int x = 0; x < size; x++ )
-		for ( int y = 0; y < size; y++ )
-			for ( int z = 0; z < size; z++ ){
+	for ( int x = 0; x < size; x++ )		for ( int y = 0; y < size; y++ )			for ( int z = 0; z < size; z++ ){
 				in >> id;
 				in >> pr;
-				if(id == 0 ){
+				if(id == 0 ){count++;
 					this->chunk[x][y][z] = NULL;
-					count++;
-				}else if(pr == 0){
+				}else if(pr == 0){npar++;
 					this->chunk[x][y][z] = new MWorldBlock(
 						Imiks(id),
 						IBlockPos(x, y, z)
 					);
-					npar++;
-				}else{
+				}else{par++;
 					this->chunk[x][y][z] = new MWorldBlock(
 						Imiks(id),
 						IBlockPos(x, y, z),
 						arr.at(pr).toString()
 					);
-					par++;
 				}
 			}
+	std::cout << "id: " << pos.x() << " " << pos.y() << " " << pos.z() << " " << count << " " << npar << " " << par << "\n";
 }
 IChunkPos MChunk::getId() {	return this->id;}
 IWorldBlock *MChunk::getBlock(IBlockPos p) { return chunk[p.x()][p.y()][p.z()];}
 void MChunk::setBlock(IWorldBlock* b){ this->chunk[b->getPos().x()][b->getPos().y()][b->getPos().z()] = b;}
+void MChunk::setBlock(IBlockPos pos, IWorldBlock *b) {this->chunk[pos.x()][pos.y()][pos.z()] = b;}
 int MChunk::getType() {
 	int type;
 
@@ -64,17 +63,15 @@ int MChunk::getType() {
 void MChunk::write(QDataStream& out, QJsonObject& o) {
 	QJsonArray arr;
 
-	int count = 0, nPar = 0, par = 0;
-
 	for ( int x = 0; x < size; x++ )
 		for ( int y = 0; y < size; y++ )
 			for ( int z = 0; z < size; z++ ) {
-				if(chunk[x][y][z] == NULL){ count++;
+				if(chunk[x][y][z] == nullptr){
 					out << int(0) << int(0);
-				}else	if (chunk[x][y][z]->isParams()) {	nPar++;
+				}else	if (chunk[x][y][z]->isParams()) {
 					arr << chunk[x][y][z]->getParams();
 					out << chunk[x][y][z]->getId().c() << arr.size();
-				} else {	par++;
+				} else {
 					out << chunk[x][y][z]->getId().c() << int(0);
 				}
 			}
@@ -90,3 +87,5 @@ void MChunk::write(QDataStream& out, QJsonObject& o) {
 
 MPChunk::MPChunk(){}
 QColor MPChunk::getBlockColor(IBlockPos pos) {	return QColor(Qt::gray);}
+
+

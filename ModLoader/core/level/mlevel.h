@@ -2,6 +2,7 @@
 #define GLOBALQT_MLEVEL_H
 #include <ModLoader/mdefines.h>
 #include <ModLoader/core/level/mregion.h>
+#include <ModLoader/core/level/mgenerator.h>
 
 class MLevelInfo : public ILevelInfo{
 	QString name;
@@ -20,15 +21,16 @@ public:
 	virtual void setName(QString name);
 	virtual void setDir(QString file);
 
-	virtual QJsonObject * getCustom();
+	virtual QJsonObject *getCustom();
 	virtual void addCustom(QJsonObject);
+	virtual QJsonValue getFromCustom(QString key);
 	virtual void addToCustom(QString key, QJsonValue value);
 };
 
 class MLevel : public ILevel{
 	MRegion* reg;
 	ILevelInfo* info;
-
+ MWorldGenerator* generator;
  QMap<IChunkPos, IChunk*>* chunkList;
 
 
@@ -36,25 +38,29 @@ public:
 	MLevel(ILevelInfo* info);
 	virtual QString getName();
 	virtual void load();
-	void load(QJsonObject obj);
 	virtual void save();
- virtual void saveInfo();
 
 	virtual IPChunk * getPreview();
 	virtual void cycleRegion();
 	virtual IChunk *getChunk(IChunkPos pos);
+
+	void addNewChunk(IChunkPos c);
+private:
+ void loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &stream);
 };
 
 class MLevelManager : public ILevelManager{
-	QList<ILevelInfo*> list;
+	QList<ILevelInfo*>* list;
 	ILevelInfo* current;
  ILevel* level;
 
 public:
-	virtual QList<ILevelInfo*> getList();
+	MLevelManager();
+	virtual QList<ILevelInfo*>* getList();
 	virtual ILevel* getCurrentLevel();
 	virtual ILevelInfo* getCurrentLevelInfo();
 	virtual void createLevel(ILevelInfo* i);
+	virtual void loadLevel(ILevelInfo* i);
 	virtual void exitLevel(ILevelInfo* i);
 	virtual void removeLevel(ILevelInfo* i);
 };

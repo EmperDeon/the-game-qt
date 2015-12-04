@@ -9,10 +9,10 @@ MRegion::MRegion(IRegionPos p, QString name) { // saves/name/dim0/ for name "nam
  QDir t(name);
 	t.mkdir("regions" + QString::number(int(p.x() / 128)) + QString::number(int(p.x() / 128)));
 
-//	for ( int x = 0; x < xSize; x++ )
-//		for ( int y = 0; y < ySize; y++ )
-//			for ( int z = 0; z < zSize; z++ )
-//				reg[x][y][z] = new MChunk(IChunkPos(x, y, z));
+	for ( int x = 0; x < xSize; x++ )
+		for ( int y = 0; y < ySize; y++ )
+			for ( int z = 0; z < zSize; z++ )
+				reg[x][y][z] = new MChunk(IChunkPos(x, y, z));
  edited = new QList<IChunk*>;
 }
 IRegionPos MRegion::getId() {	return pos;}

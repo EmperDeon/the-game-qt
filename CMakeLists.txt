@@ -83,6 +83,7 @@ set(M_SOURCE_FILES
 		ModLoader/core/mcoremods.cpp
 		 ModLoader/core/level/mblock.cpp
 		 ModLoader/core/level/mchunk.cpp
+		ModLoader/core/level/mgenerator.cpp
 		 ModLoader/core/level/mregion.cpp
 		 ModLoader/core/level/mlevel.cpp
 
@@ -104,6 +105,7 @@ set(M_HEADERS
 		ModLoader/core/mcoremods.h
 		 ModLoader/core/level/mblock.h
 	 	ModLoader/core/level/mchunk.h
+		ModLoader/core/level/mgenerator.h
 		 ModLoader/core/level/mregion.h
 		 ModLoader/core/level/mlevel.h
 

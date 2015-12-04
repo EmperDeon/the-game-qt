@@ -1,7 +1,7 @@
 #include "ModLoader/core/level/mlevel.h"
-
+#include <iostream>
 //MLevelInfo
-MLevelInfo::MLevelInfo(){}
+MLevelInfo::MLevelInfo(){this->custom = new QJsonObject;}
 
 QString MLevelInfo::getName() {	return this->name;}
 QString MLevelInfo::getDir() {	return dir;}
@@ -28,12 +28,14 @@ ILevelInfo * MLevelInfo::fromJson(QJsonObject obj) {
 		}
 	return info;
 }
+
 QJsonObject * MLevelInfo::getCustom() {	return custom;}
 void MLevelInfo::addCustom(QJsonObject object) {
 		foreach(QString s, object.keys()){
 			this->custom->insert(s, object.value(s));
 		}
 }
+QJsonValue MLevelInfo::getFromCustom(QString key){ return this->custom->value(key);}
 void MLevelInfo::addToCustom(QString key, QJsonValue value) { this->custom->insert(key, value);}
 //MLevelInfo
 
@@ -44,31 +46,61 @@ MLevel::MLevel(ILevelInfo* info) {
 	QDir().mkpath(this->info->getDir());
 
 	this->chunkList = new QMap<IChunkPos, IChunk*>;
+	this->generator = new MWorldGenerator;
 }
 QString MLevel::getName() { return info->getName(); }
 
 void MLevel::load() {
-	load(QJsonDocument::fromBinaryData(QFile(info->getDir()+"level.dat").readAll()).object());
+	QFile file(info->getDir()+"chunks.dat");
+	file.open(QIODevice::ReadOnly);
+ QByteArray arr = qUncompress(file.readAll());
+	QDataStream in(&arr, QIODevice::ReadOnly);
+	QJsonObject obj = info->getFromCustom("chunks").toObject();
+	QJsonArray ids = info->getFromCustom("chunkIds").toArray();
+
+		foreach(QJsonValue v, ids) loadChunk(IChunkPos(quint16(v.toInt())), obj, in);
+
 }
-void MLevel::load(QJsonObject obj) {
+void MLevel::loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &in) {
+	int size = 262144;
+	char* ch;
+
+	ch = new char[size];
+	in.skipRawData(4);
+	in.readRawData(ch, size);
+
+	chunkList->insert(pos,  new MChunk(
+		QByteArray(ch, size),
+		obj["chunk"+QString::number(pos.x())+QString::number(pos.y())+QString::number(pos.z())].toObject(),
+		pos
+	));
+
+	delete[] ch;
 
 }
 void MLevel::save() {
- saveInfo();
-}
-void MLevel::saveInfo() {
- QJsonObject obj = MLevelInfo::toJson(reinterpret_cast<MLevelInfo*>(this->info));
-
 	QJsonArray ids;
-	foreach(IChunkPos p, this->chunkList->keys()){
-	 ids.append(p.c());
-	}
-	obj["chunkIds"] = ids;
+	QJsonObject obj;
+	QByteArray arr;
+	QDataStream stream(&arr, QIODevice::WriteOnly);
 
-	QFile out(info->getDir()+"level.dat");
-	out.write(QJsonDocument(obj).toBinaryData());
+		foreach(IChunkPos p, this->chunkList->keys())	ids.append(p.c());
+	info->addToCustom("chunkIds", ids);
+
+		foreach(IChunk* p, this->chunkList->values())	p->write(stream, obj);
+	info->addToCustom("chunks", obj);
+
+	QFile out(info->getDir()+"chunks.dat");
+	out.open(QIODevice::WriteOnly);
+	out.write(qCompress(arr));
 	out.flush();
 	out.close();
+
+	QFile out1(info->getDir()+"level.dat");
+	out1.open(QIODevice::WriteOnly);
+	out1.write(QJsonDocument(MLevelInfo::toJson(reinterpret_cast<MLevelInfo*>(this->info))).toBinaryData());
+	out1.flush();
+	out1.close();
 }
 
 IPChunk *MLevel::getPreview() {	return new MPChunk();}
@@ -80,18 +112,25 @@ IChunk * MLevel::getChunk(IChunkPos pos) {
 	 return new MChunk();
  }
 }
+void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(this->generator, c));}
 //MLevel
 
 //MLevelManager
-QList<ILevelInfo*> MLevelManager::getList() {	return this->list;}
+MLevelManager::MLevelManager() {
+	this->list = new QList<ILevelInfo*>;
+ // Load list with exist levels
+}
+QList<ILevelInfo*>* MLevelManager::getList() {	return this->list;}
 ILevel* MLevelManager::getCurrentLevel() {	return this->level;}
 ILevelInfo* MLevelManager::getCurrentLevelInfo() {	return this->current;}
 
 void MLevelManager::createLevel(ILevelInfo* i) {
  this->current = i;
-
  this->level = new MLevel(this->current);
-	this->level->saveInfo();
+}
+void MLevelManager::loadLevel(ILevelInfo *i) {
+ this->current = i;
+	this->level = new MLevel(this->current);
 }
 void MLevelManager::exitLevel(ILevelInfo* i) {
  this->level->save();
@@ -99,3 +138,6 @@ void MLevelManager::exitLevel(ILevelInfo* i) {
 void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
+
+
+

@@ -15,7 +15,7 @@ public:
 	Imiks(quint32 c){this->d = c;}
 	Imiks(int m, int i, int k, int s){
 		d = 0;
-		if((m < 1024)||(i < 1024)||(k < 256)||(s < 16)){
+		if((m < 1024)&&(i < 1024)&&(k < 256)&&(s < 16)){
 			d |= m << 23;
 			d |= i << 13;
 			d |= k << 5;
@@ -38,7 +38,7 @@ public:
 	IBlockPos(){d = 0;}
 	IBlockPos(int x, int y, int z){
 		d = 0;
-		if((x < 32)||(y < 32)||(z < 32)){
+		if((x < 32)&&(y < 32)&&(z < 32)){
 			d |= x << 11;
 			d |= y << 6;
 			d |= z << 1;
@@ -47,9 +47,9 @@ public:
 		}
 	}
 	quint16 c()const { return d;}
-	int x()const {	return this->d >> 11 & 32;}
-	int y()const {	return this->d >> 6 & 32;}
-	int z()const {	return this->d >> 1 & 32;  }
+	int x()const {	return this->d >> 11 & 31;}
+	int y()const {	return this->d >> 6 & 31;}
+	int z()const {	return this->d >> 1 & 31;  }
 	bool operator< (IBlockPos o)const {return d < o.d;}
 };
 class IChunkPos {
@@ -57,6 +57,7 @@ class IChunkPos {
 	quint16 d;
 public:
 	IChunkPos(){d = 0;}
+	IChunkPos(quint16 c): d(c){}
 	IChunkPos(int x, int y, int z){
 		d = 0;
 		if((x < 32)||(y < 32)||(z < 32)){
@@ -84,7 +85,7 @@ public:
 };
 
 template<typename Base, typename T> inline bool instanceOf(const T *ptr) {
-	return dynamic_cast<const Base*>(ptr) != nullptr;
+	return reinterpret_cast<const Base*>(ptr) != nullptr;
 }
 
 #include "Engine/interfaces/iinventory.h"
