@@ -41,7 +41,7 @@ void LMainWindow::showDev(){
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "InfiniteRecursion"
 void LMainWindow::procF(int e){
-	this->show();
+//	this->show();
 	w_log->addL(GLogLevel::INFO, "E", QString(proc->readAll()));
 	if(e)
 		w_log->addL(GLogLevel::ERR, "L-Main", "The game crashed with code "+QString::number(e));
@@ -208,3 +208,5 @@ void LMainWindow::closeEvent(QCloseEvent *event){
 	w_log->close();
 	event->accept();
 }
+
+

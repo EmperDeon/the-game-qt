@@ -21,7 +21,6 @@ void EMods::init(){
 }
 
 void EMods::initModLoaders() {
-	QDir modloaderdir("modloaders");
 	QPluginLoader pluginLoader("modLoader");
 	QObject *plugin = pluginLoader.instance();
 	if (plugin) {

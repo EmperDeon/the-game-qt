@@ -2,6 +2,7 @@
 #define G_MAIN
 
 #include <QApplication>
+#include <ModLoader/core/render/mrender.h>
 #include "Engine/edefines.h"
 #include "Engine/eutils.h"
 #include "Engine/ewidgets.h"
@@ -17,11 +18,14 @@ class EMWidget;
 class EMain : public IMain{
 	Q_INTERFACES(IMain)
  QString className = "E-Main";
+	QSplashScreen* splash;
 	EDeveloper * wdev;
-	EMWidget * wgt;
+	MGlWidget* wgt;
 	EMods * mods;
+
 public:
 	EMain();
+	virtual void setSplashLabel(QString s);
 	void init();
 	void show();
 	void destroy();

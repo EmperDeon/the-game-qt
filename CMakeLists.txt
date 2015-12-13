@@ -50,6 +50,7 @@ set(G_HEADERS
 		Engine/interfaces/imods.h
 		Engine/interfaces/irender.h
 		Engine/interfaces/itext.h
+		Engine/interfaces/iutils.h
 		Engine/einterfaces.h
 
 		Engine/emain.h
@@ -83,11 +84,14 @@ set(M_SOURCE_FILES
 		ModLoader/core/mcoremods.cpp
 		 ModLoader/core/level/mblock.cpp
 		 ModLoader/core/level/mchunk.cpp
-		ModLoader/core/level/mgenerator.cpp
+	 	ModLoader/core/level/mgenerator.cpp
 		 ModLoader/core/level/mregion.cpp
 		 ModLoader/core/level/mlevel.cpp
 
+	 	ModLoader/core/render/mcamera.cpp
 	 	ModLoader/core/render/mrender.cpp
+	 	ModLoader/core/render/gui/mgui.cpp
+	 	ModLoader/core/render/world/mworld.cpp
 
 		ModLoader/core/mactions.cpp
 		ModLoader/mods/mmods.cpp
@@ -105,11 +109,14 @@ set(M_HEADERS
 		ModLoader/core/mcoremods.h
 		 ModLoader/core/level/mblock.h
 	 	ModLoader/core/level/mchunk.h
-		ModLoader/core/level/mgenerator.h
+		 ModLoader/core/level/mgenerator.h
 		 ModLoader/core/level/mregion.h
 		 ModLoader/core/level/mlevel.h
 
+		 ModLoader/core/render/mcamera.h
 	 	ModLoader/core/render/mrender.h
+		 ModLoader/core/render/gui/mgui.h
+		 ModLoader/core/render/world/mworld.h
 
 		ModLoader/core/mactions.h
 		ModLoader/mods/mmods.h
@@ -140,7 +147,7 @@ add_definitions(-DQT_PLUGIN)
 add_definitions(-DQT_NO_DEBUG)
 add_definitions(-DQT_SHARED)
 add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
-qt5_use_modules(ModLoader Core Widgets Network)
+qt5_use_modules(ModLoader Core Widgets Network OpenGL)
 target_compile_features(ModLoader PRIVATE cxx_range_for)
 target_link_libraries(ModLoader ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 

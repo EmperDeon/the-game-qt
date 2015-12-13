@@ -5,19 +5,24 @@
 #include <ModLoader/mmodloader.h>
 #include <ModLoader/core/level/mchunk.h>
 #include <ModLoader/core/render/mrender.h>
+#include <ModLoader/core/level/mlevel.h>
 #include <ModLoader/core/mactions.h>
 #include <ModLoader/mutils.h>
 
 class ModLoader;
 class ILogger;
 class IVars;
-class MRender;
+class MGlWidget;
 class MActions;
+class MLevelManager;
 
 class MCoreMods {
 	QString className = "M-CoreMods";
-	MRender *render;
+	IMain* main;
+
+	MGlWidget *render;
 	MActions* actions;
+ MLevelManager* level;
 
  QList<ICoreMod*>* plugins;
 

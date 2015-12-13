@@ -20,6 +20,9 @@ int main(int argc, char *argv[]){
 EMain::EMain() {
  srand(unsigned(int(time(NULL))));
 
+	splash = new QSplashScreen(QPixmap("splash.png").scaledToHeight(500));
+	//splash->show();
+
  varS(this, "eMain");
 	varS(GV_LOGGER, "eLogger");
 
@@ -33,10 +36,13 @@ EMain::EMain() {
 void EMain::init() {
 	mods->coreInit();
 
-	wgt = new EMWidget();
+//	wgt = new EMWidget();
+	wgt = varG(MGlWidget*, "mRender");
 	wdev = new EDeveloper();
 
  mods->init();
+
+	splash->finish(wgt);
 }
 
 void EMain::show() {
@@ -46,4 +52,9 @@ void EMain::show() {
 
 void EMain::destroy() {
 
+}
+
+void EMain::setSplashLabel(QString s) {
+ this->splash->showMessage(s, Qt::AlignHCenter | Qt::AlignTop, Qt::white);
+	qApp->processEvents();
 }

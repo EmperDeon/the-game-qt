@@ -54,6 +54,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/irender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/itext.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipreader_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.cpp" isTestSource="false" />
@@ -80,8 +81,14 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mactions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mcamera.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mcamera.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mrender.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/world/mworld.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/world/mworld.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />

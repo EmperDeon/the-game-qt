@@ -14,4 +14,7 @@
 #define mVarG(cl, s) reinterpret_cast<cl>(this->loader->vars->get(s))
 #define mVarS(cl, s) this->loader->vars->set(cl, s)
 
+class MMods;
+class MCoreMods;
+
 #endif //GLOBALQT_MDEFINES_H

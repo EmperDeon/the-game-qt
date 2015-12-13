@@ -116,9 +116,23 @@ void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(th
 //MLevel
 
 //MLevelManager
-MLevelManager::MLevelManager() {
+MLevelManager::MLevelManager(MCoreMods* m) {
+	this->loader = m;
 	this->list = new QList<ILevelInfo*>;
- // Load list with exist levels
+
+	// Load list with exist levels
+	foreach(QFileInfo i, QDir("saves").entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot)){
+		QFile file("saves/" + i.fileName() + "/level.dat");
+		file.open(QIODevice::ReadOnly);
+
+	 list->push_back(
+		 MLevelInfo::fromJson(
+			 QJsonDocument::fromBinaryData(
+				 file.readAll()
+			 ).object()
+		 )
+	 );
+	}
 }
 QList<ILevelInfo*>* MLevelManager::getList() {	return this->list;}
 ILevel* MLevelManager::getCurrentLevel() {	return this->level;}

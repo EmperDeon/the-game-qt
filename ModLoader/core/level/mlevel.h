@@ -3,6 +3,9 @@
 #include <ModLoader/mdefines.h>
 #include <ModLoader/core/level/mregion.h>
 #include <ModLoader/core/level/mgenerator.h>
+#include <ModLoader/core/mcoremods.h>
+
+class MCoreMods;
 
 class MLevelInfo : public ILevelInfo{
 	QString name;
@@ -54,8 +57,10 @@ class MLevelManager : public ILevelManager{
 	ILevelInfo* current;
  ILevel* level;
 
+	QString className = "MLevelManager";
+	MCoreMods* loader;
 public:
-	MLevelManager();
+	MLevelManager(MCoreMods* m);
 	virtual QList<ILevelInfo*>* getList();
 	virtual ILevel* getCurrentLevel();
 	virtual ILevelInfo* getCurrentLevelInfo();

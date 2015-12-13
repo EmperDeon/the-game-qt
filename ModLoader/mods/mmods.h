@@ -21,12 +21,11 @@ class MPluginsContainer;
 class MMods{
  ModLoader* loader;
 	QString className = "M-Mods";
+	IMain* main;
 
 	MTextContainer*    text;
 	MScriptsContainer* script;
 	MPluginsContainer* plugin;
-
-	MLevel* l;
 public:
 	ILogger* log;
 	IVars* vars;

@@ -8,8 +8,11 @@ EDeveloper - eDev
 
 
 ModLoader:
-MRender - mRender
-MActions - mActions
+ CoreMods:
+  MRender - mRender
+  MActions - mActions
+		MLevelManager - mLevel
 
-MIIds - mIds
-MItemsContainer - mItems
+ Mods:
+  MIIds - mIds
+  MItemsContainer - mItems

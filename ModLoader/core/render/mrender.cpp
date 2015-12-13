@@ -1,38 +1,99 @@
 #include <ModLoader/core/render/mrender.h>
 
-MRender::MRender(MCoreMods* m){
- this->loader = m;
+MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
+	cam = new MCamera(IBlockPos(0, 0, 0));
+	world = new MWorldRender(m);
+	gui = new MGuiRender(m);
 }
 
-MRender::~MRender(){
+void MGlWidget::initializeGL(){
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // цвет для очистки буфера изображения - здесь просто фон окна
+	glEnable(GL_DEPTH_TEST);  // устанавливает режим проверки глубины пикселей
+	glShadeModel(GL_FLAT);    // отключает режим сглаживания цветов
+	glEnable(GL_CULL_FACE);   // устанавливается режим, когда строятся только внешние поверхности
+
+	world->init();
+//	gui->init();
 
 }
 
-void MRender::init(){
+void MGlWidget::resizeGL(int nWidth, int nHeight){
+	glMatrixMode(GL_PROJECTION); // устанавливает текущей проекционную матрицу
+	glLoadIdentity();            // присваивает проекционной матрице единичную матрицу
 
+	GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // отношение высоты окна виджета к его ширине
+
+	// мировое окно
+	if (nWidth>=nHeight)
+		glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
+	else
+		glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
+
+	// glFrustum(-1.0, 1.0, -1.0, 1.0, 1.0, 10.0);
+
+	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
 }
 
-void MRender::render(QPaintDevice* dev){
-	QPainter painter;
-	painter.begin(dev);
-	painter.setRenderHint(QPainter::Antialiasing);
+void MGlWidget::paintGL(){
+	// glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1.0, 1.0, 1.0);
-	glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
-	glBegin(GL_POLYGON);
-	glVertex2f((GLfloat) -0.5, (GLfloat) -0.5);
-	glVertex2f((GLfloat) -0.5, 0.5);
-	glVertex2f(0.5, 0.5);
-	glVertex2f(0.5, (GLfloat) -0.5);
-	glEnd();
-	glFlush();
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-	painter.end();
+ cam->apply();
+	world->render();
+	//gui->render();
 }
 
+void MGlWidget::mousePressEvent(QMouseEvent* pe) { mPos = pe->pos();}
+void MGlWidget::mouseReleaseEvent(QMouseEvent* pe){}
+void MGlWidget::mouseMoveEvent(QMouseEvent* pe){
+	Vector3 scl = cam->getScl();
+ cam->rotate(
+ 	180/scl.x*(GLfloat)(pe->y() - mPos.y())/height(),
+ 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
+	);
+	mPos = pe->pos();
 
+	updateGL();
+}
+
+void MGlWidget::wheelEvent(QWheelEvent* pe){
+	if ((pe->delta())>0)
+		cam->scale(0.1f, 0.1f, 0.1f);
+	else if ((pe->delta())<0)
+		cam->scale(-0.1f, -0.1f, -0.1f);
+
+	updateGL(); // обновление изображения
+}
+
+void MGlWidget::keyPressEvent(QKeyEvent* pe) {
+	switch (pe->key())	{
+		case Qt::Key_Up:	   cam->rotate( 0.3f,  0.0f);	break;
+		case Qt::Key_Down:	 cam->rotate(-0.3f,  0.0f);	break;
+		case Qt::Key_Left:	 cam->rotate( 0.0f,  0.3f); break;
+		case Qt::Key_Right: cam->rotate( 0.0f, -0.3f); break;
+
+		case Qt::Key_W: cam->move( 0.5f,  0.0f,  0.0f); break;
+		case Qt::Key_S: cam->move(-0.5f,  0.0f,  0.0f); break;
+
+		case Qt::Key_A: cam->move( 0.0f,  0.5f,  0.0f); break;
+		case Qt::Key_D: cam->move( 0.0f, -0.5f,  0.0f); break;
+
+		case Qt::Key_Q: cam->move( 0.0f,  0.0f,  0.5f); break;
+		case Qt::Key_E: cam->move( 0.0f,  0.0f, -0.5f); break;
+
+
+		case Qt::Key_Escape:
+			this->close();
+			break;
+
+		default:;
+	}
+
+	updateGL(); // обновление изображения
+}
 
 //QSize EMWidget::minimumSizeHint() const
 //{

@@ -3,6 +3,7 @@
 
 class IMain{
 public:
+	virtual void setSplashLabel(QString s) = 0;
 	virtual void init() = 0;
 	virtual void show() = 0;
 	virtual void destroy() = 0;
