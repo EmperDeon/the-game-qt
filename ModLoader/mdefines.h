@@ -2,6 +2,10 @@
 #define GLOBALQT_MDEFINES_H
 #include <Engine/einterfaces.h>
 
+// Render defines
+#define MFPS_COUNT 200
+// Render defines
+
 #define mLogE(ms)  this->loader->log->log(GLogLevel::ERR,   this->className, ms)
 #define mLogW(ms)  this->loader->log->log(GLogLevel::WARN,  this->className, ms)
 #define mLogI(ms)  this->loader->log->log(GLogLevel::INFO,  this->className, ms)

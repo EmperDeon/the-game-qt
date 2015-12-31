@@ -8,10 +8,15 @@ class MCamera : public ICamera{
 	float xS, yS, zS; // Scale
 	float yaw, pitch; // Angles
 
+	float xSense = 1.0f, ySense = 1.0f;
+
+	int wWidth, wHeight;
 public:
+	const QCursor* pointer;
+
 	MCamera(IBlockPos pos);
 	virtual void apply();
-
+ virtual void resize(int w, int h);
 	//Pos
 	void move(float x, float y, float z) {
 		this->xP += x;

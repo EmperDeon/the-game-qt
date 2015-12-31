@@ -1,16 +1,27 @@
 #include <ModLoader/core/render/mrender.h>
+#include <GL/glu.h>
+
 
 MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
 	cam = new MCamera(IBlockPos(0, 0, 0));
+	this->setCursor(*cam->pointer);
+
 	world = new MWorldRender(m);
 	gui = new MGuiRender(m);
+	fps_stabilizer = new QTimer;
+	fps_stabilizer->setInterval(1000/MFPS_COUNT);
+	connect(fps_stabilizer, SIGNAL(timeout()), this, SLOT(updateGL()));
+	fps_stabilizer->start();
 }
 
 void MGlWidget::initializeGL(){
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // цвет для очистки буфера изображения - здесь просто фон окна
-	glEnable(GL_DEPTH_TEST);  // устанавливает режим проверки глубины пикселей
-	glShadeModel(GL_FLAT);    // отключает режим сглаживания цветов
-	glEnable(GL_CULL_FACE);   // устанавливается режим, когда строятся только внешние поверхности
+	glClearColor(0.0f, 0.5f, 1.0f, 1.0f);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE);					// Set The Blending Function For Translucency
+	glClearDepth(1.0);									// Enables Clearing Of The Depth Buffer
+	glDepthFunc(GL_LESS);								// The Type Of Depth Test To Do
+	glEnable(GL_DEPTH_TEST);							// Enables Depth Testing
+	glShadeModel(GL_SMOOTH);							// Enables Smooth Color Shading
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
 	world->init();
 //	gui->init();
@@ -18,20 +29,21 @@ void MGlWidget::initializeGL(){
 }
 
 void MGlWidget::resizeGL(int nWidth, int nHeight){
-	glMatrixMode(GL_PROJECTION); // устанавливает текущей проекционную матрицу
-	glLoadIdentity();            // присваивает проекционной матрице единичную матрицу
+	glMatrixMode(GL_PROJECTION); // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С‚РµРєСѓС‰РµР№ РїСЂРѕРµРєС†РёРѕРЅРЅСѓСЋ РјР°С‚СЂРёС†Сѓ
+	glLoadIdentity();            // РїСЂРёСЃРІР°РёРІР°РµС‚ РїСЂРѕРµРєС†РёРѕРЅРЅРѕР№ РјР°С‚СЂРёС†Рµ РµРґРёРЅРёС‡РЅСѓСЋ РјР°С‚СЂРёС†Сѓ
 
-	GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // отношение высоты окна виджета к его ширине
+	//GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // РѕС‚РЅРѕС€РµРЅРёРµ РІС‹СЃРѕС‚С‹ РѕРєРЅР° РІРёРґР¶РµС‚Р° Рє РµРіРѕ С€РёСЂРёРЅРµ
+GLfloat ratio = 2.0f;
+	// РјРёСЂРѕРІРѕРµ РѕРєРЅРѕ
+//	if (nWidth>=nHeight)
+//		glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
+//	else
+//		glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
 
-	// мировое окно
-	if (nWidth>=nHeight)
-		glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
-	else
-		glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
-
-	// glFrustum(-1.0, 1.0, -1.0, 1.0, 1.0, 10.0);
-
-	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
+	// glFrustum(10.0, 10.0, 10.0, 10.0, 0.1f, 10.0);
+	gluPerspective(85.0f, ratio, 0.1f, 100.0f);
+	glViewport(5, 5, (GLint)nWidth-5, (GLint)nHeight-5);
+	cam->resize(width(), height());
 }
 
 void MGlWidget::paintGL(){
@@ -46,53 +58,57 @@ void MGlWidget::paintGL(){
 	//gui->render();
 }
 
-void MGlWidget::mousePressEvent(QMouseEvent* pe) { mPos = pe->pos();}
+void MGlWidget::mousePressEvent(QMouseEvent* pe) { /*mPos = pe->pos();*/}
 void MGlWidget::mouseReleaseEvent(QMouseEvent* pe){}
 void MGlWidget::mouseMoveEvent(QMouseEvent* pe){
-	Vector3 scl = cam->getScl();
- cam->rotate(
- 	180/scl.x*(GLfloat)(pe->y() - mPos.y())/height(),
- 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
-	);
-	mPos = pe->pos();
 
-	updateGL();
+
+//	Vector3 scl = cam->getScl();
+// cam->rotate(
+// 	180/scl.x*(GLfloat)(pe->y() - mPos.y())/height(),
+// 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
+//	);
+//	mPos = pe->pos();
+
+//	updateGL();
 }
 
 void MGlWidget::wheelEvent(QWheelEvent* pe){
-	if ((pe->delta())>0)
-		cam->scale(0.1f, 0.1f, 0.1f);
-	else if ((pe->delta())<0)
-		cam->scale(-0.1f, -0.1f, -0.1f);
+//	if ((pe->delta())>0)
+//		cam->scale(0.1f, 0.1f, 0.1f);
+//	else if ((pe->delta())<0)
+//		cam->scale(-0.1f, -0.1f, -0.1f);
 
-	updateGL(); // обновление изображения
+	//updateGL(); // РѕР±РЅРѕРІР»РµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 }
 
 void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 	switch (pe->key())	{
-		case Qt::Key_Up:	   cam->rotate( 0.3f,  0.0f);	break;
-		case Qt::Key_Down:	 cam->rotate(-0.3f,  0.0f);	break;
-		case Qt::Key_Left:	 cam->rotate( 0.0f,  0.3f); break;
-		case Qt::Key_Right: cam->rotate( 0.0f, -0.3f); break;
+		case Qt::Key_Up:	   cam->rotate( 0.5f,  0.0f); break;
+		case Qt::Key_Down:	 cam->rotate(-0.5f,  0.0f); break;
+		case Qt::Key_Left:	 cam->rotate( 0.0f,  0.5f);	break;
+		case Qt::Key_Right: cam->rotate( 0.0f, -0.5f);	break;
 
-		case Qt::Key_W: cam->move( 0.5f,  0.0f,  0.0f); break;
-		case Qt::Key_S: cam->move(-0.5f,  0.0f,  0.0f); break;
+		case Qt::Key_W: cam->move( 0.1f,  0.0f,  0.0f); break;
+		case Qt::Key_S: cam->move(-0.1f,  0.0f,  0.0f); break;
 
-		case Qt::Key_A: cam->move( 0.0f,  0.5f,  0.0f); break;
-		case Qt::Key_D: cam->move( 0.0f, -0.5f,  0.0f); break;
+		case Qt::Key_A: cam->move( 0.0f,  0.1f,  0.0f); break;
+		case Qt::Key_D: cam->move( 0.0f, -0.1f,  0.0f); break;
 
-		case Qt::Key_Q: cam->move( 0.0f,  0.0f,  0.5f); break;
-		case Qt::Key_E: cam->move( 0.0f,  0.0f, -0.5f); break;
+		case Qt::Key_Q: cam->move( 0.0f,  0.0f,  0.1f); break;
+		case Qt::Key_E: cam->move( 0.0f,  0.0f, -0.1f); break;
 
 
-		case Qt::Key_Escape:
-			this->close();
-			break;
+		case Qt::Key_Escape:	this->close();	break;
 
 		default:;
 	}
 
-	updateGL(); // обновление изображения
+	//updateGL(); // РѕР±РЅРѕРІР»РµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+}
+
+void MGlWidget::keyReleaseEvent(QKeyEvent *event) {
+
 }
 
 //QSize EMWidget::minimumSizeHint() const
@@ -248,4 +264,5 @@ void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 //				vbo.bind();
 //				vbo.allocate(vertData.constData(), vertData.count() * sizeof(GLfloat));
 //}
+
 

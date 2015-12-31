@@ -10,17 +10,17 @@
 #include <ModLoader/core/render/world/mworld.h>
 
 class MCoreMods;
+class MCamera;
 
 class MGlWidget : public QGLWidget{
 	QString className = "M-Render";
 	MCoreMods* loader;
 
- ICamera* cam;
+ MCamera* cam;
 	IWorldRender* world;
 	IGuiRender* gui;
 
-	QPoint mPos;
-
+	QTimer* fps_stabilizer;
 public:
 	MGlWidget(MCoreMods* m);
 
@@ -35,6 +35,7 @@ protected:
 	void wheelEvent(QWheelEvent* pe);
 	void keyPressEvent(QKeyEvent* pe);
 
+	virtual void keyReleaseEvent(QKeyEvent *keyEvent);
 };
 
 

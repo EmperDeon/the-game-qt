@@ -18,12 +18,14 @@ class MWorldRender : public IWorldRender{// 3D
 	void getColorArray();  // определить массив цветов вершин
 	void getIndexArray();  // определить массив индексов вершин
 
+
 public:
 	MWorldRender(MCoreMods* m);
 	virtual void init();
 	virtual void render();
 
-
+	void renderPolygon(float x1, float y1, float z1, float x2, float y2, float z3);
+	void renderCube(float x, float y, float z);
 };
 
 

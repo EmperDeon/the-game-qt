@@ -11,6 +11,7 @@ public:
 class ICamera{
 public:
 	virtual void apply() = 0;
+	virtual void resize(int w, int h) = 0;
 	//Pos
 	virtual void move(float x, float y, float z) = 0;
 	virtual void setPos(float x, float y, float z) = 0;

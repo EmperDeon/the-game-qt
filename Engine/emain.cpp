@@ -47,7 +47,7 @@ void EMain::init() {
 
 void EMain::show() {
 	//wdev->show();
-	wgt->show();
+	wgt->showMaximized();
 }
 
 void EMain::destroy() {

@@ -16,100 +16,143 @@ void MWorldRender::init() {
 void MWorldRender::render() {
 	drawAxis();
 
-	glVertexPointer(3, GL_FLOAT, 0, VertexArray);
-	glColorPointer(3, GL_FLOAT, 0, ColorArray);
+//	glVertexPointer(3, GL_FLOAT, 0, VertexArray);
+//	glColorPointer(3, GL_FLOAT, 0, ColorArray);
+//
+//	glDrawElements(GL_TRIANGLES, 60, GL_UNSIGNED_BYTE, IndexArray);
 
-	glDrawElements(GL_TRIANGLES, 60, GL_UNSIGNED_BYTE, IndexArray);
+	renderCube(0, 0, 0);
+
+}
+
+void MWorldRender::renderPolygon(float x1, float y1, float z1, float x2, float y2, float z3){
+
+}
+
+void MWorldRender::renderCube(float x, float y, float z){
+	float r = 0.5f;
+	glBegin(GL_QUADS);
+	glColor3f(0.0f,1.0f,0.0f);
+	glVertex3f(x +  r, y +  r, z -  r);
+	glVertex3f(x -  r, y +  r, z -  r);
+	glVertex3f(x -  r, y +  r, z +  r);
+	glVertex3f(x +  r, y +  r, z +  r);
+	glColor3f(1.0f,0.5f,0.0f);
+	glVertex3f(x +  r, y -  r, z +  r);
+	glVertex3f(x -  r, y -  r, z +  r);
+	glVertex3f(x -  r, y -  r, z -  r);
+	glVertex3f(x +  r, y -  r, z -  r);
+	glColor3f(1.0f,0.0f,0.0f);
+	glVertex3f(x +  r, y +  r, z +  r);
+	glVertex3f(x -  r, y +  r, z +  r);
+	glVertex3f(x -  r, y -  r, z +  r);
+	glVertex3f(x +  r, y -  r, z +  r);
+	glColor3f(1.0f,1.0f,0.0f);
+	glVertex3f(x +  r, y -  r, z -  r);
+	glVertex3f(x -  r, y -  r, z -  r);
+	glVertex3f(x -  r, y +  r, z -  r);
+	glVertex3f(x +  r, y +  r, z -  r);
+	glColor3f(0.0f,0.0f,1.0f);
+	glVertex3f(x -  r, y +  r, z +  r);
+	glVertex3f(x -  r, y +  r, z -  r);
+	glVertex3f(x -  r, y -  r, z -  r);
+	glVertex3f(x -  r, y -  r, z +  r);
+	glColor3f(1.0f,0.0f,1.0f);
+	glVertex3f(x +  r, y +  r, z -  r);
+	glVertex3f(x +  r, y +  r, z +  r);
+	glVertex3f(x +  r, y -  r, z +  r);
+	glVertex3f(x +  r, y -  r, z -  r);
+	glEnd(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void MWorldRender::drawAxis(){
-	glLineWidth(3.0f); // устанавливаю ширину линии приближённо в пикселях
-	// до вызова команды ширина равна 1 пикселю по умолчанию
+	glLineWidth(3.0f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	glColor4f(1.00f, 0.00f, 0.00f, 1.0f); // устанавливается цвет последующих примитивов
-	// ось x красного цвета
-	glBegin(GL_LINES); // построение линии
-	glVertex3f( 1.0f,  0.0f,  0.0f); // первая точка
-	glVertex3f(-1.0f,  0.0f,  0.0f); // вторая точка
+	glColor4f(1.00f, 0.00f, 0.00f, 1.0f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// пїЅпїЅпїЅ x пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	glBegin(GL_LINES); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	glVertex3f( 1.0f,  0.0f,  0.0f); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	glVertex3f(-1.0f,  0.0f,  0.0f); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	glEnd();
 
 	glColor4i(0, 128, 0, 255);
 	glBegin(GL_LINES);
-	// ось y зеленого цвета
+	// пїЅпїЅпїЅ y пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	glVertex3f( 0.0f,  1.0f,  0.0f);
 	glVertex3f( 0.0f, -1.0f,  0.0f);
 
 	glColor4f(0.00f, 0.00f, 1.00f, 1.0f);
-	// ось z синего цвета
+	// пїЅпїЅпїЅ z пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	glVertex3f( 0.0f,  0.0f,  1.0f);
 	glVertex3f( 0.0f,  0.0f, -1.0f);
 	glEnd();
 }
 
 void MWorldRender::getVertexArray(){
-	GLfloat R=0.75; // радиус сферы
+	GLfloat R=0.75; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
-	// начальные значения для икосаэдра
-	GLfloat a=4*R/sqrt(10+2*sqrt(5)); // сторона икосаэдра
-	GLfloat alpha=acos((1-a*a/2/R/R)); // первый угол поворота по тэта // cos(alpha)=(1-a*a/2/R/R)
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	GLfloat a=4*R/sqrt(10+2*sqrt(5)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	GLfloat alpha=acos((1-a*a/2/R/R)); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ // cos(alpha)=(1-a*a/2/R/R)
 
-	// вычисляем точки икосаэдра
-	//0 точка
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//0 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[0][0]=0;   // x
 	VertexArray[0][1]=0;   // y
 	VertexArray[0][2]=R;   // z
 
-	//1 точка
+	//1 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[1][0]=R*sin(alpha)*sin(0);
 	VertexArray[1][1]=R*sin(alpha)*cos(0);
 	VertexArray[1][2]=R*cos(alpha);
 
-	//2 точка
+	//2 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[2][0]=R*sin(alpha)*sin(72*k);
 	VertexArray[2][1]=R*sin(alpha)*cos(72*k);
 	VertexArray[2][2]=R*cos(alpha);
 
-	//3 точка
+	//3 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[3][0]=R*sin(alpha)*sin(2*72*k);
 	VertexArray[3][1]=R*sin(alpha)*cos(2*72*k);
 	VertexArray[3][2]=R*cos(alpha);
 
-	//4 точка
+	//4 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[4][0]=R*sin(alpha)*sin(3*72*k);
 	VertexArray[4][1]=R*sin(alpha)*cos(3*72*k);
 	VertexArray[4][2]=R*cos(alpha);
 
-	//5 точка
+	//5 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[5][0]=R*sin(alpha)*sin(4*72*k);
 	VertexArray[5][1]=R*sin(alpha)*cos(4*72*k);
 	VertexArray[5][2]=R*cos(alpha);
 
-	//6 точка
+	//6 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[6][0]=R*sin(pi-alpha)*sin(-36*k);
 	VertexArray[6][1]=R*sin(pi-alpha)*cos(-36*k);
 	VertexArray[6][2]=R*cos(pi-alpha);
 
-	//7 точка
+	//7 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[7][0]=R*sin(pi-alpha)*sin(36*k);
 	VertexArray[7][1]=R*sin(pi-alpha)*cos(36*k);
 	VertexArray[7][2]=R*cos(pi-alpha);
 
-	//8 точка
+	//8 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[8][0]=R*sin(pi-alpha)*sin((36+72)*k);
 	VertexArray[8][1]=R*sin(pi-alpha)*cos((36+72)*k);
 	VertexArray[8][2]=R*cos(pi-alpha);
 
-	//9 точка
+	//9 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[9][0]=R*sin(pi-alpha)*sin((36+2*72)*k);
 	VertexArray[9][1]=R*sin(pi-alpha)*cos((36+2*72)*k);
 	VertexArray[9][2]=R*cos(pi-alpha);
 
-	//10 точка
+	//10 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[10][0]=R*sin(pi-alpha)*sin((36+3*72)*k);
 	VertexArray[10][1]=R*sin(pi-alpha)*cos((36+3*72)*k);
 	VertexArray[10][2]=R*cos(pi-alpha);
 
-	//11 точка
+	//11 пїЅпїЅпїЅпїЅпїЅ
 	VertexArray[11][0]=0;
 	VertexArray[11][1]=0;
 	VertexArray[11][2]=-R;
@@ -117,110 +160,110 @@ void MWorldRender::getVertexArray(){
 
 void MWorldRender::getColorArray(){
 	for (int i=0; i<12; i++){
-		ColorArray[i][0]=0.1f*(qrand()%11); // R - красная составляющая
-		ColorArray[i][1]=0.1f*(qrand()%11); // G - зелёная составляющая
-		ColorArray[i][2]=0.1f*(qrand()%11); // B - синяя составляющая
-		// qrand()%11 - псевдослучайное число от 0 до 10
+		ColorArray[i][0]=0.1f*(qrand()%11); // R - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		ColorArray[i][1]=0.1f*(qrand()%11); // G - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		ColorArray[i][2]=0.1f*(qrand()%11); // B - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		// qrand()%11 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 0 пїЅпїЅ 10
 	}
 }
 
 void MWorldRender::getIndexArray(){
-	// 0 треугольник
-	IndexArray[0][0]=0; // индекс (номер) 1-ой вершины
-	IndexArray[0][1]=2; // индекс (номер) 2-ой вершины
-	IndexArray[0][2]=1; // индекс (номер) 3-ей вершины
+	// 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	IndexArray[0][0]=0; // пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ) 1-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	IndexArray[0][1]=2; // пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ) 2-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	IndexArray[0][2]=1; // пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ) 3-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	// 1 треугольник
+	// 1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[1][0]=0;
 	IndexArray[1][1]=3;
 	IndexArray[1][2]=2;
 
-	// 2 треугольник
+	// 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[2][0]=0;
 	IndexArray[2][1]=4;
 	IndexArray[2][2]=3;
 
-	// 3 треугольник
+	// 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[3][0]=0;
 	IndexArray[3][1]=5;
 	IndexArray[3][2]=4;
 
-	// 4 треугольник
+	// 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[4][0]=0;
 	IndexArray[4][1]=1;
 	IndexArray[4][2]=5;
 
-	// 5 треугольник
+	// 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[5][0]=6;
 	IndexArray[5][1]=1;
 	IndexArray[5][2]=7;
 
-	// 6 треугольник
+	// 6 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[6][0]=7;
 	IndexArray[6][1]=1;
 	IndexArray[6][2]=2;
 
-	// 7 треугольник
+	// 7 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[7][0]=7;
 	IndexArray[7][1]=2;
 	IndexArray[7][2]=8;
 
-	// 8 треугольник
+	// 8 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[8][0]=8;
 	IndexArray[8][1]=2;
 	IndexArray[8][2]=3;
 
-	// 9 треугольник
+	// 9 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[9][0]=8;
 	IndexArray[9][1]=3;
 	IndexArray[9][2]=9;
 
-	// 10 треугольник
+	// 10 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[10][0]=9;
 	IndexArray[10][1]=3;
 	IndexArray[10][2]=4;
 
-	// 11 треугольник
+	// 11 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[11][0]=9;
 	IndexArray[11][1]=4;
 	IndexArray[11][2]=10;
 
-	// 12 треугольник
+	// 12 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[12][0]=10;
 	IndexArray[12][1]=4;
 	IndexArray[12][2]=5;
 
-	// 13 треугольник
+	// 13 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[13][0]=10;
 	IndexArray[13][1]=5;
 	IndexArray[13][2]=6;
 
-	// 14 треугольник
+	// 14 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[14][0]=6;
 	IndexArray[14][1]=5;
 	IndexArray[14][2]=1;
 
-	// 15 треугольник
+	// 15 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[15][0]=7;
 	IndexArray[15][1]=11;
 	IndexArray[15][2]=6;
 
-	// 16 треугольник
+	// 16 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[16][0]=8;
 	IndexArray[16][1]=11;
 	IndexArray[16][2]=7;
 
-	// 17 треугольник
+	// 17 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[17][0]=9;
 	IndexArray[17][1]=11;
 	IndexArray[17][2]=8;
 
-	// 18 треугольник
+	// 18 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[18][0]=10;
 	IndexArray[18][1]=11;
 	IndexArray[18][2]=9;
 
-	// 19 треугольник
+	// 19 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	IndexArray[19][0]=6;
 	IndexArray[19][1]=11;
 	IndexArray[19][2]=10;
