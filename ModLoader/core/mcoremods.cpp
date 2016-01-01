@@ -42,6 +42,10 @@ void MCoreMods::preInit() {
 	mVarS(render, "mRender");
 	upd("Render constructed");
 
+//	this->perf = new MPerfomanceWidget(this);
+//	upd("PerfomanceWidget constructed");
+//	this->perf->show();
+
 	this->actions = new MActions(this);
 	mVarS(actions, "mActions");
 	upd("Actions constructed");

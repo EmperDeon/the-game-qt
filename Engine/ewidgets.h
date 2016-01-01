@@ -7,26 +7,6 @@
 #include "Engine/eutils.h"
 #include "Engine/emain.h"
 
-class IRender;
-
-class EMWidget : public QOpenGLWidget {// QOpenGLWidget
-	Q_OBJECT
-	QString className = "E-MWidget";
- IRender* render;
-public:
-	EMWidget();
-
-protected:
-
-
-public slots:
-	void animate();
-
-protected:
-	virtual void paintEvent(QPaintEvent *event);
-	virtual void closeEvent(QCloseEvent *qCloseEvent);
-};
-
 class EDeveloper : public QWidget{
 	Q_OBJECT
 	QString className = "E-Developer";

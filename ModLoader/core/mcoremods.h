@@ -3,9 +3,10 @@
 
 #include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
-#include <ModLoader/core/level/mchunk.h>
-#include <ModLoader/core/render/mrender.h>
 #include <ModLoader/core/level/mlevel.h>
+#include <ModLoader/core/level/mchunk.h>
+#include <ModLoader/core/render/perf/mperfw.h>
+#include <ModLoader/core/render/mrender.h>
 #include <ModLoader/core/mactions.h>
 #include <ModLoader/mutils.h>
 
@@ -15,11 +16,13 @@ class IVars;
 class MGlWidget;
 class MActions;
 class MLevelManager;
+class MPerfomanceWidget;
 
 class MCoreMods {
 	QString className = "M-CoreMods";
 	IMain* main;
 
+	MPerfomanceWidget* perf;
 	MGlWidget *render;
 	MActions* actions;
  MLevelManager* level;

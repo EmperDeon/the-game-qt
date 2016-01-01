@@ -80,6 +80,7 @@ set(L_HEADERS
 set(M_SOURCE_FILES
 		ModLoader/mmodloader.cpp
 		ModLoader/mutils.cpp
+		ModLoader/qcustomplot.cpp
 
 		ModLoader/core/mcoremods.cpp
 		 ModLoader/core/level/mblock.cpp
@@ -90,6 +91,7 @@ set(M_SOURCE_FILES
 
 	 	ModLoader/core/render/mcamera.cpp
 	 	ModLoader/core/render/mrender.cpp
+	 	ModLoader/core/render/perf/mperfw.cpp
 	 	ModLoader/core/render/gui/mgui.cpp
 	 	ModLoader/core/render/world/mworld.cpp
 
@@ -105,6 +107,7 @@ set(M_HEADERS
 		ModLoader/mmodloader.h
 		ModLoader/mutils.h
 		ModLoader/mdefines.h
+		ModLoader/qcustomplot.h
 
 		ModLoader/core/mcoremods.h
 		 ModLoader/core/level/mblock.h
@@ -115,6 +118,7 @@ set(M_HEADERS
 
 		 ModLoader/core/render/mcamera.h
 	 	ModLoader/core/render/mrender.h
+		ModLoader/core/render/perf/mperfw.h
 		 ModLoader/core/render/gui/mgui.h
 		 ModLoader/core/render/world/mworld.h
 

@@ -20,10 +20,14 @@ class MGlWidget : public QGLWidget{
 	IWorldRender* world;
 	IGuiRender* gui;
 
+	// Fps
+ qint64 fps = 0;
+	QElapsedTimer* fps_t;
 	QTimer* fps_stabilizer;
+ // !Fps
 public:
 	MGlWidget(MCoreMods* m);
-
+	qint64 getFps(){return fps;}
 protected:
 	void initializeGL();
 	void resizeGL(int nWidth, int nHeight);

@@ -8,6 +8,9 @@ MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
 
 	world = new MWorldRender(m);
 	gui = new MGuiRender(m);
+
+	// Fps
+	fps_t = new QElapsedTimer;
 	fps_stabilizer = new QTimer;
 	fps_stabilizer->setInterval(1000/MFPS_COUNT);
 	connect(fps_stabilizer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -47,6 +50,8 @@ GLfloat ratio = 2.0f;
 }
 
 void MGlWidget::paintGL(){
+ fps_t->start();
+
 	// glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -56,6 +61,8 @@ void MGlWidget::paintGL(){
  cam->apply();
 	world->render();
 	//gui->render();
+
+	this->fps = fps_t->nsecsElapsed();
 }
 
 void MGlWidget::mousePressEvent(QMouseEvent* pe) { /*mPos = pe->pos();*/}
@@ -69,8 +76,6 @@ void MGlWidget::mouseMoveEvent(QMouseEvent* pe){
 // 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
 //	);
 //	mPos = pe->pos();
-
-//	updateGL();
 }
 
 void MGlWidget::wheelEvent(QWheelEvent* pe){
@@ -78,33 +83,24 @@ void MGlWidget::wheelEvent(QWheelEvent* pe){
 //		cam->scale(0.1f, 0.1f, 0.1f);
 //	else if ((pe->delta())<0)
 //		cam->scale(-0.1f, -0.1f, -0.1f);
-
-	//updateGL(); // обновление изображения
 }
 
 void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 	switch (pe->key())	{
-		case Qt::Key_Up:	   cam->rotate( 0.5f,  0.0f); break;
-		case Qt::Key_Down:	 cam->rotate(-0.5f,  0.0f); break;
-		case Qt::Key_Left:	 cam->rotate( 0.0f,  0.5f);	break;
-		case Qt::Key_Right: cam->rotate( 0.0f, -0.5f);	break;
-
 		case Qt::Key_W: cam->move( 0.1f,  0.0f,  0.0f); break;
 		case Qt::Key_S: cam->move(-0.1f,  0.0f,  0.0f); break;
 
-		case Qt::Key_A: cam->move( 0.0f,  0.1f,  0.0f); break;
-		case Qt::Key_D: cam->move( 0.0f, -0.1f,  0.0f); break;
+		case Qt::Key_D: cam->move( 0.0f,  0.0f,  0.1f); break;
+		case Qt::Key_A: cam->move( 0.0f,  0.0f, -0.1f); break;
 
-		case Qt::Key_Q: cam->move( 0.0f,  0.0f,  0.1f); break;
-		case Qt::Key_E: cam->move( 0.0f,  0.0f, -0.1f); break;
+		case Qt::Key_Q: cam->move( 0.0f,  0.1f,  0.0f); break;
+		case Qt::Key_E: cam->move( 0.0f,  -0.1f, 0.0f); break;
 
 
 		case Qt::Key_Escape:	this->close();	break;
 
 		default:;
 	}
-
-	//updateGL(); // обновление изображения
 }
 
 void MGlWidget::keyReleaseEvent(QKeyEvent *event) {

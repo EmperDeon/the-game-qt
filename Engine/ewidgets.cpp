@@ -1,25 +1,4 @@
-#undef CLASS_NAME
-#define CLASS_NAME "GMWidget"
 #include "Engine/ewidgets.h"
-
-EMWidget::EMWidget():QOpenGLWidget(){
-	setAutoFillBackground(false);
-	this->render = varG(IRender*, "mRender");
-}
-
-void EMWidget::animate(){
-	update();
-}
-
-void EMWidget::paintEvent(QPaintEvent *event){
-	if(render)
-		render->render(this);
-
-
-
-	event->accept();
-}
-
 
 EDeveloper::EDeveloper(){
 	lay = new QVBoxLayout();
@@ -70,8 +49,4 @@ void EDeveloper::showPack(){
 
 void EDeveloper::showResm(){
 
-}
-
-void EMWidget::closeEvent(QCloseEvent *event) {
-	varG(EMain*, "eMain")->destroy();
 }

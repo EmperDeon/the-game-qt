@@ -8,7 +8,7 @@ class MCamera : public ICamera{
 	float xS, yS, zS; // Scale
 	float yaw, pitch; // Angles
 
-	float xSense = 1.0f, ySense = 1.0f;
+	float xSense = 0.05f, ySense = 0.05f;
 
 	int wWidth, wHeight;
 public:
