@@ -5,11 +5,11 @@
 
 class MCamera : public ICamera{
 	float xP, yP, zP; // Pos
-	float xS, yS, zS; // Scale
 	float yaw, pitch; // Angles
 
-	float xSense = 0.05f, ySense = 0.05f;
+	float xSense = 0.004f, ySense = 0.004f;
 
+	bool wFocus = true;
 	int wWidth, wHeight;
 public:
 	const QCursor* pointer;
@@ -37,11 +37,15 @@ public:
 	//Angle
 	void rotate(float y, float p) {	this->yaw += y;	this->pitch += p;}
 	void setAngl(float y, float p){	this->yaw  = y;	this->pitch  = p;	}
+ //Focus
+	bool getFocus(){return wFocus;}
+	void setFocus(bool n){this->wFocus = n;}
+	void switchFocus(){this->wFocus = !this->wFocus;}
 
-	virtual Vector3 getPos(){	return Vector3(xP, yP, zP);	}
+	virtual IVec3 getPos(){	return IVec3(xP, yP, zP);	}
 	virtual float getYaw(){	return yaw;	}
 	virtual float getPitch(){	return pitch;	}
-	virtual Vector3 getScl(){	return Vector3(xS, yS, zS);	}
+	virtual IVec3 getScl(){	return IVec3(xS, yS, zS);	}
 };
 
 #endif //GLOBALQT_MCAMERA_H

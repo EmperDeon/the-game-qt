@@ -14,10 +14,10 @@ public:
 	virtual void rotate(float y, float p) = 0;
 	virtual void setAngl(float y, float p) = 0;
 
-	virtual Vector3 getPos() = 0;
+	virtual IVec3 getPos() = 0;
 	virtual float getYaw() = 0;
 	virtual float getPitch() = 0;
-	virtual Vector3 getScl() = 0;
+	virtual IVec3 getScl() = 0;
 };
 
 class IGuiRender{ // 2D

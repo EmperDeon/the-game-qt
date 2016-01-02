@@ -79,29 +79,78 @@ public:
 	long int y(){ return py; }
 };
 
-struct Vector3 {
+struct IVec2 {
+	float x, y;
+
+	IVec2(float X, float Y):	x(X),	y(Y){ }
+
+	IVec2():	x(0.0f),	y(0.0f) { }
+
+	IVec2(const IVec2 &v):	x(v.x),	y(v.y) { }
+
+	IVec2 operator*(const float s) const {
+		return IVec2(x * s, y * s);
+	}
+
+	IVec2 &operator=(const IVec2 &v) {
+		if (this == &v) {
+			return *this;
+		}
+
+		x = v.x;
+		y = v.y;
+
+		return *this;
+	}
+
+	IVec2 &operator+=(const IVec2 &v) {
+		this->x += v.x;
+		this->y += v.y;
+
+		return *this;
+	}
+
+	const IVec2 operator-(const IVec2 &v) const {
+		IVec2 result;
+		result.x = x - v.x;
+		result.y = y - v.y;
+
+		return result;
+	}
+
+	float length() const {
+		return sqrtf(x * x + y * y);
+	}
+
+	void normalize() {
+		float l = 1.0f / length();
+		x *= l;
+		y *= l;
+	}
+};
+struct IVec3 {
 	float x, y, z;
 
-	Vector3(float X, float Y, float Z) :
+	IVec3(float X, float Y, float Z) :
 		x(X),
 		y(Y),
 		z(Z) { }
 
-	Vector3() :
+	IVec3() :
 		x(0.0f),
 		y(0.0f),
 		z(0.0f) { }
 
-	Vector3(const Vector3 &v) :
+	IVec3(const IVec3 &v) :
 		x(v.x),
 		y(v.y),
 		z(v.z) { }
 
-	Vector3 operator*(const float s) const {
-		return Vector3(x * s, y * s, z * s);
+	IVec3 operator*(const float s) const {
+		return IVec3(x * s, y * s, z * s);
 	}
 
-	Vector3 &operator=(const Vector3 &v) {
+	IVec3 &operator=(const IVec3 &v) {
 		if (this == &v) {
 			return *this;
 		}
@@ -113,7 +162,7 @@ struct Vector3 {
 		return *this;
 	}
 
-	Vector3 &operator+=(const Vector3 &v) {
+	IVec3 &operator+=(const IVec3 &v) {
 		this->x += v.x;
 		this->y += v.y;
 		this->z += v.z;
@@ -121,8 +170,8 @@ struct Vector3 {
 		return *this;
 	}
 
-	const Vector3 operator-(const Vector3 &v) const {
-		Vector3 result;
+	const IVec3 operator-(const IVec3 &v) const {
+		IVec3 result;
 		result.x = x - v.x;
 		result.y = y - v.y;
 		result.z = z - v.z;
@@ -140,6 +189,17 @@ struct Vector3 {
 		y *= l;
 		z *= l;
 	}
+};
+struct IRect {
+	float x1, y1, x2, y2;
+
+	IRect(float X, float Y, float X1, float Y2): x1(X), y1(Y), x2(X1), y2(Y2) { }
+	IRect(): x1(0.0f), y1(0.0f), x2(0.0f), y2(0.0f) { }
+
+	IRect(const IRect &v) :
+		x1(v.x1),
+		y1(v.y1),
+		x2(v.x2), y2(v.y2) { }
 };
 
 template<typename Base, typename T> inline bool instanceOf(const T *ptr) {

@@ -45,7 +45,7 @@ GLfloat ratio = 2.0f;
 
 	// glFrustum(10.0, 10.0, 10.0, 10.0, 0.1f, 10.0);
 	gluPerspective(85.0f, ratio, 0.1f, 100.0f);
-	glViewport(5, 5, (GLint)nWidth-5, (GLint)nHeight-5);
+	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
 	cam->resize(width(), height());
 }
 
@@ -70,7 +70,7 @@ void MGlWidget::mouseReleaseEvent(QMouseEvent* pe){}
 void MGlWidget::mouseMoveEvent(QMouseEvent* pe){
 
 
-//	Vector3 scl = cam->getScl();
+//	IVec3 scl = cam->getScl();
 // cam->rotate(
 // 	180/scl.x*(GLfloat)(pe->y() - mPos.y())/height(),
 // 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
@@ -96,8 +96,15 @@ void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 		case Qt::Key_Q: cam->move( 0.0f,  0.1f,  0.0f); break;
 		case Qt::Key_E: cam->move( 0.0f,  -0.1f, 0.0f); break;
 
+		case Qt::Key_L: mLogI(QString("Current cam pos/angles: x= %1; y= %2; z= %3; yaw= %4; pitch= %5")
+			                      .arg(cam->getPos().x)
+		                       .arg(cam->getPos().y)
+		                       .arg(cam->getPos().z)
+		                       .arg(cam->getYaw())
+		                       .arg(cam->getPitch())
+			);break;
 
-		case Qt::Key_Escape:	this->close();	break;
+		case Qt::Key_Escape:	switchFocus();	break;
 
 		default:;
 	}
@@ -262,3 +269,6 @@ void MGlWidget::keyReleaseEvent(QKeyEvent *event) {
 //}
 
 
+void MGlWidget::switchFocus() {
+ this->cam->switchFocus();
+}

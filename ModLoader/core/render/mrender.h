@@ -39,6 +39,8 @@ protected:
 	void wheelEvent(QWheelEvent* pe);
 	void keyPressEvent(QKeyEvent* pe);
 
+	void switchFocus();
+
 	virtual void keyReleaseEvent(QKeyEvent *keyEvent);
 };
 

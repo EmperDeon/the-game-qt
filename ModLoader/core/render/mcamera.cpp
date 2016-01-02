@@ -1,6 +1,5 @@
 #include "ModLoader/core/render/mcamera.h"
 #include <GL/glu.h>
-#include <iostream>
 
 MCamera::MCamera(IBlockPos pos) {
 	this->pointer = new QCursor(Qt::CrossCursor);
@@ -15,7 +14,7 @@ MCamera::MCamera(IBlockPos pos) {
 }
 
 void MCamera::apply() {
-	if((wWidth > 0) && (wHeight > 0)) {
+	if(wFocus && (wWidth > 0) && (wHeight > 0)) {
 		QPoint pos = pointer->pos();
 		pos.setX(pos.x() - wWidth / 2);
 		pos.setY(pos.y() - wHeight / 2);
@@ -26,36 +25,35 @@ void MCamera::apply() {
 		yaw = yaw >  90.0f ?  90.0f : yaw;
 		yaw = yaw < -90.0f ? -90.0f : yaw;
 
+		pitch = pitch > 360.0f ? 0.0f : pitch;
+		pitch = pitch < 0.0f ? 360.0f : pitch;
 
 		pointer->setPos(wWidth / 2, wHeight / 2);
 	}
 
-//	float cosYaw = cosf(degreesToRadians(yaw));
-//	float sinYaw = sinf(degreesToRadians(yaw));
-//	float sinPitch = sinf(degreesToRadians(pitch));
-//
-//	//std::cout << '\n' << pitch << ' ' << sinPitch;
-//
-//	// calculate lookAt based on new position
-//	float xL = xP + cosYaw;
-//	float yL = yP + sinPitch;
-//	float zL = zP + sinYaw;
-//
-//	// set the camera
-////	glScalef(xS, yS, zS);
+	float cY = cosf(yaw);
+	float sY = sinf(yaw);
+	float cP = cosf(pitch);
+	float sP = sinf(pitch);
 
+	float xL = xP + cP * cY;
+	float yL = yP + sY;
+	float zL = zP + sP * cY;
 
-	glRotatef(pitch, 0.0f, 1.0, 0.0f);
-	glRotatef(-yaw, 0.0f, 0.0f, 1.0f);
-	glTranslatef(-xP, -yP, -zP);
+	gluLookAt(xP, yP+1.0f, zP, // Position
+	          xL, yL+1.0f, zL, // LookAt
+	          0.0f, 1.0f, 0.0f); // Up vector
+
+// ((pitch > 270)||(pitch < 90)) ? yaw : -yaw
+//	glRotatef(pitch, 0.0f, 1.0, 0.0f);
+//	glRotatef(-yaw, 0.0f, 0.0f, 1.0f);
+//	glTranslatef(-xP, -yP, -zP);
 }
 
-void MCamera::resize(int w, int h){
-	this->wWidth = w;
-	this->wHeight = h;
-	pointer->setPos(wWidth / 2, wHeight / 2);
-
-	gluLookAt(xP, yP, zP, // Position
-	          xP + 1.0f, yP, zP, // LookAt
-	          0.0f, 1.0f, 0.0f); // Up vector
+void MCamera::resize(int w, int h) {
+	if ((w > 50) && (h > 50)) {
+		this->wWidth = w;
+		this->wHeight = h;
+		pointer->setPos(wWidth / 2, wHeight / 2);
+	}
 }

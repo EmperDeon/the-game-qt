@@ -59,7 +59,7 @@ set(G_HEADERS
 		Engine/ewidgets.h
 		Engine/qzipreader_p.h
 		Engine/qzipwriter_p.h
-)
+		Engine/interfaces/iplayer.h)
 
 set(L_SOURCE_FILES
 		Launcher/lmain.cpp
@@ -90,6 +90,7 @@ set(M_SOURCE_FILES
 		 ModLoader/core/level/mlevel.cpp
 
 	 	ModLoader/core/render/mcamera.cpp
+		 ModLoader/core/render/mhelper.cpp
 	 	ModLoader/core/render/mrender.cpp
 	 	ModLoader/core/render/perf/mperfw.cpp
 	 	ModLoader/core/render/gui/mgui.cpp
@@ -117,8 +118,9 @@ set(M_HEADERS
 		 ModLoader/core/level/mlevel.h
 
 		 ModLoader/core/render/mcamera.h
+	 	ModLoader/core/render/mhelper.h
 	 	ModLoader/core/render/mrender.h
-		ModLoader/core/render/perf/mperfw.h
+		 ModLoader/core/render/perf/mperfw.h
 		 ModLoader/core/render/gui/mgui.h
 		 ModLoader/core/render/world/mworld.h
 
