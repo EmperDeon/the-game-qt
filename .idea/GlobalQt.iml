@@ -85,7 +85,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/inftrees.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/infback.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.c" isTestSource="false" />
@@ -95,14 +95,14 @@
       <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/gzread.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/crc32.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/zconf.h.cmakein" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/adler32.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/uncompr.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/trees.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/trees.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/inflate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.c" isTestSource="false" />
@@ -126,21 +126,21 @@
       <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/itext.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/irender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mscript.cpp" isTestSource="false" />
@@ -174,11 +174,13 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mregion.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mblock.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -235,20 +237,20 @@
           <root url="file://$MODULE_DIR$/Engine/ewidgets.cpp" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/imain.h" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/imods.h" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/itext.h" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/imods.h" />
           <root url="file://$MODULE_DIR$/Engine/interfaces/irender.h" />
           <root url="file://$MODULE_DIR$/Engine/emain.h" />
           <root url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" />
           <root url="file://$MODULE_DIR$/Engine/econtainers.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" />
+          <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mmods.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" />
+          <root url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mscript.cpp" />
@@ -282,11 +284,13 @@
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mregion.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" />
+          <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mdefines.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mutils.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlib_automoc.cpp" />
@@ -294,10 +298,10 @@
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/ModLoader_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlib_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlibstatic_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/ModLoader_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlib_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlibstatic_automoc.cpp" />

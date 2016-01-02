@@ -206,9 +206,11 @@ template<typename Base, typename T> inline bool instanceOf(const T *ptr) {
 	return reinterpret_cast<const Base*>(ptr) != nullptr;
 }
 
+// Render
 inline float degreesToRadians(const float degrees) {
 	const float PIOver180 = 3.14159f / 180.0f;
 	return degrees * PIOver180;
 }
 
+// !Render
 #endif //GLOBALQT_IUTILS_H

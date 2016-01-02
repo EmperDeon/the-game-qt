@@ -3,8 +3,12 @@
 
 
 MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
-	cam = new MCamera(IBlockPos(0, 0, 0));
-	this->setCursor(*cam->pointer);
+	player = new MPlayer(0, 0, 0);
+	cam = new MCamera();
+	cam->attachTo(player);
+
+	this->pointer = new QCursor(Qt::CrossCursor);
+	this->setCursor(*pointer);
 
 	world = new MWorldRender(m);
 	gui = new MGuiRender(m);
@@ -36,21 +40,25 @@ void MGlWidget::resizeGL(int nWidth, int nHeight){
 	glLoadIdentity();            // присваивает проекционной матрице единичную матрицу
 
 	//GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // отношение высоты окна виджета к его ширине
-GLfloat ratio = 2.0f;
-	// мировое окно
-//	if (nWidth>=nHeight)
-//		glOrtho(-1.0/ratio, 1.0/ratio, -1.0, 1.0, -10.0, 1.0);
-//	else
-//		glOrtho(-1.0, 1.0, -1.0*ratio, 1.0*ratio, -10.0, 1.0);
-
-	// glFrustum(10.0, 10.0, 10.0, 10.0, 0.1f, 10.0);
+ GLfloat ratio = 2.0f;
 	gluPerspective(85.0f, ratio, 0.1f, 100.0f);
 	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
-	cam->resize(width(), height());
 }
 
 void MGlWidget::paintGL(){
  fps_t->start();
+
+	// MouseControl
+	if(wFocus && (width() > 0) && (height() > 0)) {
+		QPoint pos = pointer->pos();
+		pos.setX(pos.x() - width() / 2);
+		pos.setY(pos.y() - height() / 2);
+
+		if (pos.x() != 0) player->pitch(xSense * pos.x()) ;
+		if (pos.y() != 0) player->yaw(-ySense * pos.y());
+
+		pointer->setPos(width() / 2, height() / 2);
+	}
 
 	// glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -87,22 +95,15 @@ void MGlWidget::wheelEvent(QWheelEvent* pe){
 
 void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 	switch (pe->key())	{
-		case Qt::Key_W: cam->move( 0.1f,  0.0f,  0.0f); break;
-		case Qt::Key_S: cam->move(-0.1f,  0.0f,  0.0f); break;
+		case Qt::Key_W: player->moveF(); break;
+		case Qt::Key_S: player->moveB(); break;
 
-		case Qt::Key_D: cam->move( 0.0f,  0.0f,  0.1f); break;
-		case Qt::Key_A: cam->move( 0.0f,  0.0f, -0.1f); break;
+		case Qt::Key_D: player->moveR(); break;
+		case Qt::Key_A: player->moveL(); break;
 
-		case Qt::Key_Q: cam->move( 0.0f,  0.1f,  0.0f); break;
-		case Qt::Key_E: cam->move( 0.0f,  -0.1f, 0.0f); break;
+		case Qt::Key_Space: player->moveU(); break;
+		case Qt::Key_Shift: player->moveD(); break;
 
-		case Qt::Key_L: mLogI(QString("Current cam pos/angles: x= %1; y= %2; z= %3; yaw= %4; pitch= %5")
-			                      .arg(cam->getPos().x)
-		                       .arg(cam->getPos().y)
-		                       .arg(cam->getPos().z)
-		                       .arg(cam->getYaw())
-		                       .arg(cam->getPitch())
-			);break;
 
 		case Qt::Key_Escape:	switchFocus();	break;
 
@@ -270,5 +271,5 @@ void MGlWidget::keyReleaseEvent(QKeyEvent *event) {
 
 
 void MGlWidget::switchFocus() {
- this->cam->switchFocus();
+ this->wFocus = !this->wFocus;
 }

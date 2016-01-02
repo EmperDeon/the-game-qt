@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include <QtOpenGL/QtOpenGL>
 #include <ModLoader/mdefines.h>
+#include <ModLoader/core/player/mplayer.h>
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/core/render/mcamera.h>
 #include <ModLoader/core/render/gui/mgui.h>
@@ -11,12 +12,14 @@
 
 class MCoreMods;
 class MCamera;
+class MPlayer;
 
 class MGlWidget : public QGLWidget{
 	QString className = "M-Render";
 	MCoreMods* loader;
 
  MCamera* cam;
+	MPlayer* player;
 	IWorldRender* world;
 	IGuiRender* gui;
 
@@ -25,6 +28,12 @@ class MGlWidget : public QGLWidget{
 	QElapsedTimer* fps_t;
 	QTimer* fps_stabilizer;
  // !Fps
+
+	// MouseControl
+ QCursor* pointer;
+	float xSense = 0.004f, ySense = 0.004f;
+	bool wFocus = true;
+	// !MouseControl
 public:
 	MGlWidget(MCoreMods* m);
 	qint64 getFps(){return fps;}
