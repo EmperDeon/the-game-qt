@@ -13,12 +13,6 @@
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlib_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlib_automoc.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlibstatic_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlibstatic_automoc.cpp" isTestSource="false" />
-    </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp" isTestSource="false" />
     </content>
@@ -30,12 +24,6 @@
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlib_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlib_automoc.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlibstatic_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlibstatic_automoc.cpp" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine_automoc.cpp" isTestSource="false" />
@@ -49,12 +37,6 @@
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Runner_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Runner_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlib_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlib_automoc.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlibstatic_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlibstatic_automoc.cpp" isTestSource="false" />
-    </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine_automoc.cpp" isTestSource="false" />
     </content>
@@ -67,75 +49,7 @@
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlib_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlib_automoc.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlibstatic_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlibstatic_automoc.cpp" isTestSource="false" />
-    </content>
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inftrees.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/infback.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/deflate.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/crc32.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/gzlib.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/gzguts.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/gzread.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/crc32.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zconf.h.cmakein" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inffast.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/adler32.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/uncompr.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/trees.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/trees.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inflate.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zutil.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/gzwrite.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inflate.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/zlib.pc.cmakein" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/gzclose.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inffixed.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/compress.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/zlib/inftrees.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emods.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/einterfaces.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/qzipreader_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/edefines.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imain.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/itext.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/irender.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" isTestSource="false" />
@@ -164,9 +78,9 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.cpp" isTestSource="false" />
@@ -181,71 +95,73 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lwidgets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/lutils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Runner/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/emods.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/einterfaces.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/qzipreader_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/edefines.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/itext.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/imods.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/interfaces/irender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/ModLoader" />
           <root url="file://$MODULE_DIR$/Launcher" />
           <root url="file://$MODULE_DIR$/Engine" />
-          <root url="file://$MODULE_DIR$/ModLoader" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/ModLoader" />
           <root url="file://$MODULE_DIR$/Launcher" />
           <root url="file://$MODULE_DIR$/Engine" />
-          <root url="file://$MODULE_DIR$/ModLoader" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/Launcher/lmain.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lmain.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/lparser.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lparser.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" />
-          <root url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/lutils.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lwidgets.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lutils.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/emods.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/econtainers.h" />
-          <root url="file://$MODULE_DIR$/Engine/einterfaces.h" />
-          <root url="file://$MODULE_DIR$/Engine/eutils.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/ewidgets.h" />
-          <root url="file://$MODULE_DIR$/Engine/qzipreader_p.h" />
-          <root url="file://$MODULE_DIR$/Engine/emods.h" />
-          <root url="file://$MODULE_DIR$/Engine/edefines.h" />
-          <root url="file://$MODULE_DIR$/Engine/emain.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/eutils.h" />
-          <root url="file://$MODULE_DIR$/Engine/ewidgets.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/imain.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/imods.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/itext.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/irender.h" />
-          <root url="file://$MODULE_DIR$/Engine/emain.h" />
-          <root url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" />
-          <root url="file://$MODULE_DIR$/Engine/econtainers.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" />
@@ -274,9 +190,9 @@
           <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.cpp" />
@@ -291,30 +207,54 @@
           <root url="file://$MODULE_DIR$/ModLoader/mdefines.h" />
           <root url="file://$MODULE_DIR$/ModLoader/mutils.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Launcher_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlib_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/zlib/zlibstatic_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/ModLoader_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlib_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/zlib/zlibstatic_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/ModLoader_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlib_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/zlib/zlibstatic_automoc.cpp" />
+          <root url="file://$MODULE_DIR$/Launcher/lutils.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lmain.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lmain.cpp" />
+          <root url="file://$MODULE_DIR$/Launcher/lparser.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lparser.cpp" />
+          <root url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" />
+          <root url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lwidgets.h" />
+          <root url="file://$MODULE_DIR$/Launcher/lutils.cpp" />
+          <root url="file://$MODULE_DIR$/Engine/emods.cpp" />
+          <root url="file://$MODULE_DIR$/Engine/econtainers.h" />
+          <root url="file://$MODULE_DIR$/Engine/einterfaces.h" />
+          <root url="file://$MODULE_DIR$/Engine/eutils.cpp" />
+          <root url="file://$MODULE_DIR$/Engine/ewidgets.h" />
+          <root url="file://$MODULE_DIR$/Engine/qzipreader_p.h" />
+          <root url="file://$MODULE_DIR$/Engine/emods.h" />
+          <root url="file://$MODULE_DIR$/Engine/eutils.h" />
+          <root url="file://$MODULE_DIR$/Engine/emain.cpp" />
+          <root url="file://$MODULE_DIR$/Engine/edefines.h" />
+          <root url="file://$MODULE_DIR$/Engine/ewidgets.cpp" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/imain.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/itext.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/imods.h" />
+          <root url="file://$MODULE_DIR$/Engine/interfaces/irender.h" />
+          <root url="file://$MODULE_DIR$/Engine/emain.h" />
+          <root url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" />
+          <root url="file://$MODULE_DIR$/Engine/econtainers.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/ModLoader_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Launcher_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/ModLoader_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Launcher_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/ModLoader_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlib_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/zlib/zlibstatic_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/ModLoader_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Launcher_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/ModLoader_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>

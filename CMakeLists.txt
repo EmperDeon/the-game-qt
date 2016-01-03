@@ -20,15 +20,15 @@ find_package(Qt5Widgets)
 find_package(Qt5Network)
 find_package(Qt5Declarative)
 find_package(OpenGL REQUIRED)
+find_package(ZLIB REQUIRED)
 
 set(CMAKE_CXX_FLAGS "-std=c++11")
 # -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}
-include_directories(zlib)
+
+include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(Engine)
 include_directories(Launcher)
 include_directories(ModLoader)
-
-add_subdirectory(zlib)
 
 #Sets
 
@@ -139,7 +139,7 @@ qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
 add_executable(Engine ${G_SOURCE_FILES} ${G_HEADERS})
 qt5_use_modules(Engine Core Widgets Network OpenGL)
 target_compile_features(Engine PRIVATE cxx_range_for)
-target_link_libraries(Engine zlib ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
+target_link_libraries(Engine ${ZLIB_LIBRARIES} ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
 
 add_executable(Launcher ${L_SOURCE_FILES} ${L_HEADERS})
 qt5_use_modules(Launcher Core Widgets Network)
