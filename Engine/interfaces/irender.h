@@ -2,6 +2,12 @@
 #define GLOBALQT_IRENDER_H
 class IEntity;
 
+class IRObject{ // IRenderObject
+public:
+	//Render
+	virtual int getGlList() = 0;
+};
+
 class ICamera{
 public:
 	virtual void apply() = 0;
@@ -14,9 +20,6 @@ public:
 
 };
 
-class IRHelper{
-
-};
 
 class IWorldRender{// 3D
 public:

@@ -6,7 +6,6 @@
 #include "Engine/edefines.h"
 
 class ELogger : public QObject, public ILogger{
-	Q_INTERFACES(ILogger)
  Q_OBJECT
 	QString className = "E-Logger";
 	QStringList lst;
@@ -41,7 +40,6 @@ public:
 };
 
 class EVars : public IVars{
-	Q_INTERFACES(IVars)
 	QString className = "E-Vars";
 	QMap<QString, void*>* map;
 	QStringList* owlist;

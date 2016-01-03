@@ -10,7 +10,6 @@ MChunk::MChunk(IChunkPos p): id(p){
 						chunk[x][y][z] = new MWorldBlock(Imiks(1, 1, 1, 1), IBlockPos(x, y, z));
 					}else{
 						chunk[x][y][z] = new MWorldBlock(Imiks(1,1,1,1), IBlockPos(x,y,z), "Parameter1;");
-						c++;
 					}
 				}else{
 					chunk[x][y][z] = NULL;
@@ -73,8 +72,12 @@ void MChunk::write(QDataStream& out, QJsonObject& o) {
 	  +QString::number(this->id.z())
 	] = obj;
 }
+int MChunk::getGlList() {
+	return 0;
+}
 
 MPChunk::MPChunk(){}
 QColor MPChunk::getBlockColor(IBlockPos pos) {	return QColor(Qt::gray);}
-
-
+int MPChunk::getGlList() {
+	return 0;
+}

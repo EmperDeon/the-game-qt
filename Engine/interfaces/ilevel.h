@@ -1,6 +1,9 @@
 #ifndef GLOBALQT_ILEVEL_H
 #define GLOBALQT_ILEVEL_H
+#include "irender.h"
+
 class Imiks;
+class IRObject;
 
 // Blocks
 class IWorldBlock {
@@ -15,7 +18,7 @@ public:
 // Blocks
 
 // Chunks
-class IChunk{
+class IChunk : public IRObject{
 public:
 	static const int size = 32;
 	virtual IChunkPos getId() = 0;
@@ -24,7 +27,7 @@ public:
 	virtual IWorldBlock* getBlock(IBlockPos p) = 0;
 	virtual void write(QDataStream &a, QJsonObject& o) = 0;
 };
-class IPChunk{// Prewiew
+class IPChunk : public IRObject{// Prewiew
 public:
  virtual QColor getBlockColor(IBlockPos pos) = 0;
 };

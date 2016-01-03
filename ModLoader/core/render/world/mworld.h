@@ -2,8 +2,9 @@
 #define GLOBALQT_MWORLD_H
 #include <ModLoader/mdefines.h>
 #include <ModLoader/core/mcoremods.h>
+#include <ModLoader/core/render/mhelper.h>
 
-class MWorldRender : public IWorldRender{// 3D
+class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	QString className = "M-WorldRender";
 	MCoreMods* loader;
 
@@ -14,18 +15,15 @@ class MWorldRender : public IWorldRender{// 3D
 	GLubyte IndexArray[20][3];
 
 	void drawAxis();
-	void getVertexArray(); // определить массив вершин
-	void getColorArray();  // определить массив цветов вершин
-	void getIndexArray();  // определить массив индексов вершин
+	void getVertexArray(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	void getColorArray();  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	void getIndexArray();  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 
 public:
 	MWorldRender(MCoreMods* m);
 	virtual void init();
 	virtual void render();
-
-	void renderPolygon(float x1, float y1, float z1, float x2, float y2, float z3);
-	void renderCube(float x, float y, float z);
 };
 
 

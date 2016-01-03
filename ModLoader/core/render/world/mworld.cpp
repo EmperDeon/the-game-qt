@@ -21,49 +21,11 @@ void MWorldRender::render() {
 //
 //	glDrawElements(GL_TRIANGLES, 60, GL_UNSIGNED_BYTE, IndexArray);
 
-	renderCube(0, 0, 0);
-
+	// Box of Epileptic
+//	this->drawRCube(IVec3(0, 0, 0), 0.15f);
+//	this->drawRCube(IVec3(0, 0, 0), 1.0f);
 }
 
-void MWorldRender::renderPolygon(float x1, float y1, float z1, float x2, float y2, float z3){
-
-}
-
-void MWorldRender::renderCube(float x, float y, float z){
-	float r = 0.5f;
-	glBegin(GL_QUADS);
-	glColor3f(0.0f,1.0f,0.0f);
-	glVertex3f(x +  r, y +  r, z -  r);
-	glVertex3f(x -  r, y +  r, z -  r);
-	glVertex3f(x -  r, y +  r, z +  r);
-	glVertex3f(x +  r, y +  r, z +  r);
-	glColor3f(1.0f,0.5f,0.0f);
-	glVertex3f(x +  r, y -  r, z +  r);
-	glVertex3f(x -  r, y -  r, z +  r);
-	glVertex3f(x -  r, y -  r, z -  r);
-	glVertex3f(x +  r, y -  r, z -  r);
-	glColor3f(1.0f,0.0f,0.0f);
-	glVertex3f(x +  r, y +  r, z +  r);
-	glVertex3f(x -  r, y +  r, z +  r);
-	glVertex3f(x -  r, y -  r, z +  r);
-	glVertex3f(x +  r, y -  r, z +  r);
-	glColor3f(1.0f,1.0f,0.0f);
-	glVertex3f(x +  r, y -  r, z -  r);
-	glVertex3f(x -  r, y -  r, z -  r);
-	glVertex3f(x -  r, y +  r, z -  r);
-	glVertex3f(x +  r, y +  r, z -  r);
-	glColor3f(0.0f,0.0f,1.0f);
-	glVertex3f(x -  r, y +  r, z +  r);
-	glVertex3f(x -  r, y +  r, z -  r);
-	glVertex3f(x -  r, y -  r, z -  r);
-	glVertex3f(x -  r, y -  r, z +  r);
-	glColor3f(1.0f,0.0f,1.0f);
-	glVertex3f(x +  r, y +  r, z -  r);
-	glVertex3f(x +  r, y +  r, z +  r);
-	glVertex3f(x +  r, y -  r, z +  r);
-	glVertex3f(x +  r, y -  r, z -  r);
-	glEnd(); // ��������� ��������
-}
 
 void MWorldRender::drawAxis(){
 	glLineWidth(3.0f); // ������������ ������ ����� ���������� � ��������

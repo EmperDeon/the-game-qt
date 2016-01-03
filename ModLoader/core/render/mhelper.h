@@ -4,10 +4,29 @@
 
 #include <GL/gl.h>
 
-class MRHelper : public IRHelper{
+class MRHelper{
  public:
-  static void drawRect(IVec3 p1, IVec3 p2, bool side, IVec3 c);
- 	static void drawRect(IVec3 p1, IVec3 p2, int sideD, bool side, IVec3 c);
+
+ 	static void drawRect(int side, IVec3 p, IVec3 c);
+ 	static void drawRect(int side, IVec3 p, float r, IVec3 c);
+
+	 static void drawRectTp(IVec3 p, float r, IVec3 c); // Top
+	 static void drawRectBt(IVec3 p, float r, IVec3 c); // Bottom
+	 static void drawRectFr(IVec3 p, float r, IVec3 c); // Front
+	 static void drawRectBc(IVec3 p, float r, IVec3 c); // Back
+	 static void drawRectLf(IVec3 p, float r, IVec3 c); // Left
+	 static void drawRectRg(IVec3 p, float r, IVec3 c); // Right
+
+	 static void drawRectTp(IVec3 p, IVec3 c){ drawRectTp(p, 0.5f, c); }
+	 static void drawRectBt(IVec3 p, IVec3 c){ drawRectBt(p, 0.5f, c); }
+	 static void drawRectFr(IVec3 p, IVec3 c){ drawRectFr(p, 0.5f, c); }
+	 static void drawRectBc(IVec3 p, IVec3 c){ drawRectBc(p, 0.5f, c); }
+	 static void drawRectLf(IVec3 p, IVec3 c){ drawRectLf(p, 0.5f, c); }
+	 static void drawRectRg(IVec3 p, IVec3 c){ drawRectRg(p, 0.5f, c); }
+
+	 static void drawRCube(IVec3 p, float r);
+	 static void drawCube(IVec3 p, IVec3 c);
+	 static void drawCube(IVec3 p, float r, IVec3 c);
 };
 
 #endif //GLOBALQT_MHELPER_H
