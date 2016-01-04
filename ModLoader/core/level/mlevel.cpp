@@ -1,4 +1,5 @@
 #include "ModLoader/core/level/mlevel.h"
+#include <QtConcurrent/QtConcurrent>
 #include <iostream>
 //MLevelInfo
 MLevelInfo::MLevelInfo(){this->custom = new QJsonObject;}
@@ -102,6 +103,11 @@ void MLevel::save() {
 	out1.flush();
 	out1.close();
 }
+void MLevel::generateWorld() {
+ for(int x = -2 ; x < 3 ; x++)
+	 for(int z = -2 ; z < 3 ; z++)
+		 addNewChunk(IChunkPos(x, 0, z));
+}
 
 IPChunk *MLevel::getPreview() {	return new MPChunk();}
 void MLevel::cycleRegion() {}
@@ -116,6 +122,12 @@ void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(th
 //MLevel
 
 //MLevelManager
+void loadLevelC(ILevel* l){
+	l->load();
+}
+void genLevelC(ILevel* l){
+ l->generateWorld();
+}
 MLevelManager::MLevelManager(MCoreMods* m) {
 	this->loader = m;
 	this->list = new QList<ILevelInfo*>;
@@ -141,10 +153,12 @@ ILevelInfo* MLevelManager::getCurrentLevelInfo() {	return this->current;}
 void MLevelManager::createLevel(ILevelInfo* i) {
  this->current = i;
  this->level = new MLevel(this->current);
+	QtConcurrent::run(this->loader->queue, genLevelC, this->level);
 }
 void MLevelManager::loadLevel(ILevelInfo *i) {
  this->current = i;
 	this->level = new MLevel(this->current);
+	QtConcurrent::run(this->loader->queue, loadLevelC, this->level);
 }
 void MLevelManager::exitLevel(ILevelInfo* i) {
  this->level->save();
@@ -152,6 +166,5 @@ void MLevelManager::exitLevel(ILevelInfo* i) {
 void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
-
 
 

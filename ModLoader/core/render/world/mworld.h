@@ -7,23 +7,16 @@
 class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	QString className = "M-WorldRender";
 	MCoreMods* loader;
-
-	float pi=3.141593, k=pi/180;
-
-	GLfloat VertexArray[12][3];
-	GLfloat ColorArray[12][4];
-	GLubyte IndexArray[20][3];
+ ILevelManager* manager;
+	ILevel* level;
 
 	void drawAxis();
-	void getVertexArray(); // ���������� ������ ������
-	void getColorArray();  // ���������� ������ ������ ������
-	void getIndexArray();  // ���������� ������ �������� ������
-
-
 public:
 	MWorldRender(MCoreMods* m);
 	virtual void init();
 	virtual void render();
+
+	virtual void close();
 };
 
 

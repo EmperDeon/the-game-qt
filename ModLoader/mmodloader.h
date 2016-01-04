@@ -11,7 +11,7 @@
 class MCoreMods;
 class MMods;
 
-class ModLoader : public QObject, IModLoader {
+class MModLoader : public QObject, IModLoader {
 	Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.IModLoader" FILE "coremod.json")
 	Q_INTERFACES(IModLoader)
@@ -20,7 +20,7 @@ class ModLoader : public QObject, IModLoader {
 	MCoreMods* core;
 	MMods* mods;
 
- ModLoader* loader;
+ MModLoader * loader;
 public:
 	IVars* vars;
 	ILogger* log;

@@ -3,8 +3,10 @@
 
 #define upd(a) main->setSplashLabel(a)
 
-MCoreMods::MCoreMods(ModLoader *l) : loader(l), log(l->log), vars(l->vars){
+MCoreMods::MCoreMods(MModLoader *l) : loader(l), log(l->log), vars(l->vars){
  this->plugins = new QList<ICoreMod*>;
+	this->t_ren = mVarG(QThread*, "eRenderThread");
+	this->queue = mVarG(QThreadPool*, "eThreadQueue");
 }
 
 void MCoreMods::parseOwerwrites(){
@@ -38,7 +40,12 @@ void MCoreMods::preInit() {
  loadPlugins();
 	upd("Plugins Loaded");
 
+	this->level = new MLevelManager(this);
+	mVarS(level, "mLevel");
+	upd("Level constructed");
+
 	this->render = new MGlWidget(this);
+	this->render->moveToThread(this->t_ren);
 	mVarS(render, "mRender");
 	upd("Render constructed");
 
@@ -50,9 +57,6 @@ void MCoreMods::preInit() {
 	mVarS(actions, "mActions");
 	upd("Actions constructed");
 
-	this->level = new MLevelManager(this);
- mVarS(level, "mLevel");
-	upd("Level constructed");
 
 	foreach(ICoreMod* p, *plugins){
 	 p->preInit();

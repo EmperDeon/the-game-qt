@@ -22,6 +22,7 @@ struct LLogE {
 	bool engine;
 	LLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss);
 	LLogE(QString);
+	QString parseQtFunc(QString s);
 	QString toString();
 };
 

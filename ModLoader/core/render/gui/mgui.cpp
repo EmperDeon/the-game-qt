@@ -13,3 +13,7 @@ void MGuiRender::render() {
 //	glVertex2f(0, (GLfloat) -1);
 //	glEnd();
 }
+
+void MGuiRender::close() {
+
+}

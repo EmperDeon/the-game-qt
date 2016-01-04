@@ -20,9 +20,16 @@ int main(int argc, char *argv[]){
 EMain::EMain() {
  srand(unsigned(int(time(NULL))));
 
-	splash = new QSplashScreen(QPixmap("splash.png").scaledToHeight(500));
-	//splash->show();
+	splash = new QSplashScreen(QPixmap("splash.png").scaledToHeight(350));
+	splash->show();
 
+ this->ren_t = new QThread;
+	this->queue = new QThreadPool;
+	this->queue->setMaxThreadCount(1);
+
+ varS(ren_t, "eRenderThread");
+	varS(queue, "eThreadQueue");
+	
  varS(this, "eMain");
 	varS(GV_LOGGER, "eLogger");
 

@@ -10,7 +10,7 @@
 #include <ModLoader/core/mactions.h>
 #include <ModLoader/mutils.h>
 
-class ModLoader;
+class MModLoader;
 class ILogger;
 class IVars;
 class MGlWidget;
@@ -21,6 +21,7 @@ class MPerfomanceWidget;
 class MCoreMods {
 	QString className = "M-CoreMods";
 	IMain* main;
+ QThread* t_ren;
 
 	MPerfomanceWidget* perf;
 	MGlWidget *render;
@@ -30,11 +31,12 @@ class MCoreMods {
  QList<ICoreMod*>* plugins;
 
 public:
-	ModLoader* loader;
+	MModLoader * loader;
 	ILogger* log;
 	IVars* vars;
+	QThreadPool* queue;
 
-	MCoreMods(ModLoader* l);
+	MCoreMods(MModLoader * l);
 
 	void parseOwerwrites();
 	void loadPlugins();

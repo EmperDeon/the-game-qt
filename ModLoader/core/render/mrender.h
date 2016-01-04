@@ -51,6 +51,7 @@ protected:
 	void switchFocus();
 
 	virtual void keyReleaseEvent(QKeyEvent *keyEvent);
+	void closeEvent(QCloseEvent *event);
 };
 
 

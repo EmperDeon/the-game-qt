@@ -5,7 +5,7 @@
 #include <Launcher/lwidgets.h>
 #include "Launcher/lparser.h"
 
-#define CLASS_NAME "Not_Defined"
+#define NO_DEBUG true
 
 class LDevelop;
 class MLocalServer;

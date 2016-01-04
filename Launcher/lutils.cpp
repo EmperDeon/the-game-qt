@@ -27,15 +27,23 @@ LLogE::LLogE(QString s){
 	}else if (level == "[I]"){ lv = GLogLevel::INFO ;
 	}else if (level == "[D]"){ lv = GLogLevel::DEBUG;
 	}else if (level == "[F]"){ lv = GLogLevel::FINE ;
-	}else if (level == "[FF]"){ lv = GLogLevel::FFINE ;
+	}else if (level == "[FF]"){lv = GLogLevel::FFINE ;
 	}else if (level == "[A]"){ lv = GLogLevel::ALL ;
 	}else{
 
 	}
-
-	cl = lst.takeFirst();
+ cl = parseQtFunc(lst.takeFirst());
 	ms = lst.takeFirst();
 	engine = true;
+}
+QString LLogE::parseQtFunc(QString s) {
+	QString	r = s;
+	r = r.replace(" void", "");
+	r = r.replace("void", "");
+	r = r.replace("  ", " ");
+	r = QStringRef(&r, r.indexOf(' ') + 1, r.length() - r.indexOf(' ')).toString().insert(1, '-');
+	if(NO_DEBUG)	r = QStringRef(&r, 0, r.indexOf(':')).toString();
+	return r;
 }
 QString LLogE::toString(){
 	QString r = "<div ";

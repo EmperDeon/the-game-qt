@@ -1,10 +1,11 @@
 Engine:
-
-ILogger - eLogger
-EMain - eMain
-EMods - eMods
-EMWidget - eMainWindow
-EDeveloper - eDev
+ Threads:
+  QThread - eRenderThread
+  QThreadPool - eThreadQueue
+ ILogger - eLogger
+ EMain - eMain
+ EMods - eMods
+ EDeveloper - eDev
 
 
 ModLoader:

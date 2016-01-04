@@ -273,3 +273,8 @@ void MGlWidget::keyReleaseEvent(QKeyEvent *event) {
 void MGlWidget::switchFocus() {
  this->wFocus = !this->wFocus;
 }
+
+void MGlWidget::closeEvent(QCloseEvent *event) {
+	this->world->close();
+//	this->gui->close()
+}

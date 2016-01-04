@@ -1,10 +1,10 @@
 #include "mmodloader.h"
 
-QString ModLoader::getName(){
+QString MModLoader::getName(){
 	return "BaseModLoader";
 }
 
-void ModLoader::setVars(IVars *v) {
+void MModLoader::setVars(IVars *v) {
 	this->loader = this;
 	this->vars = v;
 	this->log = reinterpret_cast<ILogger*>(vars->get("eLogger"));
@@ -15,10 +15,10 @@ void ModLoader::setVars(IVars *v) {
 	mLogD("ModLoader Inited");
 }
 
-void ModLoader::corePreInit(){  core->preInit(); }
-void ModLoader::coreInit(){     core->init();    }
-void ModLoader::corePostInit(){	core->postInit();}
+void MModLoader::corePreInit(){  core->preInit(); }
+void MModLoader::coreInit(){     core->init();    }
+void MModLoader::corePostInit(){	core->postInit();}
 
-void ModLoader::preInit(){	 mods->preInit();}
-void ModLoader::init(){	    mods->init();}
-void ModLoader::postInit(){	mods->postInit(); }
+void MModLoader::preInit(){	 mods->preInit();}
+void MModLoader::init(){	    mods->init();}
+void MModLoader::postInit(){	mods->postInit(); }

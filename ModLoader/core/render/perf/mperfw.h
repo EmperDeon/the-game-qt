@@ -20,7 +20,7 @@ class MPerfomanceWidget : public QWidget{
 	QVector<int>* fps_v;
 public:
 	MPerfomanceWidget(MCoreMods* m);
-public Q_SLOTS:
+public slots:
 	void updateFps();
 };
 

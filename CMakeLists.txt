@@ -16,6 +16,7 @@ SET(LIBRARY_OUTPUT_PATH ${dir}lib)
 SET(CMAKE_CACHEFILE_DIR ${dir})
 
 find_package(Qt5Core)
+find_package(Qt5Concurrent)
 find_package(Qt5Widgets)
 find_package(Qt5Network)
 find_package(Qt5Declarative)

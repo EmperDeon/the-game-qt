@@ -9,7 +9,7 @@ class MGuiRender : public IGuiRender{ // 2D
 public:
 	MGuiRender(MCoreMods* m);
 	virtual void render();
-
+	virtual void close();
 };
 
 

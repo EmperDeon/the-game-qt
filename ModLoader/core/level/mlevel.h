@@ -42,6 +42,7 @@ public:
 	virtual QString getName();
 	virtual void load();
 	virtual void save();
+	virtual void generateWorld();
 
 	virtual IPChunk * getPreview();
 	virtual void cycleRegion();

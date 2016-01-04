@@ -23,6 +23,10 @@ class EMain : public IMain{
 	MGlWidget* wgt;
 	EMods * mods;
 
+	// Threads
+	QThreadPool* queue;
+	QThread* ren_t;
+
 public:
 	EMain();
 	virtual void setSplashLabel(QString s);

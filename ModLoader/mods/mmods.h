@@ -10,7 +10,7 @@
 #include <QtCore>
 #include <ModLoader/core/level/mlevel.h>
 
-class ModLoader;
+class MModLoader;
 class ILogger;
 class IVars;
 
@@ -19,7 +19,7 @@ class MScriptsContainer;
 class MPluginsContainer;
 
 class MMods{
- ModLoader* loader;
+ MModLoader * loader;
 	QString className = "M-Mods";
 	IMain* main;
 
@@ -30,7 +30,7 @@ public:
 	ILogger* log;
 	IVars* vars;
 
-	MMods(ModLoader* l);
+	MMods(MModLoader * l);
 
 	void preInit();
 	void init();

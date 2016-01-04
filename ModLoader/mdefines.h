@@ -6,13 +6,13 @@
 #define MFPS_COUNT 200
 // Render defines
 
-#define mLogE(ms)  this->loader->log->log(GLogLevel::ERR,   this->className, ms)
-#define mLogW(ms)  this->loader->log->log(GLogLevel::WARN,  this->className, ms)
-#define mLogI(ms)  this->loader->log->log(GLogLevel::INFO,  this->className, ms)
-#define mLogD(ms)  this->loader->log->log(GLogLevel::DEBUG, this->className, ms)
-#define mLogF(ms)  this->loader->log->log(GLogLevel::FINE,  this->className, ms)
-#define mLogFF(ms) this->loader->log->log(GLogLevel::FFINE, this->className, ms)
-#define mLogA(ms)  this->loader->log->log(GLogLevel::ALL,   this->className, ms)
+#define mLogE(ms)  this->loader->log->log(GLogLevel::ERR,   Q_FUNC_INFO /*this->className*/, ms)
+#define mLogW(ms)  this->loader->log->log(GLogLevel::WARN,  Q_FUNC_INFO /*this->className*/, ms)
+#define mLogI(ms)  this->loader->log->log(GLogLevel::INFO,  Q_FUNC_INFO /*this->className*/, ms)
+#define mLogD(ms)  this->loader->log->log(GLogLevel::DEBUG, Q_FUNC_INFO /*this->className*/, ms)
+#define mLogF(ms)  this->loader->log->log(GLogLevel::FINE,  Q_FUNC_INFO /*this->className*/, ms)
+#define mLogFF(ms) this->loader->log->log(GLogLevel::FFINE, Q_FUNC_INFO /*this->className*/, ms)
+#define mLogA(ms)  this->loader->log->log(GLogLevel::ALL,   Q_FUNC_INFO /*this->className*/, ms)
 
 
 #define mVarG(cl, s) reinterpret_cast<cl>(this->loader->vars->get(s))

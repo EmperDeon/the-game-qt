@@ -17,7 +17,7 @@ public:
 class IGuiRender{ // 2D
 public:
 	virtual void render() = 0;
-
+	virtual void close() = 0;
 };
 
 
@@ -25,7 +25,7 @@ class IWorldRender{// 3D
 public:
 	virtual void init() = 0;
 	virtual void render() = 0;
-
+	virtual void close() = 0;
 };
 
 #endif //GLOBALQT_IRENDER_H

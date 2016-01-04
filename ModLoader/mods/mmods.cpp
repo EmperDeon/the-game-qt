@@ -2,7 +2,7 @@
 
 #define upd(a) main->setSplashLabel(a)
 
-MMods::MMods(ModLoader *l) : loader(l), log(l->log), vars(l->vars){
+MMods::MMods(MModLoader *l) : loader(l), log(l->log), vars(l->vars){
 	this->text   = new MTextContainer   (this);
 	this->script = new MScriptsContainer(this);
 	this->plugin = new MPluginsContainer(this);
