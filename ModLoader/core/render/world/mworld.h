@@ -7,16 +7,29 @@
 class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	QString className = "M-WorldRender";
 	MCoreMods* loader;
- ILevelManager* manager;
+
+	// Level
+	QMutex* listMutex;
+	ILevelManager* manager;
 	ILevel* level;
+	bool currentGened = false;
+	GLuint currentIndex = 0;
+	int currentGenCount = 0;
+ int currentActive = 0;
 
 	void drawAxis();
+
 public:
 	MWorldRender(MCoreMods* m);
 	virtual void init();
 	virtual void render();
 
 	virtual void close();
+
+	// Level-relative
+	void reAllocateC(ILevel* l);
+	virtual void reAllocate(int i);
+	virtual GLuint getFreeList();
 };
 
 

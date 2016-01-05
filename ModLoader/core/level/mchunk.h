@@ -6,6 +6,8 @@
 class MChunk : public IChunk{
 	IWorldBlock* chunk[size][size][size];
  IChunkPos id;
+
+	GLuint list;
 public:
 	MChunk();
 	MChunk(IChunkPos p);
@@ -17,16 +19,19 @@ public:
 	virtual void setBlock(IBlockPos pos, IWorldBlock *b);
 	virtual void write(QDataStream &a, QJsonObject& o);
 
-	virtual int getGlList();
+	virtual void setGlList(GLuint i);
+	virtual void onReAlloc();
 };
 
 class MPChunk : public IPChunk{
+	GLuint list;
 
 public:
 	MPChunk();
 
 	virtual QColor getBlockColor(IBlockPos pos);
-	virtual int getGlList();
+	virtual void setGlList(GLuint i);
+	virtual void onReAlloc();
 };
 
 #endif //GLOBALQT_MCHUNK_H

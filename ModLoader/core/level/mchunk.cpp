@@ -72,12 +72,18 @@ void MChunk::write(QDataStream& out, QJsonObject& o) {
 	  +QString::number(this->id.z())
 	] = obj;
 }
-int MChunk::getGlList() {
-	return 0;
+void MChunk::setGlList(GLuint i) {	this->list = i;}
+void MChunk::onReAlloc() {
+ // TODO: Render
 }
+
 
 MPChunk::MPChunk(){}
 QColor MPChunk::getBlockColor(IBlockPos pos) {	return QColor(Qt::gray);}
-int MPChunk::getGlList() {
-	return 0;
+
+
+void MPChunk::setGlList(GLuint i) { this->list = i;}
+
+void MPChunk::onReAlloc() {
+	// TODO: Render
 }

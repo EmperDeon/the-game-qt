@@ -108,6 +108,13 @@ void MLevel::generateWorld() {
 	 for(int z = -2 ; z < 3 ; z++)
 		 addNewChunk(IChunkPos(x, 0, z));
 }
+void MLevel::reAllocate(IWorldRender *ren) {
+	for(IChunk* c : *this->chunkList){
+		c->setGlList(ren->getFreeList());
+	 c->onReAlloc();
+ }
+}
+
 
 IPChunk *MLevel::getPreview() {	return new MPChunk();}
 void MLevel::cycleRegion() {}
@@ -166,5 +173,3 @@ void MLevelManager::exitLevel(ILevelInfo* i) {
 void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
-
-

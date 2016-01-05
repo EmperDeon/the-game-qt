@@ -5,7 +5,8 @@ class IEntity;
 class IRObject{ // IRenderObject
 public:
 	//Render
-	virtual int getGlList() = 0;
+	virtual void setGlList(GLuint i) = 0;
+	virtual void onReAlloc() = 0;
 };
 
 class ICamera{
@@ -26,6 +27,10 @@ public:
 	virtual void init() = 0;
 	virtual void render() = 0;
 	virtual void close() = 0;
+
+	// Level-relative
+	virtual void reAllocate(int i) = 0;
+	virtual GLuint getFreeList() = 0;
 };
 
 #endif //GLOBALQT_IRENDER_H

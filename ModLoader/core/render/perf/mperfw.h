@@ -8,8 +8,10 @@ class MCoreMods;
 class MGlWidget;
 
 class MPerfomanceWidget : public QWidget{
+	Q_OBJECT
+
 	QHBoxLayout* layout;
-	QCustomPlot* customPlot;
+	QCustomPlot* plot;
  QCPGraph* gr; // Fps graph
  QCPGraph* dn; // Down line
 
@@ -17,11 +19,10 @@ class MPerfomanceWidget : public QWidget{
 	MGlWidget* render;
 
 	QTimer* stab;
-	QVector<int>* fps_v;
-public:
-	MPerfomanceWidget(MCoreMods* m);
 public slots:
 	void updateFps();
+public:
+	MPerfomanceWidget(MCoreMods* m);
 };
 
 #endif //GLOBALQT_MPERFW_H

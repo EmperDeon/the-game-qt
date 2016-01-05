@@ -63,6 +63,7 @@ public:
 	virtual void load() = 0;
 	virtual void save() = 0;
 	virtual void generateWorld() = 0;
+ virtual void reAllocate(IWorldRender *ren) = 0;
 
 	virtual IPChunk * getPreview() = 0;
 	virtual void cycleRegion() = 0;
