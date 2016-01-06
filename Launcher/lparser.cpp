@@ -66,7 +66,7 @@ LParser::LParser(LMainWindow* l){
 	o["revision"] = "0";
 	not_found = ZipEntry(o,"NotFound");
 
-	log->addL(GLogLevel::DEBUG, "LParser", "Constructed");
+	log->addL(ILogLevel::DEBUG, "LParser", "Constructed");
 }
 
 void LParser::parseZip(){
@@ -118,7 +118,7 @@ void LParser::unzipDownloads(){
 
 	QFileInfoList downf = down.entryInfoList(QDir::Files);
 			foreach(QFileInfo f , downf){
-			log->addL(GLogLevel::DEBUG, "LParser", "extracting "+f.filePath());
+			log->addL(ILogLevel::DEBUG, "LParser", "extracting " + f.filePath());
 			QZipReader t("downloads/"+f.fileName());
 			tmp.mkdir(f.baseName());
 			t.extractAll("tmp/"+f.baseName()+"/");
@@ -129,11 +129,11 @@ void LParser::parse(){
 	QDir tmp("tmp");
 			foreach(QFileInfo f, tmp.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
 			if(f.fileName() != "." && f.fileName() != ".."){
-				log->addL(GLogLevel::DEBUG, "LParser", "parsing "+f.filePath());
+				log->addL(ILogLevel::DEBUG, "LParser", "parsing " + f.filePath());
 				ZipEntry t =  ZipEntry(loadJson(QDir("tmp/"+f.fileName()).filePath("pack.dat")), f.fileName());
 				addE(t,f.dir());
 			}else{
-				log->addL(GLogLevel::DEBUG, "LParser", "ignoring "+f.filePath());
+				log->addL(ILogLevel::DEBUG, "LParser", "ignoring " + f.filePath());
 			}
 		}
 }
@@ -165,7 +165,7 @@ void LParser::check(){
 }
 void LParser::showErr(){
 			foreach(ZipErr e, *err){
-			log->addL(GLogLevel::ERR, "LParser", e.toString());
+			log->addL(ILogLevel::ERR, "LParser", e.toString());
 		}
 }
 
@@ -206,11 +206,11 @@ void LParser::write(){
 }
 
 void LParser::writeT(QString type, QStringList* list){
-	log->addL(GLogLevel::DEBUG, "LParser", "Moving "+type+"s");
+	log->addL(ILogLevel::DEBUG, "LParser", "Moving " + type + "s");
 			foreach(QString name, *list){
-			log->addL(GLogLevel::DEBUG, "LParser", getTDir(name) +" to " + getDir(type, name));
+			log->addL(ILogLevel::DEBUG, "LParser", getTDir(name) + " to " + getDir(type, name));
 			if(!QDir().rename(getTDir(name) , getDir(type, name))){
-				log->addL(GLogLevel::ERR, "LParser", "Move " + type + " " + name + " failed");
+				log->addL(ILogLevel::ERR, "LParser", "Move " + type + " " + name + " failed");
 			}
 		}
 }
@@ -224,7 +224,7 @@ void LParser::clear(){
 
 	t = QDir("tmp");
 	t.removeRecursively();
-	log->addL(GLogLevel::DEBUG, "LParser", "Clearing tmp/ and downloads/ ");
+	log->addL(ILogLevel::DEBUG, "LParser", "Clearing tmp/ and downloads/ ");
 }
 
 ZipEntry LParser::search(QString n){

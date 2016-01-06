@@ -27,6 +27,10 @@ class MRHelper{
 	 static void drawRCube(IVec3 p, float r);
 	 static void drawCube(IVec3 p, IVec3 c);
 	 static void drawCube(IVec3 p, float r, IVec3 c);
+
+	// Chunk
+	 static void drawBorder(IVec3 vec3);
+	 static void drawCubeS(IVec3 vec3, byte s, IVec3 c);
 };
 
 #endif //GLOBALQT_MHELPER_H

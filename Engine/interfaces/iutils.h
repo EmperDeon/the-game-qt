@@ -16,7 +16,7 @@ public:
 			d |= k << 5;
 			d |= s << 1;
 		}else{
-			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 	quint32 c()const { return d;}
@@ -38,7 +38,7 @@ public:
 			d |= y << 6;
 			d |= z << 1;
 		}else{
-			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 	quint16 c()const { return d;}
@@ -60,7 +60,7 @@ public:
 			d |= y << 6;
 			d |= z << 1;
 		}else{
-			//GV_LOGGER->log(GLogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 	quint16 c()const { return d;}
@@ -211,6 +211,16 @@ inline float degreesToRadians(const float degrees) {
 	const float PIOver180 = 3.14159f / 180.0f;
 	return degrees * PIOver180;
 }
+
+namespace IBSides{
+ enum Sides{	Top = 1, Bottom = 2, Left = 4, Right = 8, Front = 16, Back = 32};
+}
+static bool isTopSide    (byte c){return (c & 1 )  == 1;}
+static bool isBottomSide (byte c){return (c & 2 ) >> 1 == 1;}
+static bool isLeftSide   (byte c){return (c & 4 ) >> 2 == 1;}
+static bool isRightSide  (byte c){return (c & 8 ) >> 3 == 1;}
+static bool isFrontSide  (byte c){return (c & 16) >> 4 == 1;}
+static bool isBackSide   (byte c){return (c & 32) >> 5 == 1;}
 
 // !Render
 #endif //GLOBALQT_IUTILS_H

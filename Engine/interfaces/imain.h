@@ -12,7 +12,7 @@ public:
 
 class ILogger{
 public:
-	virtual void log(GLogLevel lv, QString cl, QString ms) = 0;
+	virtual void log(ILogLevel lv, QString cl, QString ms) = 0;
 	virtual void sendM(QString s) = 0;
 	virtual ~ILogger(){};
 };

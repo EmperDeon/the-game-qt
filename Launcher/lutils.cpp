@@ -1,34 +1,34 @@
 #include "Launcher/lutils.h"
 
 //Logs
-QString getLevelName(GLogLevel lv){
+QString getLevelName(ILogLevel lv){
 	switch(lv){
-	case GLogLevel::ERR  : return "[E]";
-	case GLogLevel::WARN : return "[W]";
-	case GLogLevel::INFO : return "[I]";
-	case GLogLevel::DEBUG: return "[D]";
-	case GLogLevel::FINE : return "[F]";
-	case GLogLevel::FFINE: return "[FF]";
-	case GLogLevel::ALL  : return "[A]";
-		//	case GLogLevel::ERR  : return "[ERROR]";
-		//	case GLogLevel::WARN : return "[WARNING]";
-		//	case GLogLevel::INFO : return "[INFO]";
-		//	case GLogLevel::DEBUG: return "[DEBUG]";
-		//	case GLogLevel::FINE : return "[FINE]";
+	case ILogLevel::ERR  : return "[E]";
+	case ILogLevel::WARN : return "[W]";
+	case ILogLevel::INFO : return "[I]";
+	case ILogLevel::DEBUG: return "[D]";
+	case ILogLevel::FINE : return "[F]";
+	case ILogLevel::FFINE: return "[FF]";
+	case ILogLevel::ALL  : return "[A]";
+		//	case ILogLevel::ERR  : return "[ERROR]";
+		//	case ILogLevel::WARN : return "[WARNING]";
+		//	case ILogLevel::INFO : return "[INFO]";
+		//	case ILogLevel::DEBUG: return "[DEBUG]";
+		//	case ILogLevel::FINE : return "[FINE]";
 	}
 }
-LLogE::LLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss):lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
+LLogE::LLogE(ILogLevel lvl, QDateTime dt, QString cls, QString mss): lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
 LLogE::LLogE(QString s){
 	QStringList lst = s.split("^");
 	t = lst.takeFirst();
 	QString level = lst.takeFirst();
-	if (level == "[E]"){ lv = GLogLevel::ERR  ;
-	}else if (level == "[W]"){ lv = GLogLevel::WARN ;
-	}else if (level == "[I]"){ lv = GLogLevel::INFO ;
-	}else if (level == "[D]"){ lv = GLogLevel::DEBUG;
-	}else if (level == "[F]"){ lv = GLogLevel::FINE ;
-	}else if (level == "[FF]"){lv = GLogLevel::FFINE ;
-	}else if (level == "[A]"){ lv = GLogLevel::ALL ;
+	if (level == "[E]"){ lv = ILogLevel::ERR  ;
+	}else if (level == "[W]"){ lv = ILogLevel::WARN ;
+	}else if (level == "[I]"){ lv = ILogLevel::INFO ;
+	}else if (level == "[D]"){ lv = ILogLevel::DEBUG;
+	}else if (level == "[F]"){ lv = ILogLevel::FINE ;
+	}else if (level == "[FF]"){lv = ILogLevel::FFINE ;
+	}else if (level == "[A]"){ lv = ILogLevel::ALL ;
 	}else{
 
 	}
@@ -49,13 +49,13 @@ QString LLogE::toString(){
 	QString r = "<div ";
 
 	switch(lv){
-		case GLogLevel::ERR  : r += "style=\"color:red"; break;
-		case GLogLevel::WARN : r += "style=\"color:#ff9c00"; break;
-		case GLogLevel::INFO : r += "style=\"color:blue"; break;
-		case GLogLevel::DEBUG: r += "style=\"color:black"; break;
-		case GLogLevel::FINE : r += "style=\"color:gray"; break;
-		case GLogLevel::FFINE: r += "style=\"color:gray"; break;
-		case GLogLevel::ALL  : r += "style=\"color:gray"; break;
+		case ILogLevel::ERR  : r += "style=\"color:red"; break;
+		case ILogLevel::WARN : r += "style=\"color:#ff9c00"; break;
+		case ILogLevel::INFO : r += "style=\"color:blue"; break;
+		case ILogLevel::DEBUG: r += "style=\"color:black"; break;
+		case ILogLevel::FINE : r += "style=\"color:gray"; break;
+		case ILogLevel::FFINE: r += "style=\"color:gray"; break;
+		case ILogLevel::ALL  : r += "style=\"color:gray"; break;
 	}
 
 	r.append("\">[");
@@ -256,7 +256,7 @@ void MLocalServer::newConnection(){
 //	connect(client, SIGNAL(disconnected()),	client, SLOT(deleteLater()));
 	connect(client, SIGNAL(readyRead()), this, SLOT(readyRead()));
 	clients->append(client);
-	log->addL(GLogLevel::DEBUG, "L-MLocalServer", "Engine connected");
+	log->addL(ILogLevel::DEBUG, "L-MLocalServer", "Engine connected");
 }
 void MLocalServer::readyRead(){
 	foreach(QLocalSocket* client , *clients){
@@ -370,7 +370,7 @@ void MModsList::update(){
 	QDir mods("mods/mods");
 			foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
 			if(f.fileName() != "." && f.fileName() != ".."){
-				loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "parsing "+f.filePath());
+				loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "parsing " + f.filePath());
 				addToList(loadJson(QDir("mods/mods/"+f.fileName()).filePath("pack.dat")));
 			}
 		}
@@ -386,9 +386,9 @@ void MModsList::fillList(){
 }
 void MModsList::addToList(QJsonObject o){
 	if(contains(o["name"].toString())){
-		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", o["name"].toString()+" has already added, ignoring ");
+		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", o["name"].toString() + " has already added, ignoring ");
 	}else{
-		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "found new mod, adding "+o["name"].toString());
+		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "found new mod, adding " + o["name"].toString());
 		QJsonObject t;
 		t["name"] = o["name"];
 		t["desc"] = o["desc"];
@@ -414,7 +414,7 @@ void MModsList::addNew(){
 	QString file = QFileDialog::getOpenFileName(loader->dev->w_mod, tr("Open File"),"/home",qPrintable("Mod (*"+ME_SAVE+")"));
 	QString ffile = QStringRef(&file, file.lastIndexOf("/")+1, file.indexOf(".zip")).toString();
 	QZipReader z(file);
-	loader->w_log->addL(GLogLevel::DEBUG, "BaseModLoader", "unzipping "+file + " to " + ffile);
+	loader->w_log->addL(ILogLevel::DEBUG, "BaseModLoader", "unzipping " + file + " to " + ffile);
 	//z.extractAll("mods/");
 }
 void MModsList::load(){
@@ -422,7 +422,7 @@ void MModsList::load(){
 	if(f.exists()){
 		list = new QJsonArray(loadJsonA(f.fileName()));
 	}else{
-		loader->w_log->addL(GLogLevel::DEBUG, "ModsWidget", "file mods/mods.dat not exist");
+		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "file mods/mods.dat not exist");
 		list = new QJsonArray();
 	}
 	update();

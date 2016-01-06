@@ -1,14 +1,14 @@
 #include "Engine/eutils.h"
 
-QString getLevelName(GLogLevel lv){
+QString getLevelName(ILogLevel lv){
 	switch(lv){
-		case GLogLevel::ERR  : return "[E]";
-		case GLogLevel::WARN : return "[W]";
-		case GLogLevel::INFO : return "[I]";
-		case GLogLevel::DEBUG: return "[D]";
-		case GLogLevel::FINE : return "[F]";
-		case GLogLevel::FFINE: return "[FF]";
-		case GLogLevel::ALL  : return "[A]";
+		case ILogLevel::ERR  : return "[E]";
+		case ILogLevel::WARN : return "[W]";
+		case ILogLevel::INFO : return "[I]";
+		case ILogLevel::DEBUG: return "[D]";
+		case ILogLevel::FINE : return "[F]";
+		case ILogLevel::FFINE: return "[FF]";
+		case ILogLevel::ALL  : return "[A]";
 	}
 }
 void ELogger::connected(){
@@ -24,7 +24,7 @@ ELogger::ELogger(){
 	conn = false;
 	socket->connectToServer("GameLogServer");
 }
-void ELogger:: log(GLogLevel lv, QString cl, QString ms){
+void ELogger:: log(ILogLevel lv, QString cl, QString ms){
 	//QString s = QDateTime::currentDateTime().toString("HH:mm:ss dd.MM.yyyy") + "^";
 	QString s = QDateTime::currentDateTime().toString("HH:mm:ss") + "^";
 	s += getLevelName(lv) +  "^";

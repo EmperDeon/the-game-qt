@@ -17,7 +17,7 @@ class LModelWidget;
 class LResmWidget;
 class LListModel;
 class LTableModel;
-enum class GLogLevel;
+enum class ILogLevel;
 class LLogE;
 class LSettingsModel;
 class LModsWidget;
@@ -53,7 +53,7 @@ public:
 
 class LLogWidget : public QWidget{
 	Q_OBJECT
-	GLogLevel curr;
+	ILogLevel curr;
 	QString last;
 	QList<LLogE>* list;
 
@@ -83,9 +83,9 @@ public slots:
 	void refresh();
 public:
 	LLogWidget();
-	void addL(GLogLevel lv, QString cl, QString m);
+	void addL(ILogLevel lv, QString cl, QString m);
 	void addL(LLogE e);
-	void switchL(GLogLevel lv);
+	void switchL(ILogLevel lv);
 };
 class LSettWidget : public QWidget{
 	Q_OBJECT

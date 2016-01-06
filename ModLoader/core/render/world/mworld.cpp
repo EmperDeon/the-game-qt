@@ -75,8 +75,9 @@ void MWorldRender::reAllocate(int i) {
  this->currentIndex = glGenLists(i + 5);
 	this->currentGenCount = i + 5;
 	this->currentActive = 0;
+ mLogI(QString("reAllocate: %1").arg(i));
 
-	QtConcurrent::run(loader->queue, this, &MWorldRender::reAllocateC, this->level);
+ reAllocateC(this->level);
 }
 
 GLuint MWorldRender::getFreeList() {

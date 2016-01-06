@@ -35,7 +35,7 @@ MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
 	this->setLayout(layout);
 	this->setMinimumSize(500, 300);
 
-	this->plot->yAxis->setRange(0.0f, 10.0f);
+	this->plot->yAxis->setRange(0.0f, 20.0f);
 }
 
 void MPerfomanceWidget::updateFps() {

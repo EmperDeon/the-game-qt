@@ -104,7 +104,6 @@ void MGlWidget::keyPressEvent(QKeyEvent* pe) {
 		case Qt::Key_Space: player->moveU(); break;
 		case Qt::Key_Shift: player->moveD(); break;
 
-
 		case Qt::Key_Escape:	switchFocus();	break;
 
 		default:;

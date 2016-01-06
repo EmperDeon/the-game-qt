@@ -7,7 +7,10 @@ class MChunk : public IChunk{
 	IWorldBlock* chunk[size][size][size];
  IChunkPos id;
 
-	GLuint list;
+	//RenderList
+	IVec3 rc = IVec3((qrand() % 101)*0.01f, (qrand() % 101)*0.01f, (qrand() % 101)*0.01f);
+	byte rSides[size][size][size];
+	GLuint rList;
 public:
 	MChunk();
 	MChunk(IChunkPos p);
@@ -21,6 +24,16 @@ public:
 
 	virtual void setGlList(GLuint i);
 	virtual void onReAlloc();
+
+	void reParseSides();
+	void setVSides(int x, int y, int z);
+	void setNSides(int x, int y, int z);
+
+	IVec3 getBlockPos(int x, int y, int z){return IVec3(
+			this->id.x() * size + x + 0.5f,
+			this->id.y() * size + y + 0.5f,
+			this->id.z() * size + z + 0.5f
+		);}
 };
 
 class MPChunk : public IPChunk{

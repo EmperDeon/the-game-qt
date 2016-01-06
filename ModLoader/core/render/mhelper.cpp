@@ -113,3 +113,40 @@ void MRHelper::drawRCube(IVec3 p, float r) {
 	drawRectRg(p, r, rc());
 }
 
+void MRHelper::drawBorder(IVec3 p) {
+#   define V(a,b,c) glVertex3d( p.x a 0.5f, p.y b 0.5f, p.z c 0.5f );
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glLineWidth(3.0f);
+	/* PWO: I dared to convert the code to use macros... */
+	glBegin( GL_LINE_LOOP );
+	 V(+,-,+); V(+,-,-); V(+,+,-); V(+,+,+);
+	 V(+,+,+); V(+,+,-); V(-,+,-); V(-,+,+);
+	 V(+,+,+); V(-,+,+); V(-,-,+); V(+,-,+);
+	 V(-,-,+); V(-,+,+); V(-,+,-); V(-,-,-);
+	 V(-,-,+); V(-,-,-); V(+,-,-); V(+,-,+);
+	 V(-,-,-); V(-,+,-); V(+,+,-); V(+,-,-);
+	glEnd();
+
+//	glBegin(GL_LINE_STRIP);
+
+//
+//	glVertex3f(p.x + 0.5f, p.y + 0.5f, p.z + 0.5f);
+//	glVertex3f(p.x - 0.5f, p.y + 0.5f, p.z + 0.5f);
+//	glVertex3f(p.x - 0.5f, p.y - 0.5f, p.z + 0.5f);
+//	glVertex3f(p.x + 0.5f, p.y - 0.5f, p.z + 0.5f);
+//
+//	glVertex3f(p.x + 0.5f, p.y + 0.5f, p.z - 0.5f);
+//	glVertex3f(p.x - 0.5f, p.y + 0.5f, p.z - 0.5f);
+//	glVertex3f(p.x - 0.5f, p.y - 0.5f, p.z - 0.5f);
+//	glVertex3f(p.x + 0.5f, p.y - 0.5f, p.z - 0.5f);
+//	glEnd();
+}
+
+void MRHelper::drawCubeS(IVec3 p, byte s, IVec3 c) {
+	if(isTopSide(s)    ) drawRectTp(p, c);
+	if(isBottomSide(s) ) drawRectBt(p, c);
+	if(isLeftSide(s)   ) drawRectLf(p, c);
+	if(isRightSide(s)  ) drawRectRg(p, c);
+	if(isFrontSide(s)  ) drawRectFr(p, c);
+	if(isBackSide(s)   ) drawRectBc(p, c);
+}

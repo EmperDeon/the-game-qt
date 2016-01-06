@@ -50,9 +50,9 @@ LLogWidget::LLogWidget():QWidget(){
 	w_edit->setStyleSheet("font: 10pt \"Fantasque Sans Mono\";");
 	this->setLayout(vlay);
 
-	switchL(GLogLevel::FINE);
+	switchL(ILogLevel::FINE);
 }
-void LLogWidget::addL(GLogLevel lv, QString cl, QString m){
+void LLogWidget::addL(ILogLevel lv, QString cl, QString m){
 	addL(LLogE(lv, QDateTime::currentDateTime(), cl, m ));
 }
 void LLogWidget::addL(LLogE e){
@@ -63,7 +63,7 @@ void LLogWidget::addL(LLogE e){
 	list->append(e);
 	qDebug() << e.toString();
 }
-void LLogWidget::switchL(GLogLevel lv){
+void LLogWidget::switchL(ILogLevel lv){
 	curr = lv;
 	refresh();
 }
@@ -84,25 +84,25 @@ void LLogWidget::refresh(){
 	sb->setValue(sb->maximum());
 }
 void LLogWidget::switchE(){
-	switchL(GLogLevel::ERR);
+	switchL(ILogLevel::ERR);
 }
 void LLogWidget::switchW(){
-	switchL(GLogLevel::WARN);
+	switchL(ILogLevel::WARN);
 }
 void LLogWidget::switchI(){
-	switchL(GLogLevel::INFO);
+	switchL(ILogLevel::INFO);
 }
 void LLogWidget::switchD(){
-	switchL(GLogLevel::DEBUG);
+	switchL(ILogLevel::DEBUG);
 }
 void LLogWidget::switchF(){
-	switchL(GLogLevel::FINE);
+	switchL(ILogLevel::FINE);
 }
 void LLogWidget::switchFF(){
-	switchL(GLogLevel::FFINE);
+	switchL(ILogLevel::FFINE);
 }
 void LLogWidget::switchA(){
-	switchL(GLogLevel::ALL);
+	switchL(ILogLevel::ALL);
 }
 //Logger
 
@@ -391,7 +391,7 @@ LModsWidget::LModsWidget(LMainWindow *l){
 	model = new LListModel(loader->modsMap->lst);
 	list->setModel(model);
 	this->setLayout(layout);
-	log->addL(GLogLevel::DEBUG, "ModsList", "Constructed");
+	log->addL(ILogLevel::DEBUG, "ModsList", "Constructed");
 }
 void LModsWidget::closeEvent(QCloseEvent *event){
 	loader->modsMap->save();
@@ -443,7 +443,7 @@ void LTextModWidgetEditor::LTextModWidgetModel::add(){
 }
 void LTextModWidgetEditor::LTextModWidgetModel::del(){
 			foreach(QModelIndex i, wgt->table->selectionModel()->selectedIndexes()){
-			wgt->log->addL(GLogLevel::INFO, "TextModEditor", "deleting "+QString::number(i.row())+" "+QString::number(i.column()));
+			wgt->log->addL(ILogLevel::INFO, "TextModEditor", "deleting " + QString::number(i.row()) + " " + QString::number(i.column()));
 		}
 }
 int LTextModWidgetEditor::LTextModWidgetModel::rowCount(const QModelIndex&) const{
@@ -684,7 +684,7 @@ LModEditor::LModEditor(LMainWindow *l){
 
 	this->setLayout(lay);
 	this->setWindowTitle("Mod editor");
-	this->log->addL(GLogLevel::FINE, "ModEditor", "Constructed");
+	this->log->addL(ILogLevel::FINE, "ModEditor", "Constructed");
 }
 void LModEditor::bcreate(){
 	QJsonObject o;

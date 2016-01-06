@@ -11,16 +11,16 @@
 
 class LLogWidget;
 class LMainWindow;
-enum class GLogLevel{ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
+enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
 
 struct LLogE {
-	GLogLevel lv;
+	ILogLevel lv;
 	QDateTime d;
 	QString t;
 	QString cl;
 	QString ms;
 	bool engine;
-	LLogE(GLogLevel lvl,QDateTime dt, QString cls, QString mss);
+	LLogE(ILogLevel lvl, QDateTime dt, QString cls, QString mss);
 	LLogE(QString);
 	QString parseQtFunc(QString s);
 	QString toString();
