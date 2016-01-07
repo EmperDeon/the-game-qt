@@ -118,7 +118,7 @@ void MRHelper::drawBorder(IVec3 p) {
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glLineWidth(3.0f);
 	/* PWO: I dared to convert the code to use macros... */
-	glBegin( GL_LINE_LOOP );
+	glBegin( GL_LINES );
 	 V(+,-,+); V(+,-,-); V(+,+,-); V(+,+,+);
 	 V(+,+,+); V(+,+,-); V(-,+,-); V(-,+,+);
 	 V(+,+,+); V(-,+,+); V(-,-,+); V(+,-,+);
@@ -127,19 +127,6 @@ void MRHelper::drawBorder(IVec3 p) {
 	 V(-,-,-); V(-,+,-); V(+,+,-); V(+,-,-);
 	glEnd();
 
-//	glBegin(GL_LINE_STRIP);
-
-//
-//	glVertex3f(p.x + 0.5f, p.y + 0.5f, p.z + 0.5f);
-//	glVertex3f(p.x - 0.5f, p.y + 0.5f, p.z + 0.5f);
-//	glVertex3f(p.x - 0.5f, p.y - 0.5f, p.z + 0.5f);
-//	glVertex3f(p.x + 0.5f, p.y - 0.5f, p.z + 0.5f);
-//
-//	glVertex3f(p.x + 0.5f, p.y + 0.5f, p.z - 0.5f);
-//	glVertex3f(p.x - 0.5f, p.y + 0.5f, p.z - 0.5f);
-//	glVertex3f(p.x - 0.5f, p.y - 0.5f, p.z - 0.5f);
-//	glVertex3f(p.x + 0.5f, p.y - 0.5f, p.z - 0.5f);
-//	glEnd();
 }
 
 void MRHelper::drawCubeS(IVec3 p, byte s, IVec3 c) {

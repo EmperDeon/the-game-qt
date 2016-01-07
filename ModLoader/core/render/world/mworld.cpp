@@ -19,7 +19,7 @@ void MWorldRender::init() {
 	this->level = manager->getCurrentLevel();
 	this->loader->queue->waitForDone();
 
-	reAllocate(30);
+	reAllocate(50);
 }
 
 void MWorldRender::render() {

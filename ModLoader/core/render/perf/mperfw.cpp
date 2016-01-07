@@ -3,6 +3,7 @@
 MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
 	this->loader = m;
 	this->render = mVarG(MGlWidget*, "mRender");
+ this->v_fps = new QVector<float>;
 
  this->stab = new QTimer;
 	this->layout = new QHBoxLayout;
@@ -16,7 +17,6 @@ MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
 	this->dn = plot->addGraph(); // red line
 	this->dn->setPen(QPen(Qt::red));
 	this->gr->setChannelFillGraph(dn);
-
 
 	this->plot->xAxis->setTickLabelType(QCPAxis::ltDateTime);
 	this->plot->xAxis->setDateTimeFormat("hh:mm:ss");
@@ -35,23 +35,34 @@ MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
 	this->setLayout(layout);
 	this->setMinimumSize(500, 300);
 
-	this->plot->yAxis->setRange(0.0f, 20.0f);
+	this->plot->yAxis->setRange(0.0f, yMax);
 }
 
 void MPerfomanceWidget::updateFps() {
 	double key = QDateTime::currentDateTime().toMSecsSinceEpoch()/1000.0;
 	double f = render->getFps();
-	double k = f / 1000 + (render->getFps() % 1000)/1000 ;
-	this->gr->addData(key, k/ 1000);
+	double k = (f / 1000 + (render->getFps() % 1000)/1000)/1000 ;
+	this->gr->addData(key, k);
 	this->dn->addData(key, 0.0f); // value1
 	this->gr->removeDataBefore(key-8);
 	this->dn->removeDataBefore(key-8);
-
-	//this->gr->rescaleValueAxis();
-	//this->dn->rescaleValueAxis(true);
+ if(k > yMax) yMax += 10.0f, this->plot->yAxis->setRange(0.0f, yMax);
 
 	this->plot->xAxis->setRange(key+0.25, 8, Qt::AlignRight);
 	this->plot->replot();
+	if(sec != QTime::currentTime().second()){
+		int size = v_fps->size();
+	 if(size > 100) v_fps->pop_back(), size--;
+		if(k > 0)      v_fps->push_front(k), size++;
+		float avg = 0.0f;
+		for(float f : *v_fps){
+			avg += f;
+		}
+		if(avg > 0) avg = avg/(size);
+
+  render->setWindowTitle(QString("Average fps: %1 ms").arg(avg,4, 'f', 2));
+		sec = QTime::currentTime().second();
+	}
 }
 
 //MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {

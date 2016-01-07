@@ -3,7 +3,7 @@
 #include <Engine/einterfaces.h>
 
 // Render defines
-#define MFPS_COUNT 200
+#define MFPS_COUNT 60
 // Render defines
 
 #define mLogE(ms)  this->loader->log->log(ILogLevel::ERR,   Q_FUNC_INFO /*this->className*/, ms)

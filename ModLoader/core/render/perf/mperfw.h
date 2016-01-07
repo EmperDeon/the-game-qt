@@ -14,11 +14,14 @@ class MPerfomanceWidget : public QWidget{
 	QCustomPlot* plot;
  QCPGraph* gr; // Fps graph
  QCPGraph* dn; // Down line
+ float yMax = 10.0f;
 
 	MCoreMods* loader;
 	MGlWidget* render;
 
 	QTimer* stab;
+	int sec = 0;
+	QVector<float>* v_fps;
 public slots:
 	void updateFps();
 public:
