@@ -30,6 +30,7 @@ void MGlWidget::initializeGL(){
 	glShadeModel(GL_SMOOTH);							// Enables Smooth Color Shading
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
+	world->setPlayer(player);
 	world->init();
 //	gui->init();
 
@@ -75,16 +76,7 @@ void MGlWidget::paintGL(){
 
 void MGlWidget::mousePressEvent(QMouseEvent* pe) { /*mPos = pe->pos();*/}
 void MGlWidget::mouseReleaseEvent(QMouseEvent* pe){}
-void MGlWidget::mouseMoveEvent(QMouseEvent* pe){
-
-
-//	IVec3 scl = cam->getScl();
-// cam->rotate(
-// 	180/scl.x*(GLfloat)(pe->y() - mPos.y())/height(),
-// 	180/scl.z*(GLfloat)(pe->x() - mPos.x())/width()
-//	);
-//	mPos = pe->pos();
-}
+void MGlWidget::mouseMoveEvent(QMouseEvent* pe){}
 
 void MGlWidget::wheelEvent(QWheelEvent* pe){
 //	if ((pe->delta())>0)

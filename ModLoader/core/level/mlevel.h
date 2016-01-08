@@ -44,6 +44,7 @@ public:
 	virtual void save();
 	virtual void generateWorld();
 	virtual void reAllocate(IWorldRender *ren);
+	virtual bool isBlock(IVec3i p);
 
 	virtual IPChunk * getPreview();
 	virtual void cycleRegion();

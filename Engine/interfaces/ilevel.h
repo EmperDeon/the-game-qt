@@ -1,9 +1,15 @@
 #ifndef GLOBALQT_ILEVEL_H
 #define GLOBALQT_ILEVEL_H
 #include "irender.h"
+#include "iutils.h"
+
 
 class Imiks;
 class IRObject;
+class IBlockPos;
+class IChunkPos;
+class IRegionPos;
+class IVec3i;
 
 // Blocks
 class IWorldBlock {
@@ -23,13 +29,13 @@ public:
 	static const int size = 32;
 	virtual IChunkPos getId() = 0;
 	virtual void setBlock(IWorldBlock* b) = 0;
-	virtual void setBlock(IBlockPos pos, IWorldBlock *b) = 0;
-	virtual IWorldBlock* getBlock(IBlockPos p) = 0;
+	virtual void setBlock(IBlockPos, IWorldBlock *b) = 0;
+	virtual IWorldBlock* getBlock(IBlockPos) = 0;
 	virtual void write(QDataStream &a, QJsonObject& o) = 0;
 };
 class IPChunk : public IRObject{// Prewiew
 public:
- virtual QColor getBlockColor(IBlockPos pos) = 0;
+ virtual QColor getBlockColor(IBlockPos) = 0;
 };
 // Chunks
 
@@ -37,7 +43,7 @@ public:
 class IRegion{
 public:
 	virtual IRegionPos getId() = 0;
-	virtual IChunk* getChunk(IChunkPos p) = 0;
+	virtual IChunk* getChunk(IChunkPos) = 0;
 };
 // Regions
 
@@ -64,10 +70,11 @@ public:
 	virtual void save() = 0;
 	virtual void generateWorld() = 0;
  virtual void reAllocate(IWorldRender *ren) = 0;
+ virtual bool isBlock(IVec3i) = 0;
 
 	virtual IPChunk * getPreview() = 0;
 	virtual void cycleRegion() = 0;
-	virtual IChunk * getChunk(IChunkPos pos) = 0;
+	virtual IChunk * getChunk(IChunkPos) = 0;
 };
 class ILevelManager {
 public:

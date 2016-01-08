@@ -28,6 +28,7 @@ public:
 	virtual void render() = 0;
 	virtual void close() = 0;
 
+	virtual void setPlayer(IEntity* e) = 0;
 	// Level-relative
 	virtual void reAllocate(int i) = 0;
 	virtual GLuint getFreeList() = 0;

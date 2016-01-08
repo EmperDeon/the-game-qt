@@ -113,18 +113,26 @@ void MRHelper::drawRCube(IVec3 p, float r) {
 	drawRectRg(p, r, rc());
 }
 
-void MRHelper::drawBorder(IVec3 p) {
-#   define V(a,b,c) glVertex3d( p.x a 0.5f, p.y b 0.5f, p.z c 0.5f );
+void MRHelper::drawBorder(float x, float y, float z) {
+#   define V(a,b,c) glVertex3d( x a 0.505f, y b 0.505f, z c 0.505f );
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glLineWidth(3.0f);
-	/* PWO: I dared to convert the code to use macros... */
+
 	glBegin( GL_LINES );
-	 V(+,-,+); V(+,-,-); V(+,+,-); V(+,+,+);
-	 V(+,+,+); V(+,+,-); V(-,+,-); V(-,+,+);
-	 V(+,+,+); V(-,+,+); V(-,-,+); V(+,-,+);
-	 V(-,-,+); V(-,+,+); V(-,+,-); V(-,-,-);
-	 V(-,-,+); V(-,-,-); V(+,-,-); V(+,-,+);
-	 V(-,-,-); V(-,+,-); V(+,+,-); V(+,-,-);
+	 V(+,+,-); V(+,-,-);
+	 V(+,-,-); V(+,-,+);
+	 V(+,-,+); V(+,+,+);
+	 V(+,+,+); V(+,+,-);
+
+ 	V(-,+,-); V(-,-,-);
+ 	V(-,-,-); V(-,-,+);
+ 	V(-,-,+); V(-,+,+);
+ 	V(-,+,+); V(-,+,-);
+
+	 V(+,-,-); V(-,-,-);
+ 	V(+,-,+); V(-,-,+);
+ 	V(+,+,+); V(-,+,+);
+	 V(+,+,-); V(-,+,-);
 	glEnd();
 
 }
@@ -136,4 +144,7 @@ void MRHelper::drawCubeS(IVec3 p, byte s, IVec3 c) {
 	if(isRightSide(s)  ) drawRectRg(p, c);
 	if(isFrontSide(s)  ) drawRectFr(p, c);
 	if(isBackSide(s)   ) drawRectBc(p, c);
+
+//	drawBorder(p);
 }
+

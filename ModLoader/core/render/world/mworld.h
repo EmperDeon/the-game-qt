@@ -17,15 +17,18 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	int currentGenCount = 0;
  int currentActive = 0;
 
-	void drawAxis();
+	//Player
+	IEntity* en;
 
+	void drawAxis();
+ void selectBlock();
 public:
 	MWorldRender(MCoreMods* m);
 	virtual void init();
 	virtual void render();
 
 	virtual void close();
-
+	virtual void setPlayer(IEntity* e){this->en = e;};
 	// Level-relative
 	void reAllocateC(ILevel* l);
 	virtual void reAllocate(int i);

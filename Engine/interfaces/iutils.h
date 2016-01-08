@@ -2,6 +2,9 @@
 #define GLOBALQT_IUTILS_H
 
 
+#include "ilevel.h"
+
+
 class Imiks {
 	//bytes - mod:10, item:10, kind:8, state:4
 	quint32 d;
@@ -202,6 +205,79 @@ struct IRect {
 		x2(v.x2), y2(v.y2) { }
 };
 
+struct IVec3i {
+	int x, y, z;
+
+	IVec3i(int X, int Y, int Z) :
+		x(X),
+		y(Y),
+		z(Z) { }
+
+	IVec3i() :
+		x(0),
+		y(0),
+		z(0) { }
+
+	IVec3i(const IVec3i &v) :
+		x(v.x),
+		y(v.y),
+		z(v.z) { }
+
+	IVec3i(const IVec3 &v) :
+		x((int)v.x),
+		y((int)v.y),
+		z((int)v.z) { }
+
+	IVec3i operator*(const int s) const {
+		return IVec3i(x * s, y * s, z * s);
+	}
+
+	IVec3i &operator=(const IVec3i &v) {
+		if (this == &v) {
+			return *this;
+		}
+
+		x = v.x;
+		y = v.y;
+		z = v.z;
+
+		return *this;
+	}
+
+	IVec3i &operator+=(const IVec3i &v) {
+		this->x += v.x;
+		this->y += v.y;
+		this->z += v.z;
+
+		return *this;
+	}
+
+	const IVec3i operator-(const IVec3i &v) const {
+		IVec3 result;
+		result.x = x - v.x;
+		result.y = y - v.y;
+		result.z = z - v.z;
+
+		return result;
+	}
+
+	bool operator==(const IVec3i v) const{
+		return x == v.x && y == v.y && z == v.z;
+	}
+
+	bool operator!=(const IVec3i v) const{
+		return x != v.x && y != v.y && z != v.z;
+	}
+
+	IBlockPos toBlockPos(){
+		return IBlockPos(
+			x % IChunk::size,
+			y % IChunk::size,
+			z % IChunk::size
+		);
+	}
+};
+
 template<typename Base, typename T> inline bool instanceOf(const T *ptr) {
 	return reinterpret_cast<const Base*>(ptr) != nullptr;
 }
@@ -215,12 +291,12 @@ inline float degreesToRadians(const float degrees) {
 namespace IBSides{
  enum Sides{	Top = 1, Bottom = 2, Left = 4, Right = 8, Front = 16, Back = 32};
 }
-static bool isTopSide    (byte c){return (c & 1 )  == 1;}
-static bool isBottomSide (byte c){return (c & 2 ) >> 1 == 1;}
-static bool isLeftSide   (byte c){return (c & 4 ) >> 2 == 1;}
-static bool isRightSide  (byte c){return (c & 8 ) >> 3 == 1;}
-static bool isFrontSide  (byte c){return (c & 16) >> 4 == 1;}
-static bool isBackSide   (byte c){return (c & 32) >> 5 == 1;}
+static bool isTopSide    (byte c){return (c & 1 ) == 1; }
+static bool isBottomSide (byte c){return (c & 2 ) == 2; }
+static bool isLeftSide   (byte c){return (c & 4 ) == 4; }
+static bool isRightSide  (byte c){return (c & 8 ) == 8; }
+static bool isFrontSide  (byte c){return (c & 16) == 16;}
+static bool isBackSide   (byte c){return (c & 32) == 32;}
 
 // !Render
 #endif //GLOBALQT_IUTILS_H

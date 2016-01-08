@@ -114,6 +114,18 @@ void MLevel::reAllocate(IWorldRender *ren) {
 	 c->onReAlloc();
  }
 }
+bool MLevel::isBlock(IVec3i p) {
+	IChunkPos c(
+		p.x/IChunk::size,
+		p.y/IChunk::size,
+		p.z/IChunk::size
+	);
+
+	if(chunkList->contains(c)){
+		return chunkList->value(c)->getBlock(p.toBlockPos()) != nullptr;
+	}
+	return false;
+}
 
 
 IPChunk *MLevel::getPreview() {	return new MPChunk();}

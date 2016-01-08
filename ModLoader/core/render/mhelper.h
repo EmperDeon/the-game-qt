@@ -29,7 +29,9 @@ class MRHelper{
 	 static void drawCube(IVec3 p, float r, IVec3 c);
 
 	// Chunk
-	 static void drawBorder(IVec3 vec3);
+	 static void drawBorder(float x, float y, float z);
+	 static void drawBorder(IVec3 v){drawBorder(v.x, v.y, v.z);}
+	 static void drawBorder(IVec3i v){drawBorder(v.x, v.y, v.z);}
 	 static void drawCubeS(IVec3 vec3, byte s, IVec3 c);
 };
 

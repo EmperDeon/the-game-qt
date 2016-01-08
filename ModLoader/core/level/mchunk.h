@@ -30,9 +30,9 @@ public:
 	void setNSides(int x, int y, int z);
 
 	IVec3 getBlockPos(int x, int y, int z){return IVec3(
-			this->id.x() * size + x + 0.5f,
-			this->id.y() * size + y + 0.5f,
-			this->id.z() * size + z + 0.5f
+			this->id.x() * size + x,
+			this->id.y() * size + y,
+			this->id.z() * size + z
 		);}
 };
 
