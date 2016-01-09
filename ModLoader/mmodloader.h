@@ -25,16 +25,16 @@ public:
 	IVars* vars;
 	ILogger* log;
 
- QString getName() Q_DECL_OVERRIDE;
+ QString getName() override;
 
-	void setVars(IVars* v) Q_DECL_OVERRIDE;
-	void corePreInit() Q_DECL_OVERRIDE;
-	void coreInit() Q_DECL_OVERRIDE;
-	void corePostInit() Q_DECL_OVERRIDE;
+	void setVars(IVars* v) override;
+	void corePreInit() override;
+	void coreInit() override;
+	void corePostInit() override;
 
-	void preInit() Q_DECL_OVERRIDE;
-	void init() Q_DECL_OVERRIDE;
-	void postInit() Q_DECL_OVERRIDE;
+	void preInit() override;
+	void init() override;
+	void postInit() override;
 
 private:
 

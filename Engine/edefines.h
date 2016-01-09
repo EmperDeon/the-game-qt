@@ -3,10 +3,13 @@
 
 class ILogger;
 class IVars;
+class IDirs;
+
 enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
 
 extern ILogger* GV_LOGGER;
 extern IVars* GV_VARS;
+extern IDirs* GV_DIRS;
 
 #define logE(ms) GV_LOGGER->log(ILogLevel::ERR,    Q_FUNC_INFO /*this->className*/, ms)
 #define logW(ms) GV_LOGGER->log(ILogLevel::WARN,   Q_FUNC_INFO /*this->className*/, ms)

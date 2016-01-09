@@ -17,3 +17,12 @@ ModLoader:
  Mods:
   MIIds - mIds
   MItemsContainer - mItems
+  MTextureManager - mITex
+
+  MBIds - mIds
+  MBlocksContainer - mBlocks
+  MTextureManager - mBTex
+
+  MTIds - mIds
+  MToolsContainer - mTools
+  MTextureManager - mTTex

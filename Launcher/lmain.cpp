@@ -1,5 +1,6 @@
 #include "Launcher/lmain.h"
 
+// Main
 int main(int argc, char *argv[]){
 	QApplication a(argc, argv);
 	LMainWindow w;
@@ -7,7 +8,9 @@ int main(int argc, char *argv[]){
 
 	return a.exec();
 }
+// Main
 
+// LMainWindow
 LMainWindow::LMainWindow(){
 	QCoreApplication::setOrganizationName("IlzSoft");
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
@@ -21,29 +24,6 @@ LMainWindow::LMainWindow(){
 	check();
 
 //	launch();
-}
-
-void LMainWindow::showDev(){
-	int resize = 160;
-	if(devvis){
-		dev->setVisible(false);
-		bdev->setText("+");
-		this->resize(this->width()-resize, this->height());
-		devvis = false;
-	}else{
-		dev->setVisible(true);
-		bdev->setText("-");
-		this->resize(this->width()+resize, this->height());
-		devvis = true;
-	}
-}
-
-void LMainWindow::procF(int e){
-//	this->show();
-	w_log->addL(ILogLevel::INFO, "E", QString(proc->readAll()));
-	if(e)
-		w_log->addL(ILogLevel::ERR, "L-Main", "The game crashed with code " + QString::number(e));
-	disconnect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
 }
 
 void LMainWindow::initWebKit(){
@@ -187,6 +167,28 @@ void LMainWindow::checkDir(){
 	}
 }
 
+void LMainWindow::showDev(){
+	int resize = 160;
+	if(devvis){
+		dev->setVisible(false);
+		bdev->setText("+");
+		this->resize(this->width()-resize, this->height());
+		devvis = false;
+	}else{
+		dev->setVisible(true);
+		bdev->setText("-");
+		this->resize(this->width()+resize, this->height());
+		devvis = true;
+	}
+}
+
+void LMainWindow::procF(int e){
+//	this->show();
+	w_log->addL(ILogLevel::INFO, "E", QString(proc->readAll()));
+	if(e)
+		w_log->addL(ILogLevel::ERR, "L-Main", "The game crashed with code " + QString::number(e));
+	disconnect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
+}
 void LMainWindow::parse(){
 	this->parser->parseZip();
 }

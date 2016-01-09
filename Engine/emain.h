@@ -61,8 +61,8 @@ public:
 //		doneCurrent();
 //}
 
-//				QSize minimumSizeHint() const Q_DECL_OVERRIDE;
-//				QSize sizeHint() const Q_DECL_OVERRIDE;
+//				QSize minimumSizeHint() const override;
+//				QSize sizeHint() const override;
 //				void rotateBy(int xAngle, int yAngle, int zAngle);
 //				void setClearColor(const QColor &color);
 
@@ -70,12 +70,12 @@ public:
 //				void clicked();
 
 //protected:
-//				void initializeGL() Q_DECL_OVERRIDE;
-//				void paintGL() Q_DECL_OVERRIDE;
-//				void resizeGL(int width, int height) Q_DECL_OVERRIDE;
-//				void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-//				void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-//				void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+//				void initializeGL() override;
+//				void paintGL() override;
+//				void resizeGL(int width, int height) override;
+//				void mousePressEvent(QMouseEvent *event) override;
+//				void mouseMoveEvent(QMouseEvent *event) override;
+//				void mouseReleaseEvent(QMouseEvent *event) override;
 
 //private:
 //				void makeObject();

@@ -18,9 +18,9 @@ class MActions : public IActions{
 	QMap <int, IPluginActions*>* plugins;
 public:
 	MActions(MCoreMods* l);
-	void item(GItemAction a, IItemStack* s) Q_DECL_OVERRIDE ;
-	void tool(GToolAction a, IToolStack* s) Q_DECL_OVERRIDE ;
-	void block(GBlockAction a, IWorldBlock * s) Q_DECL_OVERRIDE ;
+	void item(GItemAction a, IItemStack* s) override ;
+	void tool(GToolAction a, IToolStack* s) override ;
+	void block(GBlockAction a, IWorldBlock * s) override ;
 };
 
 class MItemActions : public IItemActions{

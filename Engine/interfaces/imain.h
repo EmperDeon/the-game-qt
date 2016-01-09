@@ -27,4 +27,14 @@ public:
 	virtual ~IVars(){};
 };
 
+class IDirs{
+public:
+	virtual void addDir(QString k, QString v) = 0;
+
+	virtual QDir* getDir(QString k) = 0;
+	virtual QFile* getFile(QString k, QString f) = 0;
+
+	virtual QString getSDir(QString k) = 0;
+	virtual QString getSFile(QString k, QString f) = 0;
+};
 #endif //GLOBALQT_IMAIN_H

@@ -154,3 +154,20 @@ void EVars::setOverwriteList(QStringList l) {
 	this->owlist = new QStringList(l);
 }
 IVars* GV_VARS;
+
+EDirs::EDirs() {
+ this->dirs = new QMap<QString, QString>;
+}
+void EDirs::addDir(QString k, QString v) {
+ if(!v.endsWith("/"))
+	 v += '/';
+	this->dirs->insert(k, v);
+}
+
+QDir *EDirs::getDir(QString k) {	return new QDir(dirs->value(k));}
+QFile *EDirs::getFile(QString k, QString f) {	return new QFile(dirs->value(k) + f);}
+
+QString EDirs::getSDir(QString k) {	return dirs->value(k); }
+QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
+
+IDirs* GV_DIRS;

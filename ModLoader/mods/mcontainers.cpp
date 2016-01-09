@@ -1,25 +1,23 @@
 #include <ModLoader/mods/mcontainers.h>
 
 // MIdis
-MIIds::MIIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0){}
+MIIds::MIIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0){}
 Imiks MIIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
   return mods->value(t);
 	else{
 		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
-		return mnull;
+		return mNull;
 	}
 }
 // MIds
 
 // MItem
 MItem::MItem(QJsonObject o) {
-	this->tex = o["tex"].toString("null");
 	this->stackSize = (float)o["stackSize"].toDouble(1.0);
 	this->stackType = o["stackType"].toInt(1);
 }
-QString MItem::getTexture() {	return tex; }
 float MItem::getStackSize() {	return stackSize; }
 int MItem::getStackType() {	return stackType; }
 // MItem
@@ -48,24 +46,22 @@ Imiks MItemsContainer::get(IItem* id) {
 
 
 // MBIds
-MBIds::MBIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0){}
+MBIds::MBIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0){}
 Imiks MBIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
 		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
-		return mnull;
+		return mNull;
 	}
 }
 // MBIds
 
 // MBlock
 MBlock::MBlock(QJsonObject o) {
-	this->tex = o["tex"].toString("null");
  this->weight = (float)o["weight"].toDouble();
 }
-QString MBlock::getTexture() {	return tex; }
 float MBlock::getWeight() {	return weight; }
 // MBlock
 
@@ -93,25 +89,23 @@ Imiks  MBlocksContainer::get(IBlock *id) {
 
 
 // MTIds
-MTIds::MTIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0) {}
+MTIds::MTIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0) {}
 Imiks MTIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
 		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
-		return mnull;
+		return mNull;
 	}
 }
 // MTIds
 
 // MTool
 MTool::MTool(QJsonObject o) {
-	this->tex = o["tex"].toString("null");
 	this->durability = o["drb"].toInt(0);
 	this->type = o["type"].toString("item");
 }
-QString MTool::getTexture() {	return tex;}
 int MTool::getDurability() {	return durability;}
 QString MTool::getType() {	return type;}
 // MTool

@@ -6,6 +6,7 @@ TODO  Add Mod pack select
 TODO
 TODO ModLoader:
 TODO  Write Packer
+TODO  Maybe rewrite MContainers to templates (ex. MContainer<Imiks, MTool>)
 TODO
 TODO Add comments to classes/standalone functions
 TODO Refactor all to rules

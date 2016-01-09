@@ -15,8 +15,8 @@ private slots:
 	void disc();
 public:
 	ELogger();
-	void log(ILogLevel lv, QString cl, QString ms)  Q_DECL_OVERRIDE;
-	void sendM(QString s)  Q_DECL_OVERRIDE;
+	void log(ILogLevel lv, QString cl, QString ms)  override;
+	void sendM(QString s)  override;
 	void connec();
 };
 
@@ -42,11 +42,25 @@ class EVars : public IVars{
 	QStringList* owlist;
 public:
 	EVars();
-	bool contains(QString name)  Q_DECL_OVERRIDE;
-	bool contains(QStringList l) Q_DECL_OVERRIDE;
-	void* get(QString name)  Q_DECL_OVERRIDE;
-	void set(void* o, QString n)  Q_DECL_OVERRIDE;
- void setOverwriteList(QStringList l)  Q_DECL_OVERRIDE;
+	bool contains(QString name)  override;
+	bool contains(QStringList l) override;
+	void* get(QString name)  override;
+	void set(void* o, QString n)  override;
+ void setOverwriteList(QStringList l)  override;
+};
+
+class EDirs : public IDirs{
+	QMap<QString, QString>* dirs;
+
+public:
+	EDirs();
+	virtual void addDir(QString k, QString v) override;
+
+	virtual QDir *getDir(QString k) override;
+	virtual QFile *getFile(QString k, QString f) override;
+
+	virtual QString getSDir(QString k) override;
+	virtual QString getSFile(QString k, QString f) override;
 };
 
 QString getLevelName(ILogLevel lv);
