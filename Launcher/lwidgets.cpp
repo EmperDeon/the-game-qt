@@ -496,7 +496,9 @@ LTextModWidgetEditor::LTextModWidgetEditor(LMainWindow *m, QStringList keys, QSt
 	f_l->addWidget(b_del);
 
 	l_h->addLayout(f_r);
+	l_h->addSpacing(10);
 	l_h->addLayout(f_c);
+	l_h->addSpacing(10);
 	l_h->addLayout(f_l);
 
 	this->l->addLayout(l_h);
@@ -536,6 +538,7 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	k << "Item" ;      v << "ii"       ;
 	k << "Kind" ;      v << "ik"       ;
 	k << "State";      v << "is"       ;
+	k << "Texture";    v << "tex"      ;
 	k << "Stack size"; v << "stackSize";
 	k << "Stack Type"; v << "stackType";
 	w_items = new LTextModWidgetEditor(t, k, v, jItems);
@@ -544,6 +547,7 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	k << "Block";  v << "ii"    ;
 	k << "Kind";   v << "ik"    ;
 	k << "State";  v << "is"    ;
+	k << "Texture";v << "tex"   ;
 	k << "Weight"; v << "weight";
 	w_blocks = new LTextModWidgetEditor(t, k, v, jBlocks);
 
@@ -551,6 +555,7 @@ LTextModEditor::LTextModEditor(LMainWindow *t, QJsonObject* o) {
 	k << "Tool";       v <<  "ii"  ;
 	k << "Kind";       v <<  "ik"  ;
 	k << "State";      v <<  "is"  ;
+	k << "Texture";    v << "tex"  ;
 	k << "Type";       v <<  "type";
 	k << "Durability"; v <<  "drb" ;
 	w_tools = new LTextModWidgetEditor(t, k, v, jTools);
@@ -649,7 +654,7 @@ LModEditor::LModEditor(LMainWindow *l){
 	this->b_create = new QPushButton("Create");
 	this->b_clear = new QPushButton("Clear");
 	this->b_other = new QPushButton(tr("Other"));
-	this->b_dep = new QPushButton("Edit dependies");
+	this->b_dep = new QPushButton("Edit dependencies");
 
 	this->c_type = new QComboBox;
 

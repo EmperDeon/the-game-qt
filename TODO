@@ -1,9 +1,12 @@
-Global:
-
-Launcher:
- Repair SelectModLoader procedure
- Add Mod pack select
-
-ModLoader:
- Write Packer
-
+TODO Global:
+TODO
+TODO Launcher:
+TODO  Repair SelectModLoader procedure
+TODO  Add Mod pack select
+TODO
+TODO ModLoader:
+TODO  Write Packer
+TODO
+TODO Add comments to classes/standalone functions
+TODO Refactor all to rules
+TODO Delete "class-name" define and field

@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]){
 	QApplication a(argc, argv);
 	LMainWindow w;
-	//w.show();
+	w.show();
 
 	return a.exec();
 }
@@ -20,7 +20,7 @@ LMainWindow::LMainWindow(){
 
 	check();
 
-	launch();
+//	launch();
 }
 
 void LMainWindow::showDev(){
@@ -38,16 +38,13 @@ void LMainWindow::showDev(){
 	}
 }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "InfiniteRecursion"
 void LMainWindow::procF(int e){
 //	this->show();
 	w_log->addL(ILogLevel::INFO, "E", QString(proc->readAll()));
 	if(e)
 		w_log->addL(ILogLevel::ERR, "L-Main", "The game crashed with code " + QString::number(e));
-	disconnect(proc, SIGNAL(finished(int)),this, SLOT(procF(int)));
+	disconnect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
 }
-#pragma clang diagnostic pop
 
 void LMainWindow::initWebKit(){
 //	progress = 0;

@@ -75,9 +75,11 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mhelper.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" isTestSource="false" />
@@ -187,9 +189,11 @@
           <root url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/mhelper.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" />
           <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.cpp" />
+          <root url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" />
           <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" />

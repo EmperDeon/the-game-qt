@@ -1,12 +1,23 @@
 #ifndef GLOBALQT_IRENDER_H
 #define GLOBALQT_IRENDER_H
 class IEntity;
+class Imiks;
 
 class IRObject{ // IRenderObject
 public:
 	//Render
 	virtual void setGlList(GLuint i) = 0;
 	virtual void onReAlloc() = 0;
+};
+
+class ITextureManager{
+public:
+	virtual void loadTextures(QMap<Imiks, QString> map) = 0;
+	virtual void loadTexture(Imiks, QString name) = 0;
+
+	virtual QOpenGLTexture* getTexture(Imiks) = 0;
+	virtual void bindTexture(Imiks) = 0;
+
 };
 
 class ICamera{

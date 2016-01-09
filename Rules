@@ -1,0 +1,46 @@
+Classes:
+ Name starts with prefix (E, M, L, I)
+ All private fields on top
+ At least one empty line between classes
+ Use comments to separate groups of classes/functions/fields
+
+ Interface classes:
+  Name starts with I
+
+  Virtual functions:
+   [syntax = virtual {return type} {name} ({arguments}) override = 0;]
+   All functions are public and virtual
+   If uses class from other interface file, then predefine it and don't specify name
+
+Functions:
+
+ Getters/Setters:
+  [syntax = {type} get{name}() {	return {field name};}]
+  [syntax = void set{name}({type} {name}) {	this->{field name} = {name};}]
+
+
+Comments:
+ [syntax = // {Comment}]
+ One space between comment and symbol
+
+Files:
+  Name starts with prefix (e, i, l, m)
+  Name in low case (mexclass.h)
+ .h:
+  [syntax]
+   #ifndef GLOBALQT_{class name}_H
+   #define GLOBALQT_{class name}_H
+   #include <{"Engine/edefines.h" for engine, "ModLoader/mdefines.h" for modloader}>
+   {Other includes with full path (ex. #include <ModLoader/core/level/mchunk.h>)}
+
+   {Class/functions defines}
+
+   #endif //GLOBALQT_{class name}_H
+  [syntax]
+
+ .cpp
+  [syntax]
+   {include with full path (ex. #include <ModLoader/core/level/mchunk.h>)}
+
+   {Realization for functions}
+  [syntax]

@@ -1,5 +1,6 @@
 #include <ModLoader/mods/mcontainers.h>
 
+// MIdis
 MIIds::MIIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0){}
 Imiks MIIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
@@ -10,14 +11,20 @@ Imiks MIIds::get(QString m, QString i, QString k, int s) {
 		return mnull;
 	}
 }
+// MIds
 
+// MItem
 MItem::MItem(QJsonObject o) {
-	this->stackSize = o["stackSize"].toDouble(1.0);
+	this->tex = o["tex"].toString("null");
+	this->stackSize = (float)o["stackSize"].toDouble(1.0);
 	this->stackType = o["stackType"].toInt(1);
 }
-float MItem::getStackSize() {	return stackSize;}
-int MItem::getStackType() {	return stackType;}
+QString MItem::getTexture() {	return tex; }
+float MItem::getStackSize() {	return stackSize; }
+int MItem::getStackType() {	return stackType; }
+// MItem
 
+// MItemsContainer
 MItemsContainer::MItemsContainer(MMods *l, QMap<Imiks, IItem *> *m) : loader(l), map(m), mNull(0,0,0,0){
 	this->iNull = new MItem(QJsonObject());
 }
@@ -37,7 +44,10 @@ Imiks MItemsContainer::get(IItem* id) {
 	 return mNull;
  }
 }
+// MItemsContainer
 
+
+// MBIds
 MBIds::MBIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0){}
 Imiks MBIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
@@ -48,15 +58,18 @@ Imiks MBIds::get(QString m, QString i, QString k, int s) {
 		return mnull;
 	}
 }
+// MBIds
 
-
+// MBlock
 MBlock::MBlock(QJsonObject o) {
- weight = 0.0;
+	this->tex = o["tex"].toString("null");
+ this->weight = (float)o["weight"].toDouble();
 }
-float MBlock::getWeight() {
-	return 0;
-}
+QString MBlock::getTexture() {	return tex; }
+float MBlock::getWeight() {	return weight; }
+// MBlock
 
+// MBlocksContainer
 MBlocksContainer::MBlocksContainer(MMods *l, QMap<Imiks, IBlock *> *m) : loader(l), map(m), mNull(0,0,0,0){
 	this->iNull = new MBlock(QJsonObject());
 }
@@ -76,8 +89,10 @@ Imiks  MBlocksContainer::get(IBlock *id) {
 		return mNull;
 	}
 }
+// MBlockContainer
 
 
+// MTIds
 MTIds::MTIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mnull(0,0,0,0) {}
 Imiks MTIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
@@ -88,14 +103,20 @@ Imiks MTIds::get(QString m, QString i, QString k, int s) {
 		return mnull;
 	}
 }
+// MTIds
 
+// MTool
 MTool::MTool(QJsonObject o) {
+	this->tex = o["tex"].toString("null");
 	this->durability = o["drb"].toInt(0);
 	this->type = o["type"].toString("item");
 }
+QString MTool::getTexture() {	return tex;}
 int MTool::getDurability() {	return durability;}
 QString MTool::getType() {	return type;}
+// MTool
 
+// MToolsContainer
 MToolsContainer::MToolsContainer(MMods *l, QMap<Imiks, ITool *> *m) : loader(l), map(m), mNull(0,0,0,0) {
 	this->iNull = new MTool(QJsonObject());
 }
@@ -115,3 +136,5 @@ Imiks MToolsContainer::get(ITool *id) {
 		return mNull;
 	}
 }
+// MToolsContainer
+

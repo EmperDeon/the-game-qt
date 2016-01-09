@@ -103,7 +103,7 @@ set(M_SOURCE_FILES
 		ModLoader/mods/mtext.cpp
 		ModLoader/mods/mscript.cpp
 		ModLoader/mods/mplugin.cpp
-		ModLoader/core/player/mplayer.cpp)
+		ModLoader/core/player/mplayer.cpp ModLoader/core/render/texture/mtexturemanager.cpp)
 
 set(M_HEADERS
 		ModLoader/mmodloader.h
@@ -131,7 +131,7 @@ set(M_HEADERS
 		ModLoader/mods/mtext.h
 		ModLoader/mods/mscript.h
 		ModLoader/mods/mplugin.h
-		ModLoader/core/player/mplayer.h)
+		ModLoader/core/player/mplayer.h ModLoader/core/render/texture/mtexturemanager.h)
 
 qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})

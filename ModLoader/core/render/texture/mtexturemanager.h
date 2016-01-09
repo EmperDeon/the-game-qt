@@ -1,0 +1,7 @@
+#ifndef GLOBALQT_MTEXTUREMANAGER_H
+#define GLOBALQT_MTEXTUREMANAGER_H
+#include <ModLoader/mdefines.h>
+
+
+
+#endif //GLOBALQT_MTEXTUREMANAGER_H
