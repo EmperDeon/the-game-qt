@@ -4,7 +4,8 @@
 MWorldGenerator::MWorldGenerator() {}
 void MWorldGenerator::generateChunk(IChunk *ch) {
  IChunkPos pos = ch->getId();
-	Imiks block(1,1,1,1);
+	int i = rand() % 6 ; i++;
+	Imiks block(1,i,i,1);
 
 	for ( int x = 0; x < IChunk::size; x++ )
 		for ( int y = 0; y < IChunk::size; y++ )

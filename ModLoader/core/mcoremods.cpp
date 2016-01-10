@@ -88,7 +88,7 @@ void MCoreMods::postInit() {
 	mLogFF("postInit finished");
 }
 
-
+MCoreMods* MV_CORE_MODS;
 
 //	MRegion reg(IRegionPos(0,0), "saves/TestWorld_1/dim0/");
 //	reg.write();

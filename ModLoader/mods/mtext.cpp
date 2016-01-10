@@ -1,6 +1,4 @@
 #include <ModLoader/mods/mtext.h>
-#include <ModLoader/mods/mcontainers.h>
-#include <ModLoader/core/render/texture/mtexturemanager.h>
 
 MTextContainer::MTextContainer(MMods *l) : loader(l), log(l->log), vars(l->vars){
 
@@ -9,7 +7,10 @@ MTextContainer::MTextContainer(MMods *l) : loader(l), log(l->log), vars(l->vars)
 void MTextContainer::preInit() {
 	QList<QJsonObject> lst;
 		foreach(QFileInfo i, QDir("mods/mods").entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
-			lst << loadJson(QDir("mods/mods/"+i.fileName()).filePath("text.dat"));
+			QDir d("mods/mods/"+i.fileName());
+			QJsonObject o = loadJson(d.filePath("text.dat"));
+			o.insert("path", d.absolutePath()+"/");
+			lst << o;
 		}
 
 	//MItemsContainer
@@ -40,17 +41,17 @@ void MTextContainer::preInit() {
 
 						iidsMap->insert(n, e);
 						itemsMap->insert(e, new MItem(t));
-						texMap.insert(e, t["tex"].toString());
+						texMap.insert(e, o.value("path").toString() + t["tex"].toString());
 					}
 			}
-		MIIds *mids = new MIIds(loader, iidsMap);
-		MItemsContainer *mic = new MItemsContainer(loader, itemsMap);
-  MTextureManager *mtex = new MTextureManager(loader);
-		mtex->loadTextures(texMap);
+		mIids = new MIIds(loader, iidsMap);
+		mIic = new MItemsContainer(loader, itemsMap);
+  mItex = new MTextureManager(loader);
+		mItex->loadTextures(texMap);
 
-		mVarS(mids, "mIIds");
-		mVarS(mic,  "mItems");
-		mVarS(mtex, "mITex");
+		mVarS(mIids, "mIIds");
+		mVarS(mIic,  "mItems");
+		mVarS(mItex, "mITex");
 		mLogD("Items count: "+QString::number(itemsMap->size()));
 	}
 	//!MItemsContainer
@@ -82,17 +83,17 @@ void MTextContainer::preInit() {
 
 						bidsMap->insert(n, e);
 						blocksMap->insert(e, new MBlock(t));
-						texMap.insert(e, t["tex"].toString());
+						texMap.insert(e, o.value("path").toString() + t["tex"].toString());
 					}
 			}
-		MBIds *mids = new MBIds(loader, bidsMap);
-		MBlocksContainer *mic = new MBlocksContainer(loader, blocksMap);
-		MTextureManager *mtex = new MTextureManager(loader);
-		mtex->loadTextures(texMap);
+		mBids = new MBIds(loader, bidsMap);
+		mBic = new MBlocksContainer(loader, blocksMap);
+		mBtex = new MTextureManager(loader);
+		mBtex->loadTextures(texMap);
 
-		mVarS(mids, "mBIds");
-		mVarS(mic,  "mBlocks");
-		mVarS(mtex, "mBTex");
+		mVarS(mBids, "mBIds");
+		mVarS(mBic,  "mBlocks");
+		mVarS(mBtex, "mBTex");
 		mLogD("Blocks count: "+QString::number(blocksMap->size()));
 	}
 	//!MBlocksContainer
@@ -124,17 +125,17 @@ void MTextContainer::preInit() {
 
 						tidsMap->insert(n, e);
 						toolsMap->insert(e, new MTool(t));
-						texMap.insert(e, t["tex"].toString());
+						texMap.insert(e, o.value("path").toString() + t["tex"].toString());
 					}
 			}
-		MTIds *mids = new MTIds(loader, tidsMap);
-		MToolsContainer *mic = new MToolsContainer(loader, toolsMap);
-		MTextureManager *mtex = new MTextureManager(loader);
-		mtex->loadTextures(texMap);
+		mTids = new MTIds(loader, tidsMap);
+		mTic = new MToolsContainer(loader, toolsMap);
+		mTtex = new MTextureManager(loader);
+		mTtex->loadTextures(texMap);
 
-		mVarS(mids, "mTIds");
-		mVarS(mic,  "mTools");
-		mVarS(mtex, "mTTex");
+		mVarS(mTids, "mTIds");
+		mVarS(mTic,  "mTools");
+		mVarS(mTtex, "mTTex");
 		mLogD("Tools count: "+QString::number(toolsMap->size()));
 	}
 	//!MToolsContainer

@@ -1,5 +1,7 @@
 #include "ModLoader/core/level/mchunk.h"
 #include <ModLoader/core/render/mhelper.h>
+#include <ModLoader/mods/mmods.h>
+
 
 MChunk::MChunk(){}
 MChunk::MChunk(IChunkPos p): id(p){
@@ -111,16 +113,22 @@ void MChunk::onReAlloc() {
  // TODO: Render
 
 	reParseSides();
-
+ bool f = true;
  glNewList(rList, GL_COMPILE);
+ glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	for(int x = 0 ; x < size ; x++)
 		for(int y = 0 ; y < size ; y++)
 			for(int z = 0 ; z < size ; z++)
 			if(rSides[x][y][z] != 0){
-				MRHelper::drawCubeS(getBlockPos(x, y, z), rSides[x][y][z], rc);
+				if(f) MV_MODS->text->mBtex->bindTexture(chunk[x][y][z]->getId()), f = false;
+				drawCube(x, y, z);
 			}
 
 	glEndList();
+}
+void MChunk::drawCube(int x, int y, int z) {
+
+	MRHelper::drawTCubeS(getBlockPos(x, y, z), rSides[x][y][z]);
 }
 
 

@@ -24,7 +24,6 @@ class MCoreMods {
  QThread* t_ren;
 
 	MPerfomanceWidget* perf;
-	MGlWidget *render;
 	MActions* actions;
  MLevelManager* level;
 
@@ -35,6 +34,8 @@ public:
 	ILogger* log;
 	IVars* vars;
 	QThreadPool* queue;
+
+	MGlWidget *render;
 
 	MCoreMods(MModLoader * l);
 

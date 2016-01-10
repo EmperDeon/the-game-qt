@@ -11,8 +11,6 @@ class IItem{
 public:
 	virtual float getStackSize() = 0;
 	virtual int getStackType() = 0;
-
-	virtual QString getTexture() = 0;
 };
 class IItemsContainer{
 public:
@@ -24,8 +22,6 @@ class ITool{
 public:
 	virtual QString getType() = 0;
 	virtual int getDurability() = 0;
-
-	virtual QString getTexture() = 0;
 };
 class IToolsContainer{
 public:
@@ -36,8 +32,6 @@ public:
 class IBlock{
 public:
 	virtual float getWeight() = 0;
-
-	virtual QString getTexture() = 0;
 };
 
 class IBlocksContainer{

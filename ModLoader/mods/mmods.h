@@ -20,15 +20,15 @@ class MPluginsContainer;
 
 class MMods{
  MModLoader * loader;
-	QString className = "M-Mods";
 	IMain* main;
 
-	MTextContainer*    text;
-	MScriptsContainer* script;
-	MPluginsContainer* plugin;
 public:
 	ILogger* log;
 	IVars* vars;
+	
+	MTextContainer*    text;
+	MScriptsContainer* script;
+	MPluginsContainer* plugin;
 
 	MMods(MModLoader * l);
 

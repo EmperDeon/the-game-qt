@@ -1,7 +1,4 @@
 #include "ModLoader/core/render/world/mworld.h"
-#include <QtConcurrent/QtConcurrent>
-
-
 
 MWorldRender::MWorldRender(MCoreMods *m): loader(m) {
  this->manager = mVarG(ILevelManager*, "mLevel");
@@ -9,6 +6,7 @@ MWorldRender::MWorldRender(MCoreMods *m): loader(m) {
 }
 
 void MWorldRender::init() {
+
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 
@@ -18,8 +16,6 @@ void MWorldRender::init() {
 	this->manager->createLevel(i);
 	this->level = manager->getCurrentLevel();
 	this->loader->queue->waitForDone();
-
-	reAllocate(50);
 }
 
 void MWorldRender::render() {

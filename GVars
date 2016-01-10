@@ -11,6 +11,9 @@ Engine:
 ModLoader:
  CoreMods:
   MRender - mRender
+   MWorldRender - mWorldRender
+   MGuiRender   - mGuiRender
+
   MActions - mActions
 		MLevelManager - mLevel
 

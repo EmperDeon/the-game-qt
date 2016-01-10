@@ -7,7 +7,9 @@ TODO
 TODO ModLoader:
 TODO  Write Packer
 TODO  Maybe rewrite MContainers to templates (ex. MContainer<Imiks, MTool>)
+TODO  If logger/vars define works, delete all ModLoader, MMods, MCoreMods fields in other classes
 TODO
 TODO Add comments to classes/standalone functions
 TODO Refactor all to rules
 TODO Delete "class-name" define and field
+TODO

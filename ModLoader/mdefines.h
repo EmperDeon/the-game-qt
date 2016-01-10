@@ -1,6 +1,15 @@
 #ifndef GLOBALQT_MDEFINES_H
 #define GLOBALQT_MDEFINES_H
-#include <Engine/einterfaces.h>
+
+class MMods;
+class MCoreMods;
+class ILogger;
+class IVars;
+
+extern MMods* MV_MODS;
+extern MCoreMods* MV_CORE_MODS;
+extern ILogger* MV_LOGGER;
+extern IVars* MV_VARS;
 
 // Render defines
 #define MFPS_COUNT 60
@@ -18,7 +27,7 @@
 #define mVarG(cl, s) reinterpret_cast<cl>(this->loader->vars->get(s))
 #define mVarS(cl, s) this->loader->vars->set(cl, s)
 
-class MMods;
-class MCoreMods;
+
+#include <Engine/einterfaces.h>
 
 #endif //GLOBALQT_MDEFINES_H

@@ -12,6 +12,11 @@ void MModLoader::setVars(IVars *v) {
 	this->core = new MCoreMods(this);
 	this->mods = new MMods(this);
 
+	MV_LOGGER = this->log;
+	MV_VARS = this->vars;
+	MV_CORE_MODS = this->core;
+	MV_MODS = this->mods;
+
 	mLogD("ModLoader Inited");
 }
 
@@ -22,3 +27,6 @@ void MModLoader::corePostInit(){	core->postInit();}
 void MModLoader::preInit(){	 mods->preInit();}
 void MModLoader::init(){	    mods->init();}
 void MModLoader::postInit(){	mods->postInit(); }
+
+ILogger* MV_LOGGER;
+IVars* MV_VARS;

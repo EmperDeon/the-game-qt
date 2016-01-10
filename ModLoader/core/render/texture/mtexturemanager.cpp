@@ -12,6 +12,8 @@ void MTextureManager::loadTextures(QMap<Imiks, QString> map){
 
 void MTextureManager::loadTexture(Imiks k, QString v) {
  QOpenGLTexture* t = new QOpenGLTexture(QImage(v));
+	t->setBorderColor(1.0f, 1.0f, 1.0f, 1.0f);
+	t->setFormat(QOpenGLTexture::RGB8I);
 	this->tex->insert(k, t);
 }
 

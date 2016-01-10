@@ -8,9 +8,14 @@ class MChunk : public IChunk{
  IChunkPos id;
 
 	//RenderList
-	IVec3 rc = IVec3((qrand() % 101)*0.01f, (qrand() % 101)*0.01f, (qrand() % 101)*0.01f);
 	byte rSides[size][size][size];
 	GLuint rList;
+
+
+	void reParseSides();
+	void setVSides(int x, int y, int z);
+	void setNSides(int x, int y, int z);
+	void drawCube(int x, int y, int z);
 public:
 	MChunk();
 	MChunk(IChunkPos p);
@@ -25,11 +30,9 @@ public:
 	virtual void setGlList(GLuint i);
 	virtual void onReAlloc();
 
-	void reParseSides();
-	void setVSides(int x, int y, int z);
-	void setNSides(int x, int y, int z);
 
-	IVec3 getBlockPos(int x, int y, int z){return IVec3(
+	IVec3 getBlockPos(int x, int y, int z){
+		return IVec3(
 			this->id.x() * size + x,
 			this->id.y() * size + y,
 			this->id.z() * size + z

@@ -1,5 +1,5 @@
 #include <ModLoader/core/render/mrender.h>
-#include <GL/glu.h>
+#include <qopenglfunctions.h>
 
 
 MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
@@ -13,6 +13,9 @@ MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
 	world = new MWorldRender(m);
 	gui = new MGuiRender(m);
 
+	mVarS(world, "mWorldRender");
+	mVarS(gui, "mGuiRender");
+
 	// Fps
 	fps_t = new QElapsedTimer;
 	fps_stabilizer = new QTimer;
@@ -22,6 +25,7 @@ MGlWidget::MGlWidget(MCoreMods* m) : loader(m){
 }
 
 void MGlWidget::initializeGL(){
+
 	glClearColor(0.0f, 0.5f, 1.0f, 1.0f);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE);					// Set The Blending Function For Translucency
 	glClearDepth(1.0);									// Enables Clearing Of The Depth Buffer
@@ -29,7 +33,7 @@ void MGlWidget::initializeGL(){
 	glEnable(GL_DEPTH_TEST);							// Enables Depth Testing
 	glShadeModel(GL_SMOOTH);							// Enables Smooth Color Shading
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
-
+	glEnable(GL_TEXTURE_2D);
 	world->setPlayer(player);
 	world->init();
 //	gui->init();
