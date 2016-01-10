@@ -1,15 +1,11 @@
 #ifndef G_WIDGETS
 #define G_WIDGETS
+#include <Engine/edefines.h>
 
-#include <QtCore>
-#include <QtWidgets>
-#include "Engine/edefines.h"
-#include "Engine/eutils.h"
-#include "Engine/emain.h"
-
+// EDeveloper
 class EDeveloper : public QWidget{
 	Q_OBJECT
-	QString className = "E-Developer";
+
 	QVBoxLayout* lay;
 	QPushButton* bsett;
 	QPushButton* blevl;
@@ -20,14 +16,7 @@ class EDeveloper : public QWidget{
 
 public:
 	EDeveloper();
-
-public slots:
-	void showSett();
-	void showLevl();
-	void showMods();
-	void showModl();
-	void showPack();
-	void showResm();
 };
+// EDeveloper
 
 #endif

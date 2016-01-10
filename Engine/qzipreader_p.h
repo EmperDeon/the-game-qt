@@ -33,55 +33,35 @@
 
 #ifndef QZIPREADER_H
 #define QZIPREADER_H
-
-#include <QtCore/qglobal.h>
-
-#ifndef QT_NO_TEXTODFWRITER
-
-//
-//  W A R N I N G
-//  -------------
-//
-// This file is not part of the Qt API.  It exists for the convenience
-// of the QZipReader class.  This header file may change from
-// version to version without notice, or even be removed.
-//
-// We mean it.
-//
-
-#include <QtCore/qdatetime.h>
-#include <QtCore/qfile.h>
-#include <QtCore/qstring.h>
+#include <QtCore>
 
 QT_BEGIN_NAMESPACE
 
 class QZipReaderPrivate;
 
 class Q_GUI_EXPORT QZipReader {
+	QZipReaderPrivate *d;
+	Q_DISABLE_COPY(QZipReader)
+
 public:
+
 	explicit QZipReader(const QString &fileName, QIODevice::OpenMode mode = QIODevice::ReadOnly);
-
 	explicit QZipReader(QIODevice *device);
-
 	~QZipReader();
 
-	QIODevice *device() const;
+	QIODevice*      device()                                  const;
+	bool            isReadable()                              const;
+	bool            exists()                                  const;
+	QList<FileInfo> fileInfoList()                            const;
+	int             count()                                   const;
+	FileInfo        entryInfoAt(int index)                    const;
+	QByteArray      fileData(const QString &fileName)         const;
 
-	bool isReadable() const;
-
-	bool exists() const;
+	bool            extractAll(const QString &destinationDir) const;
+	Status          status()                                  const;
+	void            close();
 
 	struct Q_GUI_EXPORT FileInfo {
-		FileInfo();
-
-		FileInfo(const FileInfo &other);
-
-		~FileInfo();
-
-		FileInfo &operator=(const FileInfo &other);
-
-		bool isValid() const;
-
 		QString filePath;
 		uint isDir : 1;
 		uint isFile : 1;
@@ -91,18 +71,14 @@ public:
 		qint64 size;
 		QDateTime lastModified;
 		void *d;
+
+		FileInfo();
+		FileInfo(const FileInfo &other);
+		~FileInfo();
+
+		FileInfo &operator=(const FileInfo &other);
+		bool isValid() const;
 	};
-
-	QList<FileInfo> fileInfoList() const;
-
-	int count() const;
-
-	FileInfo entryInfoAt(int index) const;
-
-	QByteArray fileData(const QString &fileName) const;
-
-	bool extractAll(const QString &destinationDir) const;
-
 	enum Status {
 		NoError,
 		FileReadError,
@@ -110,17 +86,8 @@ public:
 		FilePermissionsError,
 		FileError
 	};
-
-	Status status() const;
-
-	void close();
-
-private:
-	QZipReaderPrivate *d;
-	Q_DISABLE_COPY(QZipReader)
 };
 
 QT_END_NAMESPACE
 
-#endif // QT_NO_TEXTODFWRITER
 #endif // QZIPREADER_H

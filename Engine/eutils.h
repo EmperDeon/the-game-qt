@@ -1,68 +1,90 @@
-#ifndef G_UTILS
-#define G_UTILS
-
-#include <QtCore>
+#ifndef GLOBALQT_EUTILS
+#define GLOBALQT_EUTILS
+#include <Engine/edefines.h>
 #include <QtNetwork>
-#include "Engine/edefines.h"
+
+// ELogger
+#define SERVER_NAME "GameLogServer"
+#define LOG_DATE_FORMAT "HH:mm:ss" // "HH:mm:ss dd.MM.yyyy"
+
+QString getLevelName(ILogLevel lv);
 
 class ELogger : public QObject, public ILogger{
  Q_OBJECT
+
 	QStringList lst;
-	bool conn;
 	QLocalSocket* socket;
+
+	bool conn;
+
 private slots:
 	void connected();
 	void disc();
+
 public:
 	ELogger();
-	void log(ILogLevel lv, QString cl, QString ms)  override;
-	void sendM(QString s)  override;
-	void connec();
-};
 
-class ESettings : public QObject{
-	Q_OBJECT
+	virtual void log(ILogLevel lv, QString, QString)  override;
+	virtual void sendM(QString)                       override;
+};
+// ELogger
+
+
+// ESettings
+class ESettings{
 	QMap<QString, QJsonObject> map;
 	QString file;
 
 public:
 	ESettings(QString f);
 	~ESettings();
+
 	QJsonObject& operator[] (QString k);
 	QJsonObject& get(QString n);
+
 	void addNewCategory(QString n);
+
 	void save();
 	void load();
 	void loadFrom(QString f);
 	void saveTo(QString f);
 };
+// ESettings
 
+
+// EVars
 class EVars : public IVars{
 	QMap<QString, void*>* map;
 	QStringList* owlist;
+
 public:
 	EVars();
-	bool contains(QString name)  override;
-	bool contains(QStringList l) override;
-	void* get(QString name)  override;
-	void set(void* o, QString n)  override;
- void setOverwriteList(QStringList l)  override;
-};
 
+	bool  contains(QString)              override;
+	bool  contains(QStringList)          override;
+
+	void* get(QString)                   override;
+
+	void  set(void* o, QString)          override;
+ void  setOverwriteList(QStringList)  override;
+};
+// EVars
+
+
+// EDirs
 class EDirs : public IDirs{
 	QMap<QString, QString>* dirs;
 
 public:
 	EDirs();
-	virtual void addDir(QString k, QString v) override;
+	virtual void    addDir(QString, QString)   override;
 
-	virtual QDir *getDir(QString k) override;
-	virtual QFile *getFile(QString k, QString f) override;
+	virtual QDir*   getDir(QString)            override;
+	virtual QFile*  getFile(QString, QString)  override;
 
-	virtual QString getSDir(QString k) override;
-	virtual QString getSFile(QString k, QString f) override;
+	virtual QString getSDir(QString)           override;
+	virtual QString getSFile(QString, QString) override;
 };
+// EDirs
 
-QString getLevelName(ILogLevel lv);
-
-#endif
+#endif //GLOBALQT_EUTILS

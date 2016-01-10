@@ -27,9 +27,9 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 # -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}
 
 include_directories(${ZLIB_INCLUDE_DIRS})
-include_directories(Engine)
-include_directories(Launcher)
-include_directories(ModLoader)
+#include_directories(Engine)
+#include_directories(Launcher)
+#include_directories(ModLoader)
 
 #Sets
 
@@ -60,7 +60,7 @@ set(G_HEADERS
 		Engine/ewidgets.h
 		Engine/qzipreader_p.h
 		Engine/qzipwriter_p.h
-		Engine/interfaces/iplayer.h)
+		Engine/interfaces/iplayer.h Engine/edvars.h)
 
 set(L_SOURCE_FILES
 		Launcher/lmain.cpp

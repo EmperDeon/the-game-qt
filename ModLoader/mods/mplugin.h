@@ -3,7 +3,7 @@
 
 #include <ModLoader/mdefines.h>
 #include <ModLoader/mmodloader.h>
-#include "einterfaces.h"
+#include <Engine/einterfaces.h>
 
 class MMods;
 class ILogger;
@@ -11,7 +11,6 @@ class IVars;
 
 class MPluginsContainer {
 	MMods* loader;
-	QString className = "M-PluginsContainer";
 	ILogger* log;
 	IVars* vars;
 

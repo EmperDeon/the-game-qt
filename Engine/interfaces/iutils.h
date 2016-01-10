@@ -1,13 +1,15 @@
 #ifndef GLOBALQT_IUTILS_H
 #define GLOBALQT_IUTILS_H
 
+#define CHUNK_SIZE 32
 
-#include "ilevel.h"
+#include <QtCore>
+#include <QtWidgets>
 
-
-class Imiks {
-	//bytes - mod:10, item:10, kind:8, state:4
+// Id containers
+class Imiks {// bytes - mod:10, item:10, kind:8, state:4
 	quint32 d;
+
 public:
 	Imiks(){d = 0;}
 	Imiks(quint32 c){this->d = c;}
@@ -22,16 +24,23 @@ public:
 			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
+
 	quint32 c()const { return d;}
-	int m()const {	return this->d >> 22 & 1023;}
-	int i()const {	return this->d >> 13 & 1023;}
-	int k()const {	return this->d >> 5 & 255;  }
-	int s()const {	return this->d >> 1 & 15;   }
-	bool operator< (Imiks o)const {return d < o.d;}
+
+	int     m()const {	return this->d >> 22 & 1023;}
+	int     i()const {	return this->d >> 13 & 1023;}
+	int     k()const {	return this->d >> 5 & 255;  }
+	int     s()const {	return this->d >> 1 & 15;   }
+
+	bool    operator< (Imiks o)const {return d < o.d;}
 };
-class IBlockPos {
-	// bytes - x:5, y:5, z:5
+// Id containers
+
+
+// Position containers
+class IBlockPos {// bytes - x:5, y:5, z:5
 	quint16 d;
+
 public:
 	IBlockPos(){d = 0;}
 	IBlockPos(int x, int y, int z){
@@ -44,15 +53,19 @@ public:
 			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
+
 	quint16 c()const { return d;}
-	int x()const {	return this->d >> 11 & 31;}
-	int y()const {	return this->d >> 6 & 31;}
-	int z()const {	return this->d >> 1 & 31;  }
-	bool operator< (IBlockPos o)const {return d < o.d;}
+
+	int     x()const {	return this->d >> 11 & 31;}
+	int     y()const {	return this->d >> 6 & 31;}
+	int     z()const {	return this->d >> 1 & 31;  }
+
+	bool    operator< (IBlockPos o)const {return d < o.d;}
 };
-class IChunkPos {
-	// bytes - x:5, y:5, z:5
+
+class IChunkPos {// bytes - x:5, y:5, z:5
 	quint16 d;
+
 public:
 	IChunkPos(){d = 0;}
 	IChunkPos(quint16 c): d(c){}
@@ -66,34 +79,38 @@ public:
 			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
+
 	quint16 c()const { return d;}
-	int x()const {	return this->d >> 11 & 31;}
-	int y()const {	return this->d >> 6 & 31;}
-	int z()const {	return this->d >> 1 & 31;  }
-	bool operator< (IChunkPos o)const {return d < o.d;}
+
+	int     x()const {	return this->d >> 11 & 31;}
+	int     y()const {	return this->d >> 6 & 31;}
+	int     z()const {	return this->d >> 1 & 31;  }
+
+	bool    operator< (IChunkPos o)const {return d < o.d;}
 };
+
 class IRegionPos{
 	long int px;
 	long int py;
 public:
 	IRegionPos(){ px = 0; py = 0; }
 	IRegionPos(long int x, long int y){ this->px = x; this->py = y; }
+
 	long int x(){ return px; }
 	long int y(){ return py; }
 };
+// Position containers
 
+
+// Vectors
 struct IVec2 {
 	float x, y;
 
 	IVec2(float X, float Y):	x(X),	y(Y){ }
-
 	IVec2():	x(0.0f),	y(0.0f) { }
-
 	IVec2(const IVec2 &v):	x(v.x),	y(v.y) { }
 
-	IVec2 operator*(const float s) const {
-		return IVec2(x * s, y * s);
-	}
+	IVec2 operator*(const float s) const {	return IVec2(x * s, y * s);	}
 
 	IVec2 &operator=(const IVec2 &v) {
 		if (this == &v) {
@@ -121,9 +138,7 @@ struct IVec2 {
 		return result;
 	}
 
-	float length() const {
-		return sqrtf(x * x + y * y);
-	}
+	float length() const {	return sqrtf(x * x + y * y);	}
 
 	void normalize() {
 		float l = 1.0f / length();
@@ -131,6 +146,7 @@ struct IVec2 {
 		y *= l;
 	}
 };
+
 struct IVec3 {
 	float x, y, z;
 
@@ -193,6 +209,7 @@ struct IVec3 {
 		z *= l;
 	}
 };
+
 struct IRect {
 	float x1, y1, x2, y2;
 
@@ -271,13 +288,15 @@ struct IVec3i {
 
 	IBlockPos toBlockPos(){
 		return IBlockPos(
-			x % IChunk::size,
-			y % IChunk::size,
-			z % IChunk::size
+			x % CHUNK_SIZE,
+			y % CHUNK_SIZE,
+			z % CHUNK_SIZE
 		);
 	}
 };
+// Vectors
 
+// Standalone: Render
 template<typename Base, typename T> inline bool instanceOf(const T *ptr) {
 	return reinterpret_cast<const Base*>(ptr) != nullptr;
 }
@@ -291,12 +310,13 @@ inline float degreesToRadians(const float degrees) {
 namespace IBSides{
  enum Sides{	Top = 1, Bottom = 2, Left = 4, Right = 8, Front = 16, Back = 32};
 }
-static bool isTopSide    (byte c){return (c & 1 ) == 1; }
-static bool isBottomSide (byte c){return (c & 2 ) == 2; }
-static bool isLeftSide   (byte c){return (c & 4 ) == 4; }
-static bool isRightSide  (byte c){return (c & 8 ) == 8; }
-static bool isFrontSide  (byte c){return (c & 16) == 16;}
-static bool isBackSide   (byte c){return (c & 32) == 32;}
 
-// !Render
+static bool isTopSide    (byte c){ return (c & 1 ) == 1;  }
+static bool isBottomSide (byte c){ return (c & 2 ) == 2;  }
+static bool isLeftSide   (byte c){ return (c & 4 ) == 4;  }
+static bool isRightSide  (byte c){ return (c & 8 ) == 8;  }
+static bool isFrontSide  (byte c){ return (c & 16) == 16; }
+static bool isBackSide   (byte c){ return (c & 32) == 32; }
+// Standalone: Render
+
 #endif //GLOBALQT_IUTILS_H

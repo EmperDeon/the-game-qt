@@ -1,48 +1,58 @@
 #ifndef GLOBALQT_IRENDER_H
 #define GLOBALQT_IRENDER_H
+
 class IEntity;
 class Imiks;
 
-class IRObject{ // IRenderObject
+// RenderObjects
+class IRObject{
 public:
 	//Render
 	virtual void setGlList(GLuint i) = 0;
-	virtual void onReAlloc() = 0;
+	virtual void onReAlloc()         = 0;
 };
+// RenderObjects
 
+
+// Managers
 class ITextureManager{
 public:
-	virtual void loadTextures(QMap<Imiks, QString> map) = 0;
-	virtual void loadTexture(Imiks, QString name) = 0;
+	virtual void             loadTextures(QMap<Imiks, QString> map) = 0;
+	virtual void             loadTexture(Imiks, QString name)       = 0;
 
-	virtual QOpenGLTexture* getTexture(Imiks) = 0;
-	virtual void bindTexture(Imiks) = 0;
-
+	virtual QOpenGLTexture*  getTexture(Imiks)                      = 0;
+	virtual void             bindTexture(Imiks)                     = 0;
 };
+// Managers
 
-class ICamera{
-public:
-	virtual void apply() = 0;
- virtual void attachTo(IEntity*) = 0;
-};
 
+// Gui
 class IGuiRender{ // 2D
 public:
 	virtual void render() = 0;
-	virtual void close() = 0;
+	virtual void close()  = 0;
 };
+// Gui
 
 
-class IWorldRender{// 3D
+// World
+class ICamera{
 public:
-	virtual void init() = 0;
-	virtual void render() = 0;
-	virtual void close() = 0;
-
-	virtual void setPlayer(IEntity* e) = 0;
-	// Level-relative
-	virtual void reAllocate(int i) = 0;
-	virtual GLuint getFreeList() = 0;
+	virtual void apply()            = 0;
+	virtual void attachTo(IEntity*) = 0;
 };
+
+class IWorldRender{
+public:
+	virtual void  init()               = 0;
+	virtual void  render()             = 0;
+	virtual void  close()              = 0;
+
+	virtual void  setPlayer(IEntity* e) = 0;
+	// Level-relative
+	virtual void  reAllocate(int i)     = 0;
+	virtual GLuint getFreeList()        = 0;
+};
+// World
 
 #endif //GLOBALQT_IRENDER_H

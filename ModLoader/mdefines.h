@@ -15,17 +15,17 @@ extern IVars* MV_VARS;
 #define MFPS_COUNT 60
 // Render defines
 
-#define mLogE(ms)  this->loader->log->log(ILogLevel::ERR,   Q_FUNC_INFO /*this->className*/, ms)
-#define mLogW(ms)  this->loader->log->log(ILogLevel::WARN,  Q_FUNC_INFO /*this->className*/, ms)
-#define mLogI(ms)  this->loader->log->log(ILogLevel::INFO,  Q_FUNC_INFO /*this->className*/, ms)
-#define mLogD(ms)  this->loader->log->log(ILogLevel::DEBUG, Q_FUNC_INFO /*this->className*/, ms)
-#define mLogF(ms)  this->loader->log->log(ILogLevel::FINE,  Q_FUNC_INFO /*this->className*/, ms)
-#define mLogFF(ms) this->loader->log->log(ILogLevel::FFINE, Q_FUNC_INFO /*this->className*/, ms)
-#define mLogA(ms)  this->loader->log->log(ILogLevel::ALL,   Q_FUNC_INFO /*this->className*/, ms)
+#define mLogE(ms)  MV_LOGGER->log(ILogLevel::ERR,   Q_FUNC_INFO, ms)
+#define mLogW(ms)  MV_LOGGER->log(ILogLevel::WARN,  Q_FUNC_INFO, ms)
+#define mLogI(ms)  MV_LOGGER->log(ILogLevel::INFO,  Q_FUNC_INFO, ms)
+#define mLogD(ms)  MV_LOGGER->log(ILogLevel::DEBUG, Q_FUNC_INFO, ms)
+#define mLogF(ms)  MV_LOGGER->log(ILogLevel::FINE,  Q_FUNC_INFO, ms)
+#define mLogFF(ms) MV_LOGGER->log(ILogLevel::FFINE, Q_FUNC_INFO, ms)
+#define mLogA(ms)  MV_LOGGER->log(ILogLevel::ALL,   Q_FUNC_INFO, ms)
 
 
-#define mVarG(cl, s) reinterpret_cast<cl>(this->loader->vars->get(s))
-#define mVarS(cl, s) this->loader->vars->set(cl, s)
+#define mVarG(cl, s) reinterpret_cast<cl>(MV_VARS->get(s))
+#define mVarS(cl, s) MV_VARS->set(cl, s)
 
 
 #include <Engine/einterfaces.h>

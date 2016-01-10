@@ -114,6 +114,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/qzipreader_p.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/edvars.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
@@ -136,113 +137,28 @@
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/ModLoader" />
-          <root url="file://$MODULE_DIR$/Launcher" />
-          <root url="file://$MODULE_DIR$/Engine" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$MODULE_DIR$/ModLoader" />
-          <root url="file://$MODULE_DIR$/Launcher" />
-          <root url="file://$MODULE_DIR$/Engine" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mmods.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mscript.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mplugin.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mods/mscript.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mutils.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mmodloader.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/mcoremods.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/mactions.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/mcoremods.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/mactions.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/world/mworld.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/world/mworld.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mcamera.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mcamera.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mrender.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mhelper.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/perf/mperfw.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mhelper.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/mrender.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/gui/mgui.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/render/texture/mtexturemanager.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mregion.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mlevel.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mgenerator.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mregion.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mblock.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/level/mchunk.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/core/player/mplayer.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/mdefines.h" />
-          <root url="file://$MODULE_DIR$/ModLoader/mutils.cpp" />
-          <root url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lutils.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lmain.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lmain.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/lparser.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lparser.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lwidgets.cpp" />
-          <root url="file://$MODULE_DIR$/Launcher/qzipreader_p.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lwidgets.h" />
-          <root url="file://$MODULE_DIR$/Launcher/lutils.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/emods.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/econtainers.h" />
-          <root url="file://$MODULE_DIR$/Engine/einterfaces.h" />
-          <root url="file://$MODULE_DIR$/Engine/eutils.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/ewidgets.h" />
-          <root url="file://$MODULE_DIR$/Engine/qzipreader_p.h" />
-          <root url="file://$MODULE_DIR$/Engine/emods.h" />
-          <root url="file://$MODULE_DIR$/Engine/eutils.h" />
-          <root url="file://$MODULE_DIR$/Engine/emain.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/edefines.h" />
-          <root url="file://$MODULE_DIR$/Engine/ewidgets.cpp" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/imain.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iinventory.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/itext.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iplayer.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/ilevel.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/iutils.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/imods.h" />
-          <root url="file://$MODULE_DIR$/Engine/interfaces/irender.h" />
-          <root url="file://$MODULE_DIR$/Engine/emain.h" />
-          <root url="file://$MODULE_DIR$/Engine/qzipwriter_p.h" />
-          <root url="file://$MODULE_DIR$/Engine/econtainers.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/ModLoader_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp" />

@@ -1,5 +1,6 @@
-#include "Engine/emods.h"
+#include <Engine/emods.h>
 
+// EMods
 EMods::EMods(){
 	initModLoaders();
 }
@@ -22,9 +23,9 @@ void EMods::init(){
 
 void EMods::initModLoaders() {
 	QPluginLoader pluginLoader("modLoader");
-	QObject *plugin = pluginLoader.instance();
+	QObject* plugin = pluginLoader.instance();
 	if (plugin) {
-		IModLoader * t = qobject_cast<IModLoader *>(plugin);
+		IModLoader* t = qobject_cast<IModLoader*>(plugin);
 		if (t){
 			modloader = t;
 			modloader->setVars(GV_VARS);
@@ -32,3 +33,4 @@ void EMods::initModLoaders() {
 		}
 	}
 }
+// EMods

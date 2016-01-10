@@ -9,11 +9,12 @@ void MModLoader::setVars(IVars *v) {
 	this->vars = v;
 	this->log = reinterpret_cast<ILogger*>(vars->get("eLogger"));
 
+	MV_LOGGER = this->log;
+	MV_VARS = this->vars;
+
 	this->core = new MCoreMods(this);
 	this->mods = new MMods(this);
 
-	MV_LOGGER = this->log;
-	MV_VARS = this->vars;
 	MV_CORE_MODS = this->core;
 	MV_MODS = this->mods;
 

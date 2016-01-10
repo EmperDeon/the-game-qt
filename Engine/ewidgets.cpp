@@ -1,5 +1,6 @@
-#include "Engine/ewidgets.h"
+#include <Engine/ewidgets.h>
 
+// EDeveloper
 EDeveloper::EDeveloper(){
 	lay = new QVBoxLayout();
 
@@ -19,34 +20,11 @@ EDeveloper::EDeveloper(){
 
 	this->setLayout(lay);
 
-	connect(bsett, SIGNAL(clicked()), this, SLOT(showSett()));
-	connect(blevl, SIGNAL(clicked()), this, SLOT(showLevl()));
-	connect(bmods, SIGNAL(clicked()), this, SLOT(showMods()));
-	connect(bmodl, SIGNAL(clicked()), this, SLOT(showModl()));
-	connect(bpack, SIGNAL(clicked()), this, SLOT(showPack()));
-	connect(bresm, SIGNAL(clicked()), this, SLOT(showResm()));
+//	connect(bsett, SIGNAL(clicked()), this, SLOT(showSett()));
+//	connect(blevl, SIGNAL(clicked()), this, SLOT(showLevl()));
+//	connect(bmods, SIGNAL(clicked()), this, SLOT(showMods()));
+//	connect(bmodl, SIGNAL(clicked()), this, SLOT(showModl()));
+//	connect(bpack, SIGNAL(clicked()), this, SLOT(showPack()));
+//	connect(bresm, SIGNAL(clicked()), this, SLOT(showResm()));
 }
-
-void EDeveloper::showSett(){
-
-}
-
-void EDeveloper::showLevl(){
-
-}
-
-void EDeveloper::showMods(){
-
-}
-
-void EDeveloper::showModl(){
-
-}
-
-void EDeveloper::showPack(){
-
-}
-
-void EDeveloper::showResm(){
-
-}
+// EDeveloper

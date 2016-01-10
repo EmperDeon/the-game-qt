@@ -1,5 +1,6 @@
-#include "Engine/eutils.h"
+#include <Engine/eutils.h>
 
+// Logger
 QString getLevelName(ILogLevel lv){
 	switch(lv){
 		case ILogLevel::ERR  : return "[E]";
@@ -11,32 +12,30 @@ QString getLevelName(ILogLevel lv){
 		case ILogLevel::ALL  : return "[A]";
 	}
 }
-void ELogger::connected(){
-	conn = true;
-}
-void ELogger::disc(){
-	conn = false;
-}
+
+void ELogger::connected(){	conn = true;}
+
+void ELogger::disc(){	conn = false;}
+
 ELogger::ELogger(){
 	socket = new QLocalSocket();
 	connect(socket, SIGNAL(connected()), this, SLOT(connected()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disc()));
 	conn = false;
-	socket->connectToServer("GameLogServer");
+	socket->connectToServer(SERVER_NAME);
 }
+
 void ELogger:: log(ILogLevel lv, QString cl, QString ms){
-	//QString s = QDateTime::currentDateTime().toString("HH:mm:ss dd.MM.yyyy") + "^";
-	QString s = QDateTime::currentDateTime().toString("HH:mm:ss") + "^";
+	QString s = QDateTime::currentDateTime().toString(LOG_DATE_FORMAT) + "^";
 	s += getLevelName(lv) +  "^";
 	s += cl + "^";
 	s += ms;
 
 	sendM(s);
 }
+
 void ELogger::sendM(QString s) {
-	if (!conn) {
-		socket->connectToServer("GameLogServer");
-	}
+	if (!conn) {	socket->connectToServer(SERVER_NAME);	}
 
 	QByteArray block;
 	QDataStream out(&block, QIODevice::WriteOnly);
@@ -50,13 +49,14 @@ void ELogger::sendM(QString s) {
 	socket->write(block);
 	socket->flush();
 }
-void ELogger::connec(){
-
-}
 
 ILogger* GV_LOGGER;
+// Logger
 
+
+// Settings
 ESettings::ESettings(QString f):map(),file(f){}
+
 ESettings::~ESettings(){}
 
 QJsonObject&ESettings::operator[] (QString k){
@@ -66,6 +66,7 @@ QJsonObject&ESettings::operator[] (QString k){
 	}
 	return map[k];
 }
+
 QJsonObject &ESettings::get(QString n){
 	if (!map.contains(n)){
 		logW("This settings does not contain that category: "+n);
@@ -73,17 +74,21 @@ QJsonObject &ESettings::get(QString n){
 	}
 	return map[n];
 }
+
 void ESettings::addNewCategory(QString n){
 	QJsonObject object;
 	object["name"]=n;
 	this->map[n] = object;
 }
+
 void ESettings::save(){
 	saveTo(file);
 }
+
 void ESettings::load(){
 	loadFrom(file);
 }
+
 void ESettings::loadFrom(QString f){
 	QFile loadFile(f);
 
@@ -101,6 +106,7 @@ void ESettings::loadFrom(QString f){
 		this->map[t["name"].toString()] = QJsonObject(t);
 	}
 }
+
 void ESettings::saveTo(QString f){
 	QFile saveFile(f);
 
@@ -119,15 +125,19 @@ void ESettings::saveTo(QString f){
 	//saveFile.write(doc.toBinaryData());
 	saveFile.write(qCompress(doc.toBinaryData(),5));
 }
+// Settings
 
 
+// Vars
 EVars::EVars(){
 	map = new QMap<QString, void*>;
 	owlist = new QStringList;
 }
+
 bool EVars::contains(QString name){
 	return map->contains(name);
 }
+
 bool EVars::contains(QStringList l) {
 	bool c = true;
 	foreach(QString n, l){
@@ -141,6 +151,7 @@ void*EVars::get(QString name){
 		logE("No " + name + " in EVars");
 	return (*map)[name];
 }
+
 void EVars::set(void *o, QString n){
 	if(!map->contains(n)){
 		(*map)[n] = o;
@@ -150,14 +161,20 @@ void EVars::set(void *o, QString n){
 		}
 	}
 }
+
 void EVars::setOverwriteList(QStringList l) {
 	this->owlist = new QStringList(l);
 }
-IVars* GV_VARS;
 
+IVars* GV_VARS;
+// Vars
+
+
+// Dirs
 EDirs::EDirs() {
  this->dirs = new QMap<QString, QString>;
 }
+
 void EDirs::addDir(QString k, QString v) {
  if(!v.endsWith("/"))
 	 v += '/';
@@ -165,9 +182,12 @@ void EDirs::addDir(QString k, QString v) {
 }
 
 QDir *EDirs::getDir(QString k) {	return new QDir(dirs->value(k));}
+
 QFile *EDirs::getFile(QString k, QString f) {	return new QFile(dirs->value(k) + f);}
 
 QString EDirs::getSDir(QString k) {	return dirs->value(k); }
+
 QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
 
 IDirs* GV_DIRS;
+// Dirs
