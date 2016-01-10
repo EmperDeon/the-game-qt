@@ -1,7 +1,7 @@
-#include "Launcher/lparser.h"
-#define ParserVer "0.1"
+#include <Launcher/lparser.h>
 
-ZipEntry::ZipEntry(QJsonObject o, QString f){
+// LZips
+LZipEntry::LZipEntry(QJsonObject o, QString f){
 	name = o["name"].toString();
 	desc = o["desc"].toString();
 	devl = o["devl"].toString();
@@ -13,47 +13,51 @@ ZipEntry::ZipEntry(QJsonObject o, QString f){
 	rev  = o["revision"].toString();
 	this->file = f;
 }
-QString ZipEntry::toString(){
+
+QString LZipEntry::toString(){
 	QString dep, owr;
-			foreach(QJsonValue e, depn){
-			dep += e.toString() + "; ";
-		}
-			foreach(QJsonValue e, ower) {
-			owr += e.toString() + "; ";
-		}
+	for(QJsonValue e : depn){
+		dep += e.toString() + "; ";
+	}
+	for(QJsonValue e : ower) {
+		owr += e.toString() + "; ";
+	}
 	return
-			"Name: " + name +
-			", Description: " + desc +
-			", Developer: " + devl +
-			", Site: " + site +
-			", Type: " + type +
-			", Dependency:[" + dep +
-			"], Owerwriting classes:[" + owr +
-			"], Version: " + ver +
-			", Revision: " + rev;
+		"Name: " + name +
+		", Description: " + desc +
+		", Developer: " + devl +
+		", Site: " + site +
+		", Type: " + type +
+		", Dependency:[" + dep +
+		"], Owerwriting classes:[" + owr +
+		"], Version: " + ver +
+		", Revision: " + rev;
 }
-QString ZipErr::toString(){
+
+QString LZipErr::toString(){
 	return entr.toString() + " : " + err;
 }
-bool ZipEntry::isValid(){
+
+bool LZipEntry::isValid(){
 	return (rev == ParserVer) && (
-			(type == "Mod")||
-			(type == "CoreMod")||
-			(type == "Resource")||
-			(type == "Pack"));
+		(type == "Mod")||
+		(type == "CoreMod")||
+		(type == "Resource")||
+		(type == "Pack"));
 }
+// LZips
 
-LParser::LParser(LMainWindow* l){
-	list = new QList<ZipEntry>;
 
-	err = new QList<ZipErr>;
+// LParser
+LParser::LParser(){
+	list = new QList<LZipEntry>;
+
+	err = new QList<LZipErr>;
 
 	coremods = new QStringList;
 	mods = new QStringList;
 	packs = new QStringList;
 	unknown = new QStringList;
-
-	this->log = l->w_log;
 
 	QJsonObject o;
 	o["name"] = "NotFound";
@@ -64,11 +68,45 @@ LParser::LParser(LMainWindow* l){
 	o["depend"] = QJsonArray();
 	o["version"] = "0";
 	o["revision"] = "0";
-	not_found = ZipEntry(o,"NotFound");
+	not_found = LZipEntry(o, "NotFound");
 
-	log->addL(ILogLevel::DEBUG, "LParser", "Constructed");
+	lLogD("Constructed");
 }
 
+//  Adds
+void LParser::addE(LZipEntry e, QDir curr){
+	if(e.isValid()){
+		if(e.type == "Pack"){
+
+			for(QFileInfo f : curr.entryInfoList(QDir::Dirs)){
+				LZipEntry t =  LZipEntry(loadJson(QDir("tmp/" + f.fileName()).filePath("archive.dat")), "");
+				addE(t,f.dir());
+			}
+
+		}else{
+			list->append(e);
+		}
+	}else{
+		err->append(LZipErr(e, "Zip is not valid"));
+	}
+}
+
+void LParser::addToList(LZipEntry e){
+	QString type = e.type;
+	if(type == "Coremod"){
+		*coremods << e.file;
+	}else if(type == "Mod"){
+		*mods << e.file;
+	}else if(type == "ResourcePack"){
+		*packs << e.file;
+	}else{
+		*unknown << e.file;
+	}
+}
+//  Adds
+
+
+//  Parsing
 void LParser::parseZip(){
 	unzipDownloads();
 	parse();
@@ -81,35 +119,6 @@ void LParser::parseZip(){
 	}
 }
 
-void LParser::addE(ZipEntry e, QDir curr){
-	if(e.isValid()){
-		if(e.type == "Pack"){
-
-					foreach(QFileInfo f, curr.entryInfoList(QDir::Dirs)){
-					ZipEntry t =  ZipEntry(loadJson(QDir("tmp/"+f.fileName()).filePath("archive.dat")),"");
-					addE(t,f.dir());
-				}
-
-		}else{
-			list->append(e);
-		}
-	}else{
-		err->append(ZipErr(e,"Zip is not valid"));
-	}
-}
-void LParser::addToList(ZipEntry e){
-	QString type = e.type;
-	if(type == "Coremod"){
-		*coremods << e.file;
-	}else if(type == "Mod"){
-		*mods << e.file;
-	}else if(type == "ResourcePack"){
-		*packs << e.file;
-	}else{
-		*unknown << e.file;
-	}
-}
-
 void LParser::unzipDownloads(){
 	QDir down("downloads");
 	QDir tmp("");
@@ -117,79 +126,70 @@ void LParser::unzipDownloads(){
 	tmp.cd("tmp/");
 
 	QFileInfoList downf = down.entryInfoList(QDir::Files);
-			foreach(QFileInfo f , downf){
-			log->addL(ILogLevel::DEBUG, "LParser", "extracting " + f.filePath());
-			QZipReader t("downloads/"+f.fileName());
-			tmp.mkdir(f.baseName());
-			t.extractAll("tmp/"+f.baseName()+"/");
-			down.remove(f.fileName());
-		}
+	for(QFileInfo f : downf){
+		lLogD("extracting " + f.filePath());
+		QZipReader t("downloads/"+f.fileName());
+		tmp.mkdir(f.baseName());
+		t.extractAll("tmp/"+f.baseName()+"/");
+		down.remove(f.fileName());
+	}
 }
+
 void LParser::parse(){
 	QDir tmp("tmp");
-			foreach(QFileInfo f, tmp.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
-			if(f.fileName() != "." && f.fileName() != ".."){
-				log->addL(ILogLevel::DEBUG, "LParser", "parsing " + f.filePath());
-				ZipEntry t =  ZipEntry(loadJson(QDir("tmp/"+f.fileName()).filePath("pack.dat")), f.fileName());
-				addE(t,f.dir());
-			}else{
-				log->addL(ILogLevel::DEBUG, "LParser", "ignoring " + f.filePath());
-			}
+	for(QFileInfo f : tmp.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+		if(f.fileName() != "." && f.fileName() != ".."){
+			lLogD("parsing " + f.filePath());
+			LZipEntry t =  LZipEntry(loadJson(QDir("tmp/" + f.fileName()).filePath("pack.dat")), f.fileName());
+			addE(t,f.dir());
+		}else{
+			lLogD("ignoring " + f.filePath());
 		}
+	}
 }
+
 void LParser::check(){
 	QStringList names;
 	QStringList depen;
-			foreach(ZipEntry e, *list){
-			if(!names.contains(e.name)){
-				names << e.name;
-			}else{
-				err->append(ZipErr(e,"Duplicate zip name"));
-			}
-			if(!e.depn.empty()){
-				QString t;
-						foreach(QJsonValue v, e.depn){
-						t = v.toString();
-						if(!depen.contains(t)){
-							depen << t;
-						}
-					}
-			}
-			addToList(e);
+	for(LZipEntry e : *list){
+		if(!names.contains(e.name)){
+			names << e.name;
+		}else{
+			err->append(LZipErr(e, "Duplicate zip name"));
 		}
-			foreach(QString e, depen){
-			if(!names.contains(e)){
-				err->append(ZipErr(search(e), "Unsatisfied dependency"));
+		if(!e.depn.empty()){
+			QString t;
+			for(QJsonValue v : e.depn){
+				t = v.toString();
+				if(!depen.contains(t)){
+					depen << t;
+				}
 			}
 		}
-}
-void LParser::showErr(){
-			foreach(ZipErr e, *err){
-			log->addL(ILogLevel::ERR, "LParser", e.toString());
-		}
-}
-
-inline QString LParser::getTDir(QString name){
-	static QString s = QDir().absolutePath() + "/";
-	return s + "tmp/" + name;
-}
-inline QString LParser::getDir(QString type, QString name){
-	static QString s = QDir().absolutePath() + "/";
-	QString t;
-	if(type == "Coremod"){
-		t = "mods/coremods/";
-	}else if(type == "Mod"){
-		t = "mods/mods/";
-	}else if(type == "ResourcePack"){
-		t = "mods/resources/";
-	}else{
-		t = "mods/unknown/";
+		addToList(e);
 	}
-	return s + t + name;
+	for(QString e : depen){
+		if(!names.contains(e)){
+			err->append(LZipErr(search(e), "Unsatisfied dependency"));
+		}
+	}
 }
+//  Parsing
+
+
+//  Errors
+void LParser::showErr(){
+	for(LZipErr e : *err){
+		lLogE(e.toString());
+	}
+}
+//  Errors
+
+
+//  Write
 void LParser::write(){
 	QDir dir;
- dir.mkdir("mods");
+	dir.mkdir("mods");
 	dir.cd("mods");
 
 	dir.mkdir("coremods");
@@ -206,31 +206,55 @@ void LParser::write(){
 }
 
 void LParser::writeT(QString type, QStringList* list){
-	log->addL(ILogLevel::DEBUG, "LParser", "Moving " + type + "s");
-			foreach(QString name, *list){
-			log->addL(ILogLevel::DEBUG, "LParser", getTDir(name) + " to " + getDir(type, name));
-			if(!QDir().rename(getTDir(name) , getDir(type, name))){
-				log->addL(ILogLevel::ERR, "LParser", "Move " + type + " " + name + " failed");
-			}
+	lLogD("Moving " + type + "s");
+	for(QString name : *list){
+		lLogD(getTDir(name) + " to " + getDir(type, name));
+		if(!QDir().rename(getTDir(name) , getDir(type, name))){
+			lLogE("Move " + type + " " + name + " failed");
 		}
+	}
 }
+//  Write
+
+
 void LParser::clear(){
 	QDir t("downloads");
 
 	QStringList l;l << "*.*";
- foreach(QFileInfo s, t.entryInfoList(l)){
-	 QFile(s.absoluteFilePath()).remove();
+	for(QFileInfo s : t.entryInfoList(l)){
+		QFile(s.absoluteFilePath()).remove();
 	}
 
 	t = QDir("tmp");
 	t.removeRecursively();
-	log->addL(ILogLevel::DEBUG, "LParser", "Clearing tmp/ and downloads/ ");
+	lLogD("Clearing tmp/ and downloads/ ");
 }
 
-ZipEntry LParser::search(QString n){
-			foreach(ZipEntry e, *list){
-			if(e.name == n) return e;
-		}
+
+inline QString LParser::getTDir(QString name){
+	static QString s = QDir().absolutePath() + "/";
+	return s + "tmp/" + name;
+}
+
+inline QString LParser::getDir(QString type, QString name){
+	static QString s = QDir().absolutePath() + "/";
+	QString t;
+	if(type == "Coremod"){
+		t = "mods/coremods/";
+	}else if(type == "Mod"){
+		t = "mods/mods/";
+	}else if(type == "ResourcePack"){
+		t = "mods/resources/";
+	}else{
+		t = "mods/unknown/";
+	}
+	return s + t + name;
+}
+
+inline LZipEntry LParser::search(QString n){
+	for(LZipEntry e : *list){
+		if(e.name == n) return e;
+	}
 	return not_found;
 }
-
+// LParser

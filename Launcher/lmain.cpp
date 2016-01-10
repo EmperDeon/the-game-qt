@@ -1,23 +1,29 @@
-#include "Launcher/lmain.h"
+#include <Launcher/lmain.h>
 
 // Main
 int main(int argc, char *argv[]){
 	QApplication a(argc, argv);
+	
+	LV_LOGGER = new LLogWidget;
+	LV_LOGGER->showMaximized();
+
 	LMainWindow w;
 	w.show();
-
+	
 	return a.exec();
 }
 // Main
 
+
 // LMainWindow
+//  Construction
 LMainWindow::LMainWindow(){
 	QCoreApplication::setOrganizationName("IlzSoft");
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");
 	site = "";
 
-	initWebKit();
+	initNews();
 	initLog();
 	collectWidgets();
 
@@ -26,53 +32,21 @@ LMainWindow::LMainWindow(){
 //	launch();
 }
 
-void LMainWindow::initWebKit(){
-//	progress = 0;
-//
-//	QFile file;
-//	file.setFileName(":/jquery.min.js");
-//	file.open(QIODevice::ReadOnly);
-//	jQuery = file.readAll();
-//	jQuery.append("\nvar qt = { 'jQuery': jQuery.noConflict(true) };");
-//	file.close();
-//
-//	QNetworkProxyFactory::setUseSystemConfiguration(true);
-//
-//	view = new QWebView(this);
-//
-//	connect(view, SIGNAL(loadFinished(bool)), SLOT(adjustLocation()));
-//	connect(view, SIGNAL(titleChanged(QString)), SLOT(adjustTitle()));
-//	connect(view, SIGNAL(loadProgress(int)), SLOT(setProgress(int)));
-//	connect(view, SIGNAL(loadFinished(bool)), SLOT(finishLoading(bool)));
-//
-//	locationEdit = new QLineEdit(this);
-//	locationEdit->setSizePolicy(QSizePolicy::Expanding, locationEdit->sizePolicy().verticalPolicy());
-//	connect(locationEdit, SIGNAL(returnPressed()), SLOT(changeLocation()));
-//
-//	QToolBar *toolBar = addToolBar(tr("Navigation"));
-//	toolBar->addAction(view->pageAction(QWebPage::Back));
-//	toolBar->addAction(view->pageAction(QWebPage::Forward));
-//	toolBar->addAction(view->pageAction(QWebPage::Reload));
-//	toolBar->addAction(view->pageAction(QWebPage::Stop));
-//	toolBar->addWidget(locationEdit);
-//
-//	if(site != ""){
-//		view->load(QUrl(site));
-//	}
+void LMainWindow::initNews(){
+
 }
+
 void LMainWindow::initLog(){
-	w_log = new LLogWidget;
-	modsMap = new MModsList(this);
+	modsMap = new LModsList(this);
 
 	dev    = new LDevelop(this);
-	proc   = new QProcess    (this);
- parser = new LParser     (this);
+	proc   = new QProcess(this);
+ parser = new LParser ();
 
 	devvis = false;
 	dev->setVisible(false);
 
-
-	srv = new MLocalServer(w_log);
+	srv = new LLocalServer();
 
 	bstart	= new QPushButton  ("Start");
 	bdev	= new QPushButton    ("+");
@@ -82,7 +56,6 @@ void LMainWindow::initLog(){
 	list	= new QListView      ();
 	prog    = new QProgressBar();
 
-	w_log->showMaximized();
 	bdev->setMaximumWidth(25);
 	epas->setEchoMode(QLineEdit::Password);
 
@@ -99,12 +72,13 @@ void LMainWindow::initLog(){
 	connect(bstart, SIGNAL(clicked()), this, SLOT(launch()));
 	connect(bdev,   SIGNAL(clicked()), this, SLOT(showDev()));
 }
+
 void LMainWindow::collectWidgets(){
-	layout = new QHBoxLayout();
-	vlay = new QVBoxLayout();
-	hlay = new QHBoxLayout();
-	slay = new QGridLayout();
-	llay = new QGridLayout();
+	QHBoxLayout* layout = new QHBoxLayout();
+	QVBoxLayout* vlay   = new QVBoxLayout();
+	QHBoxLayout* hlay   = new QHBoxLayout();
+	QGridLayout* slay   = new QGridLayout();
+	QGridLayout* llay   = new QGridLayout();
 
 	llay->addWidget(new QLabel("Login:"), 0, 0);
 	llay->addWidget(new QLabel("Password:"), 1, 0);
@@ -133,11 +107,13 @@ void LMainWindow::collectWidgets(){
 	setCentralWidget(wgt);
 	setUnifiedTitleAndToolBarOnMac(true);
 }
+
 void LMainWindow::check(){
 	checkSettings();
 	checkDir();
 	parse();
 }
+
 void LMainWindow::checkSettings(){
 	QSettings sett;
 	if(sett.contains("working-dir")){
@@ -151,6 +127,7 @@ void LMainWindow::checkSettings(){
 	this->proc->setWorkingDirectory(dir);
 	this->rfile = dir+"/game.exe";
 }
+
 void LMainWindow::checkDir(){
 	QStringList list;
 
@@ -167,6 +144,35 @@ void LMainWindow::checkDir(){
 	}
 }
 
+void LMainWindow::parse(){
+	this->parser->parseZip();
+}
+
+void LMainWindow::download(){
+
+}
+//  Construction
+
+
+//  Launch
+void LMainWindow::launch(){
+	this->hide();
+	srv->clients->clear();
+	proc->start(dir+"/game.exe");
+
+	connect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
+}
+
+void LMainWindow::procF(int e){
+//	this->show();
+	lLogI(QString(proc->readAll()));
+	if(e)
+		lLogE("The game crashed with code " + QString::number(e));
+	disconnect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
+}
+//  Launch
+
+//  Other
 void LMainWindow::showDev(){
 	int resize = 160;
 	if(devvis){
@@ -182,30 +188,8 @@ void LMainWindow::showDev(){
 	}
 }
 
-void LMainWindow::procF(int e){
-//	this->show();
-	w_log->addL(ILogLevel::INFO, "E", QString(proc->readAll()));
-	if(e)
-		w_log->addL(ILogLevel::ERR, "L-Main", "The game crashed with code " + QString::number(e));
-	disconnect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
-}
-void LMainWindow::parse(){
-	this->parser->parseZip();
-}
-
-void LMainWindow::download(){
-
-}
-void LMainWindow::launch(){
-	this->hide();
-	srv->clients->clear();
-	proc->start(dir+"/game.exe");
-
-	connect(proc, SIGNAL(finished(int)), this, SLOT(procF(int)));
-}
 void LMainWindow::closeEvent(QCloseEvent *event){
-	w_log->close();
-	event->accept();
+	LV_LOGGER->close();
 }
-
-
+//  Other
+// LMainWindow

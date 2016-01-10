@@ -1,6 +1,6 @@
-#include "Launcher/lutils.h"
+#include <Launcher/lutils.h>
 
-//Logs
+// Logger
 QString getLevelName(ILogLevel lv){
 	switch(lv){
 	case ILogLevel::ERR  : return "[E]";
@@ -10,14 +10,11 @@ QString getLevelName(ILogLevel lv){
 	case ILogLevel::FINE : return "[F]";
 	case ILogLevel::FFINE: return "[FF]";
 	case ILogLevel::ALL  : return "[A]";
-		//	case ILogLevel::ERR  : return "[ERROR]";
-		//	case ILogLevel::WARN : return "[WARNING]";
-		//	case ILogLevel::INFO : return "[INFO]";
-		//	case ILogLevel::DEBUG: return "[DEBUG]";
-		//	case ILogLevel::FINE : return "[FINE]";
 	}
 }
-LLogE::LLogE(ILogLevel lvl, QDateTime dt, QString cls, QString mss): lv(lvl), d(dt), cl(cls), ms(mss), engine(false){}
+
+LLogE::LLogE(ILogLevel lvl, QDateTime dt, QString cls, QString mss): lv(lvl), d(dt), cl(parseQtFunc(cls)), ms(mss), engine(false){}
+
 LLogE::LLogE(QString s){
 	QStringList lst = s.split("^");
 	t = lst.takeFirst();
@@ -36,6 +33,7 @@ LLogE::LLogE(QString s){
 	ms = lst.takeFirst();
 	engine = true;
 }
+
 QString LLogE::parseQtFunc(QString s) {
 	QString	r = s;
 	r = r.replace(" void", "");
@@ -45,6 +43,7 @@ QString LLogE::parseQtFunc(QString s) {
 	if(NO_DEBUG)	r = QStringRef(&r, 0, r.indexOf(':')).toString();
 	return r;
 }
+
 QString LLogE::toString(){
 	QString r = "<div ";
 
@@ -59,7 +58,7 @@ QString LLogE::toString(){
 	}
 
 	r.append("\">[");
-	r.append(engine ? t : d.toString("HH:mm:ss"));
+	r.append(engine ? t : d.toString(ELOG_DATE_FORMAT));
 	//r.append(engine ? t : d.toString("HH:mm:ss dd.MM.yyyy"));
 	r.append("]" + getLevelName(lv));
 	r.append("["+cl+"]");
@@ -68,170 +67,101 @@ QString LLogE::toString(){
 	r.append("</div>");
 	return r;
 }
-//Logs
 
-//ModModel
-GModLoaderSelect::GModLoaderSelect(QMap<QString, QString> &m, QObject *pobj):QAbstractTableModel(pobj), mp(m){
-	this->setHeaderData(0, Qt::Horizontal, "Name");
-	this->setHeaderData(1, Qt::Horizontal, "File");
+LLogWidget::LLogWidget() :QWidget(){
+	list = new QList<LLogE>;
+	last = "";
+
+	QVBoxLayout* vlay = new QVBoxLayout();
+	QHBoxLayout* hlay = new QHBoxLayout();
+
+	w_edit = new QTextEdit();
+
+	QLabel* w_l = new QLabel(tr("Show log level:"));
+	QPushButton* be = new QPushButton(tr("Errors"));
+	QPushButton* bw = new QPushButton(tr("Warnings"));
+	QPushButton* bi = new QPushButton(tr("Info"));
+	QPushButton* bd = new QPushButton(tr("Debug"));
+	QPushButton* bf = new QPushButton(tr("Fine"));
+	QPushButton* bff= new QPushButton(tr("FFine"));
+	QPushButton* ba = new QPushButton(tr("All"));
+	QPushButton* br = new QPushButton(tr("Refresh"));
+	QLabel* w_l1 = new QLabel(tr("Current collect value:"));
+	w_c = new QLabel("-- ms");
+
+	connect(be, SIGNAL(clicked()), this, SLOT(switchE()));
+	connect(bw, SIGNAL(clicked()), this, SLOT(switchW()));
+	connect(bi, SIGNAL(clicked()), this, SLOT(switchI()));
+	connect(bd, SIGNAL(clicked()), this, SLOT(switchD()));
+	connect(bf, SIGNAL(clicked()), this, SLOT(switchF()));
+	connect(bff,SIGNAL(clicked()), this, SLOT(switchFF()));
+	connect(ba, SIGNAL(clicked()), this, SLOT(switchA()));
+	connect(br, SIGNAL(clicked()), this, SLOT(refresh()));
+
+	hlay->addWidget(w_l);
+	hlay->addWidget(be);
+	hlay->addWidget(bw);
+	hlay->addWidget(bi);
+	hlay->addWidget(bd);
+	hlay->addWidget(bf);
+	hlay->addWidget(bff);
+	hlay->addWidget(ba);
+	hlay->addSpacing(20);
+	hlay->addWidget(w_l1);
+	hlay->addWidget(w_c);
+	hlay->addWidget(br);
+
+	vlay->addLayout(hlay);
+	vlay->addWidget(w_edit);
+
+	w_edit->setStyleSheet("font: 10pt \"Fantasque Sans Mono\";");
+	this->setLayout(vlay);
+
+	switchL(ILogLevel::FINE);
 }
-QVariant GModLoaderSelect::data(const QModelIndex &index, int nRole) const{
-	if (!index.isValid()) {
-		return QVariant(); }
-	QString str = QString("%1,%2").arg(index.row() + 1).arg(index.column() + 1);
-	return (nRole == Qt::DisplayRole || nRole == Qt::EditRole)  ?
-				(index.column()==1 ?  mp[mp.keys()[index.row()]] : mp.keys()[index.row()] )
-			: QVariant();
+
+void LLogWidget::addL(LLogE e){
+	if(e.lv <= curr){
+		last += e.toString();
+		w_edit->setHtml(last);
 	}
-	Qt::ItemFlags GModLoaderSelect::flags(const QModelIndex &index) const{
-	return QAbstractTableModel::flags(index);
+	list->append(e);
+	qDebug() << e.toString();
 }
-int GModLoaderSelect::rowCount(const QModelIndex&) const     {
-	return mp.keys().size();
-}
-int GModLoaderSelect::columnCount(const QModelIndex&) const     {
-	return 2;
-}
-//ModModel
 
-//LSettingsModel
-LSettingsModel::LSettingsModel(QString c, QMap<QString, QJsonObject> &m, QObject *pobj):QAbstractTableModel(pobj), cat(c), mp(m){
-	foreach(QString s, mp[cat].keys()){if(s != "name") ind << s;}
-	this->setHeaderData(0, Qt::Horizontal, "Key");
-	this->setHeaderData(1, Qt::Horizontal, "Value");
+void LLogWidget::switchL(ILogLevel lv){
+	curr = lv;
+	refresh();
 }
-QVariant LSettingsModel::data(const QModelIndex &index, int nRole) const{
-	if (!index.isValid()) {
-		return QVariant(); }
-	QString str = QString("%1,%2").arg(index.row() + 1).arg(index.column() + 1);
-	return (nRole == Qt::DisplayRole || nRole == Qt::EditRole)  ?
-				(index.column()==1 ?  mp[cat][ind[index.row()]].toString() : ind[index.row()] )
-			: QVariant();
-	}
-	bool LSettingsModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
-	if (index.isValid() && nRole == Qt::EditRole) {
-	//	if(index.column() == 0){
-	//	QString old = ind[index.row()];
-	//	mp[cat][value.toString()] = mp[cat][old];
-	//	mp[cat].remove(old);
-	//}else{
-	mp[cat][ind[index.row()]] = value.toString();
-	//}
-	emit dataChanged(index, index);
-	return true;
-}
-return false;
-}
-Qt::ItemFlags LSettingsModel::flags(const QModelIndex &index) const{
-	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
-	return (index.isValid() && index.column() == 1) ? (flags | Qt::ItemIsEditable) : flags;
-}
-int LSettingsModel::rowCount(const QModelIndex&) const     {
-	return ind.size();
-}
-int LSettingsModel::columnCount(const QModelIndex&) const     {
-	return 2;
-}
-//LSettingsModel
 
-//ListModel
-LListModel::LListModel(const QJsonArray &o, QObject *pobj):QAbstractListModel(pobj),obj(o){}
-QVariant LListModel::data(const QModelIndex &index, int nRole) const{
-	if (!index.isValid()){return QVariant();}
-	return (nRole == Qt::DisplayRole || nRole == Qt::EditRole)
-			? obj.at(index.row()).toString()
-			: QVariant();
-}
-bool LListModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
-	if (index.isValid() && nRole == Qt::EditRole) {
-		obj.replace(index.row(), value.toString());
-		emit dataChanged(index, index);
-		return true;
-	}
-	return false;
-}
-int LListModel::rowCount(const QModelIndex&) const{
-	return obj.size();
-}
-QVariant LListModel::headerData(int nSection, Qt::Orientation orientation, int nRole) const{
-	if (nRole != Qt::DisplayRole) {return QVariant();}
-	return (orientation == Qt::Horizontal) ? QString("Wrong_Model")
-																																								: QString::number(nSection);
-}
-Qt::ItemFlags LListModel::flags(const QModelIndex &index) const{
-	Qt::ItemFlags flags = QAbstractListModel::flags(index);
-	return index.isValid() ? (flags | Qt::ItemIsEditable): flags;
-}
-void LListModel::add(QString k){
-	obj << k;
-}
-void LListModel::del(QListView* i){
-	QModelIndexList l = i->selectionModel()->selectedRows();
+void LLogWidget::refresh(){
+	last = "";
 
-	foreach(const QModelIndex &index, l){
-		QString s = index.data(Qt::DisplayRole ).toString();
-			int j = 0;
-		foreach(QJsonValue v, obj){
-			if(s == v.toString()){
-				obj.removeAt(j);
+	QTime st;
+	st.start();
+		for(LLogE e : *list) {
+			if(curr >= e.lv){
+				last += e.toString();
 			}
-					j++;
 		}
-	}
-}
-//ListModel
+	w_c->setText(QString::number(st.elapsed()) + " ms " + QString::number(list->size()) + " total");
 
-//TableModel
-LTableModel::LTableModel(QJsonObject& o, QObject *pobj):QAbstractTableModel(pobj), obj(o){
-	this->setHeaderData(0, Qt::Horizontal, "Name");
-	this->setHeaderData(1, Qt::Horizontal, "Path");
+	w_edit->setHtml(last);
+	QScrollBar *sb = w_edit->verticalScrollBar();
+	sb->setValue(sb->maximum());
 }
-QVariant LTableModel::data(const QModelIndex &index, int nRole) const{
-	if (!index.isValid()) {return QVariant(); }
-	return (nRole == Qt::DisplayRole || nRole == Qt::EditRole)  ?
-				(index.column()==1 ?  obj[obj.keys()[index.row()]].toString() : obj.keys()[index.row()] )
-			: QVariant();
-	}
-	bool LTableModel::setData(const QModelIndex &index, const QVariant &value, int nRole){
-	if (index.isValid() && nRole == Qt::EditRole) {
-	if(index.column() == 0){
-	QString old = obj.keys()[index.row()];
-	obj[value.toString()] = obj[old];
-	obj.remove(old);
-}else{
-obj[obj.keys()[index.row()]] = value.toString();
-}
-emit dataChanged(index, index);
-return true;
-}
-return false;
-}
-Qt::ItemFlags LTableModel::flags(const QModelIndex &index) const{
-	Qt::ItemFlags flags = QAbstractTableModel::flags(index);
-	return (index.isValid()) ? (flags | Qt::ItemIsEditable) : flags;
-}
-void LTableModel::add(QString k, QString v){
-	obj[k] = v;
-}
-void LTableModel::del(QString k){
-	obj.remove(k);
-}
-int LTableModel::rowCount(const QModelIndex&) const{
-	return obj.size();
-}
-int LTableModel::columnCount(const QModelIndex&) const{
-	return 2;
-}
-//TableModel
 
-//MLocalServer
-MLocalServer::MLocalServer(LLogWidget* l){
+LLogWidget* LV_LOGGER;
+// Logger
+
+
+// LLocalServer
+LLocalServer::LLocalServer(){
 	clients = new QVector<QLocalSocket*>();
-	log = l;
 	blockSize = 0;
 
 	server = new QLocalServer(this);
-	if (!server->listen("GameLogServer")) {
+	if (!server->listen(ESERVER_NAME)) {
 		qDebug() << "Construction failed "+server->errorString();
 		return;
 	}
@@ -242,24 +172,27 @@ MLocalServer::MLocalServer(LLogWidget* l){
 	connect(timer, SIGNAL(timeout()), this, SLOT(readyRead()));
 	timer->start(50);
 }
-void MLocalServer::addLog(QString s){
+
+void LLocalServer::addLog(QString s){
 	if(s.indexOf("#Launcher") == 0){
 		if(s.indexOf("#Launcher#Disconnect") == 0){
 			clients->clear();
 		}
 	}else{
-		log->addL(LLogE(s));
+		LV_LOGGER->addL(LLogE(s));
 	}
 }
-void MLocalServer::newConnection(){
+
+void LLocalServer::newConnection(){
 	QLocalSocket* client = server->nextPendingConnection();
 //	connect(client, SIGNAL(disconnected()),	client, SLOT(deleteLater()));
 	connect(client, SIGNAL(readyRead()), this, SLOT(readyRead()));
 	clients->append(client);
-	log->addL(ILogLevel::DEBUG, "L-MLocalServer", "Engine connected");
+	lLogD("Engine connected");
 }
-void MLocalServer::readyRead(){
-	foreach(QLocalSocket* client , *clients){
+
+void LLocalServer::readyRead(){
+	for(QLocalSocket* client : *clients){
 		if(client->isOpen()){
 			QDataStream in(client);
 			in.setVersion(QDataStream::Qt_5_4);
@@ -283,54 +216,107 @@ void MLocalServer::readyRead(){
 		}
 	}
 }
-//MLocalServer
-//Json
-void createJson(){
-	QFile f("cmod-1.cfg");
-	if (!f.open(QIODevice::WriteOnly)) {return;}
-	QJsonObject obj;
+// LLocalServer
 
-	obj["name"] = "Test core mod - 1";
-	obj["type"] = "CoreMod";
-	obj["desc"] = "Description";
-	obj["devl"] = "IlzSoft company";
-	obj["site"] = "github.com";
-	obj["depend"] = QJsonArray();
-	obj["res"] = QJsonArray();
-	obj["version"] = "1.0";
-	obj["revision"] = "1.0";
 
-	QJsonDocument doc(obj);
-	f.write(qCompress(doc.toBinaryData(),5));
-	f.flush();
-	f.close();
+//LModsList
+LModsList::LModsList(LMainWindow *l): loader(l){
+	this->list = new QJsonArray;
+	this->lst = QJsonArray();
 }
-QJsonObject loadJson(QFile file){
-	file.open(QIODevice::ReadOnly);
-	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(file.readAll())));
-	return loadDoc.object();
+void LModsList::update(){
+	QDir mods("mods/mods");
+		foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+			if(f.fileName() != "." && f.fileName() != ".."){
+				lLogD("parsing " + f.filePath());
+				addToList(loadJson(QDir("mods/mods/"+f.fileName()).filePath("pack.dat")));
+			}
+		}
+
 }
-QJsonArray loadJsonA(QFile file){
-	file.open(QIODevice::ReadOnly);
-	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(file.readAll())));
-	return loadDoc.array();
+void LModsList::fillList(){
+	lst = QJsonArray();
+		foreach(QJsonValue o, *list){
+			if(o.toObject()["enabled"].toBool() && !lst.contains(o.toObject()["name"].toString())){
+				lst << o.toObject()["name"].toString();
+			}
+		}
 }
+void LModsList::addToList(QJsonObject o){
+	if(contains(o["name"].toString())){
+		lLogD(o["name"].toString() + " has already added, ignoring ");
+	}else{
+		lLogD("found new mod, adding " + o["name"].toString());
+		QJsonObject t;
+		t["name"] = o["name"];
+		t["desc"] = o["desc"];
+		t["enabled"] = true;
+		*list << t;
+		this->lst << o["name"].toString();
+	}
+}
+bool LModsList::contains(QString s){
+		foreach(QJsonValue v, *list){
+			if( (v.toObject())["name"] == s ) return true;
+		}
+	return false;
+}
+void LModsList::disable(QString n){
+		foreach(QJsonValue v, *list){
+			if(v.toObject()["name"] == n){
+				v.toObject()["enabled"] = false;
+			}
+		}
+}
+void LModsList::addNew(){
+	QString file = QFileDialog::getOpenFileName(loader->dev->w_mod, "Open File","/home",qPrintable("Mod (*"+ME_SAVE+")"));
+	QString ffile = QStringRef(&file, file.lastIndexOf("/")+1, file.indexOf(".zip")).toString();
+	QZipReader z(file);
+	lLogD("unzipping " + file + " to " + ffile);
+	//z.extractAll("mods/");
+}
+void LModsList::load(){
+	QFile f("mods/mods.dat");
+	if(f.exists()){
+		list = new QJsonArray(loadJsonA(f.fileName()));
+	}else{
+		lLogD("file mods/mods.dat not exist");
+		list = new QJsonArray();
+	}
+	update();
+	fillList();
+}
+void LModsList::save(){
+		foreach(QJsonValue e, *list){
+			QJsonObject o = e.toObject();
+			o["enabled"] = lst.contains(o["name"].toString());
+		}
+	saveJsonA(*list, "mods/mods.dat");
+}
+void LModsList::reload(){
+	this->list = new QJsonArray();
+	update();
+}
+//!LModsList
+
+
+// Standalone functions
 QJsonObject loadJson(QString file){
 	QFile loadFile(file);
-	qDebug() << "loading " << file;
 	loadFile.open(QIODevice::ReadOnly);
 
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
 	return loadDoc.object();
 }
+
 QJsonArray loadJsonA(QString file){
 	QFile loadFile(file);
-	qDebug() << "loading " << file;
 	loadFile.open(QIODevice::ReadOnly);
 
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
 	return loadDoc.array();
 }
+
 void saveJson(QJsonObject o, QString file){
 	QFile f(file);
 	if (!f.open(QIODevice::WriteOnly)) {return;}
@@ -340,6 +326,7 @@ void saveJson(QJsonObject o, QString file){
 	f.flush();
 	f.close();
 }
+
 void saveJsonA(QJsonArray o, QString file){
 	QFile f(file);
 	if (!f.open(QIODevice::WriteOnly)) {return;}
@@ -349,94 +336,5 @@ void saveJsonA(QJsonArray o, QString file){
 	f.flush();
 	f.close();
 }
-//Json
+// Standalone functions
 
-QStringList getPluginFilter(){
-	QStringList r;
-	//#ifdef Q_OS_WIN
-	r << "*.dll";
-	//#endif
-
-	return r;
-}
-
-
-//MModsList
-MModsList::MModsList(LMainWindow *l):loader(l){
-	this->list = new QJsonArray;
-	this->lst = QJsonArray();
-}
-void MModsList::update(){
-	QDir mods("mods/mods");
-			foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
-			if(f.fileName() != "." && f.fileName() != ".."){
-				loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "parsing " + f.filePath());
-				addToList(loadJson(QDir("mods/mods/"+f.fileName()).filePath("pack.dat")));
-			}
-		}
-
-}
-void MModsList::fillList(){
-	lst = QJsonArray();
-			foreach(QJsonValue o, *list){
-			if(o.toObject()["enabled"].toBool() && !lst.contains(o.toObject()["name"].toString())){
-				lst << o.toObject()["name"].toString();
-			}
-		}
-}
-void MModsList::addToList(QJsonObject o){
-	if(contains(o["name"].toString())){
-		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", o["name"].toString() + " has already added, ignoring ");
-	}else{
-		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "found new mod, adding " + o["name"].toString());
-		QJsonObject t;
-		t["name"] = o["name"];
-		t["desc"] = o["desc"];
-		t["enabled"] = true;
-		*list << t;
-		this->lst << o["name"].toString();
-	}
-}
-bool MModsList::contains(QString s){
-			foreach(QJsonValue v, *list){
-			if( (v.toObject())["name"] == s ) return true;
-		}
-	return false;
-}
-void MModsList::disable(QString n){
-			foreach(QJsonValue v, *list){
-			if(v.toObject()["name"] == n){
-				v.toObject()["enabled"] = false;
-			}
-		}
-}
-void MModsList::addNew(){
-	QString file = QFileDialog::getOpenFileName(loader->dev->w_mod, tr("Open File"),"/home",qPrintable("Mod (*"+ME_SAVE+")"));
-	QString ffile = QStringRef(&file, file.lastIndexOf("/")+1, file.indexOf(".zip")).toString();
-	QZipReader z(file);
-	loader->w_log->addL(ILogLevel::DEBUG, "BaseModLoader", "unzipping " + file + " to " + ffile);
-	//z.extractAll("mods/");
-}
-void MModsList::load(){
-	QFile f("mods/mods.dat");
-	if(f.exists()){
-		list = new QJsonArray(loadJsonA(f.fileName()));
-	}else{
-		loader->w_log->addL(ILogLevel::DEBUG, "ModsWidget", "file mods/mods.dat not exist");
-		list = new QJsonArray();
-	}
-	update();
-	fillList();
-}
-void MModsList::save(){
-			foreach(QJsonValue e, *list){
-			QJsonObject o = e.toObject();
-			o["enabled"] = lst.contains(o["name"].toString());
-		}
-	saveJsonA(*list, "mods/mods.dat");
-}
-void MModsList::reload(){
-	this->list = new QJsonArray();
-	update();
-}
-//!MModsList

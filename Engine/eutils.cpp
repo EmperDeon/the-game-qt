@@ -22,11 +22,11 @@ ELogger::ELogger(){
 	connect(socket, SIGNAL(connected()), this, SLOT(connected()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disc()));
 	conn = false;
-	socket->connectToServer(SERVER_NAME);
+	socket->connectToServer(ESERVER_NAME);
 }
 
 void ELogger:: log(ILogLevel lv, QString cl, QString ms){
-	QString s = QDateTime::currentDateTime().toString(LOG_DATE_FORMAT) + "^";
+	QString s = QDateTime::currentDateTime().toString(ELOG_DATE_FORMAT) + "^";
 	s += getLevelName(lv) +  "^";
 	s += cl + "^";
 	s += ms;
@@ -35,7 +35,7 @@ void ELogger:: log(ILogLevel lv, QString cl, QString ms){
 }
 
 void ELogger::sendM(QString s) {
-	if (!conn) {	socket->connectToServer(SERVER_NAME);	}
+	if (!conn) {	socket->connectToServer(ESERVER_NAME);	}
 
 	QByteArray block;
 	QDataStream out(&block, QIODevice::WriteOnly);
@@ -93,7 +93,7 @@ void ESettings::loadFrom(QString f){
 	QFile loadFile(f);
 
 	if (!loadFile.open(QIODevice::ReadOnly)) {
-		logE("Couldn't open settings file. ("+f+")");
+		logE("Couldn't open settings file. (" + f + ")");
 		return;
 	}
 
@@ -101,7 +101,7 @@ void ESettings::loadFrom(QString f){
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
 	QJsonArray obj = loadDoc.array();
 	QJsonObject t;
-	foreach(QJsonValue e , obj){
+	for(QJsonValue e : obj){
 		t = e.toObject();
 		this->map[t["name"].toString()] = QJsonObject(t);
 	}
@@ -111,7 +111,7 @@ void ESettings::saveTo(QString f){
 	QFile saveFile(f);
 
 	if (!saveFile.open(QIODevice::WriteOnly)) {
-		logE("Couldn't open settings file. ("+f+")");
+		logE("Couldn't open settings file. (" + f + ")");
 		return;
 	}
 
@@ -140,7 +140,7 @@ bool EVars::contains(QString name){
 
 bool EVars::contains(QStringList l) {
 	bool c = true;
-	foreach(QString n, l){
+	for(QString n : l){
 		c = c && map->contains(n);
 	}
 	return c;

@@ -1,114 +1,81 @@
-#ifndef LUTILS_H
-#define LUTILS_H
-
-#include <QtCore>
-#include <QtWidgets>
-#include <QtNetwork>
-#include <Launcher/lwidgets.h>
+#ifndef GLOBALQT_LUTILS_H
+#define GLOBALQT_LUTILS_H
+#include <Launcher/ldefines.h>
 #include <Launcher/lmain.h>
 #include <Launcher/qzipreader_p.h>
 #include <Launcher/qzipwriter_p.h>
 
-class LLogWidget;
 class LMainWindow;
-enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
+
+
+// Logs
+#define ESERVER_NAME "GameLogServer"
+#define ELOG_DATE_FORMAT "HH:mm:ss" // "HH:mm:ss dd.MM.yyyy"
 
 struct LLogE {
 	ILogLevel lv;
 	QDateTime d;
-	QString t;
-	QString cl;
-	QString ms;
+	QString t, cl, ms;
 	bool engine;
+
 	LLogE(ILogLevel lvl, QDateTime dt, QString cls, QString mss);
 	LLogE(QString);
+
 	QString parseQtFunc(QString s);
 	QString toString();
 };
 
-class GModLoaderSelect :public QAbstractTableModel{
-private:
-	QMap<QString, QString>& mp;
-public:
-	GModLoaderSelect(QMap<QString, QString>& m , QObject *pobj = 0);
+class LLogWidget : public QWidget{
+ Q_OBJECT
 
-	QVariant data(const QModelIndex& index, int nRole) const;
-	int rowCount(const QModelIndex&) const;
-	int columnCount(const QModelIndex&) const;
-	Qt::ItemFlags flags(const QModelIndex& index)const;
-};
-class LSettingsModel :public QAbstractTableModel{
-private:
-	QString cat;
-	QMap<QString, QJsonObject>& mp;
-	QStringList ind;
-public:
-	LSettingsModel(QString c, QMap<QString, QJsonObject>& m , QObject *pobj = 0);
+	ILogLevel curr;
+	QString last;
+	QList<LLogE>* list;
+	QTextEdit* w_edit;
+	QLabel* w_c;
 
-	QVariant data(const QModelIndex& index, int nRole) const;
-	bool setData(const QModelIndex& index,const QVariant& value, int nRole );
-	int rowCount(const QModelIndex&) const;
-	int columnCount(const QModelIndex&) const;
-	Qt::ItemFlags flags(const QModelIndex& index)const;
-};
-class LListModel : public QAbstractListModel{
-private:
-	QJsonArray obj;
-public:
-	LListModel(const QJsonArray &o, QObject* pobj = 0);
-	QVariant data(const QModelIndex& index, int nRole) const;
-	bool setData(const QModelIndex& index, const QVariant& value, int nRole);
-	int rowCount(const QModelIndex& = QModelIndex()) const;
-	QVariant headerData(int nSection, Qt::Orientation orientation, int nRole = Qt::DisplayRole) const;
-	Qt::ItemFlags flags(const QModelIndex &index) const;
-	void add(QString k);
-	void del(QListView *i);
-};
-class LTableModel :public QAbstractTableModel{
-private:
-	QJsonObject& obj;
-public:
-	LTableModel(QJsonObject& o, QObject *pobj = 0);
-	QVariant data(const QModelIndex& index, int nRole) const;
-	bool setData(const QModelIndex& index,const QVariant& value, int nRole );
-	int rowCount(const QModelIndex&) const;
-	int columnCount(const QModelIndex&) const;
-	Qt::ItemFlags flags(const QModelIndex& index)const;
-	void add(QString k, QString v);
-	void del(QString k);
-};
+public slots:
+	void switchE() {switchL(ILogLevel::ERR);}
+	void switchW() {switchL(ILogLevel::WARN);}
+	void switchI() {switchL(ILogLevel::INFO);}
+	void switchD() {switchL(ILogLevel::DEBUG);}
+	void switchF() {switchL(ILogLevel::FINE);}
+	void switchFF(){switchL(ILogLevel::FFINE);}
+	void switchA() {switchL(ILogLevel::ALL);}
 
-class MLocalServer : public QObject{
+	void refresh();
+public:
+	LLogWidget();
+	void addL(ILogLevel lv, QString cl, QString m){addL(LLogE(lv, QDateTime::currentDateTime(), cl, m ));}
+	void addL(LLogE e);
+	void switchL(ILogLevel lv);
+};
+// Logs
+
+
+// LLocalServer
+class LLocalServer : public QObject{
 	Q_OBJECT
 
-	LLogWidget* log;
 	QString lastMsg;
 	quint16 blockSize;
 	QLocalServer *server;
 
-private:
 	void addLog(QString s);
+
 private slots:
 	void newConnection();
 	void readyRead();
+
 public:
-	QVector<QLocalSocket *> *clients;
-	MLocalServer(LLogWidget* l);
+	QVector<QLocalSocket *>* clients;
+	LLocalServer();
 };
+// LLocalServer
 
-void createJson();
-QJsonObject loadJson(QFile file);
-QJsonArray loadJsonA(QFile file);
-QJsonObject loadJson(QString file);
-QJsonArray loadJsonA(QString file);
-void saveJson(QJsonObject o, QString file);
-void saveJsonA(QJsonArray o, QString file);
 
-QStringList getPluginFilter();
-
-class MModsList : public QObject{
-Q_OBJECT
-
+// LModsLost
+class LModsList{
 	LMainWindow* loader;
 	QJsonArray* list;
 
@@ -120,12 +87,21 @@ Q_OBJECT
 public:
 	QJsonArray lst;
 
-	MModsList(LMainWindow*);
+	LModsList(LMainWindow*);
 	void addNew();
 	void load();
 	void save();
 	void reload();
 
 };
+// LModsList
+
+
+// Standalone functions
+QJsonObject loadJson(QString file);
+QJsonArray  loadJsonA(QString file);
+void        saveJson(QJsonObject o, QString file);
+void        saveJsonA(QJsonArray o, QString file);
+// Standalone functions
 
 #endif // LUTILS_H

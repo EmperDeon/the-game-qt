@@ -1,40 +1,32 @@
-#ifndef H_MAIN
-#define H_MAIN
-#include <QApplication>
+#ifndef GLOBALQT_LMAIN
+#define GLOBALQT_LMAIN
+#include <Launcher/ldefines.h>
 #include <Launcher/lutils.h>
 #include <Launcher/lwidgets.h>
-#include "Launcher/lparser.h"
+#include <Launcher/lparser.h>
 
-#define NO_DEBUG true
 
 class LDevelop;
-class MLocalServer;
-class GModLoaderSelect;
+class LLocalServer;
+class LModLoaderSelect;
 class IModLoader;
 class LLogWidget;
-class MModsList;
+class LModsList;
 class LParser;
 
 // Widgets
 class LMainWindow : public QMainWindow{
 	Q_OBJECT
+
 	QString dir;
 	QString site;
 	QString rfile;
 	QProcess* proc;
 	bool devvis;
 
-	MLocalServer* srv;
-	QString lastMsg;
+	LLocalServer * srv;
 
 	QWidget* wgt;
-
-	QHBoxLayout* layout;
-	QVBoxLayout* vlay;
-	QHBoxLayout* hlay;
-	QGridLayout* slay;
-	QGridLayout* llay;
-	QSpacerItem* spac;
 
 	QPushButton* bstart;
 	QPushButton* bdev;
@@ -45,19 +37,15 @@ class LMainWindow : public QMainWindow{
 	QListView* list;
 	QProgressBar* prog;
 
-	int progress;
 public:
 	LDevelop * dev;
-	MModsList* modsMap;
+	LModsList * modsMap;
 	LParser * parser;
-	LLogWidget* w_log;
+
 	LMainWindow();
-public slots:
-	void showDev();
-	void launch();
-	void procF(int e);
+
 private:
-	void initWebKit();
+	void initNews();
 	void initLog();
 	void collectWidgets();
 
@@ -68,8 +56,14 @@ private:
 	void parse();
 
 	void download();
+
 protected:
 	void closeEvent(QCloseEvent *event);
+
+public slots:
+	void showDev();
+	void launch();
+	void procF(int e);
 };
 
-#endif
+#endif //GLOBALQT_LMAIN

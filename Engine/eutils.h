@@ -4,8 +4,8 @@
 #include <QtNetwork>
 
 // ELogger
-#define SERVER_NAME "GameLogServer"
-#define LOG_DATE_FORMAT "HH:mm:ss" // "HH:mm:ss dd.MM.yyyy"
+#define ESERVER_NAME "GameLogServer"
+#define ELOG_DATE_FORMAT "HH:mm:ss" // "HH:mm:ss dd.MM.yyyy"
 
 QString getLevelName(ILogLevel lv);
 

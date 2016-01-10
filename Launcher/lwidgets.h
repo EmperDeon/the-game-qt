@@ -1,35 +1,26 @@
-#ifndef WIDGETS_H
-#define WIDGETS_H
-#define ME_SAVE QString(".zip")
-
-#include <QtWidgets>
-#include <QtNetwork>
-#include <QtCore>
-#include <QtGui>
+#ifndef GLOBALQT_LWIDGETS_H
+#define GLOBALQT_LWIDGETS_H
+#include <Launcher/ldefines.h>
 #include <Launcher/lutils.h>
 #include <Launcher/lmain.h>
+#include <Launcher/lwmodels.h>
+#include <Launcher/widgets/llevel.h>
+#include <Launcher/widgets/lmodeditor.h>
+#include <Launcher/widgets/lmodel.h>
+#include <Launcher/widgets/lmods.h>
+#include <Launcher/widgets/lresources.h>
 
-class LMainWindow;
-class LDevelop;
-class LSettWidget;
-class LLevlWidget;
-class LModelWidget;
-class LResmWidget;
-class LListModel;
-class LTableModel;
-enum class ILogLevel;
-class LLogE;
-class LSettingsModel;
-class LModsWidget;
 class LModEditor;
-class LPacker;
-class QJsonObject;
+class LMainWindow;
+class LTableModel;
+class LListModel;
+class LModsWidget;
+class LSettingsModel;
 
-
+// Json Viewers
 class LJsonAWidget : public QWidget{
 	Q_OBJECT
-	QVBoxLayout* lay;
-	QPushButton* b_open;
+
 	QListView* list;
 	LListModel* model;
 	QJsonArray* obj;
@@ -38,10 +29,10 @@ public slots:
 public:
 	LJsonAWidget();
 };
+
 class LJsonOWidget : public QWidget{
 	Q_OBJECT
-	QVBoxLayout* lay;
-	QPushButton* b_open;
+
 	QTableView* list;
 	LTableModel* model;
 	QJsonObject* obj;
@@ -51,96 +42,28 @@ public:
 	LJsonOWidget();
 };
 
-class LLogWidget : public QWidget{
-	Q_OBJECT
-	ILogLevel curr;
-	QString last;
-	QList<LLogE>* list;
-
-	QTextEdit* w_edit;
-	QVBoxLayout* vlay;
-	QHBoxLayout* hlay;
-	QLabel* w_l;
-	QLabel* w_l1;
-	QLabel* w_c;
-	QPushButton* be;
-	QPushButton* bw;
-	QPushButton* bi;
-	QPushButton* bd;
-	QPushButton* bf;
-	QPushButton* bff;
-	QPushButton* ba;
-	QPushButton* br;
-
-public slots:
-	void switchE();
-	void switchW();
-	void switchI();
-	void switchD();
-	void switchF();
- void switchFF();
-	void switchA();
-	void refresh();
-public:
-	LLogWidget();
-	void addL(ILogLevel lv, QString cl, QString m);
-	void addL(LLogE e);
-	void switchL(ILogLevel lv);
-};
-class LSettWidget : public QWidget{
-	Q_OBJECT
-
-	QTabWidget* tabs;
-	QMap<QString, QTableView*> wgts;
-	QMap<QString, LSettingsModel *> mdls;
-	QMap<QString, QJsonObject> map;
-	QPushButton* b_save;
-	QPushButton* b_load;
-	QHBoxLayout* hbox;
-	QVBoxLayout* vbox;
-
-public slots:
-	void saveS();
-	void loadS();
-public:
-	void clear();
-	void init();
-	LSettWidget();
-
-};
-
 class LTableManager : public QWidget{
 	Q_OBJECT
 
 	LTableModel* model;
 	QTableView* table;
-	QVBoxLayout* vlay;
-	QHBoxLayout* hlay;
 	QLineEdit* e_k;
 	QLineEdit* e_v;
-	QPushButton* b_add;
-
-	QPushButton* b_del;
-	QPushButton* b_ok;
 
 public slots:
 	void add();
 	void del();
+
 public:
 	LTableManager(QJsonObject& o, QString t);
-
 };
+
 class LListManager : public QWidget{
 	Q_OBJECT
 
 	LListModel* model;
 	QListView* list;
-	QVBoxLayout* vlay;
-	QHBoxLayout* hlay;
 	QLineEdit* e_k;
-	QPushButton* b_add;
-	QPushButton* b_del;
-	QPushButton* b_ok;
 
 public slots:
 	void add();
@@ -149,24 +72,44 @@ public:
 	LListManager(QJsonArray& o, QString t);
 
 };
+// Json Viewers
 
+
+// LSettings
+class LSettWidget : public QWidget{
+ Q_OBJECT
+
+	QTabWidget* tabs;
+	QMap<QString, QTableView*>* wgts;
+	QMap<QString, LSettingsModel *>* mdls;
+	QMap<QString, QJsonObject>* map;
+
+public slots:
+	void saveS();
+	void loadS();
+
+public:
+	LSettWidget();
+	void clear();
+	void init();
+};
+// LSettings
+
+
+// LPacker
+class LPacker : public QWidget{
+Q_OBJECT
+
+public:
+	LPacker();
+};
+// LPacker
+
+
+// LDevelop
 class LDevelop : public QWidget{
-	Q_OBJECT
+Q_OBJECT
 	LMainWindow* launcher;
-	QVBoxLayout* lay;
-
-	QPushButton* bsett;
-	QPushButton* blevl;
-	QPushButton* bmods;
-	QPushButton* bmodl;
-	QPushButton* bpack;
-	QPushButton* bmodel;
-	QPushButton* bresm;
-	QPushButton* bjsono;
-	QPushButton* bjsona;
-
-	QPushButton* bparse;
-	QPushButton* binit;
 
 	LModEditor * w_mode;
 	LPacker * w_pac;
@@ -177,189 +120,13 @@ class LDevelop : public QWidget{
 	LJsonOWidget* jsono;
 	LJsonAWidget* jsona;
 
+public:
+	LDevelop(LMainWindow *w);
+	LModsWidget* w_mod;
+
 private slots:
 	void parse();
-public:
-	LModsWidget * w_mod;
-	LDevelop(LMainWindow *w);
 };
+// LDevelop
 
-class LLevlWidget : public QWidget{// Level Editor
-public:
-	LLevlWidget();
-};
-class LModelWidget : public QWidget{// Level Editor
-public:
-	LModelWidget();
-};
-class LResmWidget : public QWidget{// Resource manager
-public:
-	LResmWidget();
-};
-
-
-class LModsWidget : public QWidget{
-Q_OBJECT
-	LMainWindow* loader;
-	LLogWidget* log;
-	LListModel* model;
-	QString curr;
-
-	QVBoxLayout* layout;
-	QHBoxLayout* l_model;
-	QHBoxLayout* l_wgt;
-	QPushButton* b_rl;
-	QPushButton* b_add;
-	QPushButton* b_del;
-	QListView* list;
-public slots:
-	void reload();
-	void add();
-	void del();
-public:
-	LModsWidget(LMainWindow* l);
-protected:
-	void closeEvent(QCloseEvent *event);
-};
-
-// ModEditor
-
-class LTextModWidgetEditor : public QWidget{
- Q_OBJECT
-	friend class LTextModWidgetModel;
-
-class LTextModWidgetModel : public QAbstractTableModel{
-	LTextModWidgetEditor* wgt;
- public:
-	 LTextModWidgetModel(LTextModWidgetEditor* e, QObject *pobj = 0);
-	 QVariant data(const QModelIndex& index, int nRole) const;
-	 bool setData(const QModelIndex& index,const QVariant& value, int nRole );
-	 int rowCount(const QModelIndex&) const;
-	 int columnCount(const QModelIndex&) const;
-	 virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
-
-	Qt::ItemFlags flags(const QModelIndex& index)const;
-	 void add();
-	 void del();
- };
-	LMainWindow* launcher;
-	LLogWidget* log;
-
-	QVBoxLayout* l;
-	QHBoxLayout* l_h;
-	QFormLayout* f_r;
- QFormLayout* f_c;
-	QVBoxLayout *f_l;
-
-	QTableView* table;
-	LTextModWidgetModel * model;
-
-	QPushButton* b_add;
-	QPushButton* b_del;
-
-	QJsonArray* ob;
-	QList<QLineEdit*>* list;
-	QStringList nameKeys;
-	QStringList nameVals;
-private slots:
-	void sadd();
-	void sdel();
-public:
- LTextModWidgetEditor(LMainWindow* m, QStringList keys, QStringList vals, QJsonArray* a);
-
-
-};
-class LTextModEditor : public QWidget{
-Q_OBJECT
-	LMainWindow* launcher;
-	LLogWidget* log;
-
-	QJsonObject* obj;
-	QJsonArray* jItems;
-	QJsonArray* jBlocks;
-	QJsonArray* jTools;
-
-	QVBoxLayout* l;
-	QTabWidget* tabs;
- LTextModWidgetEditor * w_items;
-	LTextModWidgetEditor * w_blocks;
-	LTextModWidgetEditor * w_tools;
-
-	QPushButton* bsave;
-	QPushButton* bfill;
-private slots:
-	void ssave();
-	void sfill();
-public:
-	LTextModEditor(LMainWindow* t, QJsonObject* o);
-};
-
-class LScriptModEditor : public QWidget{
-	Q_OBJECT
- LMainWindow* launcher;
-	LLogWidget* log;
-
-	QJsonObject* obj;
-public:
-	LScriptModEditor(LMainWindow *t, QJsonObject* o);
-};
-
-class LModEditor : public QWidget{// Mods Editor
-Q_OBJECT
-
-	QFormLayout* lay;
-	QLineEdit* e_file;
-	QLineEdit* e_name;
-	QLineEdit* e_devl;
-	QLineEdit* e_site;
-	QTextEdit* e_desc;
-	QLineEdit* e_ver;
-	QLineEdit* e_dep;
-	QLineEdit* e_plg;
-	QPushButton* b_textMod;
-	QPushButton* b_scriptMod;
-	QPushButton* b_plugin;
-	QPushButton* b_create;
-	QPushButton* b_clear;
-	QPushButton* b_dep;
-	QPushButton* b_other;
-	QPushButton* b_text;
-	QComboBox* c_type;
-	LTableManager* w_oth;
-	LListManager* w_dep;
-
-	QString type;
-	QJsonArray* depend;
-	QJsonObject* other;
-
-	QJsonObject* textMod;
-	LTextModEditor* textModE;
-
-	QJsonObject* scriptMod;
-	LScriptModEditor* scriptModE;
-
-	QString pluginFile;
-	LLogWidget* log;
-	LMainWindow* loader;
-private slots:
-	void splugin();
-	void bcreate();
-	void bclear();
-	void bdep();
-	void bother();
-	void ctype(int i);
-public:
-	QString REVISION;
-	LModEditor(LMainWindow* l);
-};
-//!ModEditor
-
-class LPacker : public QWidget{
-Q_OBJECT
-	LMainWindow* loader;
-	LLogWidget* log;
-public:
-	LPacker(LMainWindow* l);
-};
-
-#endif // WIDGETS_H
+#endif //GLOBALQT_LWIDGETS_H

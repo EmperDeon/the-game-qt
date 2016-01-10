@@ -27,13 +27,10 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 # -fPIC ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}
 
 include_directories(${ZLIB_INCLUDE_DIRS})
-#include_directories(Engine)
-#include_directories(Launcher)
-#include_directories(ModLoader)
 
 #Sets
 
-set(G_SOURCE_FILES
+set(E_SOURCE_FILES
 		Engine/econtainers.cpp
 		Engine/emain.cpp
 		Engine/emods.cpp
@@ -41,7 +38,7 @@ set(G_SOURCE_FILES
 		Engine/ewidgets.cpp
 )
 
-set(G_HEADERS
+set(E_HEADERS
 		Engine/econtainers.h
 		Engine/edefines.h
 
@@ -49,6 +46,7 @@ set(G_HEADERS
 		Engine/interfaces/ilevel.h
 		Engine/interfaces/imain.h
 		Engine/interfaces/imods.h
+		Engine/interfaces/iplayer.h 
 		Engine/interfaces/irender.h
 		Engine/interfaces/itext.h
 		Engine/interfaces/iutils.h
@@ -58,16 +56,18 @@ set(G_HEADERS
 		Engine/emods.h
 		Engine/eutils.h
 		Engine/ewidgets.h
-		Engine/qzipreader_p.h
-		Engine/qzipwriter_p.h
-		Engine/interfaces/iplayer.h Engine/edvars.h)
+		Engine/edvars.h 
+		)
 
 set(L_SOURCE_FILES
 		Launcher/lmain.cpp
 		Launcher/lutils.cpp
 		Launcher/lwidgets.cpp
 		Launcher/lparser.cpp
-)
+		Launcher/lwmodels.cpp 
+		Launcher/widgets/lmodeditor.cpp 
+		Launcher/widgets/lmods.cpp
+		)
 
 set(L_HEADERS
 		Launcher/lmain.h
@@ -76,7 +76,14 @@ set(L_HEADERS
 		Launcher/lparser.h
 		Launcher/qzipreader_p.h
 		Launcher/qzipwriter_p.h
-)
+		Launcher/ldefines.h 
+		Launcher/lwmodels.h 
+		Launcher/widgets/llevel.h 
+		Launcher/widgets/lmodel.h
+		Launcher/widgets/lresources.h 
+		Launcher/widgets/lmodeditor.h 
+		Launcher/widgets/lmods.h
+		)
 
 set(M_SOURCE_FILES
 		ModLoader/mmodloader.cpp
@@ -89,12 +96,15 @@ set(M_SOURCE_FILES
 	 	ModLoader/core/level/mgenerator.cpp
 		 ModLoader/core/level/mregion.cpp
 		 ModLoader/core/level/mlevel.cpp
-
+		 
+		ModLoader/core/player/mplayer.cpp  
+		 
 	 	ModLoader/core/render/mcamera.cpp
 		 ModLoader/core/render/mhelper.cpp
 	 	ModLoader/core/render/mrender.cpp
 	 	ModLoader/core/render/perf/mperfw.cpp
 	 	ModLoader/core/render/gui/mgui.cpp
+		ModLoader/core/render/texture/mtexturemanager.cpp
 	 	ModLoader/core/render/world/mworld.cpp
 
 		ModLoader/core/mactions.cpp
@@ -103,7 +113,7 @@ set(M_SOURCE_FILES
 		ModLoader/mods/mtext.cpp
 		ModLoader/mods/mscript.cpp
 		ModLoader/mods/mplugin.cpp
-		ModLoader/core/player/mplayer.cpp ModLoader/core/render/texture/mtexturemanager.cpp)
+		)
 
 set(M_HEADERS
 		ModLoader/mmodloader.h
@@ -117,12 +127,15 @@ set(M_HEADERS
 		 ModLoader/core/level/mgenerator.h
 		 ModLoader/core/level/mregion.h
 		 ModLoader/core/level/mlevel.h
+		 
+		ModLoader/core/player/mplayer.h  
 
 		 ModLoader/core/render/mcamera.h
 	 	ModLoader/core/render/mhelper.h
 	 	ModLoader/core/render/mrender.h
 		 ModLoader/core/render/perf/mperfw.h
 		 ModLoader/core/render/gui/mgui.h
+		 ModLoader/core/render/texture/mtexturemanager.h
 		 ModLoader/core/render/world/mworld.h
 
 		ModLoader/core/mactions.h
@@ -131,13 +144,13 @@ set(M_HEADERS
 		ModLoader/mods/mtext.h
 		ModLoader/mods/mscript.h
 		ModLoader/mods/mplugin.h
-		ModLoader/core/player/mplayer.h ModLoader/core/render/texture/mtexturemanager.h)
+		)
 
-qt5_wrap_cpp(GENERATED_SOURCES ${G_HEADERS})
+qt5_wrap_cpp(GENERATED_SOURCES ${E_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
 
-add_executable(Engine ${G_SOURCE_FILES} ${G_HEADERS})
+add_executable(Engine ${E_SOURCE_FILES} ${E_HEADERS})
 qt5_use_modules(Engine Core Widgets Network OpenGL)
 target_compile_features(Engine PRIVATE cxx_range_for)
 target_link_libraries(Engine ${ZLIB_LIBRARIES} ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
