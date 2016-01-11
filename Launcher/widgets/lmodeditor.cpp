@@ -233,7 +233,7 @@ void LModEditor::bcreate(){
 	o["depend"] = *depend;
 	o["version"] = e_ver->text();
 	o["revision"] = this->REVISION;
-		foreach(QString k, other->keys()){
+		for(QString k : other->keys()){
 			o[k] = (*other)[k];
 		}
 

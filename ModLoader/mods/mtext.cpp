@@ -5,7 +5,7 @@ MTextContainer::MTextContainer(){}
 
 void MTextContainer::preInit() {
 	QList<QJsonObject> lst;
-		foreach(QFileInfo i, QDir("mods/mods").entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+		for(QFileInfo i : QDir("mods/mods").entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
 			QDir d("mods/mods/"+i.fileName());
 			QJsonObject o = loadJson(d.filePath("text.dat"));
 			o.insert("path", d.absolutePath()+"/");
@@ -22,9 +22,9 @@ void MTextContainer::preInit() {
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
-			foreach(QJsonObject o, lst) {
+			for(QJsonObject o : lst) {
 				m = o["name"].toString();
-					foreach(QJsonValue v, o["items"].toArray()) {
+					for(QJsonValue v : o["items"].toArray()) {
 						t = v.toObject();
 						i = t["ii"].toString();
 						k = t["ik"].toString();
@@ -64,9 +64,9 @@ void MTextContainer::preInit() {
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
-			foreach(QJsonObject o, lst) {
+			for(QJsonObject o : lst) {
 				m = o["name"].toString();
-					foreach(QJsonValue v, o["blocks"].toArray()) {
+					for(QJsonValue v : o["blocks"].toArray()) {
 						t = v.toObject();
 						i = t["ii"].toString();
 						k = t["ik"].toString();
@@ -106,9 +106,9 @@ void MTextContainer::preInit() {
 		QString lm = "", li = "", lk = "", ls = "", m, i, k, s, n;
 		int cm = 0, ci = 0, ck = 0, cs = 0;
 
-			foreach(QJsonObject o, lst) {
+			for(QJsonObject o : lst) {
 				m = o["name"].toString();
-					foreach(QJsonValue v, o["tools"].toArray()) {
+					for(QJsonValue v : o["tools"].toArray()) {
 						t = v.toObject();
 						i = t["ii"].toString();
 						k = t["ik"].toString();

@@ -119,10 +119,10 @@ void LListModel::add(QString k){
 void LListModel::del(QListView* i){
 	QModelIndexList l = i->selectionModel()->selectedRows();
 
-		foreach(const QModelIndex &index, l){
+		for(const QModelIndex &index : l){
 			QString s = index.data(Qt::DisplayRole ).toString();
 			int j = 0;
-				foreach(QJsonValue v, obj){
+				for(QJsonValue v : obj){
 					if(s == v.toString()){
 						obj.removeAt(j);
 					}

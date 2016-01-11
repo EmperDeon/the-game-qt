@@ -18,14 +18,14 @@ ModLoader:
 		MLevelManager - mLevel
 
  Mods:
-  MIIds - mIds
-  MItemsContainer - mItems
+  MIds - mIIds
+  MIContainer - mItems
   MTextureManager - mITex
 
-  MBIds - mIds
-  MBlocksContainer - mBlocks
+  MIds - mBIds
+  MIContainer - mBlocks
   MTextureManager - mBTex
 
-  MTIds - mIds
-  MToolsContainer - mTools
+  MIds - mTIds
+  MIContainer - mTools
   MTextureManager - mTTex

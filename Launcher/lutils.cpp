@@ -226,7 +226,7 @@ LModsList::LModsList(LMainWindow *l): loader(l){
 }
 void LModsList::update(){
 	QDir mods("mods/mods");
-		foreach(QFileInfo f, mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
+		for(QFileInfo f : mods.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)){
 			if(f.fileName() != "." && f.fileName() != ".."){
 				lLogD("parsing " + f.filePath());
 				addToList(loadJson(QDir("mods/mods/"+f.fileName()).filePath("pack.dat")));
@@ -236,7 +236,7 @@ void LModsList::update(){
 }
 void LModsList::fillList(){
 	lst = QJsonArray();
-		foreach(QJsonValue o, *list){
+		for(QJsonValue o : *list){
 			if(o.toObject()["enabled"].toBool() && !lst.contains(o.toObject()["name"].toString())){
 				lst << o.toObject()["name"].toString();
 			}
@@ -256,13 +256,13 @@ void LModsList::addToList(QJsonObject o){
 	}
 }
 bool LModsList::contains(QString s){
-		foreach(QJsonValue v, *list){
+		for(QJsonValue v : *list){
 			if( (v.toObject())["name"] == s ) return true;
 		}
 	return false;
 }
 void LModsList::disable(QString n){
-		foreach(QJsonValue v, *list){
+		for(QJsonValue v : *list){
 			if(v.toObject()["name"] == n){
 				v.toObject()["enabled"] = false;
 			}
@@ -287,7 +287,7 @@ void LModsList::load(){
 	fillList();
 }
 void LModsList::save(){
-		foreach(QJsonValue e, *list){
+		for(QJsonValue e : *list){
 			QJsonObject o = e.toObject();
 			o["enabled"] = lst.contains(o["name"].toString());
 		}

@@ -117,7 +117,7 @@ void ESettings::saveTo(QString f){
 
 	QJsonArray obj;
 
-	foreach (QJsonObject e, map) {
+	for(QJsonObject e : map) {
 		obj << e;
 	}
 

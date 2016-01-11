@@ -132,7 +132,7 @@ void LMainWindow::checkDir(){
 	QStringList list;
 
 	bool needDownload = false;
-	foreach(QString f, list){
+	for(QString f : list){
 		QFile file(f);
 		needDownload = !file.exists();
 	}
