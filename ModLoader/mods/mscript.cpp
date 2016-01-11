@@ -1,6 +1,6 @@
-#include "mscript.h"
+#include <ModLoader/mods/mscript.h>
 
-MScriptsContainer::MScriptsContainer(MMods *l) : loader(l), log(l->log), vars(l->vars){
+MScriptsContainer::MScriptsContainer() {
 
 }
 

@@ -1,7 +1,6 @@
 #ifndef GLOBALQT_MHELPER_H
 #define GLOBALQT_MHELPER_H
 #include <ModLoader/mdefines.h>
-
 #include <GL/gl.h>
 
 class MRHelper{

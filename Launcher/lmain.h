@@ -1,5 +1,5 @@
-#ifndef GLOBALQT_LMAIN
-#define GLOBALQT_LMAIN
+#ifndef GLOBALQT_LMAIN_H
+#define GLOBALQT_LMAIN_H
 #include <Launcher/ldefines.h>
 #include <Launcher/lutils.h>
 #include <Launcher/lwidgets.h>

@@ -1,15 +1,16 @@
-#include "mmods.h"
+#include <ModLoader/mods/mmods.h>
 
 #define upd(a) main->setSplashLabel(a)
 
-MMods::MMods(MModLoader *l) : loader(l), log(l->log), vars(l->vars){
-	this->text   = new MTextContainer   (this);
-	this->script = new MScriptsContainer(this);
-	this->plugin = new MPluginsContainer(this);
+MMods::MMods(){
+	this->text   = new MTextContainer   ();
+	this->script = new MScriptsContainer();
+	this->plugin = new MPluginsContainer();
 }
 
 void MMods::preInit() {
 	main = mVarG(IMain*, "eMain");
+	
 	mLogFF("preInit started");
  this->text->  preInit();
 	this->script->preInit();

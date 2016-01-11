@@ -1,6 +1,6 @@
-#include "ModLoader/core/render/world/mworld.h"
+#include <ModLoader/core/render/world/mworld.h>
 
-MWorldRender::MWorldRender(MCoreMods *m): loader(m) {
+MWorldRender::MWorldRender(){
  this->manager = mVarG(ILevelManager*, "mLevel");
 	this->listMutex = new QMutex;
 }
@@ -15,7 +15,7 @@ void MWorldRender::init() {
 
 	this->manager->createLevel(i);
 	this->level = manager->getCurrentLevel();
-	this->loader->queue->waitForDone();
+	MV_CORE_MODS->queue->waitForDone();
 }
 
 void MWorldRender::render() {
@@ -87,7 +87,7 @@ void MWorldRender::drawAxis(){
 void MWorldRender::close() {
  this->level->save();
 }
-void MWorldRender::reAllocateC(ILevel* l){ l->reAllocate(this);}
+
 void MWorldRender::reAllocate(int i) {
 	if(currentGened){
 		glDeleteLists(currentIndex, currentGenCount);
@@ -97,7 +97,7 @@ void MWorldRender::reAllocate(int i) {
 	this->currentActive = 0;
  mLogI(QString("reAllocate: %1").arg(i));
 
- reAllocateC(this->level);
+ this->level->reAllocate(this);
 }
 
 GLuint MWorldRender::getFreeList() {

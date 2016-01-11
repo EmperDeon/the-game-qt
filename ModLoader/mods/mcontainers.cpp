@@ -1,7 +1,8 @@
 #include <ModLoader/mods/mcontainers.h>
 
 // MIdis
-MIIds::MIIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0){}
+MIIds::MIIds(QMap<QString, Imiks>* l) : mods(l), mNull(0, 0, 0, 0){}
+
 Imiks MIIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
@@ -13,19 +14,20 @@ Imiks MIIds::get(QString m, QString i, QString k, int s) {
 }
 // MIds
 
+
 // MItem
 MItem::MItem(QJsonObject o) {
 	this->stackSize = (float)o["stackSize"].toDouble(1.0);
 	this->stackType = o["stackType"].toInt(1);
 }
-float MItem::getStackSize() {	return stackSize; }
-int MItem::getStackType() {	return stackType; }
 // MItem
 
+
 // MItemsContainer
-MItemsContainer::MItemsContainer(MMods *l, QMap<Imiks, IItem *> *m) : loader(l), map(m), mNull(0,0,0,0){
+MItemsContainer::MItemsContainer(QMap<Imiks, IItem *> *m) :  map(m), mNull(0,0,0,0){
 	this->iNull = new MItem(QJsonObject());
 }
+
 IItem *MItemsContainer::get(Imiks id) {
  if(map->contains(id))
 	 return map->value(id);
@@ -34,6 +36,7 @@ IItem *MItemsContainer::get(Imiks id) {
 	 return iNull;
  }
 }
+
 Imiks MItemsContainer::get(IItem* id) {
  if(map->values().contains(id))
 	 return map->key(id);
@@ -46,7 +49,8 @@ Imiks MItemsContainer::get(IItem* id) {
 
 
 // MBIds
-MBIds::MBIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0){}
+MBIds::MBIds(QMap<QString, Imiks>* l) : mods(l), mNull(0, 0, 0, 0){}
+
 Imiks MBIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
@@ -58,17 +62,19 @@ Imiks MBIds::get(QString m, QString i, QString k, int s) {
 }
 // MBIds
 
+
 // MBlock
 MBlock::MBlock(QJsonObject o) {
  this->weight = (float)o["weight"].toDouble();
 }
-float MBlock::getWeight() {	return weight; }
 // MBlock
 
+
 // MBlocksContainer
-MBlocksContainer::MBlocksContainer(MMods *l, QMap<Imiks, IBlock *> *m) : loader(l), map(m), mNull(0,0,0,0){
+MBlocksContainer::MBlocksContainer(QMap<Imiks, IBlock *> *m) :map(m), mNull(0,0,0,0){
 	this->iNull = new MBlock(QJsonObject());
 }
+
 IBlock* MBlocksContainer::get(Imiks id) {
 	if(map->contains(id))
 		return map->value(id);
@@ -77,6 +83,7 @@ IBlock* MBlocksContainer::get(Imiks id) {
 		return iNull;
 	}
 }
+
 Imiks  MBlocksContainer::get(IBlock *id) {
 	if(map->values().contains(id))
 		return map->key(id);
@@ -89,7 +96,8 @@ Imiks  MBlocksContainer::get(IBlock *id) {
 
 
 // MTIds
-MTIds::MTIds(MMods *m, QMap<QString, Imiks>* l) : loader(m), mods(l), mNull(0, 0, 0, 0) {}
+MTIds::MTIds(QMap<QString, Imiks>* l) : mods(l), mNull(0, 0, 0, 0) {}
+
 Imiks MTIds::get(QString m, QString i, QString k, int s) {
 	QString t = m+"^"+i+"^"+k+"^"+QString::number(s);
 	if(mods->contains(t))
@@ -101,19 +109,20 @@ Imiks MTIds::get(QString m, QString i, QString k, int s) {
 }
 // MTIds
 
+
 // MTool
 MTool::MTool(QJsonObject o) {
 	this->durability = o["drb"].toInt(0);
 	this->type = o["type"].toString("item");
 }
-int MTool::getDurability() {	return durability;}
-QString MTool::getType() {	return type;}
 // MTool
 
+
 // MToolsContainer
-MToolsContainer::MToolsContainer(MMods *l, QMap<Imiks, ITool *> *m) : loader(l), map(m), mNull(0,0,0,0) {
+MToolsContainer::MToolsContainer(QMap<Imiks, ITool *> *m) : map(m), mNull(0,0,0,0) {
 	this->iNull = new MTool(QJsonObject());
 }
+
 ITool *MToolsContainer::get(Imiks id) {
 	if(map->contains(id))
 		return map->value(id);
@@ -122,6 +131,7 @@ ITool *MToolsContainer::get(Imiks id) {
 		return iNull;
 	}
 }
+
 Imiks MToolsContainer::get(ITool *id) {
 	if(map->values().contains(id))
 		return map->key(id);

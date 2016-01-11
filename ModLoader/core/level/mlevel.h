@@ -3,9 +3,6 @@
 #include <ModLoader/mdefines.h>
 #include <ModLoader/core/level/mregion.h>
 #include <ModLoader/core/level/mgenerator.h>
-#include <ModLoader/core/mcoremods.h>
-
-class MCoreMods;
 
 class MLevelInfo : public ILevelInfo{
 	QString name;
@@ -18,16 +15,16 @@ public:
 	static QJsonObject toJson(MLevelInfo *info);
 	static ILevelInfo * fromJson(QJsonObject obj);
 
-	virtual QString getName();
-	virtual QString getDir();
+	virtual QString getName() override {return name;}
+	virtual QString getDir()  override {return dir;}
 
-	virtual void setName(QString name);
-	virtual void setDir(QString file);
+	virtual void setName(QString name) override {this->name = name;}
+	virtual void setDir(QString file)  override {this->dir = file;}
 
-	virtual QJsonObject *getCustom();
-	virtual void addCustom(QJsonObject);
-	virtual QJsonValue getFromCustom(QString key);
-	virtual void addToCustom(QString key, QJsonValue value);
+	virtual void         addCustom(QJsonObject)                     override;
+	virtual QJsonObject* getCustom()                                override {return custom;}
+	virtual QJsonValue   getFromCustom(QString key)                 override {return custom->value(key);}
+	virtual void         addToCustom(QString key, QJsonValue value) override {custom->insert(key, value);}
 };
 
 class MLevel : public ILevel{
@@ -36,23 +33,23 @@ class MLevel : public ILevel{
  MWorldGenerator* generator;
  QMap<IChunkPos, IChunk*>* chunkList;
 
+	void loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &stream);
 
 public:
 	MLevel(ILevelInfo* info);
-	virtual QString getName();
-	virtual void load();
-	virtual void save();
-	virtual void generateWorld();
-	virtual void reAllocate(IWorldRender *ren);
-	virtual bool isBlock(IVec3i p);
 
-	virtual IPChunk * getPreview();
-	virtual void cycleRegion();
-	virtual IChunk *getChunk(IChunkPos pos);
+	virtual QString getName()                  override {return info->getName();}
+	virtual void load()                        override;
+	virtual void save()                        override;
+	virtual void generateWorld()               override;
+	virtual void reAllocate(IWorldRender *ren) override;
+	virtual bool isBlock(IVec3i p)             override;
+
+	virtual IPChunk* getPreview()            override;
+	virtual void     cycleRegion()           override;
+	virtual IChunk*  getChunk(IChunkPos pos) override;
 
 	void addNewChunk(IChunkPos c);
-private:
- void loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &stream);
 };
 
 class MLevelManager : public ILevelManager{
@@ -60,17 +57,17 @@ class MLevelManager : public ILevelManager{
 	ILevelInfo* current;
  ILevel* level;
 
-	QString className = "MLevelManager";
-	MCoreMods* loader;
 public:
-	MLevelManager(MCoreMods* m);
-	virtual QList<ILevelInfo*>* getList();
-	virtual ILevel* getCurrentLevel();
-	virtual ILevelInfo* getCurrentLevelInfo();
-	virtual void createLevel(ILevelInfo* i);
-	virtual void loadLevel(ILevelInfo* i);
-	virtual void exitLevel(ILevelInfo* i);
-	virtual void removeLevel(ILevelInfo* i);
+	MLevelManager();
+
+	virtual QList<ILevelInfo*>* getList()             override {return list;}
+	virtual ILevel*             getCurrentLevel()     override {return level;}
+	virtual ILevelInfo*         getCurrentLevelInfo() override {return current;}
+
+	virtual void createLevel(ILevelInfo* i) override;
+	virtual void loadLevel(ILevelInfo* i)   override;
+	virtual void exitLevel(ILevelInfo* i)   override;
+	virtual void removeLevel(ILevelInfo* i) override;
 };
 
 #endif //GLOBALQT_MLEVEL_H

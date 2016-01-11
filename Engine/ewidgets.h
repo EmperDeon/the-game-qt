@@ -1,5 +1,5 @@
-#ifndef G_WIDGETS
-#define G_WIDGETS
+#ifndef GLOGALQT_EWIDGETS_H
+#define GLOGALQT_EWIDGETS_H
 #include <Engine/edefines.h>
 
 // EDeveloper
@@ -19,4 +19,4 @@ public:
 };
 // EDeveloper
 
-#endif
+#endif //GLOGALQT_EWIDGETS_H

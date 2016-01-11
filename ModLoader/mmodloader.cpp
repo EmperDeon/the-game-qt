@@ -1,33 +1,27 @@
-#include "mmodloader.h"
+#include <ModLoader/mmodloader.h>
 
 QString MModLoader::getName(){
 	return "BaseModLoader";
 }
 
 void MModLoader::setVars(IVars *v) {
-	this->loader = this;
-	this->vars = v;
-	this->log = reinterpret_cast<ILogger*>(vars->get("eLogger"));
+	MV_LOGGER = reinterpret_cast<ILogger*>(v->get("eLogger"));
 
-	MV_LOGGER = this->log;
-	MV_VARS = this->vars;
+	MV_VARS = v;
 
-	this->core = new MCoreMods(this);
-	this->mods = new MMods(this);
-
-	MV_CORE_MODS = this->core;
-	MV_MODS = this->mods;
+	MV_CORE_MODS = new MCoreMods();
+	MV_MODS = new MMods();
 
 	mLogD("ModLoader Inited");
 }
 
-void MModLoader::corePreInit(){  core->preInit(); }
-void MModLoader::coreInit(){     core->init();    }
-void MModLoader::corePostInit(){	core->postInit();}
+void MModLoader::corePreInit(){  MV_CORE_MODS->preInit(); }
+void MModLoader::coreInit(){     MV_CORE_MODS->init();    }
+void MModLoader::corePostInit(){	MV_CORE_MODS->postInit();}
 
-void MModLoader::preInit(){	 mods->preInit();}
-void MModLoader::init(){	    mods->init();}
-void MModLoader::postInit(){	mods->postInit(); }
+void MModLoader::preInit(){	 MV_MODS->preInit();}
+void MModLoader::init(){	    MV_MODS->init();}
+void MModLoader::postInit(){	MV_MODS->postInit(); }
 
 ILogger* MV_LOGGER;
 IVars* MV_VARS;

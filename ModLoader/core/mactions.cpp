@@ -1,6 +1,6 @@
-#include "ModLoader/core/mactions.h"
+#include <ModLoader/core/mactions.h>
 
-MActions::MActions(MCoreMods *l):loader(l) {}
+MActions::MActions(){}
 
 void MActions::item(GItemAction a, IItemStack *s) {
  if(itemScripts->contains(s->getId())){

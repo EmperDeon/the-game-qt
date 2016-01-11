@@ -1,11 +1,6 @@
 #include <ModLoader/core/player/mplayer.h>
 
 
-void MPlayer::moveF() { move(   0.0f);}
-void MPlayer::moveB() { move( 3.141f);}
-void MPlayer::moveL() { move( -1.57f);}
-void MPlayer::moveR() { move(  1.57f);}
-
 void MPlayer::move(float r) {
 	x = x + cosf(aP + r) * 0.2f;
 	z = z + sinf(aP + r) * 0.2f;

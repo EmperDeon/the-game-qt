@@ -1,9 +1,8 @@
-#ifndef MUTILS_H
-#define MUTILS_H
-
-#include <QtCore>
-#include <QtWidgets>
-#include <ModLoader/mmodloader.h>
+#ifndef GLOBALQT_MUTILS_H
+#define GLOBALQT_MUTILS_H
+#include <ModLoader/mdefines.h>
 
 QJsonObject loadJson(QString file);
-#endif // MUTILS_H
+
+
+#endif //GLOBALQT_MUTILS_H

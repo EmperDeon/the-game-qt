@@ -1,22 +1,12 @@
 #ifndef GLOBALQT_MPLUGIN_H
 #define GLOBALQT_MPLUGIN_H
-
 #include <ModLoader/mdefines.h>
-#include <ModLoader/mmodloader.h>
-#include <Engine/einterfaces.h>
-
-class MMods;
-class ILogger;
-class IVars;
 
 class MPluginsContainer {
-	MMods* loader;
-	ILogger* log;
-	IVars* vars;
-
  QList<IMod*>* plugins;
+
 public:
-	MPluginsContainer(MMods *l);
+	MPluginsContainer();
 
 	void preInit();
 	void init();

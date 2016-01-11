@@ -9,17 +9,26 @@ MRegion::MRegion(IRegionPos p, QString name) { // saves/name/dim0/ for name "nam
  QDir t(name);
 	t.mkdir("regions" + QString::number(int(p.x() / 128)) + QString::number(int(p.x() / 128)));
 
-	for ( int x = 0; x < xSize; x++ )
-		for ( int y = 0; y < ySize; y++ )
-			for ( int z = 0; z < zSize; z++ )
-				reg[x][y][z] = new MChunk(IChunkPos(x, y, z));
  edited = new QList<IChunk*>;
 }
-IRegionPos MRegion::getId() {	return pos;}
-IChunk* MRegion::getChunk(IChunkPos p) {	edited->append(reg[p.x()][p.y()][p.z()]); return reg[p.x()][p.y()][p.z()]; }
-IChunk *MRegion::getConstChunk(IChunkPos p) const {	return reg[p.x()][p.y()][p.z()];}
-void MRegion::setChunk(IChunk *ch) { this->reg[ch->getId().x()][ch->getId().y()][ch->getId().z()] = ch; edited->append(ch);}
 
+// Getters-Setters
+IRegionPos MRegion::getId() {	return pos;}
+
+IChunk* MRegion::getChunk(IChunkPos p) {
+	edited->append(reg[p.x()][p.y()][p.z()]);
+	return reg[p.x()][p.y()][p.z()];
+}
+
+IChunk* MRegion::getConstChunk(IChunkPos p) const {	return reg[p.x()][p.y()][p.z()];}
+
+void MRegion::setChunk(IChunk *ch) {
+	this->reg[ch->getId().x()][ch->getId().y()][ch->getId().z()] = ch;
+	edited->append(ch);
+}
+// Getters-Setters
+
+// IO
 void MRegion::write(IChunk* ch, QDataStream& out){
 	if(ch != NULL){
 		if(instanceOf<MChunk>(ch)){
@@ -61,6 +70,7 @@ void MRegion::write() {
  o.flush();
 	o.close();
 }
+
 void MRegion::read() {
  QFile i(file);
 	i.open(QFile::ReadOnly);
@@ -98,9 +108,6 @@ void MRegion::read() {
 	i.close();
 }
 
-
-void MRegion::rewrite() {
-
-}
-
+void MRegion::rewrite() {}
+// IO
 

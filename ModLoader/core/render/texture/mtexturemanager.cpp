@@ -1,6 +1,6 @@
 #include <ModLoader/core/render/texture/mtexturemanager.h>
 
-MTextureManager::MTextureManager(MMods* l): loader(l) {
+MTextureManager::MTextureManager(){
  this->tex = new QMap<Imiks, QOpenGLTexture*>;
 }
 

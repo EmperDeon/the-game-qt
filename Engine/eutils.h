@@ -1,5 +1,5 @@
-#ifndef GLOBALQT_EUTILS
-#define GLOBALQT_EUTILS
+#ifndef GLOBALQT_EUTILS_H
+#define GLOBALQT_EUTILS_H
 #include <Engine/edefines.h>
 #include <QtNetwork>
 

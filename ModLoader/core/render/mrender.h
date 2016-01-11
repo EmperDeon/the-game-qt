@@ -1,23 +1,16 @@
-#ifndef M_RENDER
-#define M_RENDER
-
-#include <QtWidgets>
+#ifndef GLOBALQT_MRENDER_H
+#define GLOBALQT_MRENDER_H
 #include <QtOpenGL/QtOpenGL>
 #include <ModLoader/mdefines.h>
 #include <ModLoader/core/player/mplayer.h>
-#include <ModLoader/core/mcoremods.h>
 #include <ModLoader/core/render/mcamera.h>
 #include <ModLoader/core/render/gui/mgui.h>
 #include <ModLoader/core/render/world/mworld.h>
 
-class MCoreMods;
 class MCamera;
 class MPlayer;
 
 class MGlWidget : public QGLWidget{
-	QString className = "M-Render";
-	MCoreMods* loader;
-
  MCamera* cam;
 	MPlayer* player;
 	IWorldRender* world;
@@ -27,16 +20,16 @@ class MGlWidget : public QGLWidget{
  qint64 fps = 0;
 	QElapsedTimer* fps_t;
 	QTimer* fps_stabilizer;
- // !Fps
 
 	// MouseControl
  QCursor* pointer;
 	float xSense = 0.004f, ySense = 0.004f;
 	bool wFocus = true;
-	// !MouseControl
+
 public:
-	MGlWidget(MCoreMods* m);
+	MGlWidget();
 	qint64 getFps(){return fps;}
+
 protected:
 	void initializeGL();
 	void resizeGL(int nWidth, int nHeight);

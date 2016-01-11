@@ -1,8 +1,7 @@
-#include "ModLoader/mutils.h"
+#include <ModLoader/mutils.h>
 
 QJsonObject loadJson(QString file){
 	QFile loadFile(file);
-	qDebug() << "loading " << file;
 	loadFile.open(QIODevice::ReadOnly);
 
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));

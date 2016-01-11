@@ -11,24 +11,22 @@ class MChunk : public IChunk{
 	byte rSides[size][size][size];
 	GLuint rList;
 
-
 	void reParseSides();
-	void setVSides(int x, int y, int z);
-	void setNSides(int x, int y, int z);
 	void drawCube(int x, int y, int z);
+
 public:
 	MChunk();
-	MChunk(IChunkPos p);
 	MChunk(IWorldGenerator *gen, IChunkPos p);
 	MChunk(QByteArray a, QJsonObject o, IChunkPos pos);
-	virtual IChunkPos getId();
-	virtual IWorldBlock *getBlock(IBlockPos p);
-	virtual void setBlock(IWorldBlock* b);
-	virtual void setBlock(IBlockPos pos, IWorldBlock *b);
-	virtual void write(QDataStream &a, QJsonObject& o);
 
-	virtual void setGlList(GLuint i);
-	virtual void onReAlloc();
+	virtual IChunkPos    getId()                                 override {return id;}
+	virtual IWorldBlock* getBlock(IBlockPos p)                   override;
+	virtual void         setBlock(IWorldBlock* b)                override;
+	virtual void         setBlock(IBlockPos pos, IWorldBlock *b) override;
+	virtual void         write(QDataStream &a, QJsonObject& o)   override;
+
+	virtual void setGlList(GLuint i) override {this->rList = i;}
+	virtual void onReAlloc()         override;
 
 
 	IVec3 getBlockPos(int x, int y, int z){
@@ -45,9 +43,9 @@ class MPChunk : public IPChunk{
 public:
 	MPChunk();
 
-	virtual QColor getBlockColor(IBlockPos pos);
-	virtual void setGlList(GLuint i);
-	virtual void onReAlloc();
+	virtual QColor getBlockColor(IBlockPos pos) override;
+	virtual void   setGlList(GLuint i)          override {this->list = i;}
+	virtual void   onReAlloc()                  override;
 };
 
 #endif //GLOBALQT_MCHUNK_H

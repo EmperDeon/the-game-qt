@@ -1,11 +1,11 @@
-#include "ModLoader/core/render/mhelper.h"
+#include <ModLoader/core/render/mhelper.h>
 
 float r(){return (qrand() % 101)*0.01f;}
 IVec3 rc(){return IVec3(r(), r(), r());}
 
-#define glCf(c) glColor3f(c.x, c.y, c.z)
-#define glVf(a,b,c) glVertex3f(p.x a r, p.y b r, p.z c r);
-#define glTf(a,b) glTexCoord2f(a, b);
+#define glCf() glColor3f(c.x, c.y, c.z)
+#define glVf(a,b,c) glVertex3f(p.x a r, p.y b r, p.z c r)
+#define glTf(a,b) glTexCoord2f(a, b)
 
 // Color
 void MRHelper::drawRect(IVec3 p, int side, IVec3 c, float r) {
@@ -23,61 +23,61 @@ void MRHelper::drawRect(IVec3 p, int side, IVec3 c, float r) {
 
 void MRHelper::drawRectTp(IVec3 p, IVec3 c, float r) {
  glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x + r, p.y + r, p.z - r);
-	glVertex3f(p.x - r, p.y + r, p.z - r);
-	glVertex3f(p.x - r, p.y + r, p.z + r);
-	glVertex3f(p.x + r, p.y + r, p.z + r);
+	glCf();
+	glVf(+, +, -);
+	glVf(-, +, -);
+	glVf(-, +, +);
+	glVf(+, +, +);
 	glEnd();
 }
 
 void MRHelper::drawRectBt(IVec3 p, IVec3 c, float r) {
 	glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x + r, p.y - r, p.z + r);
-	glVertex3f(p.x - r, p.y - r, p.z + r);
-	glVertex3f(p.x - r, p.y - r, p.z - r);
-	glVertex3f(p.x + r, p.y - r, p.z - r);
+	glCf();
+	glVf(+, -, +);
+	glVf(-, -, +);
+	glVf(-, -, -);
+	glVf(+, -, -);
 	glEnd();
 }
 
 void MRHelper::drawRectFr(IVec3 p, IVec3 c, float r) {
 	glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x + r, p.y + r, p.z + r);
-	glVertex3f(p.x - r, p.y + r, p.z + r);
-	glVertex3f(p.x - r, p.y - r, p.z + r);
-	glVertex3f(p.x + r, p.y - r, p.z + r);
+	glCf();
+	glVf(+, +, +);
+	glVf(-, +, +);
+	glVf(-, -, +);
+	glVf(+, -, +);
 	glEnd();
 }
 
 void MRHelper::drawRectBc(IVec3 p, IVec3 c, float r) {
 	glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x + r, p.y - r, p.z - r);
-	glVertex3f(p.x - r, p.y - r, p.z - r);
-	glVertex3f(p.x - r, p.y + r, p.z - r);
-	glVertex3f(p.x + r, p.y + r, p.z - r);
+	glCf();
+	glVf(+, -, -);
+	glVf(-, -, -);
+	glVf(-, +, -);
+	glVf(+, +, -);
 	glEnd();
 }
 
 void MRHelper::drawRectLf(IVec3 p, IVec3 c, float r) {
 	glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x - r, p.y + r, p.z + r);
-	glVertex3f(p.x - r, p.y + r, p.z - r);
-	glVertex3f(p.x - r, p.y - r, p.z - r);
-	glVertex3f(p.x - r, p.y - r, p.z + r);
+	glCf();
+	glVf(-, +, +);
+	glVf(-, +, -);
+	glVf(-, -, -);
+	glVf(-, -, +);
 	glEnd();
 }
 
 void MRHelper::drawRectRg(IVec3 p, IVec3 c, float r) {
 	glBegin(GL_QUADS);
-	glColor3f(c.x, c.y, c.z);
-	glVertex3f(p.x + r, p.y + r, p.z - r);
-	glVertex3f(p.x + r, p.y + r, p.z + r);
-	glVertex3f(p.x + r, p.y - r, p.z + r);
-	glVertex3f(p.x + r, p.y - r, p.z - r);
+	glCf();
+	glVf(+, +, -);
+	glVf(+, +, +);
+	glVf(+, -, +);
+	glVf(+, -, -);
 	glEnd();
 }
 // Color
@@ -110,55 +110,55 @@ void MRHelper::drawTRect(IVec3 p, int side, float r) {
 
 void MRHelper::drawTRectTp(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x + r, p.y + r, p.z - r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x - r, p.y + r, p.z - r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x - r, p.y + r, p.z + r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x + r, p.y + r, p.z + r);
+	glTf(0.0f, 0.0f);glVf(+, +, -);
+	glTf(1.0f, 0.0f);glVf(-, +, -);
+	glTf(1.0f, 1.0f);glVf(-, +, +);
+	glTf(0.0f, 1.0f);glVf(+, +, +);
 	glEnd();
 }
 
 void MRHelper::drawTRectBt(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x + r, p.y - r, p.z + r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x - r, p.y - r, p.z + r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x - r, p.y - r, p.z - r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x + r, p.y - r, p.z - r);
+	glTf(0.0f, 0.0f);glVf(+, -, +);
+	glTf(1.0f, 0.0f);glVf(-, -, +);
+	glTf(1.0f, 1.0f);glVf(-, -, -);
+	glTf(0.0f, 1.0f);glVf(+, -, -);
 	glEnd();
 }
 
 void MRHelper::drawTRectFr(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x + r, p.y + r, p.z + r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x - r, p.y + r, p.z + r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x - r, p.y - r, p.z + r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x + r, p.y - r, p.z + r);
+	glTf(0.0f, 0.0f);glVf(+, +, +);
+	glTf(1.0f, 0.0f);glVf(-, +, +);
+	glTf(1.0f, 1.0f);glVf(-, -, +);
+	glTf(0.0f, 1.0f);glVf(+, -, +);
 	glEnd();
 }
 
 void MRHelper::drawTRectBc(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x + r, p.y - r, p.z - r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x - r, p.y - r, p.z - r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x - r, p.y + r, p.z - r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x + r, p.y + r, p.z - r);
+	glTf(0.0f, 0.0f);glVf(+, -, -);
+	glTf(1.0f, 0.0f);glVf(-, -, -);
+	glTf(1.0f, 1.0f);glVf(-, +, -);
+	glTf(0.0f, 1.0f);glVf(+, +, -);
 	glEnd();
 }
 
 void MRHelper::drawTRectLf(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x - r, p.y + r, p.z + r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x - r, p.y + r, p.z - r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x - r, p.y - r, p.z - r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x - r, p.y - r, p.z + r);
+	glTf(0.0f, 0.0f);glVf(-, +, +);
+	glTf(1.0f, 0.0f);glVf(-, +, -);
+	glTf(1.0f, 1.0f);glVf(-, -, -);
+	glTf(0.0f, 1.0f);glVf(-, -, +);
 	glEnd();
 }
 
 void MRHelper::drawTRectRg(IVec3 p, float r) {
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f);glVertex3f(p.x + r, p.y + r, p.z - r);
-	glTexCoord2f(1.0f, 0.0f);glVertex3f(p.x + r, p.y + r, p.z + r);
-	glTexCoord2f(1.0f, 1.0f);glVertex3f(p.x + r, p.y - r, p.z + r);
-	glTexCoord2f(0.0f, 1.0f);glVertex3f(p.x + r, p.y - r, p.z - r);
+	glTf(0.0f, 0.0f);glVf(+, +, -);
+	glTf(1.0f, 0.0f);glVf(+, +, +);
+	glTf(1.0f, 1.0f);glVf(+, -, +);
+	glTf(0.0f, 1.0f);glVf(+, -, -);
 	glEnd();
 }
 // Texture

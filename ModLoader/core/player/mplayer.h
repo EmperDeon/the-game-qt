@@ -10,23 +10,23 @@ public:
 	MPlayer(float X, float Y, float Z): x(X), y(Y), z(Z){}
 	MPlayer(IVec3 v): x(v.x), y(v.y), z(v.z){}
 
-	virtual void moveF();
-	virtual void moveB();
-	virtual void moveL();
-	virtual void moveR();
+	virtual void moveF() override {move(   0.0f);}
+	virtual void moveB() override {move( 3.141f);}
+	virtual void moveL() override {move( -1.57f);}
+	virtual void moveR() override {move(  1.57f);}
 
 	void move(float r);
 
-	virtual void moveU(){y += 0.5f;}
-	virtual void moveD(){y -= 0.5f;}
+	virtual void  moveU()        override {y += 0.5f;}
+	virtual void  moveD()        override {y -= 0.5f;}
 
-	virtual void yaw(float y);
-	virtual void pitch(float p);
+	virtual void  yaw(float y)   override;
+	virtual void  pitch(float p) override;
 
-	virtual float yaw(){return aY;}
-	virtual float pitch(){return aP;}
+	virtual float yaw()          override {return aY;}
+	virtual float pitch()        override {return aP;}
 
-	virtual IVec3 pos(){return IVec3(x, y, z);}
+	virtual IVec3 pos()          override {return IVec3(x, y, z);}
 
 	friend class ICamera;
 };

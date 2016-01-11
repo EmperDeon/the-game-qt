@@ -1,19 +1,15 @@
 #ifndef GLOBALQT_MCONTAINERS_H
 #define GLOBALQT_MCONTAINERS_H
-#include <QtCore>
 #include <ModLoader/mdefines.h>
-#include <ModLoader/mmodloader.h>
-
-class MMods;
 
 // Items
 class MIIds : public IModsIds {
- MMods* loader;
 	QMap<QString, Imiks>* mods;
  Imiks mNull;
 
 public:
- MIIds(MMods *m, QMap<QString, Imiks>* l);
+ MIIds(QMap<QString, Imiks>* l);
+
 	Imiks get(QString m, QString i, QString k, int s) override;
 };
 
@@ -23,31 +19,32 @@ class MItem : public IItem{
 
 public:
 	MItem(QJsonObject o);
-	virtual float getStackSize() override;
-	virtual int getStackType() override;
+
+	virtual float getStackSize() override {return stackSize;}
+	virtual int   getStackType() override {return stackType;}
 };
 
 class MItemsContainer : public IItemsContainer{
-	MMods* loader;
  QMap<Imiks, IItem*>* map;
  Imiks mNull;
 	IItem* iNull;
 
 public:
-	MItemsContainer(MMods* l, QMap<Imiks, IItem*>* m);
- IItem* get(Imiks id) override;
-	Imiks get(IItem* id) override;
+	MItemsContainer(QMap<Imiks, IItem*>* m);
+
+ virtual IItem* get(Imiks id) override;
+	virtual Imiks get(IItem* id) override;
 };
 // Items
 
 // Blocks
 class MBIds : public IModsIds {
-	MMods* loader;
 	QMap<QString, Imiks>* mods;
 	Imiks mNull;
 
 public:
-	MBIds(MMods *m, QMap<QString, Imiks>* l);
+	MBIds(QMap<QString, Imiks>* l);
+
 	Imiks get(QString m, QString i, QString k, int s) override;
 };
 
@@ -55,17 +52,18 @@ class MBlock : public IBlock{
 	float weight;
 public:
 	MBlock(QJsonObject o);
-	virtual float getWeight() override;
+
+	virtual float getWeight() override {return weight;}
 };
 
 class MBlocksContainer : public IBlocksContainer{
-	MMods* loader;
 	QMap<Imiks, IBlock*>* map;
 	Imiks mNull;
 	IBlock* iNull;
 
 public:
-	MBlocksContainer(MMods* l, QMap<Imiks, IBlock*>* m);
+	MBlocksContainer(QMap<Imiks, IBlock*>* m);
+
 	IBlock* get(Imiks id) override;
 	Imiks get(IBlock* id) override;
 };
@@ -73,12 +71,12 @@ public:
 
 // Tools
 class MTIds : public IModsIds {
-	MMods* loader;
 	QMap<QString, Imiks>* mods;
 	Imiks mNull;
 
 public:
-	MTIds(MMods *m, QMap<QString, Imiks>* l);
+	MTIds(QMap<QString, Imiks>* l);
+
 	Imiks get(QString m, QString i, QString k, int s) override;
 };
 
@@ -88,18 +86,18 @@ class MTool : public ITool{
 
 public:
 	MTool(QJsonObject o);
-	virtual int getDurability() override;
-	virtual QString getType() override;
+	virtual int     getDurability() override {return durability;}
+	virtual QString getType()       override {return type;}
 };
 
 class MToolsContainer : public IToolsContainer{
-	MMods* loader;
 	QMap<Imiks, ITool*>* map;
 	Imiks mNull;
 	ITool* iNull;
 
 public:
-	MToolsContainer(MMods* l, QMap<Imiks, ITool*>* m);
+	MToolsContainer(QMap<Imiks, ITool*>* m);
+
 	ITool* get(Imiks id) override;
 	Imiks get(ITool* id) override;
 };

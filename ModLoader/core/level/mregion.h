@@ -17,10 +17,12 @@ class MRegion : public IRegion{
 
 public:
 	MRegion(IRegionPos p, QString name);
+
 	IRegionPos getId();
 	IChunk* getConstChunk(IChunkPos p) const;
 	IChunk* getChunk(IChunkPos p);
-	void setChunk(IChunk *ch);
+	void    setChunk(IChunk *ch);
+
 	void read();
 	void write();
 	void write(IChunk* ch, QDataStream& out);

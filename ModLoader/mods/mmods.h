@@ -1,36 +1,25 @@
 #ifndef GLOBALQT_MMODS_H
 #define GLOBALQT_MMODS_H
-
 #include <ModLoader/mdefines.h>
-#include <ModLoader/mmodloader.h>
 #include <ModLoader/mods/mtext.h>
 #include <ModLoader/mods/mscript.h>
 #include <ModLoader/mods/mplugin.h>
-
-#include <QtCore>
 #include <ModLoader/core/level/mlevel.h>
 
-class MModLoader;
-class ILogger;
-class IVars;
 
 class MTextContainer;
 class MScriptsContainer;
 class MPluginsContainer;
 
 class MMods{
- MModLoader * loader;
 	IMain* main;
 
 public:
-	ILogger* log;
-	IVars* vars;
-	
 	MTextContainer*    text;
 	MScriptsContainer* script;
 	MPluginsContainer* plugin;
 
-	MMods(MModLoader * l);
+	MMods();
 
 	void preInit();
 	void init();

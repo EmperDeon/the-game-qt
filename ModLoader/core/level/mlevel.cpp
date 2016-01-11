@@ -1,14 +1,10 @@
-#include "ModLoader/core/level/mlevel.h"
+#include <ModLoader/core/level/mlevel.h>
 #include <QtConcurrent/QtConcurrent>
-#include <iostream>
-//MLevelInfo
+#include <ModLoader/core/mcoremods.h>
+
+
+// MLevelInfo
 MLevelInfo::MLevelInfo(){this->custom = new QJsonObject;}
-
-QString MLevelInfo::getName() {	return this->name;}
-QString MLevelInfo::getDir() {	return dir;}
-
-void MLevelInfo::setName(QString name) {	this->name = name;}
-void MLevelInfo::setDir(QString file) { this->dir = file;}
 
 QJsonObject MLevelInfo::toJson(MLevelInfo *info) {
 	QJsonObject obj(*info->custom);
@@ -17,11 +13,12 @@ QJsonObject MLevelInfo::toJson(MLevelInfo *info) {
 
 	return obj;
 }
+
 ILevelInfo * MLevelInfo::fromJson(QJsonObject obj) {
 	MLevelInfo* info = new MLevelInfo();
 	info->name = obj.value("name").toString();
 	info->dir = obj.value("dir").toString();
- foreach(QString k, obj.keys()){
+ for(QString k : obj.keys()){
 			if((k.compare("name") != 0)
 			 ||(k.compare("dir")  != 0)
 				)
@@ -30,17 +27,14 @@ ILevelInfo * MLevelInfo::fromJson(QJsonObject obj) {
 	return info;
 }
 
-QJsonObject * MLevelInfo::getCustom() {	return custom;}
 void MLevelInfo::addCustom(QJsonObject object) {
-		foreach(QString s, object.keys()){
+		for(QString s : object.keys()){
 			this->custom->insert(s, object.value(s));
 		}
 }
-QJsonValue MLevelInfo::getFromCustom(QString key){ return this->custom->value(key);}
-void MLevelInfo::addToCustom(QString key, QJsonValue value) { this->custom->insert(key, value);}
-//MLevelInfo
+// MLevelInfo
 
-//MLevel
+// MLevel
 MLevel::MLevel(ILevelInfo* info) {
 	this->info = info;
 	this->info->setDir("saves/" + info->getName() + "/");
@@ -49,7 +43,6 @@ MLevel::MLevel(ILevelInfo* info) {
 	this->chunkList = new QMap<IChunkPos, IChunk*>;
 	this->generator = new MWorldGenerator;
 }
-QString MLevel::getName() { return info->getName(); }
 
 void MLevel::load() {
 	QFile file(info->getDir()+"chunks.dat");
@@ -59,9 +52,10 @@ void MLevel::load() {
 	QJsonObject obj = info->getFromCustom("chunks").toObject();
 	QJsonArray ids = info->getFromCustom("chunkIds").toArray();
 
-		foreach(QJsonValue v, ids) loadChunk(IChunkPos(quint16(v.toInt())), obj, in);
+	for(QJsonValue v : ids) loadChunk(IChunkPos(quint16(v.toInt())), obj, in);
 
 }
+
 void MLevel::loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &in) {
 	int size = 262144;
 	char* ch;
@@ -79,16 +73,17 @@ void MLevel::loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &in) {
 	delete[] ch;
 
 }
+
 void MLevel::save() {
 	QJsonArray ids;
 	QJsonObject obj;
 	QByteArray arr;
 	QDataStream stream(&arr, QIODevice::WriteOnly);
 
-		foreach(IChunkPos p, this->chunkList->keys())	ids.append(p.c());
+		for(IChunkPos p : this->chunkList->keys())	ids.append(p.c());
 	info->addToCustom("chunkIds", ids);
 
-		foreach(IChunk* p, this->chunkList->values())	p->write(stream, obj);
+		for(IChunk* p : this->chunkList->values())	p->write(stream, obj);
 	info->addToCustom("chunks", obj);
 
 	QFile out(info->getDir()+"chunks.dat");
@@ -103,17 +98,20 @@ void MLevel::save() {
 	out1.flush();
 	out1.close();
 }
+
 void MLevel::generateWorld() {
  for(int x = -4 ; x < 4 ; x++)
 	 for(int z = -4 ; z < 4 ; z++)
 		 addNewChunk(IChunkPos(x, 0, z));
 }
+
 void MLevel::reAllocate(IWorldRender *ren) {
 	for(IChunk* c : *this->chunkList){
 		c->setGlList(ren->getFreeList());
 	 c->onReAlloc();
  }
 }
+
 bool MLevel::isBlock(IVec3i p) {
 	IChunkPos c(
 		p.x/IChunk::size,
@@ -129,7 +127,9 @@ bool MLevel::isBlock(IVec3i p) {
 
 
 IPChunk *MLevel::getPreview() {	return new MPChunk();}
+
 void MLevel::cycleRegion() {}
+
 IChunk * MLevel::getChunk(IChunkPos pos) {
  if(this->chunkList->contains(pos)){
 	 return this->chunkList->value(pos);
@@ -137,22 +137,22 @@ IChunk * MLevel::getChunk(IChunkPos pos) {
 	 return new MChunk();
  }
 }
-void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(this->generator, c));}
-//MLevel
 
-//MLevelManager
+void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(this->generator, c));}
+// MLevel
+
+// MLevelManager
 void loadLevelC(ILevel* l){
 	l->load();
 }
 void genLevelC(ILevel* l){
  l->generateWorld();
 }
-MLevelManager::MLevelManager(MCoreMods* m) {
-	this->loader = m;
+MLevelManager::MLevelManager() {
 	this->list = new QList<ILevelInfo*>;
 
 	// Load list with exist levels
-	foreach(QFileInfo i, QDir("saves").entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot)){
+	for(QFileInfo i : QDir("saves").entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot)){
 		QFile file("saves/" + i.fileName() + "/level.dat");
 		file.open(QIODevice::ReadOnly);
 
@@ -165,23 +165,24 @@ MLevelManager::MLevelManager(MCoreMods* m) {
 	 );
 	}
 }
-QList<ILevelInfo*>* MLevelManager::getList() {	return this->list;}
-ILevel* MLevelManager::getCurrentLevel() {	return this->level;}
-ILevelInfo* MLevelManager::getCurrentLevelInfo() {	return this->current;}
 
 void MLevelManager::createLevel(ILevelInfo* i) {
  this->current = i;
  this->level = new MLevel(this->current);
-	QtConcurrent::run(this->loader->queue, genLevelC, this->level);
+	QtConcurrent::run(MV_CORE_MODS->queue, genLevelC, this->level);
 }
+
 void MLevelManager::loadLevel(ILevelInfo *i) {
  this->current = i;
 	this->level = new MLevel(this->current);
-	QtConcurrent::run(this->loader->queue, loadLevelC, this->level);
+	QtConcurrent::run(MV_CORE_MODS->queue, loadLevelC, this->level);
 }
+
 void MLevelManager::exitLevel(ILevelInfo* i) {
  this->level->save();
 }
+
 void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
+// MLevelManager

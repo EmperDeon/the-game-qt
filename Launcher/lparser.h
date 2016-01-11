@@ -1,5 +1,5 @@
-#ifndef GLOBALQT_LPARSER
-#define GLOBALQT_LPARSER
+#ifndef GLOBALQT_LPARSER_H
+#define GLOBALQT_LPARSER_H
 #include <Launcher/ldefines.h>
 #include <Launcher/lwidgets.h>
 #include <Launcher/lmain.h>

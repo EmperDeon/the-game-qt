@@ -1,5 +1,5 @@
-#ifndef GLOBALQT_EMAIN
-#define GLOBALQT_EMAIN
+#ifndef GLOBALQT_EMAIN_H
+#define GLOBALQT_EMAIN_H
 #include <Engine/edefines.h>
 #include <QtWidgets>
 #include <time.h>

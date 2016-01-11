@@ -1,43 +1,31 @@
-#ifndef MODLOADER_H
-#define MODLOADER_H
-
-#include <QtCore>
+#ifndef GLOBALQT_MMODLOADER_H
+#define GLOBALQT_MMODLOADER_H
 #include <ModLoader/mdefines.h>
-#include <ModLoader/mutils.h>
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/mods/mmods.h>
-#include "Engine/econtainers.h"
 
 class MCoreMods;
 class MMods;
 
-class MModLoader : public QObject, IModLoader {
+class MModLoader : public QObject, public IModLoader{
 	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "org.ilzcorp.IModLoader" FILE "coremod.json")
+	Q_PLUGIN_METADATA(IID "org.ilzcorp.IModLoader")
 	Q_INTERFACES(IModLoader)
- QString className = "M-ModLoader";
 
-	MCoreMods* core;
-	MMods* mods;
-
- MModLoader * loader;
 public:
-	IVars* vars;
-	ILogger* log;
 
- QString getName() override;
+ virtual QString getName()      override;
 
-	void setVars(IVars* v) override;
-	void corePreInit() override;
-	void coreInit() override;
-	void corePostInit() override;
+	virtual void setVars(IVars* v) override;
 
-	void preInit() override;
-	void init() override;
-	void postInit() override;
+	virtual void corePreInit()     override;
+	virtual void coreInit()        override;
+	virtual void corePostInit()    override;
 
-private:
+	virtual void preInit()         override;
+	virtual void init()            override;
+	virtual void postInit()        override;
 
 };
 
-#endif // MODLOADER_H
+#endif // GLOBALQT_MMODLOADER_H
