@@ -39,26 +39,31 @@ void MWorldRender::render() {
 
 void MWorldRender::selectBlock() {
  IVec3i c(en->pos()),t;
-	float sc = 0.001f;
+	float sc = 1.0f;
  float x = 0.0f;
+ float pt=en->pitch(), yw=en->yaw();
 
 	IVec3 i(
-		cosf(en->pitch()) * cosf(en->yaw()),
-		sinf(en->yaw()),
-		sinf(en->pitch()) * cosf(en->yaw())
+		c.x + c.x * cosf(pt) * cosf(yw),
+		c.y + c.x * sinf(yw),
+		c.z + c.x * sinf(pt) * cosf(yw)
 	);
 
- while(x < 5.0f){
-		x += sc;
-	 t.x = c.x + int(i.x * x);
-		t.y = c.y + int(i.y * x);
-	 t.z = c.z + int(i.z * x);
+	glBegin(GL_LINE_STRIP);
+ glColor3f(0, 0, 1.0f);
 
+	while(x < 50.0f){
+		x += sc;
+	 t.x = c.x - int(i.x * x);
+		t.y = c.y - int(i.y * x);
+	 t.z = c.z - int(i.z * x);
+		glVertex3f(t.x, t.y, t.z);
 		if(c != t){
 			c = t;
 			if(level->isBlock(c)) break;
 		}
  }
+	glEnd();
 	if(c != IVec3i(en->pos())) drawBorder(c);
 }
 
@@ -66,15 +71,12 @@ void MWorldRender::selectBlock() {
 void MWorldRender::drawAxis(){
 	glLineWidth(3.0f);
 
-	glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
 	glBegin(GL_LINES);
+	glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
 	glVertex3f( 1.0f,  0.0f,  0.0f);
 	glVertex3f(-1.0f,  0.0f,  0.0f);
-	glEnd();
 
 	glColor4i(0, 128, 0, 255);
-	glBegin(GL_LINES);
-	// ��� y �������� �����
 	glVertex3f( 0.0f,  1.0f,  0.0f);
 	glVertex3f( 0.0f, -1.0f,  0.0f);
 

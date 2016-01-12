@@ -2,7 +2,7 @@
 
 
 MGlWidget::MGlWidget(){
-	player = new MPlayer(0, 0, 0);
+	player = new MPlayer(10, 5, 10);
 	cam = new MCamera();
 	cam->attachTo(player);
 
