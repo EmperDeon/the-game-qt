@@ -33,7 +33,7 @@ void MMods::postInit() {
 	this->plugin->postInit();
 	mLogFF("postInit finished");
 
-	mVarG(IWorldRender*, "mWorldRender")->reAllocate(50);
+	mVarG(IWorldRender*, "mWorldRender")->reAllocate(1025);
 }
 
 MMods* MV_MODS;

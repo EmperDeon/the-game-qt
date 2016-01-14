@@ -100,8 +100,8 @@ void MLevel::save() {
 }
 
 void MLevel::generateWorld() {
- for(int x = -4 ; x < 4 ; x++)
-	 for(int z = -4 ; z < 4 ; z++)
+ for(int x = 0 ; x < 16 ; x++)
+	 for(int z = 0 ; z < 16 ; z++)
 		 addNewChunk(IChunkPos(x, 0, z));
 }
 

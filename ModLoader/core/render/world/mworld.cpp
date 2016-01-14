@@ -103,8 +103,8 @@ void MWorldRender::reAllocate(int i) {
 }
 
 GLuint MWorldRender::getFreeList() {
-	QMutexLocker l(this->listMutex);
 	if(currentActive >= currentGenCount){
+		QMutexLocker l(this->listMutex);
 		reAllocate(currentGenCount);
 	}
 	return currentIndex + currentActive++;

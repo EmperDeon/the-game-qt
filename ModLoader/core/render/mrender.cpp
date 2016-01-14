@@ -45,7 +45,7 @@ void MGlWidget::resizeGL(int nWidth, int nHeight){
 
 	//GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // отношение высоты окна виджета к его ширине
  GLfloat ratio = 2.0f;
-	gluPerspective(85.0f, ratio, 0.1f, 100.0f);
+	gluPerspective(85.0f, ratio, 0.01f, 1000.0f);
 	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
 }
 
