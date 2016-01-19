@@ -31,9 +31,9 @@ class MLevel : public ILevel{
 	MRegion* reg;
 	ILevelInfo* info;
  MWorldGenerator* generator;
- QMap<IChunkPos, IChunk*>* chunkList;
+ QMap<IAChunkPos, IChunk*>* chunkList;
 
-	void loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &stream);
+	void loadChunk(QJsonValue v, QJsonObject obj, QDataStream &stream);
 
 public:
 	MLevel(ILevelInfo* info);
@@ -47,9 +47,9 @@ public:
 
 	virtual IPChunk* getPreview()            override;
 	virtual void     cycleRegion()           override;
-	virtual IChunk*  getChunk(IChunkPos pos) override;
+	virtual IChunk*  getChunk(IAChunkPos pos) override;
 
-	void addNewChunk(IChunkPos c);
+	void addNewChunk(IAChunkPos c);
 };
 
 class MLevelManager : public ILevelManager{

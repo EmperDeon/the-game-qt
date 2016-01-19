@@ -29,7 +29,7 @@ class IChunk : public IRObject{
 public:
 	static const int size = CHUNK_SIZE;
 	// Getters
-	virtual IChunkPos    getId()                               = 0;
+	virtual IAChunkPos getId()                               = 0;
 	virtual IWorldBlock* getBlock(IBlockPos)                   = 0;
 	// Setters
 	virtual void         setBlock(IWorldBlock* b)              = 0;
@@ -86,7 +86,7 @@ public:
 	virtual QString   getName()                     = 0;
 	virtual IPChunk*  getPreview()                  = 0;
 	virtual void      cycleRegion()                 = 0;
-	virtual IChunk*   getChunk(IChunkPos)           = 0;
+	virtual IChunk*   getChunk(IAChunkPos)           = 0;
 };
 
 class ILevelManager {

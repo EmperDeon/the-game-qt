@@ -3,7 +3,7 @@
 
 MWorldGenerator::MWorldGenerator() {}
 void MWorldGenerator::generateChunk(IChunk *ch) {
- IChunkPos pos = ch->getId();
+ IAChunkPos pos = ch->getId();
 	int i = rand() % 6 ; i++;
 	Imiks block(1,i,i,1);
 

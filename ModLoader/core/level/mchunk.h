@@ -5,7 +5,7 @@
 
 class MChunk : public IChunk{
 	IWorldBlock* chunk[size][size][size];
- IChunkPos id;
+ IAChunkPos id;
 
 	//RenderList
 	byte rSides[size][size][size];
@@ -16,10 +16,10 @@ class MChunk : public IChunk{
 
 public:
 	MChunk();
-	MChunk(IWorldGenerator *gen, IChunkPos p);
-	MChunk(QByteArray a, QJsonObject o, IChunkPos pos);
+	MChunk(IWorldGenerator *gen, IAChunkPos p);
+	MChunk(QByteArray a, QJsonObject o, IAChunkPos pos);
 
-	virtual IChunkPos    getId()                                 override {return id;}
+	virtual IAChunkPos getId()                                 override {return id;}
 	virtual IWorldBlock* getBlock(IBlockPos p)                   override;
 	virtual void         setBlock(IWorldBlock* b)                override;
 	virtual void         setBlock(IBlockPos pos, IWorldBlock *b) override;

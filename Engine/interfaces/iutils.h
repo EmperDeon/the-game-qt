@@ -2,6 +2,9 @@
 #define GLOBALQT_IUTILS_H
 
 #define CHUNK_SIZE 32
+#define REGION_SIZE_X 8
+#define REGION_SIZE_Y 8
+#define REGION_SIZE_Z 8
 
 #include <QtCore>
 #include <QtWidgets>
@@ -90,14 +93,106 @@ public:
 };
 
 class IRegionPos{
-	long int px;
-	long int py;
+	qint32 px;
+	qint32 py;
+	qint32 pz;
 public:
-	IRegionPos(){ px = 0; py = 0; }
-	IRegionPos(long int x, long int y){ this->px = x; this->py = y; }
+	IRegionPos(){ px = 0; py = 0; pz = 0; }
+	IRegionPos(qint32 x, qint32 y, qint32 z){ this->px = x; this->pz = z; }
 
-	long int x(){ return px; }
-	long int y(){ return py; }
+	qint32 x(){ return px; }
+//	qint32 y(){ return py; }
+	qint32 z(){ return pz; }
+};
+
+//class IABlockPos {// bytes - x:5, y:5, z:5
+//	quint16 d;
+//
+//public:
+//	IABlockPos(){d = 0;}
+//	IABlockPos(int x, int y, int z){
+//		d = 0;
+//		if((x < 32)&&(y < 32)&&(z < 32)){
+//			d |= x << 11;
+//			d |= y << 6;
+//			d |= z << 1;
+//		}else{
+//			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+//		}
+//	}
+//
+//	quint16 c()const { return d;}
+//
+//	int     x()const {	return this->d >> 11 & 31;}
+//	int     y()const {	return this->d >> 6 & 31;}
+//	int     z()const {	return this->d >> 1 & 31;  }
+//
+//	bool    operator< (IABlockPos o)const {return d < o.d;}
+//};
+
+class IAChunkPos {// bytes - x:5, y:5, z:5
+	quint16 d;
+
+	qint32 rgX;
+	qint32 rgY;
+	qint32 rgZ;
+public:
+	IAChunkPos(){d = 0;}
+	IAChunkPos(quint16 c, qint32 rX, qint32 rY, qint32 rZ): d(c), rgX(rX), rgY(rY), rgZ(rZ){}
+	IAChunkPos(IRegionPos p, qint32 x, qint32 y, qint32 z){
+		d = 0;
+		d  |= x << 11;
+		d  |= y << 6;
+		d  |= z << 1;
+		rgX = p.x();
+	//	rgY = p.y();
+		rgZ = p.z();
+	}
+	IAChunkPos(qint32 x, qint32 y, qint32 z){
+		d = 0;
+		d  |= x % REGION_SIZE_X << 11;
+		d  |= y % REGION_SIZE_Y << 6;
+		d  |= z % REGION_SIZE_Z << 1;
+	 rgX = x / REGION_SIZE_X;
+		rgY = y / REGION_SIZE_Y;
+		rgZ = z / REGION_SIZE_Z;
+	}
+
+	quint16 c()const { return d;}
+
+	qint32  x() const{	return (rgX * REGION_SIZE_X) + (this->d >> 11 &31); }
+	qint32  y() const{	return (rgY * REGION_SIZE_Y) + (this->d >> 6 & 31); }
+	qint32  z() const{	return (rgZ * REGION_SIZE_Z) + (this->d >> 1 & 31); }
+
+	qint32 rX() const{ return rgX; }
+	qint32 rY() const{ return rgY; }
+	qint32 rZ() const{ return rgZ; }
+
+	bool    operator< (IAChunkPos o)const {
+		if(rgX != o.rgX)
+			return rgX < o.rgX;
+
+		else if(rgY != o.rgY)
+			return rgY < o.rgY;
+
+		else if(rgZ != o.rgZ)
+			return rgZ < o.rgZ;
+
+		return d < o.d;
+	}
+
+	bool    operator> (IAChunkPos o)const {
+		if(rgX != o.rgX)
+			return rgX > o.rgX;
+
+		else if(rgY != o.rgY)
+			return rgY > o.rgY;
+
+		else if(rgZ != o.rgZ)
+			return rgZ > o.rgZ;
+
+		return d > o.d;
+	}
 };
 // Position containers
 

@@ -5,9 +5,9 @@
 // MChunk
 MChunk::MChunk(){}
 
-MChunk::MChunk(IWorldGenerator *gen, IChunkPos p) :id(p){ gen->generateChunk(this);}
+MChunk::MChunk(IWorldGenerator *gen, IAChunkPos p) : id(p){ gen->generateChunk(this);}
 
-MChunk::MChunk(QByteArray a, QJsonObject o, IChunkPos pos): id(pos){
+MChunk::MChunk(QByteArray a, QJsonObject o, IAChunkPos pos): id(pos){
 	quint32 id;
 	int pr, type;
 	QJsonArray arr = o["params"].toArray();

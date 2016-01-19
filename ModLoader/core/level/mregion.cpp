@@ -1,10 +1,10 @@
 #include <ModLoader/core/level/mregion.h>
 
 MRegion::MRegion(IRegionPos p, QString name) { // saves/name/dim0/ for name "name" and 0 dimension
- this->pos = p;                                // saves/name/dim0/reg00.dat for id 0 0
+ this->pos = p;                                // saves/name/dim0/regions00/reg00.dat for id 0 0
 	this->file = name+
 		"regions" + QString::number(int(p.x() / 128)) + QString::number(int(p.x() / 128)) + "/" +
-		"reg" + QString::number(pos.x())+QString::number(pos.y()) + ".dat";
+		"reg" + QString::number(pos.x())+QString::number(pos.z()) + ".dat";
 
  QDir t(name);
 	t.mkdir("regions" + QString::number(int(p.x() / 128)) + QString::number(int(p.x() / 128)));
@@ -48,9 +48,9 @@ void MRegion::write() {
 	QDataStream out(&o);
  out.setVersion(QDataStream::Qt_5_4);
 
-	for ( int x = 0; x < xSize; x++ )
-		for ( int y = 0; y < ySize; y++ )
-			for ( int z = 0; z < zSize; z++ )
+	for ( int x = 0; x < REGION_SIZE_X; x++ )
+		for ( int y = 0; y < REGION_SIZE_Y; y++ )
+			for ( int z = 0; z < REGION_SIZE_Z; z++ )
 			 write(reg[x][y][z], out);
 
 	QByteArray outa;
@@ -87,9 +87,9 @@ void MRegion::read() {
 	QJsonObject obj = QJsonDocument::fromBinaryData(QByteArray(ch, size)).object();
  delete[] ch;
 
-	for ( int x = 0; x < xSize; x++ )
-		for ( int y = 0; y < ySize; y++ )
-			for ( int z = 0; z < zSize; z++ ) {
+	for ( int x = 0; x < REGION_SIZE_X; x++ )
+		for ( int y = 0; y < REGION_SIZE_Y; y++ )
+			for ( int z = 0; z < REGION_SIZE_Z; z++ ) {
 
 				in.skipRawData(4);
 				in >> size;
@@ -99,7 +99,7 @@ void MRegion::read() {
 				reg[x][y][z] = new MChunk(
 					QByteArray(ch, size),
 					obj["chunk"+QString::number(x)+QString::number(y)+QString::number(z)].toObject(),
-				 IChunkPos(x, y, z)
+				 IAChunkPos(this->pos, x, y, z)
 				);
 
     delete[] ch;

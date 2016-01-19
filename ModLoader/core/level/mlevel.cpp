@@ -40,7 +40,7 @@ MLevel::MLevel(ILevelInfo* info) {
 	this->info->setDir("saves/" + info->getName() + "/");
 	QDir().mkpath(this->info->getDir());
 
-	this->chunkList = new QMap<IChunkPos, IChunk*>;
+	this->chunkList = new QMap<IAChunkPos, IChunk*>;
 	this->generator = new MWorldGenerator;
 }
 
@@ -52,11 +52,11 @@ void MLevel::load() {
 	QJsonObject obj = info->getFromCustom("chunks").toObject();
 	QJsonArray ids = info->getFromCustom("chunkIds").toArray();
 
-	for(QJsonValue v : ids) loadChunk(IChunkPos(quint16(v.toInt())), obj, in);
+	for(QJsonValue v : ids) loadChunk(v, obj, in);
 
 }
 
-void MLevel::loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &in) {
+void MLevel::loadChunk(QJsonValue v, QJsonObject obj, QDataStream &in) {
 	int size = 262144;
 	char* ch;
 
@@ -64,9 +64,16 @@ void MLevel::loadChunk(IChunkPos pos, QJsonObject obj, QDataStream &in) {
 	in.skipRawData(4);
 	in.readRawData(ch, size);
 
-	chunkList->insert(pos,  new MChunk(
+	IAChunkPos pos(
+		quint16(v.toObject().value("c").toDouble()),
+		qint32(v.toObject().value("rX").toDouble()),
+		qint32(v.toObject().value("rY").toDouble()),
+		qint32(v.toObject().value("rZ").toDouble())
+	);
+
+	chunkList->insert(pos, new MChunk(
 		QByteArray(ch, size),
-		obj["chunk"+QString::number(pos.x())+QString::number(pos.y())+QString::number(pos.z())].toObject(),
+		obj["chunk" + QString::number(pos.x()) + QString::number(pos.y()) + QString::number(pos.z())].toObject(),
 		pos
 	));
 
@@ -80,7 +87,14 @@ void MLevel::save() {
 	QByteArray arr;
 	QDataStream stream(&arr, QIODevice::WriteOnly);
 
-		for(IChunkPos p : this->chunkList->keys())	ids.append(p.c());
+		for(IAChunkPos p : this->chunkList->keys()) {
+			QJsonObject o;
+			o.insert("c", p.c());
+			o.insert("rX", p.rX());
+			o.insert("rY", p.rY());
+			o.insert("rZ", p.rZ());
+			ids.append(o);
+		}
 	info->addToCustom("chunkIds", ids);
 
 		for(IChunk* p : this->chunkList->values())	p->write(stream, obj);
@@ -100,9 +114,9 @@ void MLevel::save() {
 }
 
 void MLevel::generateWorld() {
- for(int x = 0 ; x < 16 ; x++)
-	 for(int z = 0 ; z < 16 ; z++)
-		 addNewChunk(IChunkPos(x, 0, z));
+ for(int x = -16 ; x < 16 ; x++)
+	 for(int z = -16 ; z < 16 ; z++)
+		 addNewChunk(IAChunkPos(x, 0, z));
 }
 
 void MLevel::reAllocate(IWorldRender *ren) {
@@ -113,7 +127,7 @@ void MLevel::reAllocate(IWorldRender *ren) {
 }
 
 bool MLevel::isBlock(IVec3i p) {
-	IChunkPos c(
+	IAChunkPos c(
 		p.x/IChunk::size,
 		p.y/IChunk::size,
 		p.z/IChunk::size
@@ -130,7 +144,7 @@ IPChunk *MLevel::getPreview() {	return new MPChunk();}
 
 void MLevel::cycleRegion() {}
 
-IChunk * MLevel::getChunk(IChunkPos pos) {
+IChunk * MLevel::getChunk(IAChunkPos pos) {
  if(this->chunkList->contains(pos)){
 	 return this->chunkList->value(pos);
  }else{
@@ -138,7 +152,7 @@ IChunk * MLevel::getChunk(IChunkPos pos) {
  }
 }
 
-void MLevel::addNewChunk(IChunkPos c) { this->chunkList->insert(c, new MChunk(this->generator, c));}
+void MLevel::addNewChunk(IAChunkPos c) { this->chunkList->insert(c, new MChunk(this->generator, c));}
 // MLevel
 
 // MLevelManager

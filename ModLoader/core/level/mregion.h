@@ -4,11 +4,7 @@
 #include <ModLoader/core/level/mchunk.h>
 
 class MRegion : public IRegion{
-	static const int xSize = 8;
-	static const int ySize = 8;
-	static const int zSize = 8;
-
-	IChunk* reg[xSize][ySize][zSize];
+	IChunk* reg[REGION_SIZE_X][REGION_SIZE_Y][REGION_SIZE_Z];
 	QList<IChunk*>* edited;
 	IRegionPos pos;
 // read-write
