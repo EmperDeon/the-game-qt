@@ -7,7 +7,7 @@ MMods::MMods(){
 	this->script = new MScriptsContainer();
 	this->plugin = new MPluginsContainer();
 }
-
+#define testPos(x1,y1,z1) {IAChunkPos p(x1,y1,z1); mLogI(QString("C %1 %2 %3, reg %4 %5 %6").arg(p.x()).arg(p.y()).arg(p.z()).arg(p.rX()).arg(p.rY()).arg(p.rZ()));}
 void MMods::preInit() {
 	main = mVarG(IMain*, "eMain");
 	
@@ -16,6 +16,7 @@ void MMods::preInit() {
 	this->script->preInit();
 	this->plugin->preInit();
 	mLogFF("preInit finished");
+
 }
 
 void MMods::init() {

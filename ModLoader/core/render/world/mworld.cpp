@@ -87,7 +87,7 @@ void MWorldRender::drawAxis(){
 }
 
 void MWorldRender::close() {
- this->level->save();
+ //this->level->save();
 }
 
 void MWorldRender::reAllocate(int i) {

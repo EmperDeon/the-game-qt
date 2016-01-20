@@ -51,7 +51,7 @@ void MPerfomanceWidget::updateFps() {
 	this->plot->replot();
 	if(sec != QTime::currentTime().second()){
 		int size = v_fps->size();
-	 if(size > 100) v_fps->pop_back(), size--;
+	 if(size > 20) v_fps->pop_back(), size--;
 		if(k > 0)      v_fps->push_front(k), size++;
 		float avg = 0.0f;
 		for(float n : *v_fps){
