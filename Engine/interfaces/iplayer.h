@@ -11,6 +11,9 @@ public:
 	virtual float yaw()   = 0;
 	virtual float pitch() = 0;
 
+	virtual qint32 getCX() = 0;
+	virtual qint32 getCZ() = 0;
+
 	friend class ICamera;
 };
 

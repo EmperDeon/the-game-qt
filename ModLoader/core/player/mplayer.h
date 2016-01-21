@@ -5,6 +5,7 @@
 class MPlayer : public IPlayer{
 	float x, y, z;
 	float aY, aP; // Yaw and Pitch in radians
+ qint32 cX = 0, cZ = 0;
 
 public:
 	MPlayer(float X, float Y, float Z): x(X), y(Y), z(Z){}
@@ -28,6 +29,10 @@ public:
 
 	virtual IVec3 pos()          override {return IVec3(x, y, z);}
 
+	virtual qint32 getCX()       override {return cX;}
+	virtual qint32 getCZ()       override {return cZ;}
+
+	void updatePos();
 	friend class ICamera;
 };
 

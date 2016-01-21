@@ -124,6 +124,8 @@ void MLevel::reAllocate(IWorldRender *ren) {
 		c->setGlList(ren->getFreeList());
 	 c->onReAlloc();
  }
+	ren->setChunks(chunkList);
+
 }
 
 bool MLevel::isBlock(IVec3i p) {

@@ -3,12 +3,14 @@
 
 class IEntity;
 class Imiks;
+class IChunk;
 
 // RenderObjects
 class IRObject{
 public:
 	//Render
 	virtual void setGlList(GLuint i) = 0;
+	virtual int  getGlList()         = 0;
 	virtual void onReAlloc()         = 0;
 };
 // RenderObjects
@@ -50,6 +52,7 @@ public:
 
 	virtual void  setPlayer(IEntity* e) = 0;
 	// Level-relative
+	virtual void  setChunks(QMap<IAChunkPos, IChunk*>* ch) = 0;
 	virtual void  reAllocate(int i)     = 0;
 	virtual GLuint getFreeList()        = 0;
 };

@@ -16,10 +16,14 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 
 	//Player
 	IEntity* en;
+ qint32 eCX = -1, eCZ = 0;
+	QMap<IAChunkPos, int>* chunks;
+	QList<int>* renderLists;
 
 	void drawAxis();
  void selectBlock();
-
+ void checkPos();
+ double modulePos(int x, int z);
 public:
 	MWorldRender();
 	virtual void init();
@@ -28,6 +32,7 @@ public:
 	virtual void close();
 	virtual void setPlayer(IEntity* e){this->en = e;};
 	// Level-relative
+	virtual void setChunks(QMap<IAChunkPos, IChunk*>* ch);
 	virtual void reAllocate(int i);
 	virtual GLuint getFreeList();
 };

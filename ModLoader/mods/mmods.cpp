@@ -7,7 +7,15 @@ MMods::MMods(){
 	this->script = new MScriptsContainer();
 	this->plugin = new MPluginsContainer();
 }
-#define testPos(x1,y1,z1) {IAChunkPos p(x1,y1,z1); mLogI(QString("C %1 %2 %3, reg %4 %5 %6").arg(p.x()).arg(p.y()).arg(p.z()).arg(p.rX()).arg(p.rY()).arg(p.rZ()));}
+void testPos(int x, int y, int z){
+	IAChunkPos p(x,y,z);
+	if(
+		 (x != p.x())||
+			(y != p.y())||
+			(z != p.z())
+		)
+	mLogI(QString("O: %1 %2 %3, P: %4 %5 %6").arg(x, 2).arg(y, 2).arg(z, 2).arg(p.x(), 2).arg(p.y(), 2).arg(p.z(), 2));
+}
 void MMods::preInit() {
 	main = mVarG(IMain*, "eMain");
 	
@@ -35,6 +43,11 @@ void MMods::postInit() {
 	mLogFF("postInit finished");
 
 	mVarG(IWorldRender*, "mWorldRender")->reAllocate(1025);
+
+//	for(int x = -20 ; x < 20 ; x++)
+//	for(int y = -20 ; y < 20 ; y++)
+//	for(int z = -20 ; z < 20 ; z++)
+//				testPos(x,y,z);
 }
 
 MMods* MV_MODS;

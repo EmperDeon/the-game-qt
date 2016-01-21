@@ -19,13 +19,14 @@ public:
 	MChunk(IWorldGenerator *gen, IAChunkPos p);
 	MChunk(QByteArray a, QJsonObject o, IAChunkPos pos);
 
-	virtual IAChunkPos getId()                                 override {return id;}
+	virtual IAChunkPos   getId()                                 override {return id;}
 	virtual IWorldBlock* getBlock(IBlockPos p)                   override;
 	virtual void         setBlock(IWorldBlock* b)                override;
 	virtual void         setBlock(IBlockPos pos, IWorldBlock *b) override;
 	virtual void         write(QDataStream &a, QJsonObject& o)   override;
 
 	virtual void setGlList(GLuint i) override {this->rList = i;}
+	virtual int  getGlList()         override {return this->rList;}
 	virtual void onReAlloc()         override;
 
 
@@ -45,6 +46,7 @@ public:
 
 	virtual QColor getBlockColor(IBlockPos pos) override;
 	virtual void   setGlList(GLuint i)          override {this->list = i;}
+	virtual int    getGlList()                  override {return this->list;}
 	virtual void   onReAlloc()                  override;
 };
 

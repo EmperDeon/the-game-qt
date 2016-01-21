@@ -3,6 +3,8 @@
 MWorldRender::MWorldRender(){
  this->manager = mVarG(ILevelManager*, "mLevel");
 	this->listMutex = new QMutex;
+	this->chunks = new QMap<IAChunkPos, int>;
+	this->renderLists = new QList<int>;
 }
 
 void MWorldRender::init() {
@@ -20,18 +22,16 @@ void MWorldRender::init() {
 
 void MWorldRender::render() {
 	drawAxis();
-
+ checkPos();
 	if(currentActive > 0){
 		listMutex->lock();
-
-		for ( int i = 0 ; i < currentActive ; i++) {
+		for ( int i : *renderLists) {
 			glCallList(currentIndex + i);
 		}
-
 		listMutex->unlock();
 	}
 
- selectBlock();
+// selectBlock();
 	// Box of Epileptic
 //	this->drawRCube(IVec3(0, 0, 0), 0.15f);
 //	this->drawRCube(IVec3(0, 0, 0), 1.0f);
@@ -108,4 +108,33 @@ GLuint MWorldRender::getFreeList() {
 		reAllocate(currentGenCount);
 	}
 	return currentIndex + currentActive++;
+}
+
+void MWorldRender::setChunks(QMap<IAChunkPos, IChunk *> *ch) {
+	this->chunks->clear();
+	for(IChunk* p : ch->values())
+		this->chunks->insert(p->getId(), p->getGlList());
+
+	//checkPos();
+}
+
+void MWorldRender::checkPos() {
+	if ((this->eCX != en->getCX()) || (this->eCZ != en->getCZ())) {
+		this->eCX = en->getCX();
+		this->eCZ = en->getCZ();
+
+		qint32 tx, tz;
+		renderLists->clear();
+		for ( IAChunkPos p : chunks->keys()){
+			tx = eCX - p.x();
+			tz = eCZ - p.z();
+
+			if (modulePos(tx, tz) < 8)
+				this->renderLists->append(chunks->value(p));
+		}
+	}
+}
+
+double MWorldRender::modulePos(int x, int z) {
+	return sqrt(x*x + z*z);
 }
