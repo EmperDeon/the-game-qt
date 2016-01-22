@@ -2,8 +2,8 @@
 
 
 void MPlayer::move(float r) {
-	x = x + cosf(aP + r) * 0.2f;
-	z = z + sinf(aP + r) * 0.2f;
+	x = x + cosf(aP + r) * 2.4f;
+	z = z + sinf(aP + r) * 2.4f;
 	updatePos();
 }
 
@@ -20,6 +20,9 @@ void MPlayer::pitch(float p) {
 }
 
 void MPlayer::updatePos() {
- this->cX = qint32(x) / CHUNK_SIZE;
-	this->cZ = qint32(z) / CHUNK_SIZE;
+ qint32 ctX = x / CHUNK_SIZE;
+	qint32 ctZ = z / CHUNK_SIZE;
+
+	this->cX = x < 0 ? ctX : ctX - 1;
+	this->cZ = z < 0 ? ctZ : ctZ - 1;
 }

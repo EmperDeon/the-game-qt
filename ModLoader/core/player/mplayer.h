@@ -5,7 +5,7 @@
 class MPlayer : public IPlayer{
 	float x, y, z;
 	float aY, aP; // Yaw and Pitch in radians
- qint32 cX = 0, cZ = 0;
+	qint32 cX = 0, cZ = 0;
 
 public:
 	MPlayer(float X, float Y, float Z): x(X), y(Y), z(Z){}

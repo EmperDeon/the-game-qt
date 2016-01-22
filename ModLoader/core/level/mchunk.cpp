@@ -1,6 +1,8 @@
 #include <ModLoader/core/level/mchunk.h>
 #include <ModLoader/core/render/mhelper.h>
 #include <ModLoader/mods/mmods.h>
+#include <ModLoader/core/mcoremods.h>
+
 
 // MChunk
 MChunk::MChunk(){}
@@ -73,12 +75,12 @@ void MChunk::reParseSides(){
 		for(int y = 0 ; y < size ; y++)
 			for(int z = 0 ; z < size ; z++){
 				if(chunk[x][y][z] != nullptr) {
-					if((x > 0)    && (chunk[x - 1][y][z] == nullptr)){ rSides[x][y][z] |= IBSides::Left;		}
-					if((x < size) && (chunk[x + 1][y][z] == nullptr)){ rSides[x][y][z] |= IBSides::Right;		}
-					if((y > 0)    && (chunk[x][y - 1][z] == nullptr)){ rSides[x][y][z] |= IBSides::Bottom;		}
-					if((y < size) && (chunk[x][y + 1][z] == nullptr)){ rSides[x][y][z] |= IBSides::Top;		}
-					if((z > 0)    && (chunk[x][y][z - 1] == nullptr)){ rSides[x][y][z] |= IBSides::Back;		}
-					if((z < size) && (chunk[x][y][z + 1] == nullptr)){ rSides[x][y][z] |= IBSides::Front;		}
+					if((x > 0)  && (chunk[x - 1][y][z] == nullptr)){ rSides[x][y][z] |= IBSides::Left;		}
+					if((x < 31) && (chunk[x + 1][y][z] == nullptr)){ rSides[x][y][z] |= IBSides::Right;		}
+					if((y > 0)  && (chunk[x][y - 1][z] == nullptr)){ rSides[x][y][z] |= IBSides::Bottom;		}
+					if((y < 31) && (chunk[x][y + 1][z] == nullptr)){ rSides[x][y][z] |= IBSides::Top;		}
+					if((z > 0)  && (chunk[x][y][z - 1] == nullptr)){ rSides[x][y][z] |= IBSides::Back;		}
+					if((z < 31) && (chunk[x][y][z + 1] == nullptr)){ rSides[x][y][z] |= IBSides::Front;		}
 				}else{
 					rSides[x][y][z] = 0;
 				}
@@ -102,7 +104,6 @@ void MChunk::onReAlloc() {
 }
 
 void MChunk::drawCube(int x, int y, int z) {
-
 	MRHelper::drawTCubeS(getBlockPos(x, y, z), rSides[x][y][z]);
 }
 // MChunk

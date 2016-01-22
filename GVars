@@ -10,7 +10,7 @@ Engine:
 
 ModLoader:
  CoreMods:
-  MRender - mRender
+  MGlWidget - mRender
    MWorldRender - mWorldRender
    MGuiRender   - mGuiRender
 

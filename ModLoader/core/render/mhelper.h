@@ -2,6 +2,8 @@
 #define GLOBALQT_MHELPER_H
 #include <ModLoader/mdefines.h>
 #include <GL/gl.h>
+#include <QtOpenGL/qgl.h>
+
 
 class MRHelper{
  public:
@@ -37,6 +39,7 @@ class MRHelper{
 	static void drawBorder(IVec3i v){drawBorder(v.x, v.y, v.z);}
 	static void drawCubeS(IVec3 vec3, byte s, IVec3 c);
 	static void drawTCubeS(IVec3 vec3, byte s);
+
 };
 
 #endif //GLOBALQT_MHELPER_H

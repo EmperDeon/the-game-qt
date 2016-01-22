@@ -2,13 +2,15 @@
 
 MWorldRender::MWorldRender(){
  this->manager = mVarG(ILevelManager*, "mLevel");
+
 	this->listMutex = new QMutex;
 	this->chunks = new QMap<IAChunkPos, int>;
 	this->renderLists = new QList<int>;
 }
 
 void MWorldRender::init() {
-
+	this->widget = mVarG(MGlWidget*, "mRender");
+	renderDistance = 4;
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 
@@ -25,9 +27,14 @@ void MWorldRender::render() {
  checkPos();
 	if(currentActive > 0){
 		listMutex->lock();
-		for ( int i : *renderLists) {
-			glCallList(currentIndex + i);
-		}
+//		for ( int i : *renderLists) {
+//			glCallList(currentIndex + i);
+//		}
+  for(IAChunkPos id : chunks->keys())
+	  this->widget->renderText(id.x() * 32 + 16, id.y() * 32 + 16, id.z() * 32 + 16, "Test");
+
+		for(int i = 0; i < currentActive ; i++)
+	glCallList(currentIndex + i);
 		listMutex->unlock();
 	}
 
@@ -118,8 +125,10 @@ void MWorldRender::setChunks(QMap<IAChunkPos, IChunk *> *ch) {
 	//checkPos();
 }
 
+
+
 void MWorldRender::checkPos() {
-	if ((this->eCX != en->getCX()) || (this->eCZ != en->getCZ())) {
+	if (this->eCX != en->getCX() || this->eCZ != en->getCZ()) {
 		this->eCX = en->getCX();
 		this->eCZ = en->getCZ();
 
@@ -128,13 +137,11 @@ void MWorldRender::checkPos() {
 		for ( IAChunkPos p : chunks->keys()){
 			tx = eCX - p.x();
 			tz = eCZ - p.z();
-
-			if (modulePos(tx, tz) < 8)
+			if (isInRange(tx, tz)){
+//			if(p.x() == 0 && p.z() == 0){
 				this->renderLists->append(chunks->value(p));
+		 }
 		}
 	}
 }
 
-double MWorldRender::modulePos(int x, int z) {
-	return sqrt(x*x + z*z);
-}

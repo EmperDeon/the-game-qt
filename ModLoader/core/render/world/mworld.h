@@ -4,9 +4,12 @@
 #include <ModLoader/core/render/mhelper.h>
 #include <ModLoader/core/mcoremods.h>
 
+class MGlWidget;
+
 class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	// Level
 	QMutex* listMutex;
+	MGlWidget* widget;
 	ILevelManager* manager;
 	ILevel* level;
 	bool currentGened = false;
@@ -16,14 +19,15 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 
 	//Player
 	IEntity* en;
- qint32 eCX = -1, eCZ = 0;
+	int renderDistance;
+	qint32 eCX = -1, eCZ = 0;
 	QMap<IAChunkPos, int>* chunks;
 	QList<int>* renderLists;
 
 	void drawAxis();
  void selectBlock();
  void checkPos();
- double modulePos(int x, int z);
+	inline bool isInRange(qint32 x, qint32 z){return x < renderDistance && x > -renderDistance && z < renderDistance && z > -renderDistance;}
 public:
 	MWorldRender();
 	virtual void init();
