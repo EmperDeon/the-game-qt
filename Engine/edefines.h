@@ -5,7 +5,7 @@ class ILogger;
 class IVars;
 class IDirs;
 
-enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7};
+enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7, QT = 8};
 
 extern ILogger* GV_LOGGER;
 extern IVars*   GV_VARS;

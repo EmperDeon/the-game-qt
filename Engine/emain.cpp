@@ -1,7 +1,9 @@
 #include <Engine/emain.h>
 
+
 // Main
 int main(int argc, char *argv[]){
+ qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
 	QCoreApplication::setOrganizationName("IlzSoft");
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
@@ -68,3 +70,11 @@ void EMain::setSplashLabel(QString s) {
 	qApp->processEvents();
 }
 // EMain
+void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
+ switch(type){
+	 case QtDebugMsg:    GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtWarningMsg:  GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtCriticalMsg: GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtFatalMsg:    GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+ }
+}

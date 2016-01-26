@@ -66,4 +66,6 @@ public slots:
 	void procF(int e);
 };
 
+void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg);
+
 #endif //GLOBALQT_LMAIN

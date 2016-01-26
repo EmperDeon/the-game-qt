@@ -27,7 +27,11 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	void drawAxis();
  void selectBlock();
  void checkPos();
-	inline bool isInRange(qint32 x, qint32 z){return x < renderDistance && x > -renderDistance && z < renderDistance && z > -renderDistance;}
+	inline bool isInRange(qint32 x, qint32 z){return
+//			x < renderDistance && x > -renderDistance  &&
+//			z < renderDistance && z > -renderDistance ;
+		sqrt(x*x + z*z) < renderDistance;
+	}
 public:
 	MWorldRender();
 	virtual void init();

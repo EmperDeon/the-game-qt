@@ -33,6 +33,7 @@ class LLogWidget : public QWidget{
 	QList<LLogE>* list;
 	QTextEdit* w_edit;
 	QLabel* w_c;
+ QCheckBox* c_qt;
 
 public slots:
 	void switchE() {switchL(ILogLevel::ERR);}
@@ -46,7 +47,7 @@ public slots:
 	void refresh();
 public:
 	LLogWidget();
-	void addL(ILogLevel lv, QString cl, QString m){addL(LLogE(lv, QDateTime::currentDateTime(), cl, m ));}
+	void log(ILogLevel lv, QString cl, QString m){addL(LLogE(lv, QDateTime::currentDateTime(), cl, m ));}
 	void addL(LLogE e);
 	void switchL(ILogLevel lv);
 };

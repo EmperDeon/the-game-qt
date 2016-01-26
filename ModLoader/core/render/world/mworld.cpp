@@ -1,7 +1,7 @@
 #include <ModLoader/core/render/world/mworld.h>
 
 MWorldRender::MWorldRender(){
- this->manager = mVarG(ILevelManager*, "mLevel");
+	this->manager = mVarG(ILevelManager*, "mLevel");
 
 	this->listMutex = new QMutex;
 	this->chunks = new QMap<IAChunkPos, int>;
@@ -10,9 +10,7 @@ MWorldRender::MWorldRender(){
 
 void MWorldRender::init() {
 	this->widget = mVarG(MGlWidget*, "mRender");
-	renderDistance = 4;
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
+	renderDistance = 12;
 
 	MLevelInfo* i= new MLevelInfo;
 	i->setName("TestLevel1");
@@ -20,35 +18,33 @@ void MWorldRender::init() {
 	this->manager->createLevel(i);
 	this->level = manager->getCurrentLevel();
 	MV_CORE_MODS->queue->waitForDone();
+
+	qCritical() << QThread::currentThread();
 }
 
 void MWorldRender::render() {
-	drawAxis();
- checkPos();
-	if(currentActive > 0){
-		listMutex->lock();
-//		for ( int i : *renderLists) {
-//			glCallList(currentIndex + i);
-//		}
-  for(IAChunkPos id : chunks->keys())
-	  this->widget->renderText(id.x() * 32 + 16, id.y() * 32 + 16, id.z() * 32 + 16, "Test");
+//	drawAxis();
+	checkPos();
 
-		for(int i = 0; i < currentActive ; i++)
-	glCallList(currentIndex + i);
-		listMutex->unlock();
+	listMutex->lock();
+	for ( int i : *renderLists) {
+		glCallList(i);
 	}
+//		for(int i = 0; i < currentActive ; i++)
+//		 glCallList(currentIndex + i);
+	listMutex->unlock();
 
-// selectBlock();
+	selectBlock();
 	// Box of Epileptic
 //	this->drawRCube(IVec3(0, 0, 0), 0.15f);
 //	this->drawRCube(IVec3(0, 0, 0), 1.0f);
 }
 
 void MWorldRender::selectBlock() {
- IVec3i c(en->pos()),t;
+	IVec3i c(en->pos()),t;
 	float sc = 1.0f;
- float x = 0.0f;
- float pt=en->pitch(), yw=en->yaw();
+	float x = 0.0f;
+	float pt=en->pitch(), yw=en->yaw();
 
 	IVec3 i(
 		c.x + c.x * cosf(pt) * cosf(yw),
@@ -57,19 +53,19 @@ void MWorldRender::selectBlock() {
 	);
 
 	glBegin(GL_LINE_STRIP);
- glColor3f(0, 0, 1.0f);
+	glColor3f(0, 0, 1.0f);
 
 	while(x < 50.0f){
 		x += sc;
-	 t.x = c.x - int(i.x * x);
+		t.x = c.x - int(i.x * x);
 		t.y = c.y - int(i.y * x);
-	 t.z = c.z - int(i.z * x);
+		t.z = c.z - int(i.z * x);
 		glVertex3f(t.x, t.y, t.z);
 		if(c != t){
 			c = t;
 			if(level->isBlock(c)) break;
 		}
- }
+	}
 	glEnd();
 	if(c != IVec3i(en->pos())) drawBorder(c);
 }
@@ -94,19 +90,18 @@ void MWorldRender::drawAxis(){
 }
 
 void MWorldRender::close() {
- //this->level->save();
+	//this->level->save();
 }
 
 void MWorldRender::reAllocate(int i) {
 	if(currentGened){
 		glDeleteLists(currentIndex, currentGenCount);
 	}
- this->currentIndex = glGenLists(i + 5);
+	this->currentIndex = glGenLists(i + 5);
 	this->currentGenCount = i + 5;
 	this->currentActive = 0;
- mLogI(QString("reAllocate: %1").arg(i));
 
- this->level->reAllocate(this);
+	this->level->reAllocate(this);
 }
 
 GLuint MWorldRender::getFreeList() {
@@ -121,8 +116,6 @@ void MWorldRender::setChunks(QMap<IAChunkPos, IChunk *> *ch) {
 	this->chunks->clear();
 	for(IChunk* p : ch->values())
 		this->chunks->insert(p->getId(), p->getGlList());
-
-	//checkPos();
 }
 
 
@@ -138,9 +131,8 @@ void MWorldRender::checkPos() {
 			tx = eCX - p.x();
 			tz = eCZ - p.z();
 			if (isInRange(tx, tz)){
-//			if(p.x() == 0 && p.z() == 0){
 				this->renderLists->append(chunks->value(p));
-		 }
+			}
 		}
 	}
 }

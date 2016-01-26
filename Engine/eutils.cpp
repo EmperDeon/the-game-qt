@@ -10,6 +10,7 @@ QString getLevelName(ILogLevel lv){
 		case ILogLevel::FINE : return "[F]";
 		case ILogLevel::FFINE: return "[FF]";
 		case ILogLevel::ALL  : return "[A]";
+		case ILogLevel::QT   : return "[QT]";
 	}
 }
 

@@ -2,6 +2,7 @@
 
 // Main
 int main(int argc, char *argv[]){
+	qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
 	
 	LV_LOGGER = new LLogWidget;
@@ -193,3 +194,12 @@ void LMainWindow::closeEvent(QCloseEvent *event){
 }
 //  Other
 // LMainWindow
+
+void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
+	switch(type){
+		case QtDebugMsg:break;
+		case QtWarningMsg:
+		case QtCriticalMsg:
+		case QtFatalMsg:	LV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	}
+}

@@ -23,6 +23,6 @@ void MPlayer::updatePos() {
  qint32 ctX = x / CHUNK_SIZE;
 	qint32 ctZ = z / CHUNK_SIZE;
 
-	this->cX = x < 0 ? ctX : ctX - 1;
-	this->cZ = z < 0 ? ctZ : ctZ - 1;
+	cX = x < 0 ? ctX - 1 : ctX;
+	cZ = z < 0 ? ctZ - 1 : ctZ;
 }

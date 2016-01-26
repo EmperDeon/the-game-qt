@@ -9,7 +9,8 @@ QString getLevelName(ILogLevel lv){
 	case ILogLevel::DEBUG: return "[D]";
 	case ILogLevel::FINE : return "[F]";
 	case ILogLevel::FFINE: return "[FF]";
-	case ILogLevel::ALL  : return "[A]";
+	case ILogLevel::ALL  : return "[A]" ;
+	case ILogLevel::QT   : return "[QT]";
 	}
 }
 
@@ -26,6 +27,7 @@ LLogE::LLogE(QString s){
 	}else if (level == "[F]"){ lv = ILogLevel::FINE ;
 	}else if (level == "[FF]"){lv = ILogLevel::FFINE ;
 	}else if (level == "[A]"){ lv = ILogLevel::ALL ;
+	}else if (level == "[QT]"){lv = ILogLevel::QT;
 	}else{
 
 	}
@@ -35,11 +37,15 @@ LLogE::LLogE(QString s){
 }
 
 QString LLogE::parseQtFunc(QString s) {
+	if(s.indexOf("Qt") != -1){
+		return s;
+	}
 	QString	r = s;
 	r = r.replace(" void", "");
 	r = r.replace("void", "");
 	r = r.replace("  ", " ");
-	r = QStringRef(&r, r.indexOf(' ') + 1, r.length() - r.indexOf(' ')).toString().insert(1, '-');
+	r = QStringRef(&r, r.indexOf(' ') + 1, r.length() - r.indexOf(' ')).toString();
+	r = r.insert(1, '-');
 	if(NO_DEBUG)	r = QStringRef(&r, 0, r.indexOf(':')).toString();
 	return r;
 }
@@ -48,13 +54,14 @@ QString LLogE::toString(){
 	QString r = "<div ";
 
 	switch(lv){
-		case ILogLevel::ERR  : r += "style=\"color:red"; break;
+		case ILogLevel::ERR  : r += "style=\"color:red";    break;
 		case ILogLevel::WARN : r += "style=\"color:#ff9c00"; break;
-		case ILogLevel::INFO : r += "style=\"color:blue"; break;
-		case ILogLevel::DEBUG: r += "style=\"color:black"; break;
-		case ILogLevel::FINE : r += "style=\"color:gray"; break;
-		case ILogLevel::FFINE: r += "style=\"color:gray"; break;
-		case ILogLevel::ALL  : r += "style=\"color:gray"; break;
+		case ILogLevel::INFO : r += "style=\"color:blue";   break;
+		case ILogLevel::DEBUG: r += "style=\"color:black";  break;
+		case ILogLevel::FINE : r += "style=\"color:gray";   break;
+		case ILogLevel::FFINE: r += "style=\"color:gray";   break;
+		case ILogLevel::ALL  : r += "style=\"color:gray";   break;
+		case ILogLevel::QT   : r += "style=\"color:#5CAA15";break;
 	}
 
 	r.append("\">[");
@@ -76,6 +83,7 @@ LLogWidget::LLogWidget() :QWidget(){
 	QHBoxLayout* hlay = new QHBoxLayout();
 
 	w_edit = new QTextEdit();
+ c_qt = new QCheckBox("Qt");
 
 	QLabel* w_l = new QLabel(tr("Show log level:"));
 	QPushButton* be = new QPushButton(tr("Errors"));
@@ -88,6 +96,7 @@ LLogWidget::LLogWidget() :QWidget(){
 	QPushButton* br = new QPushButton(tr("Refresh"));
 	QLabel* w_l1 = new QLabel(tr("Current collect value:"));
 	w_c = new QLabel("-- ms");
+ c_qt->setChecked(true);
 
 	connect(be, SIGNAL(clicked()), this, SLOT(switchE()));
 	connect(bw, SIGNAL(clicked()), this, SLOT(switchW()));
@@ -106,6 +115,7 @@ LLogWidget::LLogWidget() :QWidget(){
 	hlay->addWidget(bf);
 	hlay->addWidget(bff);
 	hlay->addWidget(ba);
+	hlay->addWidget(c_qt);
 	hlay->addSpacing(20);
 	hlay->addWidget(w_l1);
 	hlay->addWidget(w_c);
@@ -121,7 +131,7 @@ LLogWidget::LLogWidget() :QWidget(){
 }
 
 void LLogWidget::addL(LLogE e){
-	if(e.lv <= curr){
+	if(curr >= e.lv || (c_qt->isChecked() && e.lv == ILogLevel::QT)){
 		last += e.toString();
 		w_edit->setHtml(last);
 	}
@@ -140,7 +150,7 @@ void LLogWidget::refresh(){
 	QTime st;
 	st.start();
 		for(LLogE e : *list) {
-			if(curr >= e.lv){
+			if(curr >= e.lv || (c_qt->isChecked() && e.lv == ILogLevel::QT)){
 				last += e.toString();
 			}
 		}

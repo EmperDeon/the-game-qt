@@ -36,5 +36,6 @@ public:
 	        void destroy();
 };
  
+void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg);
 
 #endif //GLOBALQT_EMAIN
