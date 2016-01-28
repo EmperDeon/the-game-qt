@@ -40,6 +40,7 @@ class MRHelper{
 	static void drawCubeS(IVec3 vec3, byte s, IVec3 c);
 	static void drawTCubeS(IVec3 vec3, byte s);
 
+	static void glRColor();
 };
 
 #endif //GLOBALQT_MHELPER_H

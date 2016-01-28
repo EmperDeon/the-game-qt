@@ -99,7 +99,7 @@ void MChunk::onReAlloc() {
 				if(f) MV_MODS->text->mBtex->bindTexture(chunk[x][y][z]->getId()), f = false;
 				drawCube(x, y, z);
 			}
-
+ glBindTexture(0,0);
 	glEndList();
 }
 

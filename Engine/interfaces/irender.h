@@ -9,9 +9,9 @@ class IChunk;
 class IRObject{
 public:
 	//Render
-	virtual void setGlList(GLuint i) = 0;
-	virtual int  getGlList()         = 0;
-	virtual void onReAlloc()         = 0;
+	virtual void   setGlList(GLuint i) = 0;
+	virtual GLuint getGlList()         = 0;
+	virtual void   onReAlloc()         = 0;
 };
 // RenderObjects
 

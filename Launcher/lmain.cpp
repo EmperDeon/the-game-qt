@@ -4,7 +4,7 @@
 int main(int argc, char *argv[]){
 	qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
-	
+
 	LV_LOGGER = new LLogWidget;
 	LV_LOGGER->showMaximized();
 
@@ -23,6 +23,10 @@ LMainWindow::LMainWindow(){
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");
 	site = "";
+
+	QIcon icon(QPixmap("icon.png"));
+
+	qApp->setWindowIcon(icon);
 
 	initNews();
 	initLog();

@@ -5,6 +5,7 @@
 int main(int argc, char *argv[]){
  qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
+	a.setWindowIcon(QIcon(QPixmap("icon_e.png")));
 	QCoreApplication::setOrganizationName("IlzSoft");
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");

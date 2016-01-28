@@ -7,6 +7,8 @@
 class MGlWidget;
 
 class MWorldRender : public IWorldRender, public MRHelper{// 3D
+	QList<IVec3>* randomColors;
+
 	// Level
 	QMutex* listMutex;
 	MGlWidget* widget;
@@ -21,8 +23,9 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	IEntity* en;
 	int renderDistance;
 	qint32 eCX = -1, eCZ = 0;
-	QMap<IAChunkPos, int>* chunks;
-	QList<int>* renderLists;
+	QMap<IAChunkPos, GLuint>* chunks;
+	QList<GLuint>* renderLists;
+
 
 	void drawAxis();
  void selectBlock();

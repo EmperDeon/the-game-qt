@@ -59,8 +59,8 @@ void MPerfomanceWidget::updateFps() {
 		}
 		if(avg > 0) avg = avg/(size);
 
-		this->setWindowTitle(QString("Average fps: %1 ms").arg(avg,4, 'f', 2));
-  render->setWindowTitle(QString("Average fps: %1 ms").arg(avg,4, 'f', 2));
+		this->setWindowTitle(QString("Average fps: %1 ms; Current: %2 ms").arg(avg,4, 'f', 2).arg(k,4,'f',2));
+  render->setWindowTitle(QString("Average fps: %1 ms; Current: %2 ms").arg(avg,4, 'f', 2).arg(k,4,'f',2));
 		sec = QTime::currentTime().second();
 	}
 }

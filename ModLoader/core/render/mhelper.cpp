@@ -193,7 +193,7 @@ void MRHelper::drawRCube(IVec3 p, float r) {
 
 void MRHelper::drawBorder(float x, float y, float z) {
 #   define V(a,b,c) glVertex3d( x a 0.505f, y b 0.505f, z c 0.505f );
-	glColor3f(0.0f, 0.0f, 0.0f);
+//	glColor3f(0.0f, 0.0f, 0.0f);
 	glLineWidth(3.0f);
 
 	glBegin( GL_LINES );
@@ -235,4 +235,8 @@ void MRHelper::drawTCubeS(IVec3 p, byte s) {
 	if(isBackSide(s)   ) drawTRectBc(p);
 
 //	drawBorder(p);
+}
+
+void MRHelper::glRColor() {
+ glColor3f(r(), r(), r());
 }

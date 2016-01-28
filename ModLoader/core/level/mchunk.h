@@ -25,9 +25,9 @@ public:
 	virtual void         setBlock(IBlockPos pos, IWorldBlock *b) override;
 	virtual void         write(QDataStream &a, QJsonObject& o)   override;
 
-	virtual void setGlList(GLuint i) override {this->rList = i;}
-	virtual int  getGlList()         override {return this->rList;}
-	virtual void onReAlloc()         override;
+	virtual void   setGlList(GLuint i) override {this->rList = i;}
+	virtual GLuint getGlList()         override {return this->rList;}
+	virtual void   onReAlloc()         override;
 
 
 	IVec3 getBlockPos(int x, int y, int z){
@@ -46,7 +46,7 @@ public:
 
 	virtual QColor getBlockColor(IBlockPos pos) override;
 	virtual void   setGlList(GLuint i)          override {this->list = i;}
-	virtual int    getGlList()                  override {return this->list;}
+	virtual GLuint getGlList()                  override {return this->list;}
 	virtual void   onReAlloc()                  override;
 };
 

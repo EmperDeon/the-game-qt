@@ -48,7 +48,6 @@ void MCoreMods::preInit() {
 	upd("Level constructed");
 
 	this->render = new MGlWidget();
-	this->render->moveToThread(this->t_ren);
 	mVarS(render, "mRender");
 	upd("Render constructed");
 

@@ -356,7 +356,7 @@ struct IVec3i {
 	}
 
 	bool operator!=(const IVec3i v) const{
-		return x != v.x || y != v.y || z != v.z;
+		return (x != v.x) || (y != v.y) || (z != v.z);
 	}
 
 	IBlockPos toBlockPos(){
