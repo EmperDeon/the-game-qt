@@ -18,8 +18,8 @@ public:
 
 	void move(float r);
 
-	virtual void  moveU()        override {y += 0.5f;}
-	virtual void  moveD()        override {y -= 0.5f;}
+	virtual void  moveU()        override {y += 0.1f;}
+	virtual void  moveD()        override {y -= 0.1f;}
 
 	virtual void  yaw(float y)   override;
 	virtual void  pitch(float p) override;

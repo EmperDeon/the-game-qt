@@ -180,7 +180,7 @@ LLocalServer::LLocalServer(){
 
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(readyRead()));
-	timer->start(50);
+	timer->start(10);
 }
 
 void LLocalServer::addLog(QString s){

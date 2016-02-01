@@ -2,8 +2,8 @@
 
 
 void MPlayer::move(float r) {
-	x = x + cosf(aP + r) * 0.2f;
-	z = z + sinf(aP + r) * 0.2f;
+	x = x + cosf(aP + r) * 0.05f;
+	z = z + sinf(aP + r) * 0.05f;
 	updatePos();
 }
 

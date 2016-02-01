@@ -11,6 +11,8 @@ class MCamera;
 class MPlayer;
 
 class MGlWidget : public QGLWidget{
+	Q_OBJECT
+
  MCamera* cam;
 	MPlayer* player;
 	IWorldRender* world;
@@ -20,15 +22,20 @@ class MGlWidget : public QGLWidget{
  qint64 fps = 0;
 	QElapsedTimer* fps_t;
 	QTimer* fps_stabilizer;
+ QTimer* inp_stabilizer;
+	// Keyboard
+	QList<int>* keyList;
 
 	// MouseControl
  QCursor* pointer;
-	float xSense = 0.004f, ySense = 0.004f;
+	float xSense = 0.0025f, ySense = 0.0025f;
 	bool wFocus = true;
 
 public:
 	MGlWidget();
 	qint64 getFps(){return fps;}
+private slots:
+	void updateInput();
 
 protected:
 	void initializeGL();
@@ -43,7 +50,7 @@ protected:
 
 	void switchFocus();
 
-	virtual void keyReleaseEvent(QKeyEvent *keyEvent);
+	virtual void keyReleaseEvent(QKeyEvent *ke);
 	void closeEvent(QCloseEvent *event);
 };
 
