@@ -3,8 +3,11 @@ Engine:
   QThread - eRenderThread
   QThreadPool - eThreadQueue
  ILogger - eLogger
+ IVars - eVars;
  EMain - eMain
  EMods - eMods
+ ESettings - eSettings
+ ESettCont - eSettCont
  EDeveloper - eDev
 
 

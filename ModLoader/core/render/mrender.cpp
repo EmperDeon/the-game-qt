@@ -5,11 +5,7 @@ MGlWidget::MGlWidget(){
 	player = new MPlayer(10, 5, 10);
 	cam = new MCamera();
 	cam->attachTo(player);
-
-	this->pointer = new QCursor(Qt::CrossCursor);
-	this->setCursor(*pointer);
-
-	this->keyList = new QList<int>;
+ input = new MRInput(this);
 
 	world = new MWorldRender();
 	gui = new MGuiRender();
@@ -23,11 +19,6 @@ MGlWidget::MGlWidget(){
 	fps_stabilizer->setInterval(1000/MFPS_COUNT);
 	connect(fps_stabilizer, SIGNAL(timeout()), this, SLOT(updateGL()));
 //	fps_stabilizer->start();
-
-	inp_stabilizer = new QTimer;
-	inp_stabilizer->setInterval(10);
-	connect(inp_stabilizer, SIGNAL(timeout()), this, SLOT(updateInput()));
-	inp_stabilizer->start();
 }
 
 void MGlWidget::initializeGL(){
@@ -70,57 +61,113 @@ void MGlWidget::paintGL(){
 	this->fps = fps_t->nsecsElapsed();
 }
 
-void MGlWidget::mousePressEvent(QMouseEvent* pe) {}
-void MGlWidget::mouseReleaseEvent(QMouseEvent* pe){}
-void MGlWidget::mouseMoveEvent(QMouseEvent* pe){}
-void MGlWidget::wheelEvent(QWheelEvent* pe){}
-
-void MGlWidget::keyPressEvent(QKeyEvent* pe) {
-	if(pe->key() == Qt::Key_Escape) {
-		switchFocus();
-	}else	{
-		keyList->append(pe->key());
-	}
-}
-void MGlWidget::keyReleaseEvent(QKeyEvent *ke) {
-	keyList->removeAll(ke->key());
-}
-void MGlWidget::switchFocus() {
- this->wFocus = !this->wFocus;
-}
-
 void MGlWidget::closeEvent(QCloseEvent *event) {
 	this->world->close();
 //	this->gui->close()
 }
 
+void MGlWidget::keyPressEvent  (QKeyEvent *pe) { input->keybr->keyPressEvent(pe);}
+void MGlWidget::keyReleaseEvent(QKeyEvent *pe) { input->keybr->keyReleaseEvent(pe);}
+void MGlWidget::mousePressEvent(QMouseEvent *pe) {input->mouse->mousePressEvent(pe);	}
+void MGlWidget::mouseMoveEvent(QMouseEvent *pe) {input->mouse->mouseMoveEvent(pe);	}
+void MGlWidget::mouseReleaseEvent(QMouseEvent *pe) {input->mouse->mouseReleaseEvent(pe);}
+void MGlWidget::wheelEvent(QWheelEvent *pe) {input->mouse->wheelEvent(pe); }
+// MGlWidget
 
-void MGlWidget::updateInput() {
-	// MouseControl
-	if(wFocus && (width() > 0) && (height() > 0)) {
-		QPoint pos = pointer->pos();
-		pos.setX(pos.x() - width() / 2  - this->pos().x());
-		pos.setY(pos.y() - height() / 2 - this->pos().y());
 
-		if (pos.x() != 0) player->pitch(xSense * pos.x()) ;
-		if (pos.y() != 0) player->yaw(-ySense * pos.y());
+// MRInput
+void MRInput::updateInput() {
+ mouse->update();
+	keybr->update();
+}
 
-		pointer->setPos(this->pos().x() + width() / 2, this->pos().y() +  height() / 2);
+MRInput::MRInput(MGlWidget *w): render(w){
+ this->keybr = new MRKeyboardInput(w);
+	this->mouse = new MRMouseInput(w);
+
+
+	inp_stabilizer = new QTimer;
+	inp_stabilizer->setInterval(10);
+	render->connect(inp_stabilizer, SIGNAL(timeout()), this, SLOT(updateInput()));
+	inp_stabilizer->start();
+}
+// MRInput
+
+
+// MRKeyboardInput
+void MRKeyboardInput::keyPressEvent(QKeyEvent* pe) {
+	int key = pe->key();
+	if(key == Qt::Key_Escape) {
+		render->input->mouse->switchFocus();
+	}else	if( key == Qt::Key_L){
+		render->world->lockPos();
+	}else {
+		keyList->append(key);
 	}
+}
 
+void MRKeyboardInput::keyReleaseEvent(QKeyEvent *ke) {
+	keyList->removeAll(ke->key());
+}
+
+MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w) {
+ keyList = new QList<int>;
+}
+
+void MRKeyboardInput::update() {
 	for(int k : *keyList)
 		switch (k)	{
-			case Qt::Key_W: player->moveF(); break;
-			case Qt::Key_S: player->moveB(); break;
+			case Qt::Key_W: render->player->moveF(); break;
+			case Qt::Key_S: render->player->moveB(); break;
 
-			case Qt::Key_D: player->moveR(); break;
-			case Qt::Key_A: player->moveL(); break;
+			case Qt::Key_D: render->player->moveR(); break;
+			case Qt::Key_A: render->player->moveL(); break;
 
-			case Qt::Key_Space: player->moveU(); break;
-			case Qt::Key_E: player->moveD(); break;
-
-			case Qt::Key_Escape:	switchFocus();	break;
+			case Qt::Key_Space: render->player->moveU(); break;
+			case Qt::Key_E: render->player->moveD(); break;
 
 			default:;
 		}
 }
+// MRKeyboardInput
+
+
+// MRMouseInput
+void MRMouseInput::mousePressEvent(QMouseEvent* pe)  {}
+void MRMouseInput::mouseReleaseEvent(QMouseEvent* pe){}
+void MRMouseInput::mouseMoveEvent(QMouseEvent* pe)   {}
+void MRMouseInput::wheelEvent(QWheelEvent* pe)       {}
+
+MRMouseInput::MRMouseInput(MGlWidget *w): render(w) {
+	this->normalp = new QCursor(Qt::ArrowCursor);
+	this->pointer = new QCursor(QPixmap(16,16));
+	w->setCursor(*pointer);
+}
+
+void MRMouseInput::switchFocus() {
+ this->wFocus = !this->wFocus;
+	if(wFocus){
+		render->setCursor(*pointer);
+	}else{
+		render->setCursor(*normalp);
+	}
+}
+
+void MRMouseInput::update() {
+	int	width  = render->width(),
+		   height = render->height(),
+		   posx   = render->pos().x(),
+		   posy   = render->pos().y();
+
+	if(wFocus && (width > 0) && (height > 0)) {
+		QPoint p = pointer->pos();
+		p.setX(p.x() - width / 2 - posx);
+		p.setY(p.y() - height / 2 - posy);
+
+		if (p.x() != 0) render->player->pitch(xSense * p.x()) ;
+		if (p.y() != 0) render->player->yaw(-ySense * p.y());
+
+		pointer->setPos(posx + width / 2, posy +  height / 2);
+	}
+}
+

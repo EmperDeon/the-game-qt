@@ -56,7 +56,7 @@ set(E_HEADERS
 		Engine/emods.h
 		Engine/eutils.h
 		Engine/ewidgets.h
-		Engine/edvars.h 
+		Engine/edvars.h
 		)
 
 set(L_SOURCE_FILES
@@ -91,13 +91,14 @@ set(M_SOURCE_FILES
 		ModLoader/qcustomplot.cpp
 
 		ModLoader/core/mcoremods.cpp
+
 		 ModLoader/core/level/mblock.cpp
 		 ModLoader/core/level/mchunk.cpp
 	 	ModLoader/core/level/mgenerator.cpp
 		 ModLoader/core/level/mregion.cpp
 		 ModLoader/core/level/mlevel.cpp
 		 
-		ModLoader/core/player/mplayer.cpp  
+	 	ModLoader/core/player/mplayer.cpp
 		 
 	 	ModLoader/core/render/mcamera.cpp
 		 ModLoader/core/render/mhelper.cpp
@@ -122,13 +123,14 @@ set(M_HEADERS
 		ModLoader/qcustomplot.h
 
 		ModLoader/core/mcoremods.h
+
 		 ModLoader/core/level/mblock.h
 	 	ModLoader/core/level/mchunk.h
 		 ModLoader/core/level/mgenerator.h
 		 ModLoader/core/level/mregion.h
 		 ModLoader/core/level/mlevel.h
 		 
-		ModLoader/core/player/mplayer.h  
+	 	ModLoader/core/player/mplayer.h
 
 		 ModLoader/core/render/mcamera.h
 	 	ModLoader/core/render/mhelper.h
@@ -144,7 +146,7 @@ set(M_HEADERS
 		ModLoader/mods/mtext.h
 		ModLoader/mods/mscript.h
 		ModLoader/mods/mplugin.h
-		)
+	)
 
 qt5_wrap_cpp(GENERATED_SOURCES ${E_HEADERS})
 qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})

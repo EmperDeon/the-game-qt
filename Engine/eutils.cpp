@@ -51,7 +51,7 @@ void ELogger::sendM(QString s) {
 	socket->flush();
 }
 
-ILogger* GV_LOGGER;
+ILogger*EV_LOGGER;
 // Logger
 
 
@@ -60,7 +60,7 @@ ESettings::ESettings(QString f):map(),file(f){}
 
 ESettings::~ESettings(){}
 
-QJsonObject&ESettings::operator[] (QString k){
+QJsonObject &ESettings::operator[] (QString k){
 	if (!map.contains(k)){
 		logW("This settings does not contain that category: "+k);
 		addNewCategory(k);
@@ -100,11 +100,12 @@ void ESettings::loadFrom(QString f){
 
 	//	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(loadFile.readAll()));
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
+	loadFile.close();
 	QJsonArray obj = loadDoc.array();
 	QJsonObject t;
 	for(QJsonValue e : obj){
 		t = e.toObject();
-		this->map[t["name"].toString()] = QJsonObject(t);
+		this->map.insert(t["name"].toString(), QJsonObject(t));
 	}
 }
 
@@ -124,8 +125,23 @@ void ESettings::saveTo(QString f){
 
 	QJsonDocument doc(obj);
 	//saveFile.write(doc.toBinaryData());
-	saveFile.write(qCompress(doc.toBinaryData(),5));
+	saveFile.write(qCompress(doc.toBinaryData(), 1));
+	saveFile.flush();
+	saveFile.close();
 }
+ISettings* EV_SETT;
+
+
+ESettCont::ESettCont(){map = new QMap<QString, ISettings*>;}
+
+ISettings *ESettCont::getSettings(QString k) {
+	if(!map->contains(k)){
+		map->insert(k, new ESettings(k));
+	}
+	return map->value(k);
+}
+
+ISettCont* EV_SETC;
 // Settings
 
 
@@ -167,7 +183,7 @@ void EVars::setOverwriteList(QStringList l) {
 	this->owlist = new QStringList(l);
 }
 
-IVars* GV_VARS;
+IVars* EV_VARS;
 // Vars
 
 
@@ -190,5 +206,7 @@ QString EDirs::getSDir(QString k) {	return dirs->value(k); }
 
 QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
 
-IDirs* GV_DIRS;
+IDirs*EV_DIRS;
 // Dirs
+
+

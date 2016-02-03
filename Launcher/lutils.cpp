@@ -1,4 +1,5 @@
 #include <Launcher/lutils.h>
+#include <cmath>
 
 // Logger
 QString getLevelName(ILogLevel lv){
@@ -134,6 +135,9 @@ void LLogWidget::addL(LLogE e){
 	if(curr >= e.lv || (c_qt->isChecked() && e.lv == ILogLevel::QT)){
 		last += e.toString();
 		w_edit->setHtml(last);
+		QTextCursor c = w_edit->textCursor();
+		c.movePosition(QTextCursor::End);
+		w_edit->setTextCursor(c);
 	}
 	list->append(e);
 	qDebug() << e.toString();
@@ -157,8 +161,9 @@ void LLogWidget::refresh(){
 	w_c->setText(QString::number(st.elapsed()) + " ms " + QString::number(list->size()) + " total");
 
 	w_edit->setHtml(last);
-	QScrollBar *sb = w_edit->verticalScrollBar();
-	sb->setValue(sb->maximum());
+	QTextCursor c = w_edit->textCursor();
+	c.movePosition(QTextCursor::End);
+	w_edit->setTextCursor(c);
 }
 
 LLogWidget* LV_LOGGER;

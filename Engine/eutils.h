@@ -31,7 +31,7 @@ public:
 
 
 // ESettings
-class ESettings{
+class ESettings : public ISettings{
 	QMap<QString, QJsonObject> map;
 	QString file;
 
@@ -39,15 +39,24 @@ public:
 	ESettings(QString f);
 	~ESettings();
 
-	QJsonObject& operator[] (QString k);
-	QJsonObject& get(QString n);
+	virtual QJsonObject& operator[] (QString) override;
+	virtual QJsonObject& get(QString)         override;
 
-	void addNewCategory(QString n);
+	virtual void addNewCategory(QString)      override;
 
-	void save();
-	void load();
-	void loadFrom(QString f);
-	void saveTo(QString f);
+	virtual void save()                       override;
+	virtual void load()                       override;
+	virtual void loadFrom(QString)            override;
+	virtual void saveTo(QString)              override;
+};
+
+class ESettCont : public ISettCont {
+	QMap<QString, ISettings*>* map;
+public:
+	ESettCont();
+
+	virtual ISettings* getSettings(QString) override;
+
 };
 // ESettings
 

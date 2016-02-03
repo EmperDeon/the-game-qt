@@ -5,6 +5,7 @@ class QString;
 class QStringList;
 class QFile;
 class QDir;
+class QJsonObject;
 
 class IMain{
 public:
@@ -46,5 +47,23 @@ public:
 	virtual QString getSFile(QString, QString) = 0;
 };
 
+class ISettings{
+public:
+	virtual QJsonObject& operator[] (QString) = 0;
+	virtual QJsonObject& get(QString)         = 0;
+
+	virtual void addNewCategory(QString)      = 0;
+
+	virtual void save()                       = 0;
+	virtual void load()                       = 0;
+	virtual void loadFrom(QString)            = 0;
+	virtual void saveTo(QString)              = 0;
+};
+
+class ISettCont {
+public:
+	virtual ISettings* getSettings(QString) = 0;
+
+};
 
 #endif //GLOBALQT_IMAIN_H

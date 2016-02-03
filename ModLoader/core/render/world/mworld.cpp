@@ -28,9 +28,11 @@ void MWorldRender::render() {
 	checkPos();
 
 	listMutex->lock();
+
 	for ( GLuint i : *renderLists) {
 		glCallList(i);
 	}
+
 //		for(int i = 0; i < currentActive ; i++)
 //		 glCallList(currentIndex + i);
 	listMutex->unlock();
@@ -38,18 +40,29 @@ void MWorldRender::render() {
 	// Box of Epileptic
 //	this->drawRCube(IVec3(0, 0, 0), 0.15f);
 //	this->drawRCube(IVec3(0, 0, 0), 1.0f);
-	selectBlock();
+	//selectBlock();
 }
 
 void MWorldRender::selectBlock() {
-	IVec3i c(en->pos());
+	IVec3i c;
 	IVec3 t;
+	float pt, yw;
+	if(lock){
+		c = ep;
+		yw = py;
+		pt = pp;
+	}else{
+		c = en->pos();
+		yw = en->yaw();
+		pt = en->pitch();
+	}
+
 	//IVec3i c(10,5,11);
 	float sc = 0.1f;
 	float x = 0.0f;
-	float pt=en->pitch(), yw=en->yaw();
  int ic = 0;
-
+ c.x += 1;
+	c.z += 1;
 	IVec3 i(
 		cosf(pt) * cosf(yw),
 		sinf(yw),
@@ -141,3 +154,9 @@ void MWorldRender::checkPos() {
 	}
 }
 
+void MWorldRender::lockPos() {
+	ep = en->pos();
+	py = en->yaw();
+	pp = en->pitch();
+ lock = !lock;
+}

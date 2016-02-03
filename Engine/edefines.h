@@ -4,24 +4,28 @@
 class ILogger;
 class IVars;
 class IDirs;
+class ISettings;
+class ISettCont;
 
 enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7, QT = 8};
 
-extern ILogger* GV_LOGGER;
-extern IVars*   GV_VARS;
-extern IDirs*   GV_DIRS;
+extern ILogger*   EV_LOGGER;
+extern IVars*     EV_VARS;
+extern IDirs*     EV_DIRS;
+extern ISettings* EV_SETT;
+extern ISettCont* EV_SETC;
 
-#define logE(ms)  GV_LOGGER->log(ILogLevel::ERR,   Q_FUNC_INFO, ms)
-#define logW(ms)  GV_LOGGER->log(ILogLevel::WARN,  Q_FUNC_INFO, ms)
-#define logI(ms)  GV_LOGGER->log(ILogLevel::INFO,  Q_FUNC_INFO, ms)
-#define logD(ms)  GV_LOGGER->log(GLogLevel::DEBUG, Q_FUNC_INFO, ms)
-#define logF(ms)  GV_LOGGER->log(GLogLevel::FINE,  Q_FUNC_INFO, ms)
-#define logFF(ms) GV_LOGGER->log(GLogLevel::FFINE, Q_FUNC_INFO, ms)
-#define logA(ms)  GV_LOGGER->log(GLogLevel::ALL,   Q_FUNC_INFO, ms)
+#define logE(ms)  EV_LOGGER->log(ILogLevel::ERR,   Q_FUNC_INFO, ms)
+#define logW(ms)  EV_LOGGER->log(ILogLevel::WARN,  Q_FUNC_INFO, ms)
+#define logI(ms)  EV_LOGGER->log(ILogLevel::INFO,  Q_FUNC_INFO, ms)
+#define logD(ms)  EV_LOGGER->log(ILogLevel::DEBUG, Q_FUNC_INFO, ms)
+#define logF(ms)  EV_LOGGER->log(ILogLevel::FINE,  Q_FUNC_INFO, ms)
+#define logFF(ms) EV_LOGGER->log(ILogLevel::FFINE, Q_FUNC_INFO, ms)
+#define logA(ms)  EV_LOGGER->log(ILogLevel::ALL,   Q_FUNC_INFO, ms)
 
 
-#define varG(cl, s) reinterpret_cast<cl>(GV_VARS->get(s))
-#define varS(cl, s) GV_VARS->set(cl, s)
+#define varG(cl, s) reinterpret_cast<cl>(EV_VARS->get(s))
+#define varS(cl, s) EV_VARS->set(cl, s)
 
 #include <Engine/edvars.h>
 #include <Engine/einterfaces.h>

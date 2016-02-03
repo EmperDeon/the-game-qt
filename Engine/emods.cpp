@@ -28,7 +28,7 @@ void EMods::initModLoaders() {
 		IModLoader* t = qobject_cast<IModLoader*>(plugin);
 		if (t){
 			modloader = t;
-			modloader->setVars(GV_VARS);
+			modloader->setVars(EV_VARS);
 			logI(modloader->getName() + " modloader loaded");
 		}
 	}

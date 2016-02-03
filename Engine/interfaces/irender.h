@@ -55,6 +55,8 @@ public:
 	virtual void  setChunks(QMap<IAChunkPos, IChunk*>* ch) = 0;
 	virtual void  reAllocate(int i)     = 0;
 	virtual GLuint getFreeList()        = 0;
+
+	virtual void lockPos() = 0;
 };
 // World
 

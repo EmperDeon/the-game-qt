@@ -5,11 +5,16 @@ class MMods;
 class MCoreMods;
 class ILogger;
 class IVars;
+class ISettings;
+class ISettCont;
 
-extern MMods* MV_MODS;
+extern MMods*     MV_MODS;
 extern MCoreMods* MV_CORE_MODS;
-extern ILogger* MV_LOGGER;
-extern IVars* MV_VARS;
+
+extern ILogger*   MV_LOGGER;
+extern IVars*     MV_VARS;
+extern ISettings* MV_SETT;
+extern ISettCont* MV_SETC;
 
 // Render defines
 #define MFPS_COUNT 60

@@ -25,7 +25,9 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 	qint32 eCX = -1, eCZ = 0;
 	QMap<IAChunkPos, GLuint>* chunks;
 	QList<GLuint>* renderLists;
-
+	bool lock = false;
+ IVec3 ep;
+	float py,pp;
 
 	void drawAxis();
  void selectBlock();
@@ -46,6 +48,8 @@ public:
 	virtual void setChunks(QMap<IAChunkPos, IChunk*>* ch);
 	virtual void reAllocate(int i);
 	virtual GLuint getFreeList();
+
+	virtual void lockPos();
 };
 
 

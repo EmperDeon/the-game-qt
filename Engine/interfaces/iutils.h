@@ -24,7 +24,7 @@ public:
 			d |= k << 5;
 			d |= s << 1;
 		}else{
-			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//EV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 
@@ -53,7 +53,7 @@ public:
 			d |= y << 6;
 			d |= z << 1;
 		}else{
-			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//EV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 
@@ -79,7 +79,7 @@ public:
 			d |= y << 6;
 			d |= z << 1;
 		}else{
-			//GV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
+			//EV_LOGGER->log(ILogLevel::ERR, "Imiks", "One of parameters is greater then 1024");
 		}
 	}
 

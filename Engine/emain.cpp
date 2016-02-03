@@ -10,8 +10,10 @@ int main(int argc, char *argv[]){
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");
 
-	GV_LOGGER = new ELogger;
-	GV_VARS = new EVars;
+	EV_LOGGER = new ELogger;
+	EV_VARS = new EVars;
+ EV_SETC = new ESettCont;
+	EV_SETT = EV_SETC->getSettings("settings.dat");
 
  EMain* gMain = new EMain();
 	gMain->init();
@@ -37,7 +39,10 @@ EMain::EMain() {
 	varS(queue, "eThreadQueue");
 	
  varS(this, "eMain");
-	varS(GV_LOGGER, "eLogger");
+	varS(EV_VARS, "eVars");
+	varS(EV_LOGGER, "eLogger");
+ varS(EV_SETT, "eSettings");
+	varS(EV_SETC, "eSettCont");
 
 	mods = new EMods();
 
@@ -73,9 +78,9 @@ void EMain::setSplashLabel(QString s) {
 // EMain
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
  switch(type){
-	 case QtDebugMsg:    GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtWarningMsg:  GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtCriticalMsg: GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtFatalMsg:    GV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtDebugMsg:    EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtWarningMsg:  EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtCriticalMsg: EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtFatalMsg:    EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
  }
 }
