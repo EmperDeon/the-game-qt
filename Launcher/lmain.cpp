@@ -24,7 +24,7 @@ LMainWindow::LMainWindow(){
 	QCoreApplication::setApplicationName("The game");
 	site = "";
 
-	QIcon icon(QPixmap("icon.png"));
+	QIcon icon(QPixmap("res/icon.png"));
 
 	qApp->setWindowIcon(icon);
 
@@ -201,9 +201,9 @@ void LMainWindow::closeEvent(QCloseEvent *event){
 
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
 	switch(type){
-		case QtDebugMsg:break;
-		case QtWarningMsg:
-		case QtCriticalMsg:
-		case QtFatalMsg:	LV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+		case QtDebugMsg:    LV_LOGGER->log(ILogLevel::QT, "L-QtD", msg); break;
+		case QtWarningMsg:  LV_LOGGER->log(ILogLevel::QT, "L-QtW", msg); break;
+		case QtCriticalMsg: LV_LOGGER->log(ILogLevel::QT, "L-QtC", msg); break;
+		case QtFatalMsg:	   LV_LOGGER->log(ILogLevel::QT, "L-QtF", msg); break;
 	}
 }

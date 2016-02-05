@@ -42,12 +42,13 @@ QString LLogE::parseQtFunc(QString s) {
 		return s;
 	}
 	QString	r = s;
-	r = r.replace(" void", "");
-	r = r.replace("void", "");
-	r = r.replace("  ", " ");
-	r = QStringRef(&r, r.indexOf(' ') + 1, r.length() - r.indexOf(' ')).toString();
+	r = r.replace("virtual ", "");
+	int f = r.indexOf(' ');
+
+	if(f != -1) r = QStringRef(&r, f + 1, r.length() - f).toString();
 	r = r.insert(1, '-');
 	if(NO_DEBUG)	r = QStringRef(&r, 0, r.indexOf(':')).toString();
+
 	return r;
 }
 
@@ -140,7 +141,7 @@ void LLogWidget::addL(LLogE e){
 		w_edit->setTextCursor(c);
 	}
 	list->append(e);
-	qDebug() << e.toString();
+//	qDebug() << e.toString();
 }
 
 void LLogWidget::switchL(ILogLevel lv){

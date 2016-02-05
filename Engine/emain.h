@@ -17,6 +17,8 @@ class EMWidget;
 
 
 class EMain : public IMain{
+	Q_OBJECT
+
 	QSplashScreen* splash;
 	// Threads
 	QThreadPool* queue;
@@ -34,6 +36,8 @@ public:
 	        void init();
 	        void show();
 	        void destroy();
+public slots:
+	void lastWindowClosed(){destroy();}
 };
  
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg);

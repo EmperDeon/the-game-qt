@@ -1,13 +1,9 @@
 #ifndef GLOBALQT_IMAIN_H
 #define GLOBALQT_IMAIN_H
 
-class QString;
-class QStringList;
-class QFile;
-class QDir;
-class QJsonObject;
+#include <QtCore>
 
-class IMain{
+class IMain : public QObject{
 public:
 	virtual void setSplashLabel(QString) = 0;
 

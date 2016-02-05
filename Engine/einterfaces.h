@@ -8,7 +8,6 @@
 #include <Engine/interfaces/iinventory.h>
 #include <Engine/interfaces/iplayer.h>
 #include <Engine/interfaces/irender.h>
-#include <Engine/interfaces/iinput.h>
 #include <Engine/interfaces/ilevel.h>
 #include <Engine/interfaces/imods.h>
 #include <Engine/interfaces/itext.h>

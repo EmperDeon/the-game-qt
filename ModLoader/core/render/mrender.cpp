@@ -5,7 +5,7 @@ MGlWidget::MGlWidget(){
 	player = new MPlayer(10, 5, 10);
 	cam = new MCamera();
 	cam->attachTo(player);
- input = new MRInput(this);
+	input = new MRInput(this);
 
 	world = new MWorldRender();
 	gui = new MGuiRender();
@@ -33,6 +33,8 @@ void MGlWidget::initializeGL(){
 	world->setPlayer(player);
 	world->init();
 //	gui->init();
+	paused = input->keybr->keys.isEmpty();
+
 	fps_stabilizer->start();
 }
 
@@ -41,13 +43,13 @@ void MGlWidget::resizeGL(int nWidth, int nHeight){
 	glLoadIdentity();            // присваивает проекционной матрице единичную матрицу
 
 	//GLfloat ratio=(GLfloat)nHeight/(GLfloat)nWidth; // отношение высоты окна виджета к его ширине
- GLfloat ratio = 2.0f;
+	GLfloat ratio = 2.0f;
 	gluPerspective(85.0f, ratio, 0.01f, 1000.0f);
 	glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
 }
 
 void MGlWidget::paintGL(){
- fps_t->start();
+	fps_t->start();
 
 	// glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -55,7 +57,7 @@ void MGlWidget::paintGL(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
- cam->apply();
+	cam->apply();
 	world->render();
 	//gui->render();
 	this->fps = fps_t->nsecsElapsed();
@@ -77,12 +79,16 @@ void MGlWidget::wheelEvent(QWheelEvent *pe) {input->mouse->wheelEvent(pe); }
 
 // MRInput
 void MRInput::updateInput() {
- mouse->update();
+	mouse->update();
 	keybr->update();
 }
 
+void MRInput::keyInitEnd() {
+	render->paused = false;
+}
+
 MRInput::MRInput(MGlWidget *w): render(w){
- this->keybr = new MRKeyboardInput(w);
+	this->keybr = new MRKeyboardInput(w);
 	this->mouse = new MRMouseInput(w);
 
 
@@ -110,24 +116,31 @@ void MRKeyboardInput::keyReleaseEvent(QKeyEvent *ke) {
 	keyList->removeAll(ke->key());
 }
 
-MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w) {
- keyList = new QList<int>;
+MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w), keys(MV_SETT->get("Keys")) {
+	keyList = new QList<int>;
+	if(keys.isEmpty()){
+		(new MRKeyboardInit(this))->show();
+	}
 }
 
 void MRKeyboardInput::update() {
-	for(int k : *keyList)
-		switch (k)	{
-			case Qt::Key_W: render->player->moveF(); break;
-			case Qt::Key_S: render->player->moveB(); break;
+	if(render->paused){
 
-			case Qt::Key_D: render->player->moveR(); break;
-			case Qt::Key_A: render->player->moveL(); break;
+	}else{
+		for(int k : *keyList)
+			switch (k)	{
+				case Qt::Key_W: render->player->moveF(); break;
+				case Qt::Key_S: render->player->moveB(); break;
 
-			case Qt::Key_Space: render->player->moveU(); break;
-			case Qt::Key_E: render->player->moveD(); break;
+				case Qt::Key_D: render->player->moveR(); break;
+				case Qt::Key_A: render->player->moveL(); break;
 
-			default:;
-		}
+				case Qt::Key_Space: render->player->moveU(); break;
+				case Qt::Key_E: render->player->moveD(); break;
+
+				default:;
+			}
+	}
 }
 // MRKeyboardInput
 
@@ -140,26 +153,26 @@ void MRMouseInput::wheelEvent(QWheelEvent* pe)       {}
 
 MRMouseInput::MRMouseInput(MGlWidget *w): render(w) {
 	this->normalp = new QCursor(Qt::ArrowCursor);
-	this->pointer = new QCursor(QPixmap(16,16));
+	this->pointer = new QCursor(QPixmap("res/ncursor.png"));
 	w->setCursor(*pointer);
 }
 
 void MRMouseInput::switchFocus() {
- this->wFocus = !this->wFocus;
-	if(wFocus){
-		render->setCursor(*pointer);
-	}else{
+	render->paused = !render->paused;
+	if(render->paused){
 		render->setCursor(*normalp);
+	}else{
+		render->setCursor(*pointer);
 	}
 }
 
 void MRMouseInput::update() {
 	int	width  = render->width(),
-		   height = render->height(),
-		   posx   = render->pos().x(),
-		   posy   = render->pos().y();
+		height = render->height(),
+		posx   = render->pos().x(),
+		posy   = render->pos().y();
 
-	if(wFocus && (width > 0) && (height > 0)) {
+	if(!render->paused && (width > 0) && (height > 0)) {
 		QPoint p = pointer->pos();
 		p.setX(p.x() - width / 2 - posx);
 		p.setY(p.y() - height / 2 - posy);
@@ -170,4 +183,37 @@ void MRMouseInput::update() {
 		pointer->setPos(posx + width / 2, posy +  height / 2);
 	}
 }
+
+MRKeyboardInit::MRKeyboardInit(MRKeyboardInput* i): in(i){
+	QHBoxLayout *l = new QHBoxLayout;
+	lab = new QLabel;
+	l->addWidget(lab, 0, Qt::AlignCenter);
+	this->setLayout(l);
+
+	m["forw"]   = "Move Forward";
+	m["back"]   = "Move Backward";
+	m["left"]   = "Move Left";
+	m["righ"]   = "Move Right";
+	m["jump"]   = "Jump";
+	m["sneak"]  = "Sneak";
+	m["sprint"] = "Sprint";
+
+	next();
+}
+
+void MRKeyboardInit::keyPressEvent(QKeyEvent *pe) {
+	in->keys.insert(m.keys()[current], pe->key());
+	next();
+}
+
+void MRKeyboardInit::next() {
+	current++;
+	if(current < m.size()){
+		auto key = m.keys().value(current);
+		lab->setText(QString("Press key for action \"%1\"").arg(key));
+	}else{
+		close();
+	}
+}
+
 

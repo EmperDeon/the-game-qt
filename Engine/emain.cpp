@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]){
  qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
-	a.setWindowIcon(QIcon(QPixmap("icon_e.png")));
+	a.setWindowIcon(QIcon(QPixmap("res/icon_e.png")));
 	QCoreApplication::setOrganizationName("IlzSoft");
 	QCoreApplication::setOrganizationDomain("github.com/ilz2010");
 	QCoreApplication::setApplicationName("The game");
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
  EMain* gMain = new EMain();
 	gMain->init();
  gMain->show();
-
+	QObject::connect(&a, SIGNAL(lastWindowClosed()), gMain, SLOT(lastWindowClosed()));
 	return a.exec();
 }
 // Main
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
 EMain::EMain() {
  srand(unsigned(int(time(NULL))));
 
-	splash = new QSplashScreen(QPixmap("splash.png").scaledToHeight(350));
+	splash = new QSplashScreen(QPixmap("res/splash.png").scaledToHeight(350));
 	splash->show();
 
  this->ren_t = new QThread;
@@ -63,12 +63,11 @@ void EMain::init() {
 }
 
 void EMain::show() {
-	//wdev->show();
 	wgt->showMaximized();
 }
 
 void EMain::destroy() {
-
+ EV_SETT->save();
 }
 
 void EMain::setSplashLabel(QString s) {
@@ -78,9 +77,9 @@ void EMain::setSplashLabel(QString s) {
 // EMain
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
  switch(type){
-	 case QtDebugMsg:    EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtWarningMsg:  EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtCriticalMsg: EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
-	 case QtFatalMsg:    EV_LOGGER->log(ILogLevel::QT, "Qt", msg); break;
+	 case QtDebugMsg:    EV_LOGGER->log(ILogLevel::QT, "E-QtD", msg); break;
+	 case QtWarningMsg:  EV_LOGGER->log(ILogLevel::QT, "E-QtW", msg); break;
+	 case QtCriticalMsg: EV_LOGGER->log(ILogLevel::QT, "E-QtC", msg); break;
+	 case QtFatalMsg:    EV_LOGGER->log(ILogLevel::QT, "E-QtF", msg); break;
  }
 }

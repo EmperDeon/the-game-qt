@@ -12,6 +12,7 @@ class MPlayer;
 class MRInput;
 class MRKeyboardInput;
 class MRMouseInput;
+class MRKeyboardInit;
 
 class MGlWidget : public QGLWidget{
 	Q_OBJECT
@@ -27,6 +28,7 @@ class MGlWidget : public QGLWidget{
 	QTimer* fps_stabilizer;
 
 	MRInput* input;
+	bool paused = false;
 
 public:
 	MGlWidget();
@@ -48,6 +50,7 @@ protected:
 	friend class MRInput;
 	friend class MRKeyboardInput;
 	friend class MRMouseInput;
+	friend class MRKeyboardInit;
 };
 
 
@@ -60,6 +63,9 @@ class MRInput : public QObject{
 protected slots:
  void updateInput();
 
+public slots:
+	void keyInitEnd();
+
 public:
 	MRKeyboardInput* keybr;
 	MRMouseInput* mouse;
@@ -67,40 +73,54 @@ public:
 	MRInput(MGlWidget* w);
 };
 
-class MRKeyboardInput : public QObject{
-	Q_OBJECT
+class MRKeyboardInput{
 	MGlWidget* render;
 
 	QList<int>* keyList;
-
-public slots:
-	void keyPressEvent(QKeyEvent* pe);
-	void keyReleaseEvent(QKeyEvent *ke);
+	QJsonObject& keys;
 
 public:
 	MRKeyboardInput(MGlWidget* w);
  void update();
+
+	void keyPressEvent(QKeyEvent* pe);
+	void keyReleaseEvent(QKeyEvent *ke);
+
+	friend class MRKeyboardInit;
+	friend class MGlWidget;
 };
 
-class MRMouseInput : public QObject{
-	Q_OBJECT
+class MRMouseInput{
 	MGlWidget* render;
 
 	QCursor* pointer;
 	QCursor* normalp;
 
 	float xSense = 0.0025f, ySense = 0.0025f;
-	bool wFocus = true;
 
-public slots:
-	void mousePressEvent(QMouseEvent* pe);
-	void mouseMoveEvent(QMouseEvent* pe);
-	void mouseReleaseEvent(QMouseEvent* pe);
-	void wheelEvent(QWheelEvent* pe);
 
 public:
 	MRMouseInput(MGlWidget* w);
  void switchFocus();
 	void update();
+
+	void mousePressEvent(QMouseEvent* pe);
+	void mouseMoveEvent(QMouseEvent* pe);
+	void mouseReleaseEvent(QMouseEvent* pe);
+	void wheelEvent(QWheelEvent* pe);
 };
+
+class MRKeyboardInit : public QWidget{
+	QLabel* lab;
+	MRKeyboardInput* in;
+
+	QMap<QString, QString> m;
+	int current = -1;
+
+public:
+	MRKeyboardInit(MRKeyboardInput* i);
+	void keyPressEvent(QKeyEvent* pe);
+ void next();
+};
+
 #endif
