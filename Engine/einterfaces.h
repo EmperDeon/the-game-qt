@@ -5,6 +5,7 @@
 #include <Engine/interfaces/imain.h>
 
 #include <Engine/interfaces/iutils.h>
+#include <Engine/interfaces/ievent.h>
 #include <Engine/interfaces/iinventory.h>
 #include <Engine/interfaces/iplayer.h>
 #include <Engine/interfaces/irender.h>

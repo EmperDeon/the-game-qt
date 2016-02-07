@@ -17,7 +17,7 @@ ModLoader:
    MWorldRender - mWorldRender
    MGuiRender   - mGuiRender
 
-  MActions - mActions
+  MEvents - mActions
 		MLevelManager - mLevel
 
  Mods:

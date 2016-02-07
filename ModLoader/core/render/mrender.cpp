@@ -33,7 +33,7 @@ void MGlWidget::initializeGL(){
 	world->setPlayer(player);
 	world->init();
 //	gui->init();
-	paused = input->keybr->keys.isEmpty();
+	paused = input->keybr->keys.size() == 1;
 
 	fps_stabilizer->start();
 }
@@ -118,28 +118,59 @@ void MRKeyboardInput::keyReleaseEvent(QKeyEvent *ke) {
 
 MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w), keys(MV_SETT->get("Keys")) {
 	keyList = new QList<int>;
-	if(keys.isEmpty()){
-		(new MRKeyboardInit(this))->show();
+	if(keys.size() == 1){
+		MRKeyboardInit *init = new MRKeyboardInit(this);
+		init->show();
+		qApp->setActiveWindow(init);
 	}
+
+	keysMov
+	 << k("forw")
+		<< k("back")
+		<< k("left")
+		<< k("righ")
+		<< k("jump")
+		<< k("sneak")
+		<< k("sprint");
+
+	keysOnT
+	 << Qt::Key_Escape
+		<< Qt::Key_L;
 }
 
 void MRKeyboardInput::update() {
 	if(render->paused){
 
 	}else{
-		for(int k : *keyList)
-			switch (k)	{
-				case Qt::Key_W: render->player->moveF(); break;
-				case Qt::Key_S: render->player->moveB(); break;
+		QStringList mov;
+		for(int i : *keyList)
+			if(isMovement(i))
+				switch (i){
+					case k("forw"): mov << ""; break;
+					case k("back"): mov << ""; break;
 
-				case Qt::Key_D: render->player->moveR(); break;
-				case Qt::Key_A: render->player->moveL(); break;
+					case k("left"): mov << ""; break;
+					case k("righ"): mov << ""; break;
 
-				case Qt::Key_Space: render->player->moveU(); break;
-				case Qt::Key_E: render->player->moveD(); break;
-
-				default:;
-			}
+					case k("jump"):   mov << ""; break;
+					case k("sneak"):  mov << ""; break;
+					case k("sprint"): mov << ""; break;
+					default:
+						break;
+//					case k(""): mov << ""; break;
+				}
+//			switch (k)	{
+//				case Qt::Key_W: render->player->moveF(); break;
+//				case Qt::Key_S: render->player->moveB(); break;
+//
+//				case Qt::Key_D: render->player->moveR(); break;
+//				case Qt::Key_A: render->player->moveL(); break;
+//
+//				case Qt::Key_Space: render->player->moveU(); break;
+//				case Qt::Key_E: render->player->moveD(); break;
+//
+//				default:;
+//			}
 	}
 }
 // MRKeyboardInput
@@ -189,31 +220,31 @@ MRKeyboardInit::MRKeyboardInit(MRKeyboardInput* i): in(i){
 	lab = new QLabel;
 	l->addWidget(lab, 0, Qt::AlignCenter);
 	this->setLayout(l);
+ this->setMinimumSize(150, 30);
 
-	m["forw"]   = "Move Forward";
-	m["back"]   = "Move Backward";
-	m["left"]   = "Move Left";
-	m["righ"]   = "Move Right";
-	m["jump"]   = "Jump";
-	m["sneak"]  = "Sneak";
-	m["sprint"] = "Sprint";
+	k << "forw"  ;  v << "Move Forward" ;
+	k << "back"  ;  v << "Move Backward";
+	k << "left"  ;  v << "Move Left"    ;
+	k << "righ"  ;  v << "Move Right"   ;
+	k << "jump"  ;  v << "Jump"         ;
+	k << "sneak" ;  v << "Sneak"        ;
+	k << "sprint";  v << "Sprint"       ;
 
 	next();
 }
 
 void MRKeyboardInit::keyPressEvent(QKeyEvent *pe) {
-	in->keys.insert(m.keys()[current], pe->key());
+	in->keys.insert(k[current], pe->key());
 	next();
 }
 
 void MRKeyboardInit::next() {
 	current++;
-	if(current < m.size()){
-		auto key = m.keys().value(current);
+	if(current < v.size()){
+		auto key = v[current];
 		lab->setText(QString("Press key for action \"%1\"").arg(key));
 	}else{
 		close();
 	}
 }
-
 

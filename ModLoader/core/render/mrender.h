@@ -79,12 +79,19 @@ class MRKeyboardInput{
 	QList<int>* keyList;
 	QJsonObject& keys;
 
+	QList<int> keysMov;
+	QList<int> keysOnT;
+
+	bool isMovement(int k){return keysMov.contains(k);}
+	bool isOneTime (int k){return keysOnT.contains(k);}
+
 public:
 	MRKeyboardInput(MGlWidget* w);
  void update();
 
 	void keyPressEvent(QKeyEvent* pe);
 	void keyReleaseEvent(QKeyEvent *ke);
+ inline int k(QString s)const {return keys[s].toInt();}
 
 	friend class MRKeyboardInit;
 	friend class MGlWidget;
@@ -114,7 +121,8 @@ class MRKeyboardInit : public QWidget{
 	QLabel* lab;
 	MRKeyboardInput* in;
 
-	QMap<QString, QString> m;
+	QStringList k;
+	QStringList v;
 	int current = -1;
 
 public:

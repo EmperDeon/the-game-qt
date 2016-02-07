@@ -55,7 +55,7 @@ void MCoreMods::preInit() {
 	upd("PerfomanceWidget constructed");
 	this->perf->show();
 
-	this->actions = new MActions();
+	this->actions = new MEvents();
 	mVarS(actions, "mActions");
 	upd("Actions constructed");
 

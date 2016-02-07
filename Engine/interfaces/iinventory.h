@@ -6,17 +6,17 @@ class QString;
 class IWorldBlock;
 
 // Enums
-enum class GItemAction{
+enum class IItemAction {
 	Drop, Craft, Pickup
 };
 
-enum class GToolAction{
+enum class IToolAction {
 	Drop, Craft, Pickup,
 	leftClick, shiftLeftClick, longLeftCLick, longShiftLeftClick,
 	rightClick, shiftRightClick, longRightClick, longShiftRightClick
 };
 
-enum class GBlockAction{
+enum class IBlockAction {
 
 };
 // Enums
@@ -32,41 +32,5 @@ class IToolStack : public IItemStack{
 
 };
 // Stacks
-
-
-// Actions
-class IActions{
-public:
-	virtual void item(GItemAction a, IItemStack* s) = 0;
-	virtual void tool(GToolAction a, IToolStack* s) = 0;
-	virtual void block(GBlockAction a, IWorldBlock * s) = 0;
-};
-
-class IItemActions{
-public:
-	virtual void event(GItemAction a, IItemStack* s)const = 0;
-	virtual bool hasAction(GItemAction a)const = 0;
-};
-
-class IToolActions{
-public:
-	virtual void event(GToolAction a, IToolStack* s)const = 0;
-	virtual bool hasAction(GItemAction a)const = 0;
-};
-
-class IBlockActions{
-public:
-	virtual void event(GBlockAction a, IWorldBlock* s)const = 0;
-	virtual bool hasAction(GItemAction a)const = 0;
-};
-
-class IPluginActions{
-public:
-	virtual void item(GItemAction a, IItemStack* s)const = 0;
-	virtual void tool(GToolAction a, IToolStack* s)const = 0;
-	virtual void block(GBlockAction a, IWorldBlock * s) const = 0;
-};
-//Actions
-
 
 #endif //GLOBALQT_IINVENTORY_H

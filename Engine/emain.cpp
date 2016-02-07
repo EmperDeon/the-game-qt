@@ -14,6 +14,7 @@ int main(int argc, char *argv[]){
 	EV_VARS = new EVars;
  EV_SETC = new ESettCont;
 	EV_SETT = EV_SETC->getSettings("settings.dat");
+ EV_SETT->load();
 
  EMain* gMain = new EMain();
 	gMain->init();

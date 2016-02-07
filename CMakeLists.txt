@@ -57,7 +57,7 @@ set(E_HEADERS
 		Engine/eutils.h
 		Engine/ewidgets.h
 		Engine/edvars.h
-		)
+		Engine/interfaces/ievent.h)
 
 set(L_SOURCE_FILES
 		Launcher/lmain.cpp
@@ -108,7 +108,7 @@ set(M_SOURCE_FILES
 		ModLoader/core/render/texture/mtexturemanager.cpp
 	 	ModLoader/core/render/world/mworld.cpp
 
-		ModLoader/core/mactions.cpp
+		ModLoader/core/events/mevents.cpp
 		ModLoader/mods/mmods.cpp
 		ModLoader/mods/mcontainers.cpp
 		ModLoader/mods/mtext.cpp
@@ -140,7 +140,7 @@ set(M_HEADERS
 		 ModLoader/core/render/texture/mtexturemanager.h
 		 ModLoader/core/render/world/mworld.h
 
-		ModLoader/core/mactions.h
+		ModLoader/core/events/mevents.h
 		ModLoader/mods/mmods.h
 		ModLoader/mods/mcontainers.h
 		ModLoader/mods/mtext.h

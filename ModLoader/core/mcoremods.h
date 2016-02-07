@@ -5,11 +5,11 @@
 #include <ModLoader/core/level/mchunk.h>
 #include <ModLoader/core/render/perf/mperfw.h>
 #include <ModLoader/core/render/mrender.h>
-#include <ModLoader/core/mactions.h>
+#include <ModLoader/core/events/mevents.h>
 #include <ModLoader/mutils.h>
 
 class MGlWidget;
-class MActions;
+class MEvents;
 class MLevelManager;
 class MPerfomanceWidget;
 
@@ -18,7 +18,7 @@ class MCoreMods {
  QThread* t_ren;
 
 	MPerfomanceWidget* perf;
-	MActions* actions;
+	MEvents * actions;
  MLevelManager* level;
 
  QList<ICoreMod*>* plugins;
