@@ -43,6 +43,10 @@ void MCoreMods::preInit() {
  loadPlugins();
 	upd("Plugins Loaded");
 
+	this->events = new MEvents();
+	mVarS(events, "mEvents");
+	upd("Event system constructed");
+
 	this->level = new MLevelManager();
 	mVarS(level, "mLevel");
 	upd("Level constructed");
@@ -55,9 +59,6 @@ void MCoreMods::preInit() {
 	upd("PerfomanceWidget constructed");
 	this->perf->show();
 
-	this->actions = new MEvents();
-	mVarS(actions, "mActions");
-	upd("Actions constructed");
 
 
 	for(ICoreMod* p : *plugins){

@@ -1,3 +1,5 @@
-|    Class    |    Event    |    JSON
-| Keyboard    | keyPress    | "key" - int
-|             |             |
+|    Class.Event           |    JSON
+| Keyboard.keyPressMove    | "keys" - QJsonArray
+| Keyboard.keyPressOneT    | "keys" - QJsonArray
+| Keyboard.keyPressOther   | "keys" - QJsonArray
+|                          |

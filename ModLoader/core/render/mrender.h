@@ -28,6 +28,7 @@ class MGlWidget : public QGLWidget{
 	QTimer* fps_stabilizer;
 
 	MRInput* input;
+	IEvents* events;
 	bool paused = false;
 
 public:
@@ -82,8 +83,9 @@ class MRKeyboardInput{
 	QList<int> keysMov;
 	QList<int> keysOnT;
 
-	bool isMovement(int k){return keysMov.contains(k);}
-	bool isOneTime (int k){return keysOnT.contains(k);}
+	inline bool isMovement(int k){return keysMov.contains(k);}
+	inline bool isOneTime (int k){return keysOnT.contains(k);}
+ void insertKeysTo(QList<int> &list, QStringList key);
 
 public:
 	MRKeyboardInput(MGlWidget* w);

@@ -5,6 +5,9 @@ MGlWidget::MGlWidget(){
 	player = new MPlayer(10, 5, 10);
 	cam = new MCamera();
 	cam->attachTo(player);
+	events = mVarG(IEvents*, "mEvents");
+	events->addNewEventReciever(player);
+
 	input = new MRInput(this);
 
 	world = new MWorldRender();
@@ -124,41 +127,57 @@ MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w), keys(MV_SETT->get("Ke
 		qApp->setActiveWindow(init);
 	}
 
-	keysMov
-	 << k("forw")
-		<< k("back")
-		<< k("left")
-		<< k("righ")
-		<< k("jump")
-		<< k("sneak")
-		<< k("sprint");
+	insertKeysTo(keysMov, {{"forw"}, {"back"}, {"left"}, {"righ"}, {"jump"}, {"sneak"}, {"sprint"}});
 
 	keysOnT
-	 << Qt::Key_Escape
-		<< Qt::Key_L;
+	<< Qt::Key_Escape
+	<< Qt::Key_L;
+}
+
+void MRKeyboardInput::insertKeysTo(QList<int> &list, QStringList key) {
+	int l;
+	for(QString i : keys.keys()){
+		if(key.contains(keys.value(i).toString())){
+			l = i.toInt();
+			if(!list.contains(l)) list << l;
+		}
+	}
 }
 
 void MRKeyboardInput::update() {
 	if(render->paused){
 
 	}else{
-		QStringList mov;
-		for(int i : *keyList)
-			if(isMovement(i))
-				switch (i){
-					case k("forw"): mov << ""; break;
-					case k("back"): mov << ""; break;
+		QJsonArray kMove, kOthr;
 
-					case k("left"): mov << ""; break;
-					case k("righ"): mov << ""; break;
+		for(int i : *keyList){
+			if(isMovement(i)){
+			 kMove << i;
+			}else{
+				kOthr << i;
+			}
+		}
 
-					case k("jump"):   mov << ""; break;
-					case k("sneak"):  mov << ""; break;
-					case k("sprint"): mov << ""; break;
-					default:
-						break;
-//					case k(""): mov << ""; break;
-				}
+		render->events->triggerEvent("Keyboard.keyPressMove", {{"keys", kMove}});
+		render->events->triggerEvent("Keyboard.keyPressOther", {{"keys", kOthr}});
+//
+//		QStringList mov;
+//		for(int i : *keyList)
+//			if(isMovement(i))
+//				switch (i){
+//					case k("forw"): mov << ""; break;
+//					case k("back"): mov << ""; break;
+//
+//					case k("left"): mov << ""; break;
+//					case k("righ"): mov << ""; break;
+//
+//					case k("jump"):   mov << ""; break;
+//					case k("sneak"):  mov << ""; break;
+//					case k("sprint"): mov << ""; break;
+//					default:
+//						break;
+////					case k(""): mov << ""; break;
+//				}
 //			switch (k)	{
 //				case Qt::Key_W: render->player->moveF(); break;
 //				case Qt::Key_S: render->player->moveB(); break;
@@ -220,7 +239,7 @@ MRKeyboardInit::MRKeyboardInit(MRKeyboardInput* i): in(i){
 	lab = new QLabel;
 	l->addWidget(lab, 0, Qt::AlignCenter);
 	this->setLayout(l);
- this->setMinimumSize(150, 30);
+	this->setMinimumSize(150, 30);
 
 	k << "forw"  ;  v << "Move Forward" ;
 	k << "back"  ;  v << "Move Backward";
@@ -234,7 +253,7 @@ MRKeyboardInit::MRKeyboardInit(MRKeyboardInput* i): in(i){
 }
 
 void MRKeyboardInit::keyPressEvent(QKeyEvent *pe) {
-	in->keys.insert(k[current], pe->key());
+	in->keys.insert(QString::number(pe->key()), k[current]);
 	next();
 }
 
@@ -247,4 +266,5 @@ void MRKeyboardInit::next() {
 		close();
 	}
 }
+
 

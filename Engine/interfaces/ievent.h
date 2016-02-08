@@ -10,8 +10,9 @@ class IEventsReciever;
 // Actions
 class IEvents {
 public:
-	virtual void triggerEvent (QString group, QString name, QJsonObject o)             = 0;
- virtual void addNewEventReciever(QString group, IEventsReciever *reciever) = 0;
+	virtual void triggerEvent (QString name, QJsonObject o)                    = 0;
+	virtual void triggerEvent (QString group, QString name, QJsonObject o)     = 0;
+ virtual void addNewEventReciever(IEventsReciever *reciever) = 0;
 
 	virtual void triggerItemEvent (QString name, QJsonObject o) = 0;
 	virtual void triggerToolEvent (QString name, QJsonObject o) = 0;

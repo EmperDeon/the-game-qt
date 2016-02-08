@@ -10,8 +10,11 @@ class MEvents : public IEvents {
 public:
 	MEvents();
 
-	virtual void triggerEvent (QString group, QString name, QJsonObject o)             override;
-	virtual void addNewEventReciever(QString group, IEventsReciever *reciever) override;
+	inline QString cat(QString s1, QString s2) {return s1 + "." + s2;}
+
+	virtual void triggerEvent (QString name, QJsonObject o)                    override;
+	virtual void triggerEvent (QString group, QString name, QJsonObject o)     override;
+	virtual void addNewEventReciever(IEventsReciever *reciever) override;
 
 	virtual void triggerItemEvent (QString name, QJsonObject o) override;
 	virtual void triggerToolEvent (QString name, QJsonObject o) override;

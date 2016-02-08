@@ -20,14 +20,14 @@ public:
 
 class IPlayer : public IEntity{
 public:
-	virtual void moveF()        = 0;
-	virtual void moveB()        = 0;
-	virtual void moveL()        = 0;
-	virtual void moveR()        = 0;
- virtual void moveU()        = 0;
-	virtual void moveD()        = 0;
+	virtual void moveF()               = 0;
+	virtual void moveB()               = 0;
+	virtual void moveL()               = 0;
+	virtual void moveR()               = 0;
+ virtual void moveU(float d = 0.1f) = 0;
+	virtual void moveD(float d = 0.1f) = 0;
 
-	virtual void yaw(float y)   = 0;
+	virtual void yaw  (float y) = 0;
 	virtual void pitch(float p) = 0;
 };
 

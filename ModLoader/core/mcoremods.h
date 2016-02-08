@@ -18,7 +18,7 @@ class MCoreMods {
  QThread* t_ren;
 
 	MPerfomanceWidget* perf;
-	MEvents * actions;
+	MEvents *events;
  MLevelManager* level;
 
  QList<ICoreMod*>* plugins;

@@ -9,7 +9,7 @@ int main(int argc, char *argv[]){
 	LV_LOGGER->showMaximized();
 
 	LMainWindow w;
-	w.show();
+//	w.show();
 	
 	return a.exec();
 }
@@ -34,7 +34,7 @@ LMainWindow::LMainWindow(){
 
 	check();
 
-//	launch();
+	launch();
 }
 
 void LMainWindow::initNews(){

@@ -2,10 +2,13 @@
 #define GLOBALQT_MPLAYER_H
 #include <ModLoader/mdefines.h>
 
-class MPlayer : public IPlayer{
+class MPlayer : public IPlayer, public IEventsReciever{
 	float x, y, z;
 	float aY, aP; // Yaw and Pitch in radians
 	qint32 cX = 0, cZ = 0;
+
+	const QStringList events = {"Keyboard.keyPressMove"};
+	QJsonObject keys;
 
 public:
 	MPlayer(float X, float Y, float Z): x(X), y(Y), z(Z){}
@@ -16,10 +19,10 @@ public:
 	virtual void moveL() override {move( -1.57f);}
 	virtual void moveR() override {move(  1.57f);}
 
-	void move(float r);
+	void move(float r, float d = 0.05f);
 
-	virtual void  moveU()        override {y += 0.1f;}
-	virtual void  moveD()        override {y -= 0.1f;}
+	virtual void  moveU(float d = 0.1f) override {y += d;}
+	virtual void  moveD(float d = 0.1f) override {y -= d;}
 
 	virtual void  yaw(float y)   override;
 	virtual void  pitch(float p) override;
@@ -34,6 +37,13 @@ public:
 
 	void updatePos();
 	friend class ICamera;
+
+	// Events
+	inline bool isKey(int k, QString v);
+	inline int  getFK(QString v);
+	virtual void        trigger(QString name, QJsonObject o) override;
+	virtual bool        hasEvent(QString name)               override {return events.contains(name); }
+	virtual QStringList getEventsList()                      override {return events; }
 };
 
 #endif //GLOBALQT_MPLAYER_H
