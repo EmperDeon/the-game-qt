@@ -57,7 +57,7 @@ void MCoreMods::preInit() {
 
 	this->perf = new MPerfomanceWidget();
 	upd("PerfomanceWidget constructed");
-	this->perf->show();
+	//this->perf->show();
 
 
 

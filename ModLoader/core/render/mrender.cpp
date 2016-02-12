@@ -160,36 +160,6 @@ void MRKeyboardInput::update() {
 
 		render->events->triggerEvent("Keyboard.keyPressMove", {{"keys", kMove}});
 		render->events->triggerEvent("Keyboard.keyPressOther", {{"keys", kOthr}});
-//
-//		QStringList mov;
-//		for(int i : *keyList)
-//			if(isMovement(i))
-//				switch (i){
-//					case k("forw"): mov << ""; break;
-//					case k("back"): mov << ""; break;
-//
-//					case k("left"): mov << ""; break;
-//					case k("righ"): mov << ""; break;
-//
-//					case k("jump"):   mov << ""; break;
-//					case k("sneak"):  mov << ""; break;
-//					case k("sprint"): mov << ""; break;
-//					default:
-//						break;
-////					case k(""): mov << ""; break;
-//				}
-//			switch (k)	{
-//				case Qt::Key_W: render->player->moveF(); break;
-//				case Qt::Key_S: render->player->moveB(); break;
-//
-//				case Qt::Key_D: render->player->moveR(); break;
-//				case Qt::Key_A: render->player->moveL(); break;
-//
-//				case Qt::Key_Space: render->player->moveU(); break;
-//				case Qt::Key_E: render->player->moveD(); break;
-//
-//				default:;
-//			}
 	}
 }
 // MRKeyboardInput

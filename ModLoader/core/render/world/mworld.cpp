@@ -40,7 +40,7 @@ void MWorldRender::render() {
 	// Box of Epileptic
 //	this->drawRCube(IVec3(0, 0, 0), 0.15f);
 //	this->drawRCube(IVec3(0, 0, 0), 1.0f);
-	//selectBlock();
+	selectBlock();
 }
 
 void MWorldRender::selectBlock() {
@@ -56,9 +56,8 @@ void MWorldRender::selectBlock() {
 		yw = en->yaw();
 		pt = en->pitch();
 	}
-
 	//IVec3i c(10,5,11);
-	float sc = 0.1f;
+	float sc = 1.0f;
 	float x = 0.0f;
  int ic = 0;
  c.x += 1;
@@ -69,10 +68,7 @@ void MWorldRender::selectBlock() {
 		sinf(pt) * cosf(yw)
 	);
 
-	glBegin(GL_LINE_STRIP);
- glLineWidth(3.0f);
-
-	while(x < 5.0f){
+	while(x < 10.0f){
 		x += sc;
 		t.x = c.x + int(i.x * x);
 		t.y = c.y + int(i.y * x);
@@ -85,8 +81,8 @@ void MWorldRender::selectBlock() {
 			if(level->isBlock(c)) break;
 		}
 	}
-	glEnd();
-//	if(c != IVec3i(en->pos()))
+
+	if(c != IVec3i(en->pos()))drawBorder(c);
 }
 
 

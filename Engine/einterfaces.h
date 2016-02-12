@@ -16,6 +16,8 @@
 QT_BEGIN_NAMESPACE
 // Only for plugins
 Q_DECLARE_INTERFACE(IModLoader, "org.ilzcorp.IModLoader")
+Q_DECLARE_INTERFACE(ICoreMod, "org.ilzcorp.ICoreMod")
+Q_DECLARE_INTERFACE(IMod, "org.ilzcorp.IMod")
 
 QT_END_NAMESPACE
 
