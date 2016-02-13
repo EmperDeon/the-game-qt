@@ -63,11 +63,10 @@ set(M_HEADERS
 
 qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
 
-add_definitions(${QT_DEFINITIONS})
-add_definitions(-DQT_PLUGIN)
-add_definitions(-DQT_NO_DEBUG)
-add_definitions(-DQT_SHARED)
 add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
+
 qt5_use_modules(ModLoader Core Widgets Network OpenGL)
+
 target_compile_features(ModLoader PRIVATE cxx_range_for)
+
 target_link_libraries(ModLoader ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})

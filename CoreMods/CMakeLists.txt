@@ -1,2 +1,3 @@
 # M_ADD_COREMOD(ModName)
 
+M_ADD_COREMOD(TestCore1)

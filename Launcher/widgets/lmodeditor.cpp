@@ -304,5 +304,109 @@ void LModEditor::ctype(int i){
 	}
 }
 void LModEditor::splugin() {
+	this->pluginFile = QFileDialog::getOpenFileName(
+		this,
+		"Select plugin file",
+		"modEditor/tmp/" + e_file->text() + "/",
+		"*.dll *.so"
+	);
+}
 
+
+
+void LModFixer::bcreate() {
+	int f = pluginFile.lastIndexOf('/');
+	QString dir = QStringRef(&pluginFile, 0, f).toString();
+	lLogI(dir + " " + pluginFile);
+
+	QJsonObject o;
+	o["name"] = e_name->text();
+	o["desc"] = e_desc->toPlainText();
+	o["devl"] = e_devl->text();
+	o["site"] = e_site->text();
+	o["type"] = type;
+
+	o["depend"] = *depend;
+	o["version"] = e_ver->text();
+	o["revision"] = this->REVISION;
+	for(QString k : other->keys()){
+		o[k] = (*other)[k];
+	}
+	o["pluginFile"] = QStringRef(&pluginFile, f + 1, pluginFile.size() - f).toString();
+	(*textMod)["name"] = e_name->text();
+
+	saveJson(o, dir + "/pack.dat");
+	saveJson(*textMod,   dir + "/text.dat");
+	saveJson(*scriptMod, dir + "/scripts.dat");
+	
+
+	this->close();
+}
+
+LModFixer::LModFixer(QString pluginFile) {
+	this->REVISION = QString("0.1");
+	this->pluginFile = pluginFile;
+
+	this->other = new QJsonObject();
+	this->textMod = new QJsonObject();
+	this->scriptMod = new QJsonObject();
+	this->depend = new QJsonArray();
+
+	this->textModE = new LTextModEditor(textMod);
+	this->scriptModE = new LScriptModEditor(scriptMod);
+
+	QFormLayout* lay = new QFormLayout;
+
+	this->e_file = new QLineEdit;
+	this->e_name = new QLineEdit;
+	this->e_ver = new QLineEdit;
+	this->e_dep = new QLineEdit;
+	this->e_plg = new QLineEdit;
+	this->e_devl = new QLineEdit;
+	this->e_site = new QLineEdit;
+	this->e_desc = new QTextEdit;
+
+	QPushButton* b_textMod = new QPushButton(tr("Edit Items, Blocks, "));
+	QPushButton* b_scriptMod = new QPushButton(tr("Edit Scripts"));
+	QPushButton* b_plugin = new QPushButton(tr("Select plugin file"));
+
+	QPushButton* b_create = new QPushButton("Create");
+	QPushButton* b_clear = new QPushButton("Clear");
+	QPushButton* b_other = new QPushButton(tr("Other"));
+	QPushButton* b_dep = new QPushButton("Edit dependencies");
+
+	this->c_type = new QComboBox;
+
+	this->w_oth = new LTableManager(*other, tr("Other"));
+	this->w_dep = new LListManager(*depend, tr("Dependence"));
+
+	this->c_type->addItem(tr("Mod"));
+	this->c_type->addItem(tr("CoreMod"));
+	this->c_type->addItem(tr("Resource pack"));
+
+	connect(b_textMod,   SIGNAL(clicked()),      textModE,   SLOT(show()));
+	connect(b_scriptMod, SIGNAL(clicked()),      scriptModE, SLOT(show()));
+	connect(b_plugin,    SIGNAL(clicked()),      this,       SLOT(splugin()));
+	connect(b_create,    SIGNAL(clicked()),      this,       SLOT(bcreate()));
+	connect(b_clear,     SIGNAL(clicked()),      this,       SLOT(bclear()));
+	connect(b_dep,       SIGNAL(clicked()),      this,       SLOT(bdep()));
+	connect(b_other,     SIGNAL(clicked()),      this,       SLOT(bother()));
+	connect(c_type,      SIGNAL(activated(int)), this,       SLOT(ctype(int)));
+
+	lay->addRow("File name:", e_file);
+	lay->addRow("Name:", e_name);
+	lay->addRow("Developer:", e_devl);
+	lay->addRow("Site:", e_site);
+	lay->addRow("Description:", e_desc);
+	lay->addRow("Type:", c_type);
+	lay->addRow(b_textMod);
+	lay->addRow(b_scriptMod);
+	lay->addRow(b_plugin);
+	lay->addRow("Version:", e_ver);
+	lay->addRow(b_dep, b_other);
+	lay->addRow(b_create, b_clear);
+
+	this->setLayout(lay);
+	this->setWindowTitle("Mod editor");
+	lLogD("Constructed");
 }

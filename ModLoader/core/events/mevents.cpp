@@ -17,15 +17,7 @@ void MEvents::addNewEventReciever(IEventsReciever *reciever) {
   map->insert(s, reciever);
 }
 
-void MEvents::triggerItemEvent(QString name, QJsonObject o) {
-
-}
-
-void MEvents::triggerToolEvent(QString name, QJsonObject o) {
-
-}
-
-void MEvents::triggerBlockEvent(QString name, QJsonObject o) {
-
-}
+void MEvents::triggerItemEvent(QString name, QJsonObject o)  {triggerEvent("Items."+name, o);}
+void MEvents::triggerToolEvent(QString name, QJsonObject o)  {triggerEvent("Tools."+name, o);}
+void MEvents::triggerBlockEvent(QString name, QJsonObject o) {triggerEvent("Blocks."+name, o);}
 // MEvents

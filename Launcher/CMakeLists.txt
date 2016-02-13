@@ -5,8 +5,7 @@ set(L_SOURCE_FILES
 		lparser.cpp
 		lwmodels.cpp
 		widgets/lmodeditor.cpp
-		widgets/lmods.cpp
-		)
+		widgets/lmods.cpp)
 
 set(L_HEADERS
 		lmain.h
@@ -21,8 +20,7 @@ set(L_HEADERS
 		widgets/lmodel.h
 		widgets/lresources.h
 		widgets/lmodeditor.h
-		widgets/lmods.h
-		)
+		widgets/lmods.h)
 
 qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})
 

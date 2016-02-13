@@ -7,6 +7,7 @@
 class LTextModWidgetModel;
 class LTableManager;
 class LListManager;
+class LModEditor;
 
 class LTextModWidgetEditor : public QWidget{
  Q_OBJECT
@@ -64,6 +65,7 @@ public:
 class LModEditor : public QWidget{// Mods Editor
  Q_OBJECT
 
+protected:
 	QLineEdit* e_file;
 	QLineEdit* e_name;
 	QLineEdit* e_devl;
@@ -90,7 +92,7 @@ class LModEditor : public QWidget{// Mods Editor
 
 private slots:
 	void splugin();
-	void bcreate();
+	virtual void bcreate();
 	void bclear();
 	void bdep();
 	void bother();
@@ -99,6 +101,16 @@ private slots:
 public:
 	QString REVISION;
 	LModEditor();
+};
+
+
+class LModFixer : public LModEditor{
+Q_OBJECT
+
+public slots:
+	virtual void bcreate();
+public:
+	LModFixer(QString pluginFile);
 };
 
 #endif //GLOBALQT_LMODEDITOR_H

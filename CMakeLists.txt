@@ -37,7 +37,7 @@ find_package(OpenGL REQUIRED)
 find_package(ZLIB REQUIRED)
 
 include_directories(${ZLIB_INCLUDE_DIRS})
-include_directories(../GlobalQt) #crutch
+include_directories(../GlobalQt) # crutch
 
 # SUBDIRS
 
@@ -45,6 +45,12 @@ M_SET_BUILD_DIR(D:/GameTmp/)
 
 add_subdirectory(Engine)
 add_subdirectory(Launcher)
+
+add_definitions(${QT_DEFINITIONS})
+add_definitions(-DQT_PLUGIN)
+add_definitions(-DQT_NO_DEBUG)
+add_definitions(-DQT_SHARED)
+
 add_subdirectory(ModLoader)
 
 add_executable(Runner Runner/main.cpp)

@@ -173,6 +173,15 @@ void LParser::check(){
 			err->append(LZipErr(search(e), "Unsatisfied dependency"));
 		}
 	}
+
+	for(QFileInfo f : QDir("mods/coremods").entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+		if(!QFile(QDir(f.filePath()).filePath("pack.dat")).exists()) {
+			for(QFileInfo f1 : QDir(f.filePath()).entryInfoList(QDir::Files | QDir::NoDotAndDotDot)) {
+				(new LModFixer(f1.filePath()))->show();
+			}
+		}
+	}
+
 }
 //  Parsing
 

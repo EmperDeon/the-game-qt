@@ -3,6 +3,7 @@
 #include <Launcher/ldefines.h>
 #include <Launcher/lwidgets.h>
 #include <Launcher/lmain.h>
+#include <Launcher/widgets/lmodeditor.h>
 #include <Launcher/qzipreader_p.h>
 
 #define ParserVer "0.1"
