@@ -154,9 +154,9 @@ bool EVars::contains(QString name){
 	return map->contains(name);
 }
 
-bool EVars::contains(QStringList l) {
+bool EVars::contains(QStringList names) {
 	bool c = true;
-	for(QString n : l){
+	for(QString n : names ){
 		c = c && map->contains(n);
 	}
 	return c;
@@ -164,24 +164,27 @@ bool EVars::contains(QStringList l) {
 
 void*EVars::get(QString name){
 	if(!contains(name))
-		logE("No " + name + " in EVars");
+		set(loader->get(name), name);
 	return (*map)[name];
 }
 
-void EVars::set(void *o, QString n){
-	if(!map->contains(n)){
-		(*map)[n] = o;
+void EVars::set(void *o, QString name){
+	if(!map->contains(name)){
+		map->insert(name, o);
 	}else{
-		if(owlist->contains(n)){
-			(*map)[n] = o;
+		if(owlist->contains(name)){
+			map->insert(name, o);
 		}
 	}
 }
 
-void EVars::setOverwriteList(QStringList l) {
-	this->owlist = new QStringList(l);
+void EVars::setOverwriteList(QStringList names) {
+	this->owlist = new QStringList(names);
 }
 
+void EVars::setVarsLoader(IVarsLoader *l) {
+ this->loader = l;
+}
 IVars* EV_VARS;
 // Vars
 
@@ -207,5 +210,6 @@ QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
 
 IDirs*EV_DIRS;
 // Dirs
+
 
 

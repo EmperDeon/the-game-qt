@@ -141,7 +141,7 @@ mLogW(toHex(n));
 
 
 // MPerf
-MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
+MPerformanceWidget::MPerformanceWidget(MCoreMods *m) {
 	this->loader = m;
 	this->render = mVarG(MGlWidget*, "mRender");
 	this->fps_v = new QVector<int>;
@@ -194,7 +194,7 @@ MPerfomanceWidget::MPerfomanceWidget(MCoreMods *m) {
 
 }
 
-void MPerfomanceWidget::updateFps() {
+void MPerformanceWidget::updateFps() {
 // calculate two new data points:
 	double key = QDateTime::currentDateTime().toMSecsSinceEpoch()/1000.0;
 	static double lastPointKey = 0;

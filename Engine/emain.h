@@ -32,7 +32,7 @@ class EMain : public IMain{
 public:
 	EMain();
 	virtual void setSplashLabel(QString);
-	
+	virtual QSplashScreen* getSplashSceen() {return splash;}
 	        void init();
 	        void show();
 	        void destroy();

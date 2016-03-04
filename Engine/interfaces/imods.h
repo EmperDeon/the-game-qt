@@ -24,6 +24,7 @@ class ICoreMod{
 public:
 	virtual QStringList getOwList()       = 0;
 	virtual QStringList getDpList()       = 0;
+ virtual QString     getName()         = 0;
 
 	virtual void        setVars(IVars* v) = 0;
 

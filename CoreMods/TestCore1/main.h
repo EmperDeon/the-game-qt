@@ -2,6 +2,8 @@
 #define GLOBALQT_MAIN_H
 #include <Engine/einterfaces.h>
 
+extern ILogger* CM_LOG;
+
 class CMEvents : public IEvents {
 	IEvents* org;
 
@@ -30,6 +32,7 @@ public:
 
 	virtual QStringList getOwList()       override;
 	virtual QStringList getDpList()       override;
+	virtual QString     getName()         override{ return "TestCore1";}
 
 	virtual void        setVars(IVars* v) override;
 

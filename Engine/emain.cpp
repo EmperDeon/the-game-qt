@@ -17,8 +17,6 @@ int main(int argc, char *argv[]){
  EV_SETT->load();
 
  EMain* gMain = new EMain();
-	gMain->init();
- gMain->show();
 	QObject::connect(&a, SIGNAL(lastWindowClosed()), gMain, SLOT(lastWindowClosed()));
 	return a.exec();
 }
@@ -47,7 +45,6 @@ EMain::EMain() {
 
 	mods = new EMods();
 
-	varS(wgt, "eMainWindow");
 	varS(wdev, "eDev");
 	varS(mods, "eMods");
 }
@@ -61,6 +58,8 @@ void EMain::init() {
  mods->init();
 
 	splash->finish(wgt);
+
+	this->show();
 }
 
 void EMain::show() {

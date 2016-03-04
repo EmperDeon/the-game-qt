@@ -1,6 +1,6 @@
 #include <ModLoader/core/render/perf/mperfw.h>
 
-MPerfomanceWidget::MPerfomanceWidget() {
+MPerformanceWidget::MPerformanceWidget() {
 	this->render = mVarG(MGlWidget*, "mRender");
  this->v_fps = new QVector<float>;
 
@@ -37,7 +37,7 @@ MPerfomanceWidget::MPerfomanceWidget() {
 	this->plot->yAxis->setRange(0.0f, yMax);
 }
 
-void MPerfomanceWidget::updateFps() {
+void MPerformanceWidget::updateFps() {
 	double key = QDateTime::currentDateTime().toMSecsSinceEpoch()/1000.0;
 	double f = render->getFps();
 	double k = (f / 1000 + (render->getFps() % 1000)/1000)/1000 ;

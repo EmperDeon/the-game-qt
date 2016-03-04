@@ -6,7 +6,7 @@
 
 class MGlWidget;
 
-class MPerfomanceWidget : public QWidget{
+class MPerformanceWidget : public QWidget{
 	Q_OBJECT
 
 	QHBoxLayout* layout;
@@ -25,7 +25,7 @@ public slots:
 	void updateFps();
 	
 public:
-	MPerfomanceWidget();
+	MPerformanceWidget();
 };
 
 #endif //GLOBALQT_MPERFW_H
