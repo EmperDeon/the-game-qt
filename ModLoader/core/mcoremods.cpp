@@ -155,6 +155,10 @@ void MCoreMods::postInit() {
 	}
 	upd("Coremods postInit finished");
 
+	events = mVarG(IEvents*, "mEvents");
+	level = mVarG(ILevelManager*, "mLevel");
+	render = mVarG(MGlWidget*, "mRender");
+
 	mLogFF("postInit finished");
 }
 
@@ -163,13 +167,33 @@ void* MCoreMods::get(QString name){
 }
 
 void* MCoreMods::getO(QString name) {
-	if(name == "mEvents"){       return new MEvents();
-	}else if(name == "mRender"){	return new MGlWidget();
-	}else if(name == "mLevel"){		return new MLevelManager();
+	if(name == "mEvents"){
+		if(oEvents == nullptr) oEvents = new MEvents();
+		return oEvents;
+
+	}else if(name == "mRender"){
+		if(oRender == nullptr) oRender = new MGlWidget();
+		return oRender;
+
+	}else if(name == "mLevel"){
+		if(oLevel == nullptr) oLevel = new MLevelManager();
+		return oLevel;
+
 	}else{
 		mLogE("No such variable");
 		return nullptr;
 	}
+}
+
+IVarsLoader *MCoreMods::findMod(QString n) {
+	if(n == "ModLoader"){
+		return this;
+	}
+	for(ICoreMod* i : *modList)
+		if(i->getName() == n)
+			return i;
+
+	return nullptr;
 }
 
 QStringList MCoreMods::getVarsList() {
@@ -182,7 +206,7 @@ MCoreMods* MV_CORE_MODS;
 
 // MVarSelect
 MVarSelect::MVarSelect(MCoreMods *core) {
- QJsonObject s = MV_SETT->get("VarOverride")["Map"].toObject();
+ QJsonObject s = MV_SETT->get("VarOverrideMap");
 
 	if(s.size() == 1){
   MVarSelectWidget* wgt = new MVarSelectWidget(core);
@@ -194,12 +218,15 @@ MVarSelect::MVarSelect(MCoreMods *core) {
 }
 
 void MVarSelect::continueLoad(){
-	QJsonObject s = MV_SETT->get("VarOverride")["Map"].toObject();
-	qDebug() << s.toVariantMap();
+	QJsonObject& s = MV_SETT->get("VarOverride");
+	s.remove("Map");
+	MV_SETT->save();
+
 	map = new QMap<QString, IVarsLoader*>;
 	// Fill map with mods
 	for(QString k : s.keys()){
-		// TODO:
+		if(s.value(k).toString() != "ModLoader" && k != "name")
+		map->insert(k, MV_CORE_MODS->findMod(s.value(k).toString()));
 	}
 
 	MV_CORE_MODS->main->init();
@@ -207,8 +234,10 @@ void MVarSelect::continueLoad(){
 
 void* MVarSelect::getVar(QString name) {
  if(map->contains(name)){
+	 mLogI("Getting " + name + " from mod");
 	 return map->value(name)->get(name);
  }else{
+	 mLogI("Getting " + name + " from modloader");
 	 return getOVar(name);
  }
 }
@@ -245,15 +274,15 @@ void MVarSelectWidget::cellClicked(int row, int column) {
 }
 
 void MVarSelectWidget::save() {
-	QJsonObject obj;
+	QJsonObject& obj =	MV_SETT->get("VarOverride");
 
-	if(smap->size() != map->size()) {
+	if(smap->size() != map->uniqueKeys().size()) {
 		QMessageBox::information(this, "Warning", "You need to click on all variables [Debug]");
 	}else{
-  for(QString k : *smap){
+  for(QString k : smap->keys()){
 		 obj.insert(k, smap->value(k));
   }
-		MV_SETT->get("VarOverride").insert("Map", obj);
+
 		close();
 	}
 }
@@ -264,7 +293,8 @@ MVarSelectWidget::MVarSelectWidget(MCoreMods *core) {
 
 	for(ICoreMod* m : *core->modList)
 		for(QString s : m->getOwList())
-			map->insert(s, m->getName());
+			if(!map->contains(s, m->getName()))
+			 map->insert(s, m->getName());
 	for(QString s : core->getVarsList())
 		map->insert(s, "ModLoader");
 
@@ -285,8 +315,9 @@ MVarSelectWidget::MVarSelectWidget(MCoreMods *core) {
 	connect(table, SIGNAL(cellClicked(int, int)), this, SLOT(cellClicked(int, int)));
 	connect(bs, SIGNAL(clicked()), this, SLOT(save()));
 }
-// MVarSelectWidget
 
 void MVarSelectWidget::closeEvent(QCloseEvent *event) {
 	MV_CORE_MODS->vselect->continueLoad();
 }
+// MVarSelectWidget
+

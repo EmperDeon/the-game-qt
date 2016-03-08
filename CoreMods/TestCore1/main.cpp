@@ -19,11 +19,7 @@ void TestCore1Main::preInit() {
 }
 
 void TestCore1Main::init() {
-	this->vars->set(new CMEvents(
-		                vars,
-		                reinterpret_cast<IEvents*>(vars->get("mEvents"))
-	                ),
-	                "mEvents");
+
 }
 
 void TestCore1Main::postInit() {
@@ -44,3 +40,26 @@ void CMEvents::addNewEventReciever(IEventsReciever *reciever) {
 void CMEvents::triggerItemEvent(QString name, QJsonObject o) {	org->triggerItemEvent(name, o);}
 void CMEvents::triggerToolEvent(QString name, QJsonObject o) {	org->triggerToolEvent(name, o);}
 void CMEvents::triggerBlockEvent(QString name, QJsonObject o) {	org->triggerBlockEvent(name, o);}
+
+void *TestCore1Main::get(QString name) {
+	CM_LOG->log(ILogLevel::INFO, Q_FUNC_INFO, "Get " + name);
+
+	if(name == "mEvents"){
+		if(events == nullptr)	events = new CMEvents(
+				vars,
+				reinterpret_cast<IEvents*>(vars->getLoader()->getO("mEvents"))
+			),
+				"mEvents";
+		return events;
+	}else{
+		return nullptr;
+	}
+}
+
+void *TestCore1Main::getO(QString name) {
+	return nullptr;
+}
+
+QStringList TestCore1Main::getVarsList() {
+	return {"mEvents"};
+}

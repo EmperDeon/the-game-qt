@@ -27,7 +27,7 @@ class TestCore1Main : public QObject, public ICoreMod{
 
 	IVars* vars;
 	ILogger* logger;
-
+ CMEvents* events;
 public:
 
 	virtual QStringList getOwList()       override;
@@ -40,6 +40,10 @@ public:
 	virtual void        init()            override;
 	virtual void        postInit()        override;
 
+
+	virtual void *get(QString name);
+	virtual void *getO(QString name);
+	virtual QStringList getVarsList();
 };
 
 #endif //GLOBALQT_MAIN_H

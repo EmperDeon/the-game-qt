@@ -74,6 +74,7 @@ public:
 	virtual bool  contains(QStringList)          override;
 
 	virtual void* get(QString)                   override;
+	virtual IVarsLoader* getLoader()             override;
 
 	virtual void  set(void *o, QString)          override;
  virtual void  setOverwriteList(QStringList)  override;

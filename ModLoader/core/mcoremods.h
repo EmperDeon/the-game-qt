@@ -22,7 +22,11 @@ class MCoreMods : public IVarsLoader{
 
 	MPerformanceWidget * perf;
 	IEvents *events;
- ILevelManager* level;
+	ILevelManager* level;
+
+	IEvents *oEvents = nullptr;
+	ILevelManager* oLevel = nullptr;
+	MGlWidget *oRender = nullptr;
 
  QList<ICoreMod*>* modList;
  MVarSelect * vselect;
@@ -47,6 +51,8 @@ public:
 
 	friend class MVarSelect;
 	friend class MVarSelectWidget;
+
+	IVarsLoader *findMod(QString n);
 };
 
 class MVarSelect {

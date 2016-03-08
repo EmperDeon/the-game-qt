@@ -102,6 +102,7 @@ void ESettings::loadFrom(QString f){
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
 	loadFile.close();
 	QJsonArray obj = loadDoc.array();
+	qDebug() << obj;
 	QJsonObject t;
 	for(QJsonValue e : obj){
 		t = e.toObject();
@@ -166,6 +167,10 @@ void*EVars::get(QString name){
 	if(!contains(name))
 		set(loader->get(name), name);
 	return (*map)[name];
+}
+
+IVarsLoader *EVars::getLoader() {
+	return loader;
 }
 
 void EVars::set(void *o, QString name){

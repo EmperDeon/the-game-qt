@@ -20,7 +20,7 @@ public:
 };
 
 
-class ICoreMod{
+class ICoreMod : public IVarsLoader{
 public:
 	virtual QStringList getOwList()       = 0;
 	virtual QStringList getDpList()       = 0;

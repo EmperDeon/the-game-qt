@@ -33,6 +33,7 @@ public:
 	virtual bool  contains(QStringList names)         = 0;
 
 	virtual void* get(QString name)                   = 0;
+	virtual IVarsLoader* getLoader()                  = 0;
 
 	virtual void  set(void *o, QString name)          = 0;
 	virtual void  setOverwriteList(QStringList names) = 0;
