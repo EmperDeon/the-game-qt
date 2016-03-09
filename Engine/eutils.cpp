@@ -51,7 +51,7 @@ void ELogger::sendM(QString s) {
 	socket->flush();
 }
 
-ILogger*EV_LOGGER;
+ILogger*IV_LOGGER;
 // Logger
 
 
@@ -129,7 +129,7 @@ void ESettings::saveTo(QString f){
 	saveFile.flush();
 	saveFile.close();
 }
-ISettings* EV_SETT;
+ISettings*IV_SETT;
 
 
 ESettCont::ESettCont(){map = new QMap<QString, ISettings*>;}
@@ -141,7 +141,7 @@ ISettings *ESettCont::getSettings(QString k) {
 	return map->value(k);
 }
 
-ISettCont* EV_SETC;
+ISettCont*IV_SETC;
 // Settings
 
 
@@ -190,7 +190,7 @@ void EVars::setOverwriteList(QStringList names) {
 void EVars::setVarsLoader(IVarsLoader *l) {
  this->loader = l;
 }
-IVars* EV_VARS;
+IVars*IV_VARS;
 // Vars
 
 
@@ -213,7 +213,7 @@ QString EDirs::getSDir(QString k) {	return dirs->value(k); }
 
 QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
 
-IDirs*EV_DIRS;
+IDirs*IV_DIRS;
 // Dirs
 
 

@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MGUI_H
 #define GLOBALQT_MGUI_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MGuiRender : public IGuiRender{ // 2D
 public:

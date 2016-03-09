@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MMODLOADER_H
 #define GLOBALQT_MMODLOADER_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/mcoremods.h>
 #include <ModLoader/mods/mmods.h>
 

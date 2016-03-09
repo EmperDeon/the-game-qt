@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MTEXTUREMANAGER_H
 #define GLOBALQT_MTEXTUREMANAGER_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MTextureManager : public ITextureManager{
 	QMap<Imiks, QOpenGLTexture*>* tex;

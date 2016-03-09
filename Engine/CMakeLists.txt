@@ -8,13 +8,10 @@ set(E_SOURCE_FILES
 
 set(E_HEADERS
 		econtainers.h
-		edefines.h
-
 		emain.h
 		emods.h
 		eutils.h
 		ewidgets.h
-		edvars.h
 	)
 
 qt5_wrap_cpp(GENERATED_SOURCES ${E_HEADERS})

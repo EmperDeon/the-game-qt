@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MUTILS_H
 #define GLOBALQT_MUTILS_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 QJsonObject loadJson(QString file);
 

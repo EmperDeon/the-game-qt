@@ -48,10 +48,10 @@ void MTextContainer::preInit() {
   mItex = new MTextureManager();
 		mItex->loadTextures(texMap);
 
-		mVarS(mIids, "mIIds");
-		mVarS(mIic,  "mItems");
-		mVarS(mItex, "mITex");
-		mLogD("Items count: "+QString::number(itemsMap->size()));
+		varS(mIids, "mIIds");
+		varS(mIic, "mItems");
+		varS(mItex, "mITex");
+		logD("Items count: "+QString::number(itemsMap->size()));
 	}
 	//!MItemsContainer
 	//MBlocksContainer
@@ -90,10 +90,10 @@ void MTextContainer::preInit() {
 		mBtex = new MTextureManager();
 		mBtex->loadTextures(texMap);
 
-		mVarS(mBids, "mBIds");
-		mVarS(mBic,  "mBlocks");
-		mVarS(mBtex, "mBTex");
-		mLogD("Blocks count: "+QString::number(blocksMap->size()));
+		varS(mBids, "mBIds");
+		varS(mBic, "mBlocks");
+		varS(mBtex, "mBTex");
+		logD("Blocks count: "+QString::number(blocksMap->size()));
 	}
 	//!MBlocksContainer
  //MToolsContainer
@@ -132,10 +132,10 @@ void MTextContainer::preInit() {
 		mTtex = new MTextureManager();
 		mTtex->loadTextures(texMap);
 
-		mVarS(mTids, "mTIds");
-		mVarS(mTic,  "mTools");
-		mVarS(mTtex, "mTTex");
-		mLogD("Tools count: "+QString::number(toolsMap->size()));
+		varS(mTids, "mTIds");
+		varS(mTic, "mTools");
+		varS(mTtex, "mTTex");
+		logD("Tools count: "+QString::number(toolsMap->size()));
 	}
 	//!MToolsContainer
 }

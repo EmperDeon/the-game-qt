@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MACTIONS_H
 #define GLOBALQT_MACTIONS_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/mcoremods.h>
 
 

@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MBLOCK_H
 #define GLOBALQT_MBLOCK_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MWorldBlock : public IWorldBlock{
 	Imiks id;

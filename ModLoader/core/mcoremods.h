@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MCOREMODS_H
 #define GLOBALQT_MCOREMODS_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/level/mlevel.h>
 #include <ModLoader/core/level/mchunk.h>
 #include <ModLoader/core/render/perf/mperfw.h>

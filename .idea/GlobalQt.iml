@@ -86,11 +86,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/llevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmodeditor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/edvars.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/econtainers.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/edefines.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
@@ -103,7 +101,6 @@
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/TestCore1/main.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" isTestSource="false" />
@@ -150,13 +147,13 @@
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mdefines.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/qcustomplot.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/Interfaces" />
+          <root url="file://$MODULE_DIR$/I" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
@@ -168,7 +165,7 @@
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$MODULE_DIR$/Interfaces" />
+          <root url="file://$MODULE_DIR$/I" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />

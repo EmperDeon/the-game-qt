@@ -29,7 +29,7 @@ void MPlayer::updatePos() {
 
 void MPlayer::trigger(QString name, QJsonObject o) {
  if(keys.empty()){
-	 keys = MV_SETT->get("Keys");
+	 keys = IV_SETT->get("Keys");
  }
 
 	QJsonArray a = o["keys"].toArray();
@@ -38,7 +38,7 @@ void MPlayer::trigger(QString name, QJsonObject o) {
 	for(QJsonValue v : a) {
 		int k = v.toInt();
 		if (k == 0) {
-			mLogW("key parameter is 0");
+			logW("key parameter is 0");
 		} else if (isKey(k, "forw")) {		move(0.0f,   sprint ? 0.5f : 0.05f);
 		} else if (isKey(k, "back")) {		move(3.141f, sprint ? 0.5f : 0.05f);
 		} else if (isKey(k, "left")) {		move(-1.57f, sprint ? 0.5f : 0.05f);
@@ -47,7 +47,7 @@ void MPlayer::trigger(QString name, QJsonObject o) {
 		} else if (isKey(k, "sneak")) {	moveD(sprint ? 0.5f : 0.1f);
 		} else if (isKey(k, "sprint")){
 		} else {
-			mLogI(QString("Strange, key is not in keyMap: %1").arg(k));
+			logI(QString("Strange, key is not in keyMap: %1").arg(k));
 		}
 	}
 }
@@ -66,6 +66,6 @@ int MPlayer::getFK(QString v) {
 		if(keys[i] == v )
 			return i.toInt();
 	}
-	mLogW("No such key in keyMap: " + v);
+	logW("No such key in keyMap: " + v);
 	return 0;
 }

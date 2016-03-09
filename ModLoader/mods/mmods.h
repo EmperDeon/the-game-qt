@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MMODS_H
 #define GLOBALQT_MMODS_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/mods/mtext.h>
 #include <ModLoader/mods/mscript.h>
 #include <ModLoader/mods/mplugin.h>

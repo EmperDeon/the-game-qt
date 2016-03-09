@@ -5,7 +5,7 @@ MGlWidget::MGlWidget(){
 	player = new MPlayer(10, 5, 10);
 	cam = new MCamera();
 	cam->attachTo(player);
-	events = mVarG(IEvents*, "mEvents");
+	events = varG(IEvents*, "mEvents");
 	events->addNewEventReciever(player);
 
 	input = new MRInput(this);
@@ -13,8 +13,8 @@ MGlWidget::MGlWidget(){
 	world = new MWorldRender();
 	gui = new MGuiRender();
 
-	mVarS(world, "mWorldRender");
-	mVarS(gui, "mGuiRender");
+	varS(world, "mWorldRender");
+	varS(gui, "mGuiRender");
 
 	// Fps
 	fps_t = new QElapsedTimer;
@@ -119,7 +119,7 @@ void MRKeyboardInput::keyReleaseEvent(QKeyEvent *ke) {
 	keyList->removeAll(ke->key());
 }
 
-MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w), keys(MV_SETT->get("Keys")) {
+MRKeyboardInput::MRKeyboardInput(MGlWidget *w): render(w), keys(IV_SETT->get("Keys")) {
 	keyList = new QList<int>;
 	if(keys.size() == 1){
 		MRKeyboardInit *init = new MRKeyboardInit(this);

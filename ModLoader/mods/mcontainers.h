@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MCONTAINERS_H
 #define GLOBALQT_MCONTAINERS_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 // Items
 class MIIds : public IModsIds {

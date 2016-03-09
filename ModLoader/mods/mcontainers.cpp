@@ -8,7 +8,7 @@ Imiks MIIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
   return mods->value(t);
 	else{
-		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains " + t + ", unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
@@ -32,7 +32,7 @@ IItem *MItemsContainer::get(Imiks id) {
  if(map->contains(id))
 	 return map->value(id);
  else {
-	 mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+	 logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 	 return iNull;
  }
 }
@@ -41,7 +41,7 @@ Imiks MItemsContainer::get(IItem* id) {
  if(map->values().contains(id))
 	 return map->key(id);
  else{
-	 mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+	 logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 	 return mNull;
  }
 }
@@ -56,7 +56,7 @@ Imiks MBIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
-		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains " + t + ", unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
@@ -79,7 +79,7 @@ IBlock* MBlocksContainer::get(Imiks id) {
 	if(map->contains(id))
 		return map->value(id);
 	else {
-		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return iNull;
 	}
 }
@@ -88,7 +88,7 @@ Imiks  MBlocksContainer::get(IBlock *id) {
 	if(map->values().contains(id))
 		return map->key(id);
 	else{
-		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
@@ -103,7 +103,7 @@ Imiks MTIds::get(QString m, QString i, QString k, int s) {
 	if(mods->contains(t))
 		return mods->value(t);
 	else{
-		mLogE("Map doesn't contains "+t+", unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains " + t + ", unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }
@@ -127,7 +127,7 @@ ITool *MToolsContainer::get(Imiks id) {
 	if(map->contains(id))
 		return map->value(id);
 	else {
-		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return iNull;
 	}
 }
@@ -136,7 +136,7 @@ Imiks MToolsContainer::get(ITool *id) {
 	if(map->values().contains(id))
 		return map->key(id);
 	else{
-		mLogE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
+		logE("Map doesn't contains id, unexpected result (returning 0,0,0,0)");
 		return mNull;
 	}
 }

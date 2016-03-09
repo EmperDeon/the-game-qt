@@ -32,7 +32,6 @@ set(M_SOURCE_FILES
 set(M_HEADERS
 		mmodloader.h
 		mutils.h
-		mdefines.h
 		qcustomplot.h
 
 		core/mcoremods.h

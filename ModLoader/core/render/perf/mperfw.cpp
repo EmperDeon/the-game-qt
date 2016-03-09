@@ -1,7 +1,7 @@
 #include <ModLoader/core/render/perf/mperfw.h>
 
 MPerformanceWidget::MPerformanceWidget() {
-	this->render = mVarG(MGlWidget*, "mRender");
+	this->render = varG(MGlWidget*, "mRender");
  this->v_fps = new QVector<float>;
 
  this->stab = new QTimer;

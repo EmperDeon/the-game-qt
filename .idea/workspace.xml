@@ -42,31 +42,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f54c2eac-7c3a-4ed9-8f9f-8ac5ec5988cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Interfaces/cm_defines.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Interfaces/iall.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Engine/einterfaces.h" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/ievent.h" afterPath="$PROJECT_DIR$/Interfaces/ievent.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/iinventory.h" afterPath="$PROJECT_DIR$/Interfaces/iinventory.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/ilevel.h" afterPath="$PROJECT_DIR$/Interfaces/ilevel.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/imain.h" afterPath="$PROJECT_DIR$/Interfaces/imain.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/imods.h" afterPath="$PROJECT_DIR$/Interfaces/imods.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/iplayer.h" afterPath="$PROJECT_DIR$/Interfaces/iplayer.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/irender.h" afterPath="$PROJECT_DIR$/Interfaces/irender.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/itext.h" afterPath="$PROJECT_DIR$/Interfaces/itext.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Engine/interfaces/iutils.h" afterPath="$PROJECT_DIR$/Interfaces/iutils.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Events" afterPath="$PROJECT_DIR$/ZGuides/Events" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/GVars" afterPath="$PROJECT_DIR$/ZGuides/GVars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Rules" afterPath="$PROJECT_DIR$/ZGuides/Rules" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Temp" afterPath="$PROJECT_DIR$/ZGuides/Temp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/I/idefines.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/I/ivars.h" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Engine/edvars.h" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/cm_defines.h" afterPath="$PROJECT_DIR$/I/cm_defines.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/iall.h" afterPath="$PROJECT_DIR$/I/iall.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/ievent.h" afterPath="$PROJECT_DIR$/I/interf/ievent.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/iinventory.h" afterPath="$PROJECT_DIR$/I/interf/iinventory.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/ilevel.h" afterPath="$PROJECT_DIR$/I/interf/ilevel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/imain.h" afterPath="$PROJECT_DIR$/I/interf/imain.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/imods.h" afterPath="$PROJECT_DIR$/I/interf/imods.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/iplayer.h" afterPath="$PROJECT_DIR$/I/interf/iplayer.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/irender.h" afterPath="$PROJECT_DIR$/I/interf/irender.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/itext.h" afterPath="$PROJECT_DIR$/I/interf/itext.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Interfaces/iutils.h" afterPath="$PROJECT_DIR$/I/interf/iutils.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GlobalQt.iml" afterPath="$PROJECT_DIR$/.idea/GlobalQt.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/TestCore1/CMakeLists.txt" afterPath="$PROJECT_DIR$/CoreMods/TestCore1/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/TestCore1/main.h" afterPath="$PROJECT_DIR$/CoreMods/TestCore1/main.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/CMakeLists.txt" afterPath="$PROJECT_DIR$/Engine/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/econtainers.h" afterPath="$PROJECT_DIR$/Engine/econtainers.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/edefines.h" afterPath="$PROJECT_DIR$/Engine/edefines.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/emain.cpp" afterPath="$PROJECT_DIR$/Engine/emain.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/emain.h" afterPath="$PROJECT_DIR$/Engine/emain.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/emods.cpp" afterPath="$PROJECT_DIR$/Engine/emods.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/emods.h" afterPath="$PROJECT_DIR$/Engine/emods.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/eutils.cpp" afterPath="$PROJECT_DIR$/Engine/eutils.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/eutils.h" afterPath="$PROJECT_DIR$/Engine/eutils.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/ewidgets.h" afterPath="$PROJECT_DIR$/Engine/ewidgets.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/CMakeLists.txt" afterPath="$PROJECT_DIR$/ModLoader/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/events/mevents.h" afterPath="$PROJECT_DIR$/ModLoader/core/events/mevents.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/level/mblock.h" afterPath="$PROJECT_DIR$/ModLoader/core/level/mblock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/level/mchunk.h" afterPath="$PROJECT_DIR$/ModLoader/core/level/mchunk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/level/mgenerator.h" afterPath="$PROJECT_DIR$/ModLoader/core/level/mgenerator.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/level/mlevel.h" afterPath="$PROJECT_DIR$/ModLoader/core/level/mlevel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/level/mregion.h" afterPath="$PROJECT_DIR$/ModLoader/core/level/mregion.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/mcoremods.cpp" afterPath="$PROJECT_DIR$/ModLoader/core/mcoremods.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/mcoremods.h" afterPath="$PROJECT_DIR$/ModLoader/core/mcoremods.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/player/mplayer.cpp" afterPath="$PROJECT_DIR$/ModLoader/core/player/mplayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/player/mplayer.h" afterPath="$PROJECT_DIR$/ModLoader/core/player/mplayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/gui/mgui.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/gui/mgui.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/mcamera.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/mcamera.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/mhelper.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/mhelper.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/mrender.cpp" afterPath="$PROJECT_DIR$/ModLoader/core/render/mrender.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/mrender.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/mrender.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.cpp" afterPath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/texture/mtexturemanager.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/texture/mtexturemanager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.cpp" afterPath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.h" afterPath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mdefines.h" afterPath="$PROJECT_DIR$/ModLoader/mdefines.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mmodloader.cpp" afterPath="$PROJECT_DIR$/ModLoader/mmodloader.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mmodloader.h" afterPath="$PROJECT_DIR$/ModLoader/mmodloader.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mcontainers.cpp" afterPath="$PROJECT_DIR$/ModLoader/mods/mcontainers.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mcontainers.h" afterPath="$PROJECT_DIR$/ModLoader/mods/mcontainers.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mmods.cpp" afterPath="$PROJECT_DIR$/ModLoader/mods/mmods.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mmods.h" afterPath="$PROJECT_DIR$/ModLoader/mods/mmods.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mplugin.h" afterPath="$PROJECT_DIR$/ModLoader/mods/mplugin.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mscript.h" afterPath="$PROJECT_DIR$/ModLoader/mods/mscript.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mtext.cpp" afterPath="$PROJECT_DIR$/ModLoader/mods/mtext.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mods/mtext.h" afterPath="$PROJECT_DIR$/ModLoader/mods/mtext.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/mutils.h" afterPath="$PROJECT_DIR$/ModLoader/mutils.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZGuides/CreatingCoreMod" afterPath="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZGuides/Temp" afterPath="$PROJECT_DIR$/ZGuides/Temp" />
     </list>
     <ignored path="GlobalQt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,65 +127,53 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Engine/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imain.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Interfaces/imain.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edefines.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Engine/edefines.h">
+      <file leaf-file-name="mcoremods.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ModLoader/core/mcoremods.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3908046">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="idefines.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/I/idefines.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31609195">
+              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
               <folding>
-                <element signature="e#848#874#0" expanded="true" />
+                <element signature="e#985#1002#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ivars.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/I/ivars.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="cm_defines.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Interfaces/cm_defines.h">
+        <entry file="file://$PROJECT_DIR$/I/cm_defines.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iall.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Interfaces/iall.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="e#180#198#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -170,10 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ModLoader/core/render/world/mworld.h" />
-        <option value="$PROJECT_DIR$/Engine/interfaces/iinput.h" />
-        <option value="$PROJECT_DIR$/ModLoader/mmodloader.cpp" />
-        <option value="$PROJECT_DIR$/ModLoader/core/render/texture/mtexturemanager.cpp" />
         <option value="$PROJECT_DIR$/Launcher/lutils.cpp" />
         <option value="$PROJECT_DIR$/ModLoader/core/mactions.cpp" />
         <option value="$PROJECT_DIR$/ModLoader/core/mactions.h" />
@@ -181,7 +202,6 @@
         <option value="$PROJECT_DIR$/Engine/interfaces/iinventory.h" />
         <option value="$PROJECT_DIR$/GVars" />
         <option value="$PROJECT_DIR$/Engine/interfaces/ievent.h" />
-        <option value="$PROJECT_DIR$/ModLoader/core/events/mevents.h" />
         <option value="$PROJECT_DIR$/ModLoader/core/render/mrender.h" />
         <option value="$PROJECT_DIR$/Events" />
         <option value="$PROJECT_DIR$/ModLoader/core/player/mplayer.h" />
@@ -190,7 +210,6 @@
         <option value="$PROJECT_DIR$/Mods/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ModLoader/core/render/mrender.cpp" />
         <option value="$PROJECT_DIR$/ModLoader/core/render/world/mworld.cpp" />
-        <option value="$PROJECT_DIR$/ModLoader/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/CoreMods/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ModLoader/core/events/mevents.cpp" />
         <option value="$PROJECT_DIR$/Launcher/widgets/lmodfixer.h" />
@@ -210,17 +229,23 @@
         <option value="$PROJECT_DIR$/ModLoader/core/mcoremods.h" />
         <option value="$PROJECT_DIR$/Engine/eutils.cpp" />
         <option value="$PROJECT_DIR$/CoreMods/TestCore1/main.cpp" />
-        <option value="$PROJECT_DIR$/ModLoader/core/mcoremods.cpp" />
         <option value="$PROJECT_DIR$/CoreMods/TestCore1/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
         <option value="$PROJECT_DIR$/Engine/einterfaces.h" />
         <option value="$PROJECT_DIR$/CoreMods/cm_defines.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/CoreMods/TestCore1/main.h" />
-        <option value="$PROJECT_DIR$/ModLoader/mdefines.h" />
-        <option value="$PROJECT_DIR$/Engine/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ModLoader/core/mcoremods.cpp" />
         <option value="$PROJECT_DIR$/Engine/edefines.h" />
         <option value="$PROJECT_DIR$/Interfaces/iall.h" />
+        <option value="$PROJECT_DIR$/Interfaces/ivars.h" />
+        <option value="$PROJECT_DIR$/Interfaces/cm_defines.h" />
+        <option value="$PROJECT_DIR$/ModLoader/mdefines.h" />
+        <option value="$PROJECT_DIR$/Interfaces/idefines.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/Engine/econtainers.h" />
+        <option value="$PROJECT_DIR$/ModLoader/core/events/mevents.h" />
+        <option value="$PROJECT_DIR$/Engine/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ModLoader/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
       </list>
     </option>
   </component>
@@ -326,43 +351,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ZGuides" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Interfaces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GlobalQt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Engine" />
+              <option name="myItemId" value="ModLoader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -439,11 +428,11 @@
       <recent name="D:\TheGame\Qt\GlobalQt\Global" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\Interfaces\interf" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\Interfaces" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\ZGuides" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\ModLoader\core\events" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\Launcher" />
-      <recent name="D:\TheGame\Qt\GlobalQt\ModLoader\core\render" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Build&amp;Run">
@@ -508,12 +497,6 @@
       <created>1442289845132</created>
       <option name="number" value="Default" />
       <updated>1442289845132</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Moved modloader to game root (from modloaders/ to /modloader.dll) and fixed mods parsing.">
-      <created>1444461537005</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1444461537005</updated>
     </task>
     <task id="LOCAL-00018" summary="Added Tools parsing to TextMods (ModLoader/mods/mtext)">
       <created>1444463738198</created>
@@ -803,7 +786,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457094252636</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Moved some files, added guides">
+      <created>1457502876853</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1457502876858</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView">
@@ -873,7 +862,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Working with level render. Added &quot;average fps&quot; to MRender title. Few small fixes" />
     <MESSAGE value="Working with level render. Testing block select (MWorldRender)" />
     <MESSAGE value="Working with level render. Started textures" />
     <MESSAGE value="Working with level render. Added texture loading (MText)" />
@@ -898,7 +886,8 @@
     <MESSAGE value="Started moving core mods to separate folders" />
     <MESSAGE value="[Launcher] Added feature for fixing compiled mods/coremods" />
     <MESSAGE value="Working on custom variables loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on custom variables loading" />
+    <MESSAGE value="Moved some files, added guides" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved some files, added guides" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -910,34 +899,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/mingw492_32/include/QtCore/qlockfile.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7727273">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/mingw492_32/include/QtCore/QtCore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54545456">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/mingw492_32/include/QtCore/qobjectdefs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1969697">
-          <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Launcher/ldefines.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Launcher/lutils.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1050,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ModLoader/mods/mmods.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ModLoader/mods/mtext.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1102,25 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ModLoader/core/mcoremods.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="229" column="2" selection-start-line="229" selection-start-column="2" selection-end-line="229" selection-end-column="2" />
-          <folding>
-            <element signature="e#475#1153#0" expanded="false" />
-            <element signature="e#5032#5109#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModLoader/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7996633">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Launcher/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19865319">
@@ -1145,14 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZGuides/CreatingCoreMod">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25801012">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoreMods/TestCore1/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1161,7 +1088,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/ievent.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/ievent.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1172,7 +1099,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/iinventory.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/iinventory.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1186,7 +1113,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/iutils.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/iutils.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.495784">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1194,7 +1121,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/itext.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/itext.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.8060708">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1202,7 +1129,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/irender.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/irender.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.9780776">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1210,7 +1137,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/imods.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/imods.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0539629">
           <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
@@ -1218,7 +1145,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/ilevel.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/ilevel.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1237,18 +1164,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/iplayer.h">
+    <entry file="file://$PROJECT_DIR$/I/interf/iplayer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModLoader/mdefines.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5603448">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1269,10 +1188,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/I/interf/imain.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8304598">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModLoader/mdefines.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14333895">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Engine/edefines.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08600337">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModLoader/mods/mmods.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8279933">
+          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/I/iall.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20067453">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Engine/econtainers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05733558">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModLoader/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1280,43 +1247,65 @@
     <entry file="file://$PROJECT_DIR$/Engine/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/imain.h">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/cm_defines.h">
+    <entry file="file://$PROJECT_DIR$/ModLoader/core/events/mevents.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.09770115">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interfaces/iall.h">
+    <entry file="file://$PROJECT_DIR$/ModLoader/core/mcoremods.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/I/ivars.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/I/cm_defines.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZGuides/CreatingCoreMod">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68390805">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/I/idefines.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31609195">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding>
-            <element signature="e#180#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Engine/edefines.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3908046">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#848#874#0" expanded="true" />
+            <element signature="e#985#1002#0" expanded="true" />
           </folding>
         </state>
       </provider>

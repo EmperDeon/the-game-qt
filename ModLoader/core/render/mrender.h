@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_MRENDER_H
 #define GLOBALQT_MRENDER_H
 #include <QtOpenGL/QtOpenGL>
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/player/mplayer.h>
 #include <ModLoader/core/render/mcamera.h>
 #include <ModLoader/core/render/gui/mgui.h>

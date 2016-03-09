@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MHELPER_H
 #define GLOBALQT_MHELPER_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <GL/gl.h>
 #include <QtOpenGL/qgl.h>
 

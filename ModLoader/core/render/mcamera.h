@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MCAMERA_H
 #define GLOBALQT_MCAMERA_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/render/mrender.h>
 #include <GL/glu.h>
 

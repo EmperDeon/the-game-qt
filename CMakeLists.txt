@@ -45,7 +45,7 @@ find_package(ZLIB REQUIRED)
 
 include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(../GlobalQt) # crutch
-include_directories(Interfaces)
+include_directories(I)
 
 # SUBDIRS
 

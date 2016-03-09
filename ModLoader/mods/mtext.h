@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MTEXT_H
 #define GLOBALQT_MTEXT_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/mods/mcontainers.h>
 #include <ModLoader/core/render/texture/mtexturemanager.h>
 

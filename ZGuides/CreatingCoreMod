@@ -6,7 +6,10 @@ Aliases:
 2. Add CMakeLists.txt and mod files to it
 3. Open CoreMods/CMakeLists.txt
  3.1. Add line M_ADD_COREMOD(<M_DIR>)
-4. Include cm_defines.h in headers
+4. Include idefines.h in headers
+ 4.1. If you want to use any defines(log, var) then add this line to
+  main cpp file: ILogger* IV_LOGGER; IVars* IV_VARS;
+  and initialize it in setVars(IVars* v)
 
 
 Examples:

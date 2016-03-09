@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MLEVEL_H
 #define GLOBALQT_MLEVEL_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/level/mregion.h>
 #include <ModLoader/core/level/mgenerator.h>
 

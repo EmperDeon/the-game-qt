@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MPLAYER_H
 #define GLOBALQT_MPLAYER_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MPlayer : public IPlayer, public IEventsReciever{
 	float x, y, z;

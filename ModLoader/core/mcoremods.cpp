@@ -11,12 +11,12 @@ bool contains(QStringList a, QStringList b){
 
 MCoreMods::MCoreMods(){
  this->modList = new QList<ICoreMod*>;
-	this->t_ren = mVarG(QThread*, "eRenderThread");
-	this->queue = mVarG(QThreadPool*, "eThreadQueue");
+	this->t_ren = varG(QThread*, "eRenderThread");
+	this->queue = varG(QThreadPool*, "eThreadQueue");
 	parseOwerwrites();
 	loadPlugins();
 
-	main = mVarG(IMain*, "eMain");
+	main = varG(IMain*, "eMain");
 	this->vselect = new MVarSelect(this);
 }
 
@@ -35,9 +35,9 @@ void MCoreMods::parseOwerwrites(){
 		if (plugin) {
 			ICoreMod* t = qobject_cast<ICoreMod*>(plugin);
 			if (t){
-				t->setVars(MV_VARS);
+				t->setVars(IV_VARS);
 				modList->append(t);
-				mLogI(t->getName() + " coremod loaded");
+				logI(t->getName() + " coremod loaded");
 			}
 		}
 	}
@@ -45,7 +45,7 @@ void MCoreMods::parseOwerwrites(){
 	owr << "mRender";
  owr << "mLevel";
 
-	MV_VARS->setOverwriteList(owr);
+	IV_VARS->setOverwriteList(owr);
 }
 
 void MCoreMods::loadPlugins() {
@@ -72,7 +72,7 @@ void MCoreMods::loadPlugins() {
 		name.remove(name.length() - 2, 2);
 
 		if(!err.isEmpty())
-			mLogE("Not found CoreMods: " + name),
+			logE("Not found CoreMods: " + name),
 				qDebug() << "note - Name and Dependency lists: ",
 				qDebug() << " " << names,
 				qDebug() << " " << dep;
@@ -98,28 +98,28 @@ void MCoreMods::loadPlugins() {
 			for(auto m : tlist) t += m->getName() + ", ";
 			t.remove(t.length()-2, 2);
 
-			mLogE("Deadlock: " + t);
+			logE("Deadlock: " + t);
 			for(auto m : tlist)
 				qDebug() << " Name: " << m->getName() << ", Dependencies: " << m->getDpList();
 		}
 	}
 
-	main = mVarG(IMain*, "eMain");
+	main = varG(IMain*, "eMain");
 }
 
 void MCoreMods::preInit() {
-	mLogFF("preInit started");
- MV_VARS->setVarsLoader(this);
+	logFF("preInit started");
+ IV_VARS->setVarsLoader(this);
 
  upd("Started preCoreInit");
 
-	events = mVarG(IEvents*, "mEvents");
+	events = varG(IEvents*, "mEvents");
 	upd("Event system constructed");
 
-	level = mVarG(ILevelManager*, "mLevel");
+	level = varG(ILevelManager*, "mLevel");
 	upd("Level constructed");
 
-	render = mVarG(MGlWidget*, "mRender");
+	render = varG(MGlWidget*, "mRender");
 	upd("Render constructed");
 
 	this->perf = new MPerformanceWidget();
@@ -131,35 +131,35 @@ void MCoreMods::preInit() {
 	}
 	upd("CoreMods preInit finished");
 
-	mLogFF("preInit finished");
+	logFF("preInit finished");
 }
 // PreInit
 
 
 void MCoreMods::init() {
-	mLogFF("init started");
+	logFF("init started");
 
 	for(ICoreMod* p : *modList ){
 		p->init();
 	}
 	upd("Coremods init finished");
 
-	mLogFF("init finished");
+	logFF("init finished");
 }
 
 void MCoreMods::postInit() {
-	mLogFF("postInit started");
+	logFF("postInit started");
 
 	for(ICoreMod* p : *modList ){
  	p->postInit();
 	}
 	upd("Coremods postInit finished");
 
-	events = mVarG(IEvents*, "mEvents");
-	level = mVarG(ILevelManager*, "mLevel");
-	render = mVarG(MGlWidget*, "mRender");
+	events = varG(IEvents*, "mEvents");
+	level = varG(ILevelManager*, "mLevel");
+	render = varG(MGlWidget*, "mRender");
 
-	mLogFF("postInit finished");
+	logFF("postInit finished");
 }
 
 void* MCoreMods::get(QString name){
@@ -180,7 +180,7 @@ void* MCoreMods::getO(QString name) {
 		return oLevel;
 
 	}else{
-		mLogE("No such variable");
+		logE("No such variable");
 		return nullptr;
 	}
 }
@@ -206,7 +206,7 @@ MCoreMods* MV_CORE_MODS;
 
 // MVarSelect
 MVarSelect::MVarSelect(MCoreMods *core) {
- QJsonObject s = MV_SETT->get("VarOverrideMap");
+ QJsonObject s = IV_SETT->get("VarOverrideMap");
 
 	if(s.size() == 1){
   MVarSelectWidget* wgt = new MVarSelectWidget(core);
@@ -218,9 +218,9 @@ MVarSelect::MVarSelect(MCoreMods *core) {
 }
 
 void MVarSelect::continueLoad(){
-	QJsonObject& s = MV_SETT->get("VarOverride");
+	QJsonObject& s = IV_SETT->get("VarOverride");
 	s.remove("Map");
-	MV_SETT->save();
+	IV_SETT->save();
 
 	map = new QMap<QString, IVarsLoader*>;
 	// Fill map with mods
@@ -234,10 +234,10 @@ void MVarSelect::continueLoad(){
 
 void* MVarSelect::getVar(QString name) {
  if(map->contains(name)){
-	 mLogI("Getting " + name + " from mod");
+	 logI("Getting " + name + " from mod");
 	 return map->value(name)->get(name);
  }else{
-	 mLogI("Getting " + name + " from modloader");
+	 logI("Getting " + name + " from modloader");
 	 return getOVar(name);
  }
 }
@@ -274,7 +274,7 @@ void MVarSelectWidget::cellClicked(int row, int column) {
 }
 
 void MVarSelectWidget::save() {
-	QJsonObject& obj =	MV_SETT->get("VarOverride");
+	QJsonObject& obj =	IV_SETT->get("VarOverride");
 
 	if(smap->size() != map->uniqueKeys().size()) {
 		QMessageBox::information(this, "Warning", "You need to click on all variables [Debug]");

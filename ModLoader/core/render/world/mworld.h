@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MWORLD_H
 #define GLOBALQT_MWORLD_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/render/mhelper.h>
 #include <ModLoader/core/mcoremods.h>
 

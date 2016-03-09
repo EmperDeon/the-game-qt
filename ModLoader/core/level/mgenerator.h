@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MGENERATOR_H
 #define GLOBALQT_MGENERATOR_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MWorldGenerator : public IWorldGenerator{
 

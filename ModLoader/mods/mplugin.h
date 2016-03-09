@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MPLUGIN_H
 #define GLOBALQT_MPLUGIN_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MPluginsContainer {
  QList<IMod*>* plugins;

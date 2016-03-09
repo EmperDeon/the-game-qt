@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_EMODS_H
 #define GLOBALQT_EMODS_H
-#include <Engine/edefines.h>
+#include <idefines.h>
 
 class IModLoader;
 

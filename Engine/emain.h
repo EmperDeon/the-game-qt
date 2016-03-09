@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_EMAIN_H
 #define GLOBALQT_EMAIN_H
-#include <Engine/edefines.h>
+#include <idefines.h>
 #include <QtWidgets>
 #include <time.h>
 #include <Engine/eutils.h>

@@ -1,6 +1,6 @@
 #ifndef GLOGALQT_EWIDGETS_H
 #define GLOGALQT_EWIDGETS_H
-#include <Engine/edefines.h>
+#include <idefines.h>
 
 // EDeveloper
 class EDeveloper : public QWidget{

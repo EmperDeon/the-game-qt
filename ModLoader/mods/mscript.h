@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MSCRIPT_H
 #define GLOBALQT_MSCRIPT_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 
 class MScriptsContainer {
 public:

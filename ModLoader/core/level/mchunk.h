@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MCHUNK_H
 #define GLOBALQT_MCHUNK_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/level/mblock.h>
 
 class MChunk : public IChunk{

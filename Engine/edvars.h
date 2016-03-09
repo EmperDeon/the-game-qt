@@ -1,5 +1,0 @@
-#ifndef GLOBALQT_EDVARS_H
-#define GLOBALQT_EDVARS_H
-
-
-#endif //GLOBALQT_EDVARS_H

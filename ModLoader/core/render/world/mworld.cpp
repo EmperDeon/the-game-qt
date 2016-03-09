@@ -1,7 +1,7 @@
 #include <ModLoader/core/render/world/mworld.h>
 
 MWorldRender::MWorldRender(){
-	this->manager = mVarG(ILevelManager*, "mLevel");
+	this->manager = varG(ILevelManager*, "mLevel");
 
 	this->listMutex = new QMutex;
 	this->chunks = new QMap<IAChunkPos, GLuint>;
@@ -10,7 +10,7 @@ MWorldRender::MWorldRender(){
 }
 
 void MWorldRender::init() {
-	this->widget = mVarG(MGlWidget*, "mRender");
+	this->widget = varG(MGlWidget*, "mRender");
 	renderDistance = 6;
 
 	for(int i=0;i<255;i++) randomColors->append(IVec3((qrand() % 31)*0.01f+0.7f,(qrand() % 31)*0.01f+0.7f,(qrand() % 31)*0.01f+0.7f));

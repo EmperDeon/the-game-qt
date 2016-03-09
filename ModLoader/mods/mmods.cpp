@@ -14,35 +14,35 @@ void testPos(int x, int y, int z){
 			(y != p.y())||
 			(z != p.z())
 		)
-	mLogI(QString("O: %1 %2 %3, P: %4 %5 %6").arg(x, 2).arg(y, 2).arg(z, 2).arg(p.x(), 2).arg(p.y(), 2).arg(p.z(), 2));
+	logI(QString("O: %1 %2 %3, P: %4 %5 %6").arg(x, 2).arg(y, 2).arg(z, 2).arg(p.x(), 2).arg(p.y(), 2).arg(p.z(), 2));
 }
 void MMods::preInit() {
-	main = mVarG(IMain*, "eMain");
+	main = varG(IMain*, "eMain");
 	
-	mLogFF("preInit started");
+	logFF("preInit started");
  this->text->  preInit();
 	this->script->preInit();
 	this->plugin->preInit();
-	mLogFF("preInit finished");
+	logFF("preInit finished");
 
 }
 
 void MMods::init() {
-	mLogFF("init started");
+	logFF("init started");
 	this->text->  init();
 	this->script->init();
 	this->plugin->init();
-	mLogFF("init finished");
+	logFF("init finished");
 }
 
 void MMods::postInit() {
-	mLogFF("postInit started");
+	logFF("postInit started");
 	this->text->  postInit();
 	this->script->postInit();
 	this->plugin->postInit();
-	mLogFF("postInit finished");
+	logFF("postInit finished");
 
-	mVarG(IWorldRender*, "mWorldRender")->reAllocate(1025);
+	varG(IWorldRender*, "mWorldRender")->reAllocate(1025);
 
 //	for(int x = -20 ; x < 20 ; x++)
 //	for(int y = -20 ; y < 20 ; y++)

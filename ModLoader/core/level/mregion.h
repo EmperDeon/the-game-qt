@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MREGION_H
 #define GLOBALQT_MREGION_H
-#include <ModLoader/mdefines.h>
+#include <idefines.h>
 #include <ModLoader/core/level/mchunk.h>
 
 class MRegion : public IRegion{
