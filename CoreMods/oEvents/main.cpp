@@ -1,26 +1,26 @@
 #include "main.h"
 
-QStringList CM_OEVENTS::getOwList() {
+QStringList CM_O_EVENTS::getOwList() {
 	return {"mEvents"};
 }
 
-QStringList CM_OEVENTS::getDpList() {
+QStringList CM_O_EVENTS::getDpList() {
 	return {};
 }
 
-void CM_OEVENTS::setVars(IVars *v) {
+void CM_O_EVENTS::setVars(IVars *v) {
 	IV_VARS = v;
 	IV_LOGGER = reinterpret_cast<ILogger*>(v->get("eLogger"));
 }
 
-void CM_OEVENTS::preInit() {}
+void CM_O_EVENTS::preInit() {}
 
-void CM_OEVENTS::init() {}
+void CM_O_EVENTS::init() {}
 
-void CM_OEVENTS::postInit() {}
+void CM_O_EVENTS::postInit() {}
 
 
-void *CM_OEVENTS::get(QString name) {
+void *CM_O_EVENTS::get(QString name) {
 	logI("Get " + name);
 
 	if(name == "mEvents"){
@@ -31,9 +31,9 @@ void *CM_OEVENTS::get(QString name) {
 	}
 }
 
-void *CM_OEVENTS::getO(QString name) {	return nullptr;}
+void *CM_O_EVENTS::getO(QString name) { Q_UNUSED(name)	return nullptr;}
 
-QStringList CM_OEVENTS::getVarsList() {
+QStringList CM_O_EVENTS::getVarsList() {
 	return {"mEvents"};
 }
 

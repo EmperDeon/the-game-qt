@@ -15,10 +15,7 @@ void MWorldRender::init() {
 
 	for(int i=0;i<255;i++) randomColors->append(IVec3((qrand() % 31)*0.01f+0.7f,(qrand() % 31)*0.01f+0.7f,(qrand() % 31)*0.01f+0.7f));
 
-	MLevelInfo* i= new MLevelInfo;
-	i->setName("TestLevel1");
-
-	this->manager->createLevel(i);
+	this->manager->loadLevel("TestLevel1");
 	this->level = manager->getCurrentLevel();
 	MV_CORE_MODS->queue->waitForDone();
 }

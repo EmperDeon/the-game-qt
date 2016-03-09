@@ -194,6 +194,15 @@ void MLevelManager::loadLevel(ILevelInfo *i) {
 	QtConcurrent::run(queue, loadLevelC, this->level);
 }
 
+void MLevelManager::loadLevel(QString name) {
+	MLevelInfo *i = new MLevelInfo;
+	i->setName(name);
+
+	this->current = i;
+	this->level = new MLevel(this->current);
+	QtConcurrent::run(queue, loadLevelC, this->level);
+}
+
 void MLevelManager::exitLevel(ILevelInfo* i) {
  this->level->save();
 }
@@ -202,3 +211,6 @@ void MLevelManager::removeLevel(ILevelInfo* i) {
 
 }
 // MLevelManager
+
+
+

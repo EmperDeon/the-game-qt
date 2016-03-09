@@ -98,6 +98,8 @@ public:
 
 	virtual void                createLevel(ILevelInfo* i)  = 0;
 	virtual void                loadLevel(ILevelInfo* i)    = 0;
+	virtual void                loadLevel(QString name )    = 0;
+
 	virtual void                exitLevel(ILevelInfo* i)    = 0;
 	virtual void                removeLevel(ILevelInfo* i)  = 0;
 };

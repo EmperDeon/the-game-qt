@@ -3,7 +3,7 @@
 #include <idefines.h>
 #include <mevents.h>
 
-class CM_OEVENTS : public QObject, public ICoreMod{
+class CM_O_EVENTS : public QObject, public ICoreMod{
  Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)

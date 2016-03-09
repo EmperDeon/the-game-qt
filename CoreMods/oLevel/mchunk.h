@@ -2,10 +2,14 @@
 #define GLOBALQT_MCHUNK_H
 #include <idefines.h>
 #include <mblock.h>
+#include <mhelper.h>
+
+class MRHelper;
 
 class MChunk : public IChunk{
 	IWorldBlock* chunk[size][size][size];
  IAChunkPos id;
+	ITextureManager* textures = nullptr;
 
 	//RenderList
 	byte rSides[size][size][size];

@@ -3,7 +3,7 @@
 #include <idefines.h>
 #include <mlevel.h>
 
-class CM_OEVENTS : public QObject, public ICoreMod{
+class CM_O_LEVEL : public QObject, public ICoreMod{
  Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)
@@ -14,7 +14,7 @@ public:
 
 	virtual QStringList getOwList()       override;
 	virtual QStringList getDpList()       override;
-	virtual QString     getName()         override{ return "oEvents";}
+	virtual QString     getName()         override{ return "oLevel";}
 
 	virtual void        setVars(IVars* v) override;
 

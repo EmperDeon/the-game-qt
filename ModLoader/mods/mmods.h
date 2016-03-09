@@ -4,7 +4,6 @@
 #include <ModLoader/mods/mtext.h>
 #include <ModLoader/mods/mscript.h>
 #include <ModLoader/mods/mplugin.h>
-#include <ModLoader/core/level/mlevel.h>
 
 
 class MTextContainer;

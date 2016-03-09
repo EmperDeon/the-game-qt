@@ -167,7 +167,7 @@ void* MCoreMods::get(QString name){
 }
 
 void* MCoreMods::getO(QString name) {
-//	if(name == "mRender"){
+	if(name == "mRender"){}
 //		if(oRender == nullptr) oRender = new MGlWidget();
 //		return oRender;
 //

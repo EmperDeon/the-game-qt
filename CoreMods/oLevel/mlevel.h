@@ -67,6 +67,7 @@ public:
 
 	virtual void createLevel(ILevelInfo* i) override;
 	virtual void loadLevel(ILevelInfo* i)   override;
+	virtual void loadLevel(QString name )   override;
 	virtual void exitLevel(ILevelInfo* i)   override;
 	virtual void removeLevel(ILevelInfo* i) override;
 };

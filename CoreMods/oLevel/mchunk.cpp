@@ -84,6 +84,8 @@ void MChunk::reParseSides(){
 }
 
 void MChunk::onReAlloc() {
+	if(!textures) textures = varG(ITextureManager*, "mBTex");
+
 	reParseSides();
  bool f = true;
  glNewList(rList, GL_COMPILE);
@@ -92,7 +94,7 @@ void MChunk::onReAlloc() {
 		for(int y = 0 ; y < size ; y++)
 			for(int z = 0 ; z < size ; z++)
 			if(rSides[x][y][z] != 0){ // TODO Rewrite render on MChunk
-				if(f) MV_MODS->text->mBtex->bindTexture(chunk[x][y][z]->getId()), f = false;
+				if(f) textures->bindTexture(chunk[x][y][z]->getId()), f = false;
 				drawCube(x, y, z);
 			}
  glBindTexture(0,0);
