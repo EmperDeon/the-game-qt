@@ -1,8 +1,8 @@
 #ifndef GLOBALQT_MLEVEL_H
 #define GLOBALQT_MLEVEL_H
 #include <idefines.h>
-#include <ModLoader/core/level/mregion.h>
-#include <ModLoader/core/level/mgenerator.h>
+#include <mregion.h>
+#include <mgenerator.h>
 
 class MLevelInfo : public ILevelInfo{
 	QString name;
@@ -56,6 +56,7 @@ class MLevelManager : public ILevelManager{
 	QList<ILevelInfo*>* list;
 	ILevelInfo* current;
  ILevel* level;
+ QThreadPool* queue;
 
 public:
 	MLevelManager();

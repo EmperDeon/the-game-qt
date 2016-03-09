@@ -1,5 +1,5 @@
-#include "ModLoader/core/level/mgenerator.h"
-#include <ModLoader/core/level/mblock.h>
+#include "mgenerator.h"
+#include <mblock.h>
 
 MWorldGenerator::MWorldGenerator() {}
 void MWorldGenerator::generateChunk(IChunk *ch) {

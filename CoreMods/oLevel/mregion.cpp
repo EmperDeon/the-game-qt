@@ -1,4 +1,4 @@
-#include <ModLoader/core/level/mregion.h>
+#include <mregion.h>
 
 MRegion::MRegion(IRegionPos p, QString name) { // saves/name/dim0/ for name "name" and 0 dimension
  this->pos = p;                                // saves/name/dim0/regions00/reg00.dat for id 0 0

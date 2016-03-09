@@ -1,8 +1,6 @@
 #ifndef GLOBALQT_MACTIONS_H
 #define GLOBALQT_MACTIONS_H
 #include <idefines.h>
-#include <ModLoader/core/mcoremods.h>
-
 
 class MEvents : public IEvents {
  QMultiMap<QString, IEventsReciever*>* map;

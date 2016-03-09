@@ -1,7 +1,0 @@
-#ifndef GLOBALQT_ECONTAINERS_H
-#define GLOBALQT_ECONTAINERS_H
-#include <idefines.h>
-
-
-
-#endif //GLOBALQT_ECONTAINERS_H

@@ -1,3 +1,4 @@
 # M_ADD_COREMOD(ModName)
 
-M_ADD_COREMOD(TestCore1)
+M_ADD_COREMOD(oEvents)
+M_ADD_COREMOD(oLevel)

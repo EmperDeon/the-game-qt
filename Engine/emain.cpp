@@ -12,6 +12,7 @@ int main(int argc, char *argv[]){
 
 	IV_LOGGER = new ELogger;
 	IV_VARS = new EVars;
+	IV_DIRS = new EDirs;
  IV_SETC = new ESettCont;
 	IV_SETT = IV_SETC->getSettings("settings.dat");
  IV_SETT->load();

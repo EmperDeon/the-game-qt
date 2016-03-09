@@ -1,8 +1,4 @@
-#include <ModLoader/core/level/mchunk.h>
-#include <ModLoader/core/render/mhelper.h>
-#include <ModLoader/mods/mmods.h>
-#include <ModLoader/core/mcoremods.h>
-
+#include <mchunk.h>
 
 // MChunk
 MChunk::MChunk(){}

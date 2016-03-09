@@ -1,6 +1,5 @@
-#include <ModLoader/core/level/mlevel.h>
+#include <mlevel.h>
 #include <QtConcurrent/QtConcurrent>
-#include <ModLoader/core/mcoremods.h>
 
 
 // MLevelInfo
@@ -166,6 +165,7 @@ void genLevelC(ILevel* l){
 }
 MLevelManager::MLevelManager() {
 	this->list = new QList<ILevelInfo*>;
+	this->queue = varG(QThreadPool*, "eThreadQueue");
 
 	// Load list with exist levels
 	for(QFileInfo i : QDir("saves").entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot)){
@@ -185,13 +185,13 @@ MLevelManager::MLevelManager() {
 void MLevelManager::createLevel(ILevelInfo* i) {
  this->current = i;
  this->level = new MLevel(this->current);
-	QtConcurrent::run(MV_CORE_MODS->queue, genLevelC, this->level);
+	QtConcurrent::run(queue, genLevelC, this->level);
 }
 
 void MLevelManager::loadLevel(ILevelInfo *i) {
  this->current = i;
 	this->level = new MLevel(this->current);
-	QtConcurrent::run(MV_CORE_MODS->queue, loadLevelC, this->level);
+	QtConcurrent::run(queue, loadLevelC, this->level);
 }
 
 void MLevelManager::exitLevel(ILevelInfo* i) {

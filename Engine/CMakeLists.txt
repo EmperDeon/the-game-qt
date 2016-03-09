@@ -1,5 +1,4 @@
 set(E_SOURCE_FILES
-		econtainers.cpp
 		emain.cpp
 		emods.cpp
 		eutils.cpp
@@ -7,7 +6,6 @@ set(E_SOURCE_FILES
 		)
 
 set(E_HEADERS
-		econtainers.h
 		emain.h
 		emods.h
 		eutils.h

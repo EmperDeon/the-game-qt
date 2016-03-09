@@ -5,12 +5,6 @@ set(M_SOURCE_FILES
 
 		core/mcoremods.cpp
 
-		core/level/mblock.cpp
-		core/level/mchunk.cpp
-		core/level/mgenerator.cpp
-		core/level/mregion.cpp
-		core/level/mlevel.cpp
-
 		core/player/mplayer.cpp
 
 		core/render/mcamera.cpp
@@ -21,7 +15,6 @@ set(M_SOURCE_FILES
 		core/render/texture/mtexturemanager.cpp
 		core/render/world/mworld.cpp
 
-		core/events/mevents.cpp
 		mods/mmods.cpp
 		mods/mcontainers.cpp
 		mods/mtext.cpp
@@ -36,12 +29,6 @@ set(M_HEADERS
 
 		core/mcoremods.h
 
-		core/level/mblock.h
-		core/level/mchunk.h
-		core/level/mgenerator.h
-		core/level/mregion.h
-		core/level/mlevel.h
-
 		core/player/mplayer.h
 
 		core/render/mcamera.h
@@ -52,7 +39,6 @@ set(M_HEADERS
 		core/render/texture/mtexturemanager.h
 		core/render/world/mworld.h
 
-		core/events/mevents.h
 		mods/mmods.h
 		mods/mcontainers.h
 		mods/mtext.h

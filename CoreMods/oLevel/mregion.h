@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_MREGION_H
 #define GLOBALQT_MREGION_H
 #include <idefines.h>
-#include <ModLoader/core/level/mchunk.h>
+#include <mchunk.h>
 
 class MRegion : public IRegion{
 	IChunk* reg[REGION_SIZE_X][REGION_SIZE_Y][REGION_SIZE_Z];

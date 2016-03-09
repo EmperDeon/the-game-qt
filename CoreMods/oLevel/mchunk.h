@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_MCHUNK_H
 #define GLOBALQT_MCHUNK_H
 #include <idefines.h>
-#include <ModLoader/core/level/mblock.h>
+#include <mblock.h>
 
 class MChunk : public IChunk{
 	IWorldBlock* chunk[size][size][size];

@@ -1,4 +1,4 @@
-#include <ModLoader/core/events/mevents.h>
+#include <mevents.h>
 
 MEvents::MEvents(){map = new QMultiMap<QString, IEventsReciever*>;}
 

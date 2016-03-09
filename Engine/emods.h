@@ -6,7 +6,7 @@ class IModLoader;
 
 class EMods{
 	IModLoader * modloader;
-	QMap<QString, QString>* modloaderlist;
+	//QMap<QString, QString>* modloaderlist;
 
 	void initModLoaders();
 

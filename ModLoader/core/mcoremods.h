@@ -1,11 +1,8 @@
 #ifndef GLOBALQT_MCOREMODS_H
 #define GLOBALQT_MCOREMODS_H
 #include <idefines.h>
-#include <ModLoader/core/level/mlevel.h>
-#include <ModLoader/core/level/mchunk.h>
 #include <ModLoader/core/render/perf/mperfw.h>
 #include <ModLoader/core/render/mrender.h>
-#include <ModLoader/core/events/mevents.h>
 #include <ModLoader/mutils.h>
 #include <ModLoader/mods/mmods.h>
 
@@ -20,13 +17,9 @@ class MCoreMods : public IVarsLoader{
 	IMain* main;
  QThread* t_ren;
 
-	MPerformanceWidget * perf;
+	MPerformanceWidget *perf;
 	IEvents *events;
 	ILevelManager* level;
-
-	IEvents *oEvents = nullptr;
-	ILevelManager* oLevel = nullptr;
-	MGlWidget *oRender = nullptr;
 
  QList<ICoreMod*>* modList;
  MVarSelect * vselect;

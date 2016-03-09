@@ -53,7 +53,7 @@ void MCoreMods::loadPlugins() {
 // Check all mods
 	{
 		QStringList names, dep, err;
-		bool b = false; QString name;
+		QString name;
 
 		for(auto m : tlist){
 			names.append(m->getName());
@@ -167,22 +167,11 @@ void* MCoreMods::get(QString name){
 }
 
 void* MCoreMods::getO(QString name) {
-	if(name == "mEvents"){
-		if(oEvents == nullptr) oEvents = new MEvents();
-		return oEvents;
-
-	}else if(name == "mRender"){
-		if(oRender == nullptr) oRender = new MGlWidget();
-		return oRender;
-
-	}else if(name == "mLevel"){
-		if(oLevel == nullptr) oLevel = new MLevelManager();
-		return oLevel;
-
-	}else{
-		logE("No such variable");
+//	if(name == "mRender"){
+//		if(oRender == nullptr) oRender = new MGlWidget();
+//		return oRender;
+//
 		return nullptr;
-	}
 }
 
 IVarsLoader *MCoreMods::findMod(QString n) {
@@ -197,7 +186,7 @@ IVarsLoader *MCoreMods::findMod(QString n) {
 }
 
 QStringList MCoreMods::getVarsList() {
-	return {"mEvents", "mRender", "mLevel"};
+	return {"mRender", "mLevel"};
 }
 
 MCoreMods* MV_CORE_MODS;
@@ -317,6 +306,8 @@ MVarSelectWidget::MVarSelectWidget(MCoreMods *core) {
 }
 
 void MVarSelectWidget::closeEvent(QCloseEvent *event) {
+	Q_UNUSED(event)
+
 	MV_CORE_MODS->vselect->continueLoad();
 }
 // MVarSelectWidget

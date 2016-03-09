@@ -12,7 +12,7 @@ QString getLevelName(ILogLevel lv);
 class ELogger : public QObject, public ILogger{
  Q_OBJECT
 
-	QStringList lst;
+	//QStringList lst;
 	QLocalSocket* socket;
 
 	bool conn;

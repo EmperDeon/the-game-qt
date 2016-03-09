@@ -1,4 +1,4 @@
-#include <ModLoader/core/level/mblock.h>
+#include <mblock.h>
 
 MWorldBlock::MWorldBlock():id(), pos(), param(""){}
 

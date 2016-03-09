@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MAIN_H
 #define GLOBALQT_MAIN_H
-#include <cm_defines.h>
+#include <idefines.h>
 
 extern ILogger* CM_LOG;
 
@@ -20,7 +20,7 @@ public:
 };
 
 
-class TestCore1Main : public QObject, public ICoreMod{
+class CM_OEVENTS : public QObject, public ICoreMod{
  Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)

@@ -2,10 +2,14 @@ Aliases:
  M_NAME - Mod name, in upper case
  M_DIR - Mod dir in CoreMods/
 
+
 1. Create folder in CoreMods/
+
 2. Add CMakeLists.txt and mod files to it
+
 3. Open CoreMods/CMakeLists.txt
  3.1. Add line M_ADD_COREMOD(<M_DIR>)
+
 4. Include idefines.h in headers
  4.1. If you want to use any defines(log, var) then add this line to
   main cpp file: ILogger* IV_LOGGER; IVars* IV_VARS;
@@ -68,8 +72,8 @@ Examples:
   QStringList TestCore1Main::getDpList() {	return {}; }
 
   void TestCore1Main::setVars(IVars *v) {
-  	this->vars = v;
-  	CM_LOG = reinterpret_cast<ILogger*>(v->get("eLogger"));
+  	IV_VARS = v;
+  	IV_LOGGER = reinterpret_cast<ILogger*>(v->get("eLogger"));
   }
 
   void TestCore1Main::preInit() {}
@@ -78,10 +82,10 @@ Examples:
 
   void TestCore1Main::postInit() {}
 
-  ILogger* CM_LOG;
-
   void *TestCore1Main::get(QString name) { return nullptr; }
 
   void *TestCore1Main::getO(QString name) {	return nullptr;}
 
   QStringList TestCore1Main::getVarsList() {	return {}; }
+
+  ILogger* IV_LOGGER; IVars* IV_VARS;
