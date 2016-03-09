@@ -1,0 +1,84 @@
+Aliases:
+ M_NAME - Mod name, in upper case
+ M_DIR - Mod dir in CoreMods/
+
+1. Create folder in CoreMods/
+2. Add CMakeLists.txt and mod files to it
+3. Open CoreMods/CMakeLists.txt
+ 3.1. Add line M_ADD_COREMOD(<M_DIR>)
+4. Include cm_defines.h in headers
+
+
+Examples:
+ ----- CoreMods/CMakeLists.txt
+  ...
+  M_ADD_COREMOD(TestCore1)
+  ...
+
+
+ ----- CoreMods/TestCore1/CMakeLists.txt
+  set(TESTCORE1_S main.cpp)
+  set(TESTCORE1_H main.h)
+
+  M_BUILD_MOD(TESTCORE1)
+
+
+ ---- CoreMods/TestCore1/main.h
+  #ifndef TESTCORE1_MAIN_H
+  #define TESTCORE1_MAIN_H
+  #include <cm_defines.h>
+
+  class TestCore1Main : public QObject, public ICoreMod{
+   Q_OBJECT
+  	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
+  	Q_INTERFACES(ICoreMod)
+
+  	IVars* vars;
+  	ILogger* logger;
+   CMEvents* events;
+  public:
+
+  	virtual QStringList getOwList()       override;
+  	virtual QStringList getDpList()       override;
+  	virtual QString     getName()         override{ return "TestCore1";}
+
+  	virtual void        setVars(IVars* v) override;
+
+  	virtual void        preInit()         override;
+  	virtual void        init()            override;
+  	virtual void        postInit()        override;
+
+
+  	virtual void *get(QString name);
+  	virtual void *getO(QString name);
+  	virtual QStringList getVarsList();
+  };
+
+  #endif //TESTCORE1_MAIN_H
+
+
+ ---- CoreMods/TestCore1/main.cpp
+  #include "main.h"
+
+  QStringList TestCore1Main::getOwList() {	return {}; }
+
+  QStringList TestCore1Main::getDpList() {	return {}; }
+
+  void TestCore1Main::setVars(IVars *v) {
+  	this->vars = v;
+  	CM_LOG = reinterpret_cast<ILogger*>(v->get("eLogger"));
+  }
+
+  void TestCore1Main::preInit() {}
+
+  void TestCore1Main::init() {}
+
+  void TestCore1Main::postInit() {}
+
+  ILogger* CM_LOG;
+
+  void *TestCore1Main::get(QString name) { return nullptr; }
+
+  void *TestCore1Main::getO(QString name) {	return nullptr;}
+
+  QStringList TestCore1Main::getVarsList() {	return {}; }

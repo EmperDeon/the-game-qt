@@ -7,8 +7,6 @@ class IDirs;
 class ISettings;
 class ISettCont;
 
-enum class ILogLevel {ERR = 1, WARN = 2, INFO = 3, DEBUG = 4, FINE = 5, FFINE = 6, ALL = 7, QT = 8};
-
 extern ILogger*   EV_LOGGER;
 extern IVars*     EV_VARS;
 extern IDirs*     EV_DIRS;
@@ -28,6 +26,6 @@ extern ISettCont* EV_SETC;
 #define varS(cl, s) EV_VARS->set(cl, s)
 
 #include <Engine/edvars.h>
-#include <Engine/einterfaces.h>
+#include <iall.h>
 
 #endif //GLOBALQT_EDEFINES_H

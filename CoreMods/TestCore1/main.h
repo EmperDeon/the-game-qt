@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_MAIN_H
 #define GLOBALQT_MAIN_H
-#include <Engine/einterfaces.h>
+#include <cm_defines.h>
 
 extern ILogger* CM_LOG;
 

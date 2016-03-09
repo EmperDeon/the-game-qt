@@ -33,6 +33,6 @@ extern ISettCont* MV_SETC;
 #define mVarS(cl, s) MV_VARS->set(cl, s)
 
 
-#include <Engine/einterfaces.h>
+#include <iall.h>
 
 #endif //GLOBALQT_MDEFINES_H

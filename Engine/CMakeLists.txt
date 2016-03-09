@@ -10,22 +10,12 @@ set(E_HEADERS
 		econtainers.h
 		edefines.h
 
-		interfaces/iinventory.h
-		interfaces/ilevel.h
-		interfaces/imain.h
-		interfaces/imods.h
-		interfaces/iplayer.h
-		interfaces/irender.h
-		interfaces/itext.h
-		interfaces/iutils.h
-		einterfaces.h
-
 		emain.h
 		emods.h
 		eutils.h
 		ewidgets.h
 		edvars.h
-		interfaces/ievent.h)
+	)
 
 qt5_wrap_cpp(GENERATED_SOURCES ${E_HEADERS})
 
