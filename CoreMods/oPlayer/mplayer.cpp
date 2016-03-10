@@ -1,4 +1,4 @@
-#include <ModLoader/core/player/mplayer.h>
+#include <mplayer.h>
 
 
 void MPlayer::move(float r, float d) {

@@ -1,4 +1,4 @@
-#include <ModLoader/core/render/mhelper.h>
+#include <mhelper.h>
 
 float r(){return (qrand() % 101)*0.01f;}
 IVec3 rc(){return IVec3(r(), r(), r());}

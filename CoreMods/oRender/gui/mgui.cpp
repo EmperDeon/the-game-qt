@@ -1,4 +1,4 @@
-#include <ModLoader/core/render/gui/mgui.h>
+#include <gui/mgui.h>
 
 MGuiRender::MGuiRender(){}
 

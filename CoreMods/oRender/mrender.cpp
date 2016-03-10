@@ -1,5 +1,4 @@
-#include <ModLoader/core/render/mrender.h>
-
+#include <mrender.h>
 
 MGlWidget::MGlWidget(){
 	player = new MPlayer(10, 5, 10);

@@ -1,4 +1,4 @@
-#include <ModLoader/core/render/perf/mperfw.h>
+#include <perf/mperfw.h>
 
 MPerformanceWidget::MPerformanceWidget() {
 	this->render = varG(MGlWidget*, "mRender");

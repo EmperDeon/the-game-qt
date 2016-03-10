@@ -1,8 +1,7 @@
 #ifndef GLOBALQT_MWORLD_H
 #define GLOBALQT_MWORLD_H
 #include <idefines.h>
-#include <ModLoader/core/render/mhelper.h>
-#include <ModLoader/core/mcoremods.h>
+#include <mhelper.h>
 
 class MGlWidget;
 

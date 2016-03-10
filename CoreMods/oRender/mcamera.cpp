@@ -1,4 +1,4 @@
-#include <ModLoader/core/render/mcamera.h>
+#include <mcamera.h>
 
 MCamera::MCamera() {}
 

@@ -1,8 +1,8 @@
 #ifndef GLOBALQT_MPERFW_H
 #define GLOBALQT_MPERFW_H
 #include <idefines.h>
-#include <ModLoader/core/render/mrender.h>
-#include <ModLoader/qcustomplot.h>
+#include <mrender.h>
+#include <qcustomplot.h>
 
 class MGlWidget;
 

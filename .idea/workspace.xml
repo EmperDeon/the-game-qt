@@ -5,44 +5,48 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
-      <config projectName="GlobalQt" targetName="example" />
-      <config projectName="GlobalQt" targetName="minigzip64_automoc" />
-      <config projectName="GlobalQt" targetName="zlibstatic_automoc" />
-      <config projectName="GlobalQt" targetName="O_EVENTS_automoc" />
-      <config projectName="GlobalQt" targetName="E_LAUNCHER" />
-      <config projectName="GlobalQt" targetName="zlib" />
-      <config projectName="GlobalQt" targetName="ModLoader_automoc" />
-      <config projectName="GlobalQt" targetName="Launcher" />
-      <config projectName="GlobalQt" targetName="zlibstatic" />
-      <config projectName="GlobalQt" targetName="Engine" />
-      <config projectName="GlobalQt" targetName="E_ENGINE_automoc" />
-      <config projectName="GlobalQt" targetName="E_LAUNCHER_automoc" />
-      <config projectName="GlobalQt" targetName="GlobalQt" />
-      <config projectName="GlobalQt" targetName="COREMODS_TESTCORE1_automoc" />
-      <config projectName="GlobalQt" targetName="Runner_automoc" />
-      <config projectName="GlobalQt" targetName="ModLoader" />
-      <config projectName="GlobalQt" targetName="minigzip64" />
-      <config projectName="GlobalQt" targetName="COREMODS_TESTCORE1" />
-      <config projectName="GlobalQt" targetName="E_MODLOADER" />
-      <config projectName="GlobalQt" targetName="Runner" />
-      <config projectName="GlobalQt" targetName="E_ENGINE" />
-      <config projectName="GlobalQt" targetName="example_automoc" />
-      <config projectName="GlobalQt" targetName="GlobalQt_automoc" />
-      <config projectName="GlobalQt" targetName="example64" />
-      <config projectName="GlobalQt" targetName="Global" />
-      <config projectName="GlobalQt" targetName="Engine_automoc" />
-      <config projectName="GlobalQt" targetName="Global_automoc" />
+      <config projectName="GlobalQt" targetName="O_RENDER_automoc" />
       <config projectName="GlobalQt" targetName="example64_automoc" />
-      <config projectName="GlobalQt" targetName="E_MODLOADER_automoc" />
-      <config projectName="GlobalQt" targetName="O_LEVEL_automoc" />
+      <config projectName="GlobalQt" targetName="GlobalQt" />
+      <config projectName="GlobalQt" targetName="example_automoc" />
+      <config projectName="GlobalQt" targetName="Engine" />
       <config projectName="GlobalQt" targetName="zlib_automoc" />
-      <config projectName="GlobalQt" targetName="TESTCORE1_automoc" />
+      <config projectName="GlobalQt" targetName="minigzip64" />
+      <config projectName="GlobalQt" targetName="GlobalQt_automoc" />
+      <config projectName="GlobalQt" targetName="COREMODS_TESTCORE1" />
+      <config projectName="GlobalQt" targetName="ModLoader_automoc" />
+      <config projectName="GlobalQt" targetName="E_LAUNCHER" />
+      <config projectName="GlobalQt" targetName="O_EVENTS_automoc" />
       <config projectName="GlobalQt" targetName="minigzip" />
-      <config projectName="GlobalQt" targetName="Launcher_automoc" />
-      <config projectName="GlobalQt" targetName="TESTCORE1" />
-      <config projectName="GlobalQt" targetName="O_EVENTS" />
-      <config projectName="GlobalQt" targetName="O_LEVEL" />
+      <config projectName="GlobalQt" targetName="E_MODLOADER" />
+      <config projectName="GlobalQt" targetName="COREMODS_TESTCORE1_automoc" />
       <config projectName="GlobalQt" targetName="minigzip_automoc" />
+      <config projectName="GlobalQt" targetName="O_RENDER" />
+      <config projectName="GlobalQt" targetName="Engine_automoc" />
+      <config projectName="GlobalQt" targetName="ModLoader" />
+      <config projectName="GlobalQt" targetName="zlib" />
+      <config projectName="GlobalQt" targetName="Global" />
+      <config projectName="GlobalQt" targetName="TESTCORE1" />
+      <config projectName="GlobalQt" targetName="E_MODLOADER_automoc" />
+      <config projectName="GlobalQt" targetName="E_LAUNCHER_automoc" />
+      <config projectName="GlobalQt" targetName="example" />
+      <config projectName="GlobalQt" targetName="TESTCORE1_automoc" />
+      <config projectName="GlobalQt" targetName="O_PLAYER_automoc" />
+      <config projectName="GlobalQt" targetName="example64" />
+      <config projectName="GlobalQt" targetName="Runner" />
+      <config projectName="GlobalQt" targetName="Global_automoc" />
+      <config projectName="GlobalQt" targetName="O_EVENTS" />
+      <config projectName="GlobalQt" targetName="O_LEVEL_automoc" />
+      <config projectName="GlobalQt" targetName="Runner_automoc" />
+      <config projectName="GlobalQt" targetName="E_ENGINE" />
+      <config projectName="GlobalQt" targetName="zlibstatic_automoc" />
+      <config projectName="GlobalQt" targetName="O_PLAYER" />
+      <config projectName="GlobalQt" targetName="minigzip64_automoc" />
+      <config projectName="GlobalQt" targetName="O_LEVEL" />
+      <config projectName="GlobalQt" targetName="Launcher" />
+      <config projectName="GlobalQt" targetName="E_ENGINE_automoc" />
+      <config projectName="GlobalQt" targetName="zlibstatic" />
+      <config projectName="GlobalQt" targetName="Launcher_automoc" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
@@ -52,36 +56,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f54c2eac-7c3a-4ed9-8f9f-8ac5ec5988cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZGuides/IVars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/player/mplayer.cpp" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/player/mplayer.h" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/gui/mgui.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/gui/mgui.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/gui/mgui.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/gui/mgui.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mcamera.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mcamera.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mcamera.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/mcamera.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mhelper.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mhelper.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/mhelper.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mrender.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mrender.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/mrender.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/mrender.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/perf/mperfw.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/texture/mtexturemanager.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/texture/mtexturemanager.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/core/render/world/mworld.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/qcustomplot.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/qcustomplot.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ModLoader/qcustomplot.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/qcustomplot.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/CMakeLists.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/main.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/main.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oRender/CMakeLists.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oRender/main.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoreMods/oRender/main.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GlobalQt.iml" afterPath="$PROJECT_DIR$/.idea/GlobalQt.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oEvents/CMakeLists.txt" afterPath="$PROJECT_DIR$/CoreMods/oEvents/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oLevel/CMakeLists.txt" afterPath="$PROJECT_DIR$/CoreMods/oLevel/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Engine/CMakeLists.txt" afterPath="$PROJECT_DIR$/Engine/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Launcher/CMakeLists.txt" afterPath="$PROJECT_DIR$/Launcher/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/CMakeLists.txt" afterPath="$PROJECT_DIR$/ModLoader/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModLoader/core/mcoremods.h" afterPath="$PROJECT_DIR$/ModLoader/core/mcoremods.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZGuides/CreatingCoreMod" afterPath="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/CMakeLists.txt" afterPath="$PROJECT_DIR$/CoreMods/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.cpp" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.h" afterPath="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/gui/mgui.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/gui/mgui.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/mcamera.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mcamera.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/mcamera.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/mcamera.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/mrender.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/mrender.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/mrender.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/mrender.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp" afterPath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.h" afterPath="$PROJECT_DIR$/CoreMods/oRender/world/mworld.h" />
     </list>
     <ignored path="GlobalQt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,11 +100,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreMods/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51602024">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mperfw.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mtexturemanager.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="46" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mworld.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mrender.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mrender.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.02866779">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -131,30 +177,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Engine/interfaces/imods.h" />
-        <option value="$PROJECT_DIR$/Engine/interfaces/imain.h" />
-        <option value="$PROJECT_DIR$/Engine/eutils.cpp" />
-        <option value="$PROJECT_DIR$/CoreMods/TestCore1/main.cpp" />
-        <option value="$PROJECT_DIR$/CoreMods/TestCore1/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/Engine/einterfaces.h" />
-        <option value="$PROJECT_DIR$/CoreMods/cm_defines.h" />
-        <option value="$PROJECT_DIR$/Interfaces/iall.h" />
-        <option value="$PROJECT_DIR$/Interfaces/ivars.h" />
-        <option value="$PROJECT_DIR$/Interfaces/cm_defines.h" />
-        <option value="$PROJECT_DIR$/ModLoader/mdefines.h" />
-        <option value="$PROJECT_DIR$/Interfaces/idefines.h" />
-        <option value="$PROJECT_DIR$/Engine/econtainers.h" />
-        <option value="$PROJECT_DIR$/ModLoader/core/events/mevents.h" />
-        <option value="$PROJECT_DIR$/Engine/emods.h" />
-        <option value="$PROJECT_DIR$/Engine/eutils.h" />
-        <option value="$PROJECT_DIR$/Engine/emain.cpp" />
         <option value="$PROJECT_DIR$/Engine/edefines.h" />
         <option value="$PROJECT_DIR$/Runner/main.cpp" />
         <option value="$PROJECT_DIR$/CoreMods/oEvents/mevents.h" />
         <option value="$PROJECT_DIR$/CoreMods/oEvents/mevents.cpp" />
         <option value="$PROJECT_DIR$/ZGuides/Using IVars" />
         <option value="$PROJECT_DIR$/CoreMods/TestCore1/main.h" />
-        <option value="$PROJECT_DIR$/CoreMods/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/CoreMods/oLevel/mregion.h" />
         <option value="$PROJECT_DIR$/CoreMods/oLevel/mblock.cpp" />
         <option value="$PROJECT_DIR$/CoreMods/oLevel/mgenerator.cpp" />
@@ -182,6 +210,24 @@
         <option value="$PROJECT_DIR$/ModLoader/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Launcher/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ZGuides/CreatingCoreMod" />
+        <option value="$PROJECT_DIR$/CoreMods/oPlayer/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/CoreMods/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/CoreMods/oPlayer/main.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oPlayer/main.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oPlayer/mplayer.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/gui/mgui.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/world/mworld.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/mcamera.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/mcamera.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/mrender.h" />
+        <option value="$PROJECT_DIR$/CoreMods/oRender/mrender.cpp" />
       </list>
     </option>
   </component>
@@ -415,6 +461,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\CoreMods\oRender" />
+      <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\CoreMods\oPlayer" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\CoreMods\oLevel" />
       <recent name="C:\Users\Ilya\OneDrive\TheGame\Qt\GlobalQt\CoreMods\oEvents" />
       <recent name="D:\TheGame\Qt\GlobalQt\Global" />
@@ -491,7 +539,23 @@
       <envs />
       <method />
     </configuration>
-    <list size="7">
+    <configuration default="false" name="O_PLAYER" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="GlobalQt" TARGET_NAME="O_PLAYER" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="O_PLAYER_automoc" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="GlobalQt" TARGET_NAME="O_PLAYER_automoc" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="O_RENDER" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="GlobalQt" TARGET_NAME="O_RENDER" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="O_RENDER_automoc" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="GlobalQt" TARGET_NAME="O_RENDER_automoc" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <list size="11">
       <item index="0" class="java.lang.String" itemvalue="Application.Build&amp;Run" />
       <item index="1" class="java.lang.String" itemvalue="Application.Launcher" />
       <item index="2" class="java.lang.String" itemvalue="Application.Engine" />
@@ -499,6 +563,10 @@
       <item index="4" class="java.lang.String" itemvalue="Application.E_ENGINE_automoc" />
       <item index="5" class="java.lang.String" itemvalue="Application.E_LAUNCHER" />
       <item index="6" class="java.lang.String" itemvalue="Application.E_LAUNCHER_automoc" />
+      <item index="7" class="java.lang.String" itemvalue="Application.O_PLAYER" />
+      <item index="8" class="java.lang.String" itemvalue="Application.O_PLAYER_automoc" />
+      <item index="9" class="java.lang.String" itemvalue="Application.O_RENDER" />
+      <item index="10" class="java.lang.String" itemvalue="Application.O_RENDER_automoc" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -508,12 +576,6 @@
       <created>1442289845132</created>
       <option name="number" value="Default" />
       <updated>1442289845132</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Started working with MActions">
-      <created>1444621105712</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1444621105712</updated>
     </task>
     <task id="LOCAL-00022" summary="Working with MActions, starting work with level">
       <created>1444630859747</created>
@@ -803,7 +865,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457534921591</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Small edit in CMakeLists, Moving Render and Player">
+      <created>1457621039960</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1457621039960</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TodoView">
@@ -817,9 +885,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18377976" sideWeight="0.47588426" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18377976" sideWeight="0.47588426" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.49702382" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39452496" sideWeight="0.4903274" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.215781" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -905,159 +973,15 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="73" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Launcher/widgets/lmodeditor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09770115">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Runner/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5373563">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Launcher/widgets/lmodeditor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/TestCore1/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/I/interf/ievent.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6020236">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/TestCore1/main.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24425288">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/TestCore1/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5373563">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/mevents.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34195402">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/mevents.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14655173">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModLoader/mmodloader.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mgenerator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mblock.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mregion.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08600337">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mgenerator.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05733558">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mregion.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.411467">
-          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoreMods/oLevel/mblock.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11467116">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05733558">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1098,14 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/world/mworld.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2866779">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/main.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22934233">
@@ -1140,22 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mhelper.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24425288">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ModLoader/mods/mtext.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63505745">
@@ -1168,14 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.73275864">
           <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9770115">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1212,30 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29310346">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ModLoader/core/mcoremods.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4655173">
@@ -1266,14 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1954023">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09770115">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1328,8 +1188,220 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51602024">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.6593592">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oPlayer/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oEvents/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7407407">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oPlayer/main.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22596964">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding>
+            <element signature="e#48#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oPlayer/mplayer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oPlayer/mplayer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34401348">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oPlayer/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68802696">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43001688">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/qcustomplot.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/gui/mgui.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02866779">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/gui/mgui.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/perf/mperfw.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/texture/mtexturemanager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/world/mworld.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02866779">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding>
+            <element signature="e#52#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mhelper.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14333895">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mhelper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mcamera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08600337">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mcamera.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/world/mworld.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/qcustomplot.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreMods/oRender/mrender.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02866779">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
           <folding />
         </state>
       </provider>

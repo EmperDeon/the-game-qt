@@ -7,6 +7,12 @@
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oLevel/O_LEVEL_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oLevel/O_LEVEL_automoc.cpp" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oPlayer/O_PLAYER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oPlayer/O_PLAYER_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oRender/O_RENDER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oRender/O_RENDER_automoc.cpp" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine/E_ENGINE_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine/E_ENGINE_automoc.cpp" isTestSource="false" />
     </content>
@@ -24,6 +30,12 @@
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oLevel/O_LEVEL_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oLevel/O_LEVEL_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oPlayer/O_PLAYER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oPlayer/O_PLAYER_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oRender/O_RENDER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oRender/O_RENDER_automoc.cpp" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine/E_ENGINE_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine/E_ENGINE_automoc.cpp" isTestSource="false" />
@@ -43,6 +55,12 @@
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oLevel/O_LEVEL_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oLevel/O_LEVEL_automoc.cpp" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oPlayer/O_PLAYER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oPlayer/O_PLAYER_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oRender/O_RENDER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oRender/O_RENDER_automoc.cpp" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine/E_ENGINE_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine/E_ENGINE_automoc.cpp" isTestSource="false" />
     </content>
@@ -60,6 +78,12 @@
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oLevel/O_LEVEL_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oLevel/O_LEVEL_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oPlayer/O_PLAYER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oPlayer/O_PLAYER_automoc.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oRender/O_RENDER_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oRender/O_RENDER_automoc.cpp" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine/E_ENGINE_automoc.cpp">
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine/E_ENGINE_automoc.cpp" isTestSource="false" />
@@ -90,18 +114,18 @@
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lparser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/lmain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/qzipwriter_p.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmodel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmods.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/llevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lresources.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmodeditor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Launcher/widgets/lmodeditor.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/emain.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Engine/emain.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/ewidgets.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Engine/eutils.cpp" isTestSource="false" />
@@ -109,10 +133,10 @@
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mlevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mlevel.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mregion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mhelper.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mchunk.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mchunk.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mregion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mgenerator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mhelper.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mregion.cpp" isTestSource="false" />
@@ -122,26 +146,50 @@
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oLevel/mblock.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oPlayer/mplayer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oPlayer/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oPlayer/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oPlayer/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oPlayer/mplayer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/mevents.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/mevents.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/mevents.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oEvents/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mrender.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mcamera.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/perf/mperfw.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/perf/mperfw.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mhelper.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mcamera.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/texture/mtexturemanager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/texture/mtexturemanager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/qcustomplot.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mhelper.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/world/mworld.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/world/mworld.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/qcustomplot.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/gui/mgui.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/gui/mgui.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CoreMods/oRender/mrender.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mplugin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mtext.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mmods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mcontainers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mscript.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mplugin.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mods/mscript.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/core/mcoremods.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mmodloader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ModLoader/mutils.cpp" isTestSource="false" />
@@ -151,53 +199,61 @@
       <library name="Header Search Paths">
         <CLASSES>
           <root url="file://$MODULE_DIR$/I" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/I" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/include" />
-          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/mkspecs/win32-g++" />
           <root url="file://$APPLICATION_HOME_DIR$/mingw492_32/i686-w64-mingw32/include" />
         </SOURCES>
         <excluded>
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/ModLoader/E_MODLOADER_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine/E_ENGINE_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Launcher/E_LAUNCHER_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine/E_ENGINE_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher/E_LAUNCHER_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/ModLoader/E_MODLOADER_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/ModLoader/E_MODLOADER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine/E_ENGINE_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/ModLoader/E_MODLOADER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Launcher/E_LAUNCHER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oPlayer/O_PLAYER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/CoreMods/oRender/O_RENDER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/ModLoader/E_MODLOADER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Launcher/E_LAUNCHER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Engine/E_ENGINE_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oPlayer/O_PLAYER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/CoreMods/oRender/O_RENDER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Debug/Runner_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Engine/E_ENGINE_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Launcher/E_LAUNCHER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/ModLoader/E_MODLOADER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/Runner_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oPlayer/O_PLAYER_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/Release/CoreMods/oRender/O_RENDER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/ModLoader/E_MODLOADER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Engine/E_ENGINE_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Launcher/E_LAUNCHER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/Runner_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oLevel/O_LEVEL_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oPlayer/O_PLAYER_automoc.cpp" />
           <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oEvents/O_EVENTS_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/RelWithDebInfo/CoreMods/oRender/O_RENDER_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>

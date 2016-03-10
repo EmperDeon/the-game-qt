@@ -2,3 +2,5 @@
 
 M_ADD_COREMOD(oEvents)
 M_ADD_COREMOD(oLevel)
+M_ADD_COREMOD(oPlayer)
+M_ADD_COREMOD(oRender)

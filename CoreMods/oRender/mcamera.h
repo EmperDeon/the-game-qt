@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_MCAMERA_H
 #define GLOBALQT_MCAMERA_H
 #include <idefines.h>
-#include <ModLoader/core/render/mrender.h>
+#include <mrender.h>
 #include <GL/glu.h>
 
 class MCamera : public ICamera{

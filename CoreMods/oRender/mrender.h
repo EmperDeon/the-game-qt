@@ -2,10 +2,9 @@
 #define GLOBALQT_MRENDER_H
 #include <QtOpenGL/QtOpenGL>
 #include <idefines.h>
-#include <ModLoader/core/player/mplayer.h>
-#include <ModLoader/core/render/mcamera.h>
-#include <ModLoader/core/render/gui/mgui.h>
-#include <ModLoader/core/render/world/mworld.h>
+#include <mcamera.h>
+#include <gui/mgui.h>
+#include <world/mworld.h>
 
 class MCamera;
 class MPlayer;
