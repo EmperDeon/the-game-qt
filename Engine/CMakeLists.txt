@@ -1,20 +1,16 @@
-set(E_SOURCE_FILES
+set(E_ENGINE_S
 		emain.cpp
 		emods.cpp
 		eutils.cpp
 		ewidgets.cpp
-		)
+)
 
-set(E_HEADERS
+set(E_ENGINE_H
 		emain.h
 		emods.h
 		eutils.h
 		ewidgets.h
-	)
+)
 
-qt5_wrap_cpp(GENERATED_SOURCES ${E_HEADERS})
-
-add_executable(Engine ${E_SOURCE_FILES} ${E_HEADERS})
-qt5_use_modules(Engine Core Widgets Network OpenGL)
-target_compile_features(Engine PRIVATE cxx_range_for)
-target_link_libraries(Engine ${ZLIB_LIBRARIES} ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
+SET(M_USING_MODULES Core Network Widgets OpenGl)
+M_BUILD(E_ENGINE)

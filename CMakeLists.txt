@@ -28,12 +28,14 @@ MACRO(M_ADD_MOD M_NAME)
 	add_subdirectory(${M_NAME})
 ENDMACRO(M_ADD_MOD)
 
-MACRO(M_BUILD_MOD M_NAME)
+SET(M_USING_MODULES )
+MACRO(M_BUILD M_NAME)
+	qt5_wrap_cpp(GENERATED_SOURCES ${${M_NAME}_H})
 	add_library(${M_NAME} SHARED ${${M_NAME}_S} ${${M_NAME}_H})
-	qt5_use_modules(${M_NAME} Core Widgets Network OpenGL)
+	qt5_use_modules(${M_NAME} ${M_USING_MODULES})
 	target_compile_features(${M_NAME} PRIVATE cxx_range_for)
-	target_link_libraries(${M_NAME} ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
-ENDMACRO(M_BUILD_MOD)
+	target_link_libraries(${M_NAME} ${ZLIB_LIBRARIES} ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
+ENDMACRO(M_BUILD)
 
 find_package(Qt5Core)
 find_package(Qt5Concurrent)
@@ -47,12 +49,13 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(../GlobalQt) # crutch
 include_directories(I)
 
-# SUBDIRS
 
+# SUBDIRS
 M_SET_BUILD_DIR(D:/GameTmp/)
 
 add_subdirectory(Engine)
 add_subdirectory(Launcher)
+add_executable(Runner Runner/main.cpp)
 
 add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_PLUGIN)
@@ -60,9 +63,5 @@ add_definitions(-DQT_NO_DEBUG)
 add_definitions(-DQT_SHARED)
 
 add_subdirectory(ModLoader)
-
-add_executable(Runner Runner/main.cpp)
-
 add_subdirectory(CoreMods)
-
 add_subdirectory(Mods)

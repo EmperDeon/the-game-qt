@@ -1,0 +1,6 @@
+If you are creating mod, and want to use IVars class, you need to:
+ 1. include idefines.h
+ 2. add line to main cpp file: IVars* IV_VARS;
+
+Remember:
+ 1. IVars working only with pointers, be careful what you set and get from it.

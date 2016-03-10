@@ -3,7 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$USER_HOME$/.CLion12/system/cmake/generated/3cc4286/3cc4286/MinSizeRel/Engine_automoc.cpp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ModLoader/core/render/mrender.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CoreMods/oRender/mrender.cpp" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

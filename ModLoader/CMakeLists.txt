@@ -1,19 +1,8 @@
-set(M_SOURCE_FILES
+set(E_MODLOADER_S
 		mmodloader.cpp
 		mutils.cpp
-		qcustomplot.cpp
 
 		core/mcoremods.cpp
-
-		core/player/mplayer.cpp
-
-		core/render/mcamera.cpp
-		core/render/mhelper.cpp
-		core/render/mrender.cpp
-		core/render/perf/mperfw.cpp
-		core/render/gui/mgui.cpp
-		core/render/texture/mtexturemanager.cpp
-		core/render/world/mworld.cpp
 
 		mods/mmods.cpp
 		mods/mcontainers.cpp
@@ -22,22 +11,11 @@ set(M_SOURCE_FILES
 		mods/mplugin.cpp
 		)
 
-set(M_HEADERS
+set(E_MODLOADER_H
 		mmodloader.h
 		mutils.h
-		qcustomplot.h
 
 		core/mcoremods.h
-
-		core/player/mplayer.h
-
-		core/render/mcamera.h
-		core/render/mhelper.h
-		core/render/mrender.h
-		core/render/perf/mperfw.h
-		core/render/gui/mgui.h
-		core/render/texture/mtexturemanager.h
-		core/render/world/mworld.h
 
 		mods/mmods.h
 		mods/mcontainers.h
@@ -46,12 +24,5 @@ set(M_HEADERS
 		mods/mplugin.h
 		)
 
-qt5_wrap_cpp(GENERATED_SOURCES ${M_HEADERS})
-
-add_library(ModLoader SHARED ${M_SOURCE_FILES} ${M_HEADERS})
-
-qt5_use_modules(ModLoader Core Widgets Network OpenGL)
-
-target_compile_features(ModLoader PRIVATE cxx_range_for)
-
-target_link_libraries(ModLoader ${OPENGL_LIBRARY} ${Qt5Core_QTMAIN_LIBRARIES})
+SET(M_USING_MODULES Core Network Widgets OpenGl)
+M_BUILD(E_MODLOADER)

@@ -1,13 +1,14 @@
-set(L_SOURCE_FILES
+set(E_LAUNCHER_S
 		lmain.cpp
 		lutils.cpp
 		lwidgets.cpp
 		lparser.cpp
 		lwmodels.cpp
 		widgets/lmodeditor.cpp
-		widgets/lmods.cpp)
+		widgets/lmods.cpp
+)
 
-set(L_HEADERS
+set(E_LAUNCHER_H
 		lmain.h
 		lutils.h
 		lwidgets.h
@@ -20,11 +21,8 @@ set(L_HEADERS
 		widgets/lmodel.h
 		widgets/lresources.h
 		widgets/lmodeditor.h
-		widgets/lmods.h)
+		widgets/lmods.h
+)
 
-qt5_wrap_cpp(GENERATED_SOURCES ${L_HEADERS})
-
-add_executable(Launcher ${L_SOURCE_FILES} ${L_HEADERS})
-qt5_use_modules(Launcher Core Widgets Network)
-target_compile_features(Launcher PRIVATE cxx_range_for)
-target_link_libraries(Launcher ${Qt5Core_QTMAIN_LIBRARIES})
+SET(M_USING_MODULES Core Network Widgets)
+M_BUILD(E_LAUNCHER)
