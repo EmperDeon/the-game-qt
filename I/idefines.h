@@ -23,6 +23,8 @@ extern ISettCont* IV_SETC;
 #define logA(ms)  IV_LOGGER->log(ILogLevel::ALL,   Q_FUNC_INFO, ms)
 
 #define varG(cl, s) reinterpret_cast<cl>(IV_VARS->get(s))
+#define varN(cl, s)    reinterpret_cast<cl>(IV_VARS->getN(s))
+#define varNA(cl, x, y) reinterpret_cast<cl>(IV_VARS->getN(x, y))
 #define varS(cl, s) IV_VARS->set(cl, s)
 // Engine
 

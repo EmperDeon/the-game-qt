@@ -1,4 +1,4 @@
-#include <ModLoader/mods/mcontainers.h>
+#include <mods/mcontainers.h>
 
 // MIdis
 MIIds::MIIds(QMap<QString, Imiks>* l) : mods(l), mNull(0, 0, 0, 0){}

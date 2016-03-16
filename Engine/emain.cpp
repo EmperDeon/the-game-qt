@@ -1,4 +1,4 @@
-#include <Engine/emain.h>
+#include <emain.h>
 
 
 // Main
@@ -53,7 +53,7 @@ EMain::EMain() {
 void EMain::init() {
 	mods->coreInit();
 
-	wgt = varG(MGlWidget*, "mRender");
+	wgt = varG(IGlWidget*, "mRender");
 	wdev = new EDeveloper();
 
  mods->init();

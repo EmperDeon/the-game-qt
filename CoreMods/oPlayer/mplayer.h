@@ -2,7 +2,7 @@
 #define GLOBALQT_MPLAYER_H
 #include <idefines.h>
 
-class MPlayer : public IPlayer, public IEventsReciever{
+class MPlayer : public IPlayer{
 	float x, y, z;
 	float aY, aP; // Yaw and Pitch in radians
 	qint32 cX = 0, cZ = 0;

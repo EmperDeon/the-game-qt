@@ -29,6 +29,11 @@ public:
 
 
 // Gui
+class IGlWidget : public QOpenGLWidget{
+public:
+	virtual qint64 getFps() = 0;
+};
+
 class IGuiRender{ // 2D
 public:
 	virtual void render() = 0;

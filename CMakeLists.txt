@@ -46,7 +46,6 @@ find_package(OpenGL REQUIRED)
 find_package(ZLIB REQUIRED)
 
 include_directories(${ZLIB_INCLUDE_DIRS})
-include_directories(../GlobalQt) # crutch
 include_directories(I)
 
 

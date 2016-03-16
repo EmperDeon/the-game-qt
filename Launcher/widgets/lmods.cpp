@@ -1,4 +1,4 @@
-#include <Launcher/widgets/lmods.h>
+#include <widgets/lmods.h>
 
 LModsWidget::LModsWidget(LMainWindow *l){
 	loader = l;

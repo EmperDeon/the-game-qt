@@ -1,6 +1,6 @@
 #ifndef GLOBALQT_LRESOURCES_H
 #define GLOBALQT_LRESOURCES_H
-#include <Launcher/ldefines.h>
+#include <ldefines.h>
 
 class LResmWidget : public QWidget{// Resource manager
 //public:

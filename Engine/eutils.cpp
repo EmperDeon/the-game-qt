@@ -1,4 +1,4 @@
-#include <Engine/eutils.h>
+#include <eutils.h>
 
 // Logger
 QString getLevelName(ILogLevel lv){
@@ -169,7 +169,15 @@ void*EVars::get(QString name){
 	return (*map)[name];
 }
 
-IVarsLoader *EVars::getLoader() {
+void *EVars::getN(QString name) {
+	return loader->getN(name);
+}
+
+void *EVars::getN(QString name, QJsonObject arg) {
+	return loader->getN(name, arg);
+}
+
+IVarsSelect *EVars::getLoader() {
 	return loader;
 }
 
@@ -187,9 +195,10 @@ void EVars::setOverwriteList(QStringList names) {
 	this->owlist = new QStringList(names);
 }
 
-void EVars::setVarsLoader(IVarsLoader *l) {
+void EVars::setVarsLoader(IVarsSelect *l) {
  this->loader = l;
 }
+
 IVars*IV_VARS;
 // Vars
 
@@ -215,6 +224,5 @@ QString EDirs::getSFile(QString k, QString f) {	return dirs->value(k) + f; }
 
 IDirs*IV_DIRS;
 // Dirs
-
 
 

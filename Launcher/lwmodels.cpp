@@ -1,4 +1,4 @@
-#include <Launcher/lwmodels.h>
+#include <lwmodels.h>
 
 // LModModel
 LModLoaderSelect::LModLoaderSelect(QMap<QString, QString> &m, QObject *pobj): QAbstractTableModel(pobj), mp(m){

@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_LMODS_H
 #define GLOBALQT_LMODS_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lmain.h>
+#include <ldefines.h>
+#include <lmain.h>
 
 class LMainWindow;
 class LListModel;

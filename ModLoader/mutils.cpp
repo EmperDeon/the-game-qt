@@ -1,4 +1,4 @@
-#include <ModLoader/mutils.h>
+#include <mutils.h>
 
 QJsonObject loadJson(QString file){
 	QFile loadFile(file);

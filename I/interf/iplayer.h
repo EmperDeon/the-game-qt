@@ -18,7 +18,7 @@ public:
 };
 
 
-class IPlayer : public IEntity{
+class IPlayer : public IEntity, public IEventsReciever{
 public:
 	virtual void moveF()               = 0;
 	virtual void moveB()               = 0;

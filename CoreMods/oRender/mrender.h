@@ -13,11 +13,11 @@ class MRKeyboardInput;
 class MRMouseInput;
 class MRKeyboardInit;
 
-class MGlWidget : public QGLWidget{
+class MGlWidget : public IGlWidget{
 	Q_OBJECT
 
  MCamera* cam;
-	MPlayer* player;
+	IPlayer* player;
 	IWorldRender* world;
 	IGuiRender* gui;
 
@@ -32,7 +32,7 @@ class MGlWidget : public QGLWidget{
 
 public:
 	MGlWidget();
-	qint64 getFps(){return fps;}
+ virtual	qint64 getFps() override {return fps;}
 
 protected:
 	void initializeGL();
@@ -47,6 +47,7 @@ protected:
 	void mouseMoveEvent(QMouseEvent* pe);
 	void mouseReleaseEvent(QMouseEvent* pe);
 	void wheelEvent(QWheelEvent* pe);
+
 	friend class MRInput;
 	friend class MRKeyboardInput;
 	friend class MRMouseInput;

@@ -2,7 +2,7 @@
 
 MWorldRender::MWorldRender(){
 	this->manager = varG(ILevelManager*, "mLevel");
-
+ this->queue = varG(QThreadPool*, "eThreadQueue");
 	this->listMutex = new QMutex;
 	this->chunks = new QMap<IAChunkPos, GLuint>;
 	this->renderLists = new QList<GLuint>;
@@ -17,7 +17,7 @@ void MWorldRender::init() {
 
 	this->manager->loadLevel("TestLevel1");
 	this->level = manager->getCurrentLevel();
-	MV_CORE_MODS->queue->waitForDone();
+	queue->waitForDone();
 }
 
 void MWorldRender::render() {

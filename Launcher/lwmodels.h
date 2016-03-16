@@ -1,7 +1,7 @@
 #ifndef GLOBALQT_LWMODELS_H
 #define GLOBALQT_LWMODELS_H
-#include <Launcher/ldefines.h>
-#include <Launcher/widgets/lmodeditor.h>
+#include <ldefines.h>
+#include <widgets/lmodeditor.h>
 
 class LTextModWidgetEditor;
 

@@ -1,4 +1,4 @@
-#include <ModLoader/mods/mscript.h>
+#include <mods/mscript.h>
 
 MScriptsContainer::MScriptsContainer() {
 

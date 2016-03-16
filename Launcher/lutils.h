@@ -1,9 +1,9 @@
 #ifndef GLOBALQT_LUTILS_H
 #define GLOBALQT_LUTILS_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lmain.h>
-#include <Launcher/qzipreader_p.h>
-#include <Launcher/qzipwriter_p.h>
+#include <ldefines.h>
+#include <lmain.h>
+#include <qzipreader_p.h>
+#include <qzipwriter_p.h>
 
 class LMainWindow;
 

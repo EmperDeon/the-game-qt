@@ -1,4 +1,4 @@
-#include <ModLoader/mmodloader.h>
+#include <mmodloader.h>
 
 QString MModLoader::getName(){
 	return "BaseModLoader";

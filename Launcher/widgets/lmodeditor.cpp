@@ -1,4 +1,4 @@
-#include <Launcher/widgets/lmodeditor.h>
+#include <widgets/lmodeditor.h>
 
 LTextModWidgetEditor::LTextModWidgetEditor(QStringList keys, QStringList vals, QJsonArray* a) {
 	this->ob = a;

@@ -11,6 +11,7 @@ QStringList CM_O_PLAYER::getDpList() {
 void CM_O_PLAYER::setVars(IVars *v) {
 	IV_VARS = v;
 	IV_LOGGER = reinterpret_cast<ILogger*>(v->get("eLogger"));
+	IV_SETT = reinterpret_cast<ISettings*>(v->get("eSettings"));
 }
 
 void CM_O_PLAYER::preInit() {}
@@ -39,3 +40,12 @@ QStringList CM_O_PLAYER::getVarsList() {
 
 ILogger* IV_LOGGER;
 IVars*   IV_VARS;
+ISettings* IV_SETT;
+
+void *CM_O_PLAYER::getN(QString name) {
+	return nullptr;
+}
+
+void *CM_O_PLAYER::getN(QString name, QJsonObject arg) {
+	return nullptr;
+}

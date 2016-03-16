@@ -1,4 +1,4 @@
-#include <Launcher/lmain.h>
+#include <lmain.h>
 
 // Main
 int main(int argc, char *argv[]){

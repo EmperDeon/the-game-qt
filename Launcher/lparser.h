@@ -1,10 +1,10 @@
 #ifndef GLOBALQT_LPARSER_H
 #define GLOBALQT_LPARSER_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lwidgets.h>
-#include <Launcher/lmain.h>
-#include <Launcher/widgets/lmodeditor.h>
-#include <Launcher/qzipreader_p.h>
+#include <ldefines.h>
+#include <lwidgets.h>
+#include <lmain.h>
+#include <widgets/lmodeditor.h>
+#include <qzipreader_p.h>
 
 #define ParserVer "0.1"
 

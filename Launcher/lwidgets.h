@@ -1,14 +1,14 @@
 #ifndef GLOBALQT_LWIDGETS_H
 #define GLOBALQT_LWIDGETS_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lutils.h>
-#include <Launcher/lmain.h>
-#include <Launcher/lwmodels.h>
-#include <Launcher/widgets/llevel.h>
-#include <Launcher/widgets/lmodeditor.h>
-#include <Launcher/widgets/lmodel.h>
-#include <Launcher/widgets/lmods.h>
-#include <Launcher/widgets/lresources.h>
+#include <ldefines.h>
+#include <lutils.h>
+#include <lmain.h>
+#include <lwmodels.h>
+#include <widgets/llevel.h>
+#include <widgets/lmodeditor.h>
+#include <widgets/lmodel.h>
+#include <widgets/lmods.h>
+#include <widgets/lresources.h>
 
 class LModEditor;
 class LMainWindow;

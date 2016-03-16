@@ -22,9 +22,22 @@ public:
 
 class IVarsLoader{
 public:
-	virtual void* get(QString name)   = 0;
-	virtual void* getO(QString name)  = 0;
+	virtual void* get(QString name)                   = 0;
+	virtual void* getO(QString name)                  = 0;
+	virtual void* getN(QString name)                  = 0;
+	virtual void* getN(QString name, QJsonObject arg) = 0;
 	virtual QStringList getVarsList() = 0;
+};
+
+class IVarsSelect{
+public:
+	virtual void* get(QString name)                   = 0;
+	virtual void* getN(QString name)                  = 0;
+	virtual void* getN(QString name, QJsonObject arg) = 0;
+
+	virtual void* get(QString mod, QString name)                   = 0;
+	virtual void* getN(QString mod, QString name)                  = 0;
+	virtual void* getN(QString mod, QString name, QJsonObject arg) = 0;
 };
 
 class IVars{
@@ -33,11 +46,13 @@ public:
 	virtual bool  contains(QStringList names)         = 0;
 
 	virtual void* get(QString name)                   = 0;
-	virtual IVarsLoader* getLoader()                  = 0;
+	virtual void* getN(QString name)                  = 0;
+	virtual void* getN(QString name, QJsonObject arg) = 0;
+	virtual IVarsSelect* getLoader()                  = 0;
 
 	virtual void  set(void *o, QString name)          = 0;
 	virtual void  setOverwriteList(QStringList names) = 0;
-	virtual void  setVarsLoader(IVarsLoader* l)       = 0;
+	virtual void  setVarsLoader(IVarsSelect* l)       = 0;
 };
 
 

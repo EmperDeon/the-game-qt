@@ -1,8 +1,7 @@
 #ifndef GLOBALQT_MTEXT_H
 #define GLOBALQT_MTEXT_H
 #include <idefines.h>
-#include <ModLoader/mods/mcontainers.h>
-#include <ModLoader/core/render/texture/mtexturemanager.h>
+#include <mods/mcontainers.h>
 
 class MIIds;
 class MBIds;
@@ -21,7 +20,7 @@ public:
 	MItemsContainer *mIic;
 	MBlocksContainer *mBic;
 	MToolsContainer *mTic;
-	MTextureManager *mItex, *mBtex, *mTtex;
+	ITextureManager *mItex, *mBtex, *mTtex;
 
 	MTextContainer();
 

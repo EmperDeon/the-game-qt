@@ -1,4 +1,4 @@
-#include <ModLoader/core/mcoremods.h>
+#include <core/mcoremods.h>
 
 #define upd(a) main->setSplashLabel(a)
 
@@ -11,21 +11,21 @@ bool contains(QStringList a, QStringList b){
 
 MCoreMods::MCoreMods(){
  this->modList = new QList<ICoreMod*>;
-	this->t_ren = varG(QThread*, "eRenderThread");
-	this->queue = varG(QThreadPool*, "eThreadQueue");
-	parseOwerwrites();
+//	this->t_ren = varG(QThread*, "eRenderThread");
+//	this->queue = varG(QThreadPool*, "eThreadQueue");
+	parseOverwrites();
 	loadPlugins();
 
 	main = varG(IMain*, "eMain");
-	this->vselect = new MVarSelect(this);
+	this->vSelect = new MVarSelect(this);
 }
 
 // PreInit
-void MCoreMods::parseOwerwrites(){
+void MCoreMods::parseOverwrites(){
 	QDir dir("mods/coremods");
 	QStringList owr;
 
-	// TODO: Rewrite plugin is an array in pack.dat
+	// TODO: Rewrite plugin as an array in pack.dat
 	QPluginLoader pluginLoader;
 
 	for(QFileInfo i : dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot))
@@ -109,22 +109,19 @@ void MCoreMods::loadPlugins() {
 
 void MCoreMods::preInit() {
 	logFF("preInit started");
- IV_VARS->setVarsLoader(this);
+ IV_VARS->setVarsLoader(vSelect);
 
  upd("Started preCoreInit");
 
-	events = varG(IEvents*, "mEvents");
+	varG(IEvents*, "mEvents");
 	upd("Event system constructed");
 
-	level = varG(ILevelManager*, "mLevel");
+	varG(ILevelManager*, "mLevel");
 	upd("Level constructed");
 
-	render = varG(MGlWidget*, "mRender");
+	varG(QOpenGLWidget*, "mRender");
 	upd("Render constructed");
 
-	this->perf = new MPerformanceWidget();
-	upd("Performance Widget constructed");
-	//this->perf->show();
 
 	for(ICoreMod* p : *modList ){
 	 p->preInit();
@@ -155,38 +152,19 @@ void MCoreMods::postInit() {
 	}
 	upd("Coremods postInit finished");
 
-	events = varG(IEvents*, "mEvents");
-	level = varG(ILevelManager*, "mLevel");
-	render = varG(MGlWidget*, "mRender");
+//	events = varG(IEvents*, "mEvents");
+//	level = varG(ILevelManager*, "mLevel");
+//	render = varG(MGlWidget*, "mRender");
 
 	logFF("postInit finished");
 }
 
-void* MCoreMods::get(QString name){
-	return vselect->getVar(name);
-}
-
-void* MCoreMods::getO(QString name) {
-	if(name == "mRender"){}
-//		if(oRender == nullptr) oRender = new MGlWidget();
-//		return oRender;
-//
-		return nullptr;
-}
-
 IVarsLoader *MCoreMods::findMod(QString n) {
-	if(n == "ModLoader"){
-		return this;
-	}
 	for(ICoreMod* i : *modList)
 		if(i->getName() == n)
 			return i;
 
 	return nullptr;
-}
-
-QStringList MCoreMods::getVarsList() {
-	return {"mRender", "mLevel"};
 }
 
 MCoreMods* MV_CORE_MODS;
@@ -221,18 +199,50 @@ void MVarSelect::continueLoad(){
 	MV_CORE_MODS->main->init();
 }
 
-void* MVarSelect::getVar(QString name) {
+void* MVarSelect::get(QString name) {
  if(map->contains(name)){
-	 logI("Getting " + name + " from mod");
+	 logD("Getting " + name + " from mod");
 	 return map->value(name)->get(name);
  }else{
-	 logI("Getting " + name + " from modloader");
-	 return getOVar(name);
+	 logD("No such var "+name);
+	 return nullptr;
  }
 }
 
-void* MVarSelect::getOVar(QString name) {
- return MV_CORE_MODS->getO(name);
+void *MVarSelect::getN(QString name) {
+	if(map->contains(name)){
+		logD("Getting new " + name + " from mod");
+		return map->value(name)->getN(name);
+	}else{
+		logD("No such var "+name);
+		return nullptr;
+	}
+}
+
+void *MVarSelect::getN(QString name, QJsonObject arg) {
+	if(map->contains(name)){
+		logD("Getting new " + name + " from mod with arguments");
+		qDebug() << "note: " << arg;
+		return map->value(name)->getN(name, arg);
+	}else{
+		logD("No such var "+name);
+		return nullptr;
+	}
+}
+
+void *MVarSelect::get(QString mod, QString name) {
+	IVarsLoader* l = MV_CORE_MODS->findMod(mod);
+	return l ? l->get(name) : nullptr;
+}
+
+void *MVarSelect::getN(QString mod, QString name) {
+	IVarsLoader* l = MV_CORE_MODS->findMod(mod);
+	return l ? l->getN(name) : nullptr;
+}
+
+void *MVarSelect::getN(QString mod, QString name, QJsonObject arg) {
+	IVarsLoader* l = MV_CORE_MODS->findMod(mod);
+	return l ? l->getN(name, arg) : nullptr;
 }
 // MVarSelect
 
@@ -284,8 +294,6 @@ MVarSelectWidget::MVarSelectWidget(MCoreMods *core) {
 		for(QString s : m->getOwList())
 			if(!map->contains(s, m->getName()))
 			 map->insert(s, m->getName());
-	for(QString s : core->getVarsList())
-		map->insert(s, "ModLoader");
 
 	QVBoxLayout* l = new QVBoxLayout;
 	table = new QTableWidget(map->size(), 2);
@@ -308,7 +316,7 @@ MVarSelectWidget::MVarSelectWidget(MCoreMods *core) {
 void MVarSelectWidget::closeEvent(QCloseEvent *event) {
 	Q_UNUSED(event)
 
-	MV_CORE_MODS->vselect->continueLoad();
+	MV_CORE_MODS->vSelect->continueLoad();
 }
 // MVarSelectWidget
 

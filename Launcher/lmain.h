@@ -1,9 +1,9 @@
 #ifndef GLOBALQT_LMAIN_H
 #define GLOBALQT_LMAIN_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lutils.h>
-#include <Launcher/lwidgets.h>
-#include <Launcher/lparser.h>
+#include <ldefines.h>
+#include <lutils.h>
+#include <lwidgets.h>
+#include <lparser.h>
 
 
 class LDevelop;

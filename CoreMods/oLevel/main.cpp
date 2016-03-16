@@ -35,5 +35,14 @@ QStringList CM_O_LEVEL::getVarsList() {
 	return {"mLevel"};
 }
 
+void *CM_O_LEVEL::getN(QString name) {
+	return nullptr;
+}
+
+void *CM_O_LEVEL::getN(QString name, QJsonObject arg) {
+	return nullptr;
+}
+
 ILogger* IV_LOGGER;
 IVars*   IV_VARS;
+

@@ -1,4 +1,4 @@
-#include <Launcher/lparser.h>
+#include <lparser.h>
 
 // LZips
 LZipEntry::LZipEntry(QJsonObject o, QString f){

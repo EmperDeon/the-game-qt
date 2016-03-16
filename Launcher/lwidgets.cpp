@@ -1,4 +1,4 @@
-#include <Launcher/lwidgets.h>
+#include <lwidgets.h>
 
 // Json Viewers
 LListManager::LListManager(QJsonArray &o, QString t){

@@ -1,7 +1,8 @@
 #include <mrender.h>
 
 MGlWidget::MGlWidget(){
-	player = new MPlayer(10, 5, 10);
+	QJsonObject arg = {{"x", 10}, {"y", 5}, {"z", 10}};
+	player = varNA(IPlayer*, "oPLayer", arg);
 	cam = new MCamera();
 	cam->attachTo(player);
 	events = varG(IEvents*, "mEvents");

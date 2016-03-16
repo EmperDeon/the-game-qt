@@ -1,31 +1,21 @@
 #ifndef GLOBALQT_MCOREMODS_H
 #define GLOBALQT_MCOREMODS_H
 #include <idefines.h>
-#include <ModLoader/mutils.h>
-#include <ModLoader/mods/mmods.h>
+#include <mutils.h>
+#include <mods/mmods.h>
 
-class MEvents;
-class MLevelManager;
 class MVarSelect;
 class MVarSelectWidget;
 
-class MCoreMods : public IVarsLoader{
+class MCoreMods{
 	IMain* main;
- QThread* t_ren;
-
-//	MPerformanceWidget *perf;
-	IEvents *events;
-	ILevelManager* level;
-
  QList<ICoreMod*>* modList;
- MVarSelect * vselect;
-public:
-	QThreadPool* queue;
-//	MGlWidget *render;
+ MVarSelect *vSelect;
 
+public:
 	MCoreMods();
 
-	void parseOwerwrites();
+	void parseOverwrites();
 	void loadPlugins();
 	void preInit();
 
@@ -33,25 +23,26 @@ public:
 
 	void postInit();
 
-
-	virtual void *get(QString name)   override;
- virtual void* getO(QString name)  override;
-	virtual QStringList getVarsList() override;
+	IVarsLoader *findMod(QString n);
 
 	friend class MVarSelect;
 	friend class MVarSelectWidget;
-
-	IVarsLoader *findMod(QString n);
 };
 
-class MVarSelect {
+class MVarSelect : public IVarsSelect {
 	QMap<QString, IVarsLoader*>* map;
 
 public:
  MVarSelect(MCoreMods *core);
 
-	void* getVar(QString name);
-	void* getOVar(QString name);
+	virtual void* get(QString name)                   override;
+ virtual void* getN(QString name)                  override;
+ virtual void* getN(QString name, QJsonObject arg) override;
+
+	virtual void* get(QString mod, QString name)                   override;
+	virtual void* getN(QString mod, QString name)                  override;
+	virtual void* getN(QString mod, QString name, QJsonObject arg) override;
+
 	void continueLoad();
 };
 
@@ -73,6 +64,5 @@ public:
 
 protected:
 	virtual void closeEvent(QCloseEvent *qCloseEvent) override;
-	int currI() const;
 };
 #endif //GLOBALQT_MCOREMODS_H

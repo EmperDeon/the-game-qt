@@ -10,6 +10,7 @@ class MWorldRender : public IWorldRender, public MRHelper{// 3D
 
 	// Level
 	QMutex* listMutex;
+	QThreadPool* queue;
 	MGlWidget* widget;
 	ILevelManager* manager;
 	ILevel* level;

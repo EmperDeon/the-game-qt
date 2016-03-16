@@ -25,6 +25,10 @@ public:
 
 	virtual void *get(QString name);
 	virtual void *getO(QString name);
+
+	virtual void *getN(QString name);
+	virtual void *getN(QString name, QJsonObject arg);
+
 	virtual QStringList getVarsList();
 };
 

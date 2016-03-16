@@ -3,10 +3,9 @@
 #include <idefines.h>
 #include <QtWidgets>
 #include <time.h>
-#include <Engine/eutils.h>
-#include <Engine/ewidgets.h>
-#include <Engine/emods.h>
-#include <ModLoader/core/render/mrender.h>
+#include <eutils.h>
+#include <ewidgets.h>
+#include <emods.h>
 
 class ELogger;
 class ESettings;
@@ -27,7 +26,7 @@ class EMain : public IMain{
 	EDeveloper * wdev;
 	EMods * mods;
 	
-	MGlWidget* wgt;
+	IGlWidget* wgt;
 	
 public:
 	EMain();

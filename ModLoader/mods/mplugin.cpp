@@ -1,4 +1,4 @@
-#include <ModLoader/mods/mplugin.h>
+#include <mods/mplugin.h>
 
 MPluginsContainer::MPluginsContainer(){
  this->plugins = new QList<IMod*>;

@@ -1,5 +1,5 @@
-#include <ModLoader/mods/mtext.h>
-#include <ModLoader/mutils.h>
+#include <mods/mtext.h>
+#include <mutils.h>
 
 MTextContainer::MTextContainer(){}
 
@@ -45,7 +45,7 @@ void MTextContainer::preInit() {
 			}
 		mIids = new MIIds(iidsMap);
 		mIic = new MItemsContainer(itemsMap);
-  mItex = new MTextureManager();
+ // mitex = new MTextureManager();
 		mItex->loadTextures(texMap);
 
 		varS(mIids, "mIIds");
@@ -87,7 +87,7 @@ void MTextContainer::preInit() {
 			}
 		mBids = new MBIds(bidsMap);
 		mBic = new MBlocksContainer(blocksMap);
-		mBtex = new MTextureManager();
+		//mBtex = new MTextureManager();
 		mBtex->loadTextures(texMap);
 
 		varS(mBids, "mBIds");
@@ -129,7 +129,7 @@ void MTextContainer::preInit() {
 			}
 		mTids = new MTIds(tidsMap);
 		mTic = new MToolsContainer(toolsMap);
-		mTtex = new MTextureManager();
+	//	mTtex = new MTextureManager();
 		mTtex->loadTextures(texMap);
 
 		varS(mTids, "mTIds");

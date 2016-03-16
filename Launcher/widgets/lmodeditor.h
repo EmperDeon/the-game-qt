@@ -1,8 +1,8 @@
 #ifndef GLOBALQT_LMODEDITOR_H
 #define GLOBALQT_LMODEDITOR_H
-#include <Launcher/ldefines.h>
-#include <Launcher/lwmodels.h>
-#include <Launcher/lwidgets.h>
+#include <ldefines.h>
+#include <lwmodels.h>
+#include <lwidgets.h>
 
 class LTextModWidgetModel;
 class LTableManager;

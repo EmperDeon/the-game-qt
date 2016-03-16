@@ -65,20 +65,22 @@ public:
 class EVars : public IVars{
 	QMap<QString, void*>* map;
 	QStringList* owlist;
- IVarsLoader* loader;
+ IVarsSelect* loader;
 
 public:
 	EVars();
 
-	virtual bool  contains(QString)              override;
-	virtual bool  contains(QStringList)          override;
+	virtual bool  contains(QString)                   override;
+	virtual bool  contains(QStringList)               override;
 
-	virtual void* get(QString)                   override;
-	virtual IVarsLoader* getLoader()             override;
+	virtual void* get(QString)                        override;
+	virtual void* getN(QString name)                  override;
+	virtual void* getN(QString name, QJsonObject arg) override;
+	virtual IVarsSelect* getLoader()                  override;
 
-	virtual void  set(void *o, QString)          override;
- virtual void  setOverwriteList(QStringList)  override;
-	virtual void  setVarsLoader(IVarsLoader* l)  override;
+	virtual void  set(void *o, QString)               override;
+ virtual void  setOverwriteList(QStringList)       override;
+	virtual void  setVarsLoader(IVarsSelect* l)       override;
 };
 // EVars
 

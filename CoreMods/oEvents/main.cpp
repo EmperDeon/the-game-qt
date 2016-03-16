@@ -37,5 +37,13 @@ QStringList CM_O_EVENTS::getVarsList() {
 	return {"mEvents"};
 }
 
+void *CM_O_EVENTS::getN(QString name) {
+	return nullptr;
+}
+
+void *CM_O_EVENTS::getN(QString name, QJsonObject arg) {
+	return nullptr;
+}
+
 ILogger* IV_LOGGER;
 IVars*   IV_VARS;

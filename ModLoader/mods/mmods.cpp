@@ -1,4 +1,4 @@
-#include <ModLoader/mods/mmods.h>
+#include <mods/mmods.h>
 
 #define upd(a) main->setSplashLabel(a)
 

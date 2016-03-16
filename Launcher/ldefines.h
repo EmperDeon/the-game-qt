@@ -22,7 +22,7 @@ extern LLogWidget* LV_LOGGER;
 #include <QtCore>
 #include <QtWidgets>
 #include <QtNetwork>
-#include <Launcher/lutils.h>
+#include <lutils.h>
 
 
 #endif //GLOBALQT_LDEFINES_H

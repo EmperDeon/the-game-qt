@@ -12,6 +12,8 @@ class CM_O_EVENTS : public QObject, public ICoreMod{
 
 public:
 
+	virtual void *getN(QString name);
+	virtual void *getN(QString name, QJsonObject arg);
 	virtual QStringList getOwList()       override;
 	virtual QStringList getDpList()       override;
 	virtual QString     getName()         override{ return "oEvents";}
