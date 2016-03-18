@@ -8,13 +8,13 @@ class CM_O_RENDER : public QObject, public ICoreMod{
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)
 
-	IGlWidget* r;
+	IGlWidget* r = nullptr;
 
 public:
 
 	virtual QStringList getOwList()       override;
 	virtual QStringList getDpList()       override;
-	virtual QString     getName()         override{ return "oEvents";}
+	virtual QString     getName()         override{ return "oRender";}
 
 	virtual void        setVars(IVars* v) override;
 

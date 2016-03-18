@@ -48,9 +48,13 @@ EMain::EMain() {
 
 	varS(wdev, "eDev");
 	varS(mods, "eMods");
+
+	logF("EMain constructed");
 }
 
 void EMain::init() {
+	logF("Init started");
+
 	mods->coreInit();
 
 	wgt = varG(IGlWidget*, "mRender");
@@ -61,14 +65,18 @@ void EMain::init() {
 	splash->finish(wgt);
 
 	this->show();
+	logF("Init finished");
 }
 
 void EMain::show() {
+	logF("Showing widgets");
 	wgt->showMaximized();
 }
 
 void EMain::destroy() {
+	logF("Destroying started");
  IV_SETT->save();
+	logF("Destroying finished");
 }
 
 void EMain::setSplashLabel(QString s) {

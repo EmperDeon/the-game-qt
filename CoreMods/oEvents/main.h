@@ -8,7 +8,7 @@ class CM_O_EVENTS : public QObject, public ICoreMod{
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)
 
-	MEvents* e;
+	MEvents* e = nullptr;
 
 public:
 

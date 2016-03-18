@@ -6,19 +6,23 @@ EMods::EMods(){
 }
 
 void EMods::coreInit(){
+	logF("CoreInit started");
 	if(modloader){
 		this->modloader->corePreInit();
 		this->modloader->coreInit();
 		this->modloader->corePostInit();
 	}
+	logF("CoreInit finished");
 }
 
 void EMods::init(){
+	logF("Init started");
 	if(modloader){
 		this->modloader->preInit();
 		this->modloader->init();
 		this->modloader->postInit();
 	}
+	logF("Init finished");
 }
 
 void EMods::initModLoaders() {

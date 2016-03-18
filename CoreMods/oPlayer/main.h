@@ -8,7 +8,7 @@ class CM_O_PLAYER : public QObject, public ICoreMod{
 	Q_PLUGIN_METADATA(IID "org.ilzcorp.ICoreMod")
 	Q_INTERFACES(ICoreMod)
 
-	MPlayer* p;
+	MPlayer* p = nullptr;
 
 public:
 

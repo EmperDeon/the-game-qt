@@ -13,4 +13,4 @@ set(E_ENGINE_H
 )
 
 SET(M_USING_MODULES Core Network Widgets OpenGl)
-M_BUILD(E_ENGINE)
+M_E_BUILD(E_ENGINE)

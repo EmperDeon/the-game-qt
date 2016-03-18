@@ -12,6 +12,7 @@ class MCoreMods{
  QList<ICoreMod*>* modList;
  MVarSelect *vSelect;
 
+	inline bool contains(QStringList a, QStringList b);
 public:
 	MCoreMods();
 

@@ -1,0 +1,5 @@
+name - class_name(base class)
+
+oPLayer:
+ mPlayer - MPLayer(IPlayer)
+

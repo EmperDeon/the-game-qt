@@ -1,6 +1,12 @@
 #include <mplayer.h>
 
 
+MPlayer::MPlayer(QJsonObject arg) {
+ this->x = arg["x"].toInt(0);
+	this->y = arg["y"].toInt(1);
+	this->z = arg["z"].toInt(0);
+}
+
 void MPlayer::move(float r, float d) {
 	x = x + cosf(aP + r) * d;
 	z = z + sinf(aP + r) * d;
@@ -28,6 +34,8 @@ void MPlayer::updatePos() {
 }
 
 void MPlayer::trigger(QString name, QJsonObject o) {
+	Q_UNUSED(name)
+
  if(keys.empty()){
 	 keys = IV_SETT->get("Keys");
  }

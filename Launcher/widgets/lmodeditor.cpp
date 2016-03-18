@@ -407,6 +407,6 @@ LModFixer::LModFixer(QString pluginFile) {
 	lay->addRow(b_create, b_clear);
 
 	this->setLayout(lay);
-	this->setWindowTitle("Mod editor");
+	this->setWindowTitle(pluginFile);
 	lLogD("Constructed");
 }

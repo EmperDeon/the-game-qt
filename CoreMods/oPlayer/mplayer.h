@@ -12,6 +12,7 @@ class MPlayer : public IPlayer{
 
 public:
 	MPlayer(): x(0.0f), y(0.0f), z(0.0f){}
+	MPlayer(QJsonObject arg);
 	MPlayer(float X, float Y, float Z): x(X), y(Y), z(Z){}
 	MPlayer(IVec3 v): x(v.x), y(v.y), z(v.z){}
 

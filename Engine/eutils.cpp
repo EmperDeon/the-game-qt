@@ -61,6 +61,7 @@ ESettings::ESettings(QString f):map(),file(f){}
 ESettings::~ESettings(){}
 
 QJsonObject &ESettings::operator[] (QString k){
+	logFF("Get " + k);
 	if (!map.contains(k)){
 		logW("This settings does not contain that category: "+k);
 		addNewCategory(k);
@@ -69,6 +70,7 @@ QJsonObject &ESettings::operator[] (QString k){
 }
 
 QJsonObject &ESettings::get(QString n){
+	logFF("Get " + n);
 	if (!map.contains(n)){
 		logW("This settings does not contain that category: "+n);
 		addNewCategory(n);
@@ -77,6 +79,7 @@ QJsonObject &ESettings::get(QString n){
 }
 
 void ESettings::addNewCategory(QString n){
+	logFF("Adding new category " + n);
 	QJsonObject object;
 	object["name"]=n;
 	this->map[n] = object;
@@ -102,12 +105,13 @@ void ESettings::loadFrom(QString f){
 	QJsonDocument loadDoc(QJsonDocument::fromBinaryData(qUncompress(loadFile.readAll())));
 	loadFile.close();
 	QJsonArray obj = loadDoc.array();
-	qDebug() << obj;
+
 	QJsonObject t;
 	for(QJsonValue e : obj){
 		t = e.toObject();
 		this->map.insert(t["name"].toString(), QJsonObject(t));
 	}
+	logF("Settings loaded");
 }
 
 void ESettings::saveTo(QString f){
@@ -128,6 +132,7 @@ void ESettings::saveTo(QString f){
 	saveFile.write(qCompress(doc.toBinaryData(), 1));
 	saveFile.flush();
 	saveFile.close();
+	logF("Settings saved");
 }
 ISettings*IV_SETT;
 
@@ -164,6 +169,7 @@ bool EVars::contains(QStringList names) {
 }
 
 void*EVars::get(QString name){
+	logFF("Get " + name);
 	if(!contains(name))
 		set(loader->get(name), name);
 	return (*map)[name];
@@ -182,6 +188,7 @@ IVarsSelect *EVars::getLoader() {
 }
 
 void EVars::set(void *o, QString name){
+	logFF("Set " + name);
 	if(!map->contains(name)){
 		map->insert(name, o);
 	}else{

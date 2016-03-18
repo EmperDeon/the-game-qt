@@ -2,7 +2,7 @@
 
 MGlWidget::MGlWidget(){
 	QJsonObject arg = {{"x", 10}, {"y", 5}, {"z", 10}};
-	player = varNA(IPlayer*, "oPLayer", arg);
+	player = varNA(IPlayer*, "mPlayer", arg);
 	cam = new MCamera();
 	cam->attachTo(player);
 	events = varG(IEvents*, "mEvents");
@@ -20,7 +20,7 @@ MGlWidget::MGlWidget(){
 	fps_t = new QElapsedTimer;
 	fps_stabilizer = new QTimer;
 	fps_stabilizer->setInterval(1000/MFPS_COUNT);
-	connect(fps_stabilizer, SIGNAL(timeout()), this, SLOT(updateGL()));
+	connect(fps_stabilizer, SIGNAL(timeout()), SLOT(update()));
 //	fps_stabilizer->start();
 }
 

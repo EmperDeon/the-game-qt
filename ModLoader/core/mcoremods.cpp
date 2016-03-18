@@ -2,7 +2,7 @@
 
 #define upd(a) main->setSplashLabel(a)
 
-bool contains(QStringList a, QStringList b){
+inline bool MCoreMods::contains(QStringList a, QStringList b){
 	for(QString s : b){
 		if(!a.contains(s)) return false;
 	}
@@ -18,6 +18,7 @@ MCoreMods::MCoreMods(){
 
 	main = varG(IMain*, "eMain");
 	this->vSelect = new MVarSelect(this);
+	logF("CoreMods constructed");
 }
 
 // PreInit
@@ -108,7 +109,7 @@ void MCoreMods::loadPlugins() {
 }
 
 void MCoreMods::preInit() {
-	logFF("preInit started");
+	logF("preCoreInit started");
  IV_VARS->setVarsLoader(vSelect);
 
  upd("Started preCoreInit");
@@ -128,24 +129,24 @@ void MCoreMods::preInit() {
 	}
 	upd("CoreMods preInit finished");
 
-	logFF("preInit finished");
+	logF("preCoreInit finished");
 }
 // PreInit
 
 
 void MCoreMods::init() {
-	logFF("init started");
+	logF("init started");
 
 	for(ICoreMod* p : *modList ){
 		p->init();
 	}
 	upd("Coremods init finished");
 
-	logFF("init finished");
+	logF("init finished");
 }
 
 void MCoreMods::postInit() {
-	logFF("postInit started");
+	logF("postInit started");
 
 	for(ICoreMod* p : *modList ){
  	p->postInit();
@@ -156,7 +157,7 @@ void MCoreMods::postInit() {
 //	level = varG(ILevelManager*, "mLevel");
 //	render = varG(MGlWidget*, "mRender");
 
-	logFF("postInit finished");
+	logF("postInit finished");
 }
 
 IVarsLoader *MCoreMods::findMod(QString n) {
@@ -173,21 +174,19 @@ MCoreMods* MV_CORE_MODS;
 
 // MVarSelect
 MVarSelect::MVarSelect(MCoreMods *core) {
- QJsonObject s = IV_SETT->get("VarOverrideMap");
+ QJsonObject s = IV_SETT->get("VarOverride");
 
 	if(s.size() == 1){
   MVarSelectWidget* wgt = new MVarSelectWidget(core);
   core->main->getSplashSceen()->finish(wgt);
 	 wgt->show();
 	}else{
-		continueLoad();
+		QTimer::singleShot(10, [=](){continueLoad();});
 	}
 }
 
 void MVarSelect::continueLoad(){
 	QJsonObject& s = IV_SETT->get("VarOverride");
-	s.remove("Map");
-	IV_SETT->save();
 
 	map = new QMap<QString, IVarsLoader*>;
 	// Fill map with mods
@@ -201,31 +200,31 @@ void MVarSelect::continueLoad(){
 
 void* MVarSelect::get(QString name) {
  if(map->contains(name)){
-	 logD("Getting " + name + " from mod");
+	 logFF("Getting " + name + " from mod " + (reinterpret_cast<ICoreMod*>(map->value(name)))->getName());
 	 return map->value(name)->get(name);
  }else{
-	 logD("No such var "+name);
+	 logW("No such var "+name);
 	 return nullptr;
  }
 }
 
 void *MVarSelect::getN(QString name) {
 	if(map->contains(name)){
-		logD("Getting new " + name + " from mod");
+		logFF("Getting new " + name + " from mod");
 		return map->value(name)->getN(name);
 	}else{
-		logD("No such var "+name);
+		logW("No such var "+name);
 		return nullptr;
 	}
 }
 
 void *MVarSelect::getN(QString name, QJsonObject arg) {
 	if(map->contains(name)){
-		logD("Getting new " + name + " from mod with arguments");
+		logFF("Getting new " + name + " from mod with arguments");
 		qDebug() << "note: " << arg;
 		return map->value(name)->getN(name, arg);
 	}else{
-		logD("No such var "+name);
+		logW("No such var "+name);
 		return nullptr;
 	}
 }

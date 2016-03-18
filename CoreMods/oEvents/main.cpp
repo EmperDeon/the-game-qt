@@ -21,7 +21,7 @@ void CM_O_EVENTS::postInit() {}
 
 
 void *CM_O_EVENTS::get(QString name) {
-	logI("Get " + name);
+	logFF("Get " + name);
 
 	if(name == "mEvents"){
 		if(e == nullptr)	e = new MEvents;
@@ -38,11 +38,15 @@ QStringList CM_O_EVENTS::getVarsList() {
 }
 
 void *CM_O_EVENTS::getN(QString name) {
-	return nullptr;
+	if(name == "Events"){
+		return new MEvents;
+	}else{
+		return nullptr;
+	}
 }
 
 void *CM_O_EVENTS::getN(QString name, QJsonObject arg) {
-	return nullptr;
+	return getN(name);
 }
 
 ILogger* IV_LOGGER;

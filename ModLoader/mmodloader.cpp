@@ -14,7 +14,7 @@ void MModLoader::setVars(IVars *v) {
 	MV_CORE_MODS = new MCoreMods();
 	MV_MODS = new MMods();
 
-	logD("ModLoader Inited");
+	logD("ModLoader initialized");
 }
 
 void MModLoader::corePreInit(){  MV_CORE_MODS->preInit(); }

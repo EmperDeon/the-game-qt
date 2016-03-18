@@ -21,6 +21,9 @@ LLogE::LLogE(QString s){
 	QStringList lst = s.split("^");
 	t = lst.takeFirst();
 	QString level = lst.takeFirst();
+	cl = parseQtFunc(lst.takeFirst());
+	ms = lst.takeFirst();
+
 	if (level == "[E]"){ lv = ILogLevel::ERR  ;
 	}else if (level == "[W]"){ lv = ILogLevel::WARN ;
 	}else if (level == "[I]"){ lv = ILogLevel::INFO ;
@@ -28,12 +31,15 @@ LLogE::LLogE(QString s){
 	}else if (level == "[F]"){ lv = ILogLevel::FINE ;
 	}else if (level == "[FF]"){lv = ILogLevel::FFINE ;
 	}else if (level == "[A]"){ lv = ILogLevel::ALL ;
-	}else if (level == "[QT]"){lv = ILogLevel::QT;
+	}else if (level == "[QT]"){
+		if(cl == "E-QtD"){
+			lv = ms.startsWith("note") ? ILogLevel::FFINE : ILogLevel::FINE;
+		}else {
+			lv = ILogLevel::QT;
+		}
 	}else{
 
 	}
- cl = parseQtFunc(lst.takeFirst());
-	ms = lst.takeFirst();
 	engine = true;
 }
 
@@ -46,7 +52,7 @@ QString LLogE::parseQtFunc(QString s) {
 	int f = r.indexOf(' ');
 
 	if(f != -1) r = QStringRef(&r, f + 1, r.length() - f).toString();
-	r = r.insert(1, '-');
+	r = r.insert(s.startsWith("CM") ? 2 : 1, '-');
 	if(NO_DEBUG)	r = QStringRef(&r, 0, r.indexOf(':')).toString();
 
 	return r;
@@ -56,14 +62,14 @@ QString LLogE::toString(){
 	QString r = "<div ";
 
 	switch(lv){
-		case ILogLevel::ERR  : r += "style=\"color:red";    break;
+		case ILogLevel::ERR  : r += "style=\"color:red";     break;
 		case ILogLevel::WARN : r += "style=\"color:#ff9c00"; break;
-		case ILogLevel::INFO : r += "style=\"color:blue";   break;
-		case ILogLevel::DEBUG: r += "style=\"color:black";  break;
-		case ILogLevel::FINE : r += "style=\"color:gray";   break;
-		case ILogLevel::FFINE: r += "style=\"color:gray";   break;
-		case ILogLevel::ALL  : r += "style=\"color:gray";   break;
-		case ILogLevel::QT   : r += "style=\"color:#5CAA15";break;
+		case ILogLevel::INFO : r += "style=\"color:blue";    break;
+		case ILogLevel::DEBUG: r += "style=\"color:black";   break;
+		case ILogLevel::FINE : r += "style=\"color:#595959"; break;
+		case ILogLevel::FFINE: r += "style=\"color:#a6a6a6"; break;
+		case ILogLevel::ALL  : r += "style=\"color:#bfbfbf"; break;
+		case ILogLevel::QT   : r += "style=\"color:#5CAA15"; break;
 	}
 
 	r.append("\">[");
@@ -129,7 +135,7 @@ LLogWidget::LLogWidget() :QWidget(){
 	w_edit->setStyleSheet("font: 10pt \"Fantasque Sans Mono\";");
 	this->setLayout(vlay);
 
-	switchL(ILogLevel::FINE);
+	switchL(ILogLevel::FFINE);
 }
 
 void LLogWidget::addL(LLogE e){

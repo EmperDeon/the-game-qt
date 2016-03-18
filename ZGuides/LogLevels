@@ -1,0 +1,32 @@
+LogE:
+ Critical errors
+
+
+LogW:
+ Small errors, warnings
+
+
+LogI:
+ "Loaded" messages
+
+
+LogD:
+
+
+
+LogF:
+ "* constructed"
+ qDebug() << *
+
+
+LogFF:
+ "{Get, Set, Get new} var *"
+
+
+Qt-D:
+ "Notes" for LogD
+
+If you rebuilding all, and want to turn off log level [ex. logFF], replace in I/idefines.h line with level define to
+ #define logE(ms) ;
+
+TODO: Add logs saving, with max log level

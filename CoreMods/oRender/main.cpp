@@ -1,12 +1,8 @@
 #include "main.h"
 
-QStringList CM_O_RENDER::getOwList() {
-	return {"mRender"};
-}
+QStringList CM_O_RENDER::getOwList() {	return {"mRender"};}
 
-QStringList CM_O_RENDER::getDpList() {
-	return {};
-}
+QStringList CM_O_RENDER::getDpList() {	return {};}
 
 void CM_O_RENDER::setVars(IVars *v) {
 	IV_VARS = v;
@@ -22,7 +18,7 @@ void CM_O_RENDER::postInit() {}
 
 
 void *CM_O_RENDER::get(QString name) {
-	logI("Get " + name);
+	logFF("Get " + name);
 
 	if(name == "mRender"){
 		if(r == nullptr)	r = new MGlWidget;
