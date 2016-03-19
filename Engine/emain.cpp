@@ -45,6 +45,7 @@ EMain::EMain() {
 	varS(IV_SETC, "eSettCont");
 
 	mods = new EMods();
+	qDebug() << QThread::currentThread();
 
 	varS(wdev, "eDev");
 	varS(mods, "eMods");
@@ -59,8 +60,10 @@ void EMain::init() {
 
 	wgt = varG(IGlWidget*, "mRender");
 	wdev = new EDeveloper();
-
+// connect(this, SIGNAL(loadingFinished()), this, SLOT(finished()), Qt::QueuedConnection);
  mods->init();
+
+// emit loadingFinished();
 
 	splash->finish(wgt);
 
@@ -91,4 +94,9 @@ void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QStr
 	 case QtCriticalMsg: IV_LOGGER->log(ILogLevel::QT, "E-QtC", msg); break;
 	 case QtFatalMsg:    IV_LOGGER->log(ILogLevel::QT, "E-QtF", msg); break;
  }
+}
+
+void EMain::finished() {
+	qDebug() << QThread::currentThread();
+ //wgt->loadingFinished();
 }

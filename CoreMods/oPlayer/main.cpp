@@ -1,6 +1,6 @@
 #include "main.h"
 
-QStringList CM_O_PLAYER::getOwList() {	return {"mPlayer"};}
+QStringList CM_O_PLAYER::getOwList() {	return {"mPlayer", "nPlayer"};}
 
 QStringList CM_O_PLAYER::getDpList() {	return {};}
 
@@ -31,7 +31,7 @@ void *CM_O_PLAYER::get(QString name) {
 void *CM_O_PLAYER::getO(QString name) { Q_UNUSED(name)	return nullptr;}
 
 QStringList CM_O_PLAYER::getVarsList() {
-	return {"mPlayer"};
+	return {"mPlayer", "nPlayer"};
 }
 
 ILogger* IV_LOGGER;
@@ -39,7 +39,7 @@ IVars*   IV_VARS;
 ISettings* IV_SETT;
 
 void *CM_O_PLAYER::getN(QString name) {
- if(name == "mPlayer"){
+ if(name == "nPlayer"){
 	 return getN(name, QJsonObject());
  }else{
 	 return nullptr;
@@ -47,7 +47,7 @@ void *CM_O_PLAYER::getN(QString name) {
 }
 
 void *CM_O_PLAYER::getN(QString name, QJsonObject arg) {
-	if(name == "mPlayer"){
+	if(name == "nPlayer"){
 		return new MPlayer(arg);
 	}
 }

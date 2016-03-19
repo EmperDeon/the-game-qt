@@ -33,6 +33,7 @@ class MGlWidget : public IGlWidget{
 public:
 	MGlWidget();
  virtual	qint64 getFps() override {return fps;}
+ virtual void loadingFinished();
 
 protected:
 	void initializeGL();

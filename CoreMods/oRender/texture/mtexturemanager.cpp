@@ -2,6 +2,7 @@
 
 MTextureManager::MTextureManager(){
  this->tex = new QMap<Imiks, QOpenGLTexture*>;
+	this->toAdd = new QMap<Imiks, QString>;
 }
 
 void MTextureManager::loadTextures(QMap<Imiks, QString> map){
@@ -11,9 +12,15 @@ void MTextureManager::loadTextures(QMap<Imiks, QString> map){
 }
 
 void MTextureManager::loadTexture(Imiks k, QString v) {
- QOpenGLTexture* t = new QOpenGLTexture(QImage(v));
-	t->setBorderColor(1.0f, 1.0f, 1.0f, 1.0f);
-	this->tex->insert(k, t);
+// QOpenGLTexture* t = new QOpenGLTexture(QImage(v));
+	this->toAdd->insert(k, v);
+}
+
+void MTextureManager::loadTextures() {
+ for(Imiks k : toAdd->keys()){
+	 QOpenGLTexture *t = new QOpenGLTexture(QImage(toAdd->value(k)));
+	 this->tex->insert(k, t);
+ }
 }
 
 QOpenGLTexture *MTextureManager::getTexture(Imiks k) {	return this->tex->value(k); }

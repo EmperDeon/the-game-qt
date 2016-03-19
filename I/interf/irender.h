@@ -21,6 +21,7 @@ class ITextureManager{
 public:
 	virtual void             loadTextures(QMap<Imiks, QString> map) = 0;
 	virtual void             loadTexture(Imiks, QString name)       = 0;
+	virtual void             loadTextures()                         = 0;
 
 	virtual QOpenGLTexture*  getTexture(Imiks)                      = 0;
 	virtual void             bindTexture(Imiks)                     = 0;
@@ -32,6 +33,7 @@ public:
 class IGlWidget : public QOpenGLWidget{
 public:
 	virtual qint64 getFps() = 0;
+ virtual	void loadingFinished() = 0;
 };
 
 class IGuiRender{ // 2D

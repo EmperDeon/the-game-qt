@@ -45,7 +45,7 @@ void MTextContainer::preInit() {
 			}
 		mIids = new MIIds(iidsMap);
 		mIic = new MItemsContainer(itemsMap);
- // mitex = new MTextureManager();
+  mItex = varN(ITextureManager*, "nTextureManager");
 		mItex->loadTextures(texMap);
 
 		varS(mIids, "mIIds");
@@ -87,7 +87,7 @@ void MTextContainer::preInit() {
 			}
 		mBids = new MBIds(bidsMap);
 		mBic = new MBlocksContainer(blocksMap);
-		//mBtex = new MTextureManager();
+		mBtex = varN(ITextureManager*, "nTextureManager");
 		mBtex->loadTextures(texMap);
 
 		varS(mBids, "mBIds");
@@ -129,7 +129,7 @@ void MTextContainer::preInit() {
 			}
 		mTids = new MTIds(tidsMap);
 		mTic = new MToolsContainer(toolsMap);
-	//	mTtex = new MTextureManager();
+		mTtex = varN(ITextureManager*, "nTextureManager");
 		mTtex->loadTextures(texMap);
 
 		varS(mTids, "mTIds");

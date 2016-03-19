@@ -2,7 +2,7 @@
 
 MGlWidget::MGlWidget(){
 	QJsonObject arg = {{"x", 10}, {"y", 5}, {"z", 10}};
-	player = varNA(IPlayer*, "mPlayer", arg);
+	player = varNA(IPlayer*, "nPlayer", arg);
 	cam = new MCamera();
 	cam->attachTo(player);
 	events = varG(IEvents*, "mEvents");
@@ -24,6 +24,11 @@ MGlWidget::MGlWidget(){
 //	fps_stabilizer->start();
 }
 
+inline void loadTextures(QString s){
+	ITextureManager* i = varG(ITextureManager*, s);
+	if(i) i->loadTextures();
+}
+
 void MGlWidget::initializeGL(){
 	glClearColor(0.0f, 0.5f, 1.0f, 1.0f);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE);					// Set The Blending Function For Translucency
@@ -37,7 +42,7 @@ void MGlWidget::initializeGL(){
 	world->init();
 //	gui->init();
 	paused = input->keybr->keys.size() == 1;
-
+ loadingFinished();
 	fps_stabilizer->start();
 }
 
@@ -69,6 +74,14 @@ void MGlWidget::paintGL(){
 void MGlWidget::closeEvent(QCloseEvent *event) {
 	this->world->close();
 //	this->gui->close()
+}
+
+void MGlWidget::loadingFinished() {
+	loadTextures("mITex");
+	loadTextures("mBTex");
+	loadTextures("mTTex");
+
+	world->reAllocate(1023);
 }
 
 void MGlWidget::keyPressEvent  (QKeyEvent *pe) { input->keybr->keyPressEvent(pe);}
