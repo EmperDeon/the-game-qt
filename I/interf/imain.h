@@ -7,7 +7,7 @@
 class IMain : public QObject{
 public:
 	virtual void setSplashLabel(QString)    = 0;
-	virtual QSplashScreen* getSplashSceen() = 0;
+	virtual QSplashScreen*getSplashScreen() = 0;
 
 	virtual void init()                  = 0;
 	virtual void show()                  = 0;

@@ -33,7 +33,6 @@ public:
 class IGlWidget : public QOpenGLWidget{
 public:
 	virtual qint64 getFps() = 0;
- virtual	void loadingFinished() = 0;
 };
 
 class IGuiRender{ // 2D

@@ -31,17 +31,13 @@ class EMain : public IMain{
 public:
 	EMain();
 	virtual void setSplashLabel(QString);
-	virtual QSplashScreen* getSplashSceen() {return splash;}
+	virtual QSplashScreen* getSplashScreen() {return splash;}
 	        void init();
 	        void show();
 	        void destroy();
 
 public slots:
 	void lastWindowClosed(){destroy();}
- void finished();
-
-signals:
-	void loadingFinished();
 };
  
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg);

@@ -200,7 +200,8 @@ void MLevelManager::loadLevel(QString name) {
 
 	this->current = i;
 	this->level = new MLevel(this->current);
-	QtConcurrent::run(queue, loadLevelC, this->level);
+	QtConcurrent::run(queue, genLevelC, this->level);
+	//TODO: Fix level saving/loading
 }
 
 void MLevelManager::exitLevel(ILevelInfo* i) {
