@@ -47,10 +47,10 @@ void MPlayer::trigger(QString name, QJsonObject o) {
 		int k = v.toInt();
 		if (k == 0) {
 			logW("key parameter is 0");
-		} else if (isKey(k, "forw")) {		move(0.0f,   sprint ? 0.5f : 0.05f);
-		} else if (isKey(k, "back")) {		move(3.141f, sprint ? 0.5f : 0.05f);
-		} else if (isKey(k, "left")) {		move(-1.57f, sprint ? 0.5f : 0.05f);
-		} else if (isKey(k, "righ")) {		move(1.57f,  sprint ? 0.5f : 0.05f);
+		} else if (isKey(k, "forw")) {		move(0.0f,   sprint ? 1.0f : 0.1f);
+		} else if (isKey(k, "back")) {		move(3.141f, sprint ? 1.0f : 0.1f);
+		} else if (isKey(k, "left")) {		move(-1.57f, sprint ? 1.0f : 0.1f);
+		} else if (isKey(k, "righ")) {		move(1.57f,  sprint ? 1.0f : 0.1f);
 		} else if (isKey(k, "jump")) {		moveU(sprint ? 0.5f : 0.1f);
 		} else if (isKey(k, "sneak")) {	moveD(sprint ? 0.5f : 0.1f);
 		} else if (isKey(k, "sprint")){

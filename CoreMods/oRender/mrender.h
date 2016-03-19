@@ -106,7 +106,7 @@ class MRMouseInput{
 	QCursor* pointer;
 	QCursor* normalp;
 
-	float xSense = 0.0025f, ySense = 0.0025f;
+	float xSense = 0.0055f, ySense = 0.0055f;
 
 
 public:

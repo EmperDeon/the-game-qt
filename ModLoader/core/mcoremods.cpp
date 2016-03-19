@@ -176,13 +176,13 @@ MCoreMods* MV_CORE_MODS;
 MVarSelect::MVarSelect(MCoreMods *core) {
  QJsonObject s = IV_SETT->get("VarOverride");
 
-//	if(s.size() == 1){
+	if(s.size() == 1){
   MVarSelectWidget* wgt = new MVarSelectWidget(core);
 	core->main->getSplashScreen()->finish(wgt);
 	 wgt->show();
-//	}else{
-//		QTimer::singleShot(10, [=](){continueLoad();});
-//	}
+	}else{
+		QTimer::singleShot(10, [=](){continueLoad();});
+	}
 }
 
 void MVarSelect::continueLoad(){

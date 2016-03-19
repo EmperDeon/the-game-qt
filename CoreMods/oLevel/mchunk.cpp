@@ -84,7 +84,6 @@ void MChunk::reParseSides(){
 }
 
 void MChunk::onReAlloc() {
-	qDebug() << "Test" << id.x() << id.y() << id.z();
 	if(!textures) textures = varG(ITextureManager*, "mBTex");
 
 	reParseSides();
