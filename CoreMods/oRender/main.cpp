@@ -12,7 +12,7 @@ void CM_O_RENDER::setVars(IVars *v) {
 
 void CM_O_RENDER::preInit() {}
 
-void CM_O_RENDER::init() {}
+void CM_O_RENDER::init() { }
 
 void CM_O_RENDER::postInit() {}
 

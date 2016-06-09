@@ -197,8 +197,9 @@ void LMainWindow::closeEvent(QCloseEvent *event){
 	LV_LOGGER->close();
 }
 //  Other
-// LMainWindow
 
+
+// LMainWindow
 void qtMessageHandler(QtMsgType type, const QMessageLogContext& cont, const QString& msg) {
 	switch(type){
 		case QtDebugMsg:    LV_LOGGER->log(ILogLevel::QT, "L-QtD", msg); break;

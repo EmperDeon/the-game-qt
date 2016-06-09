@@ -8,7 +8,7 @@ void MModLoader::setVars(IVars *v) {
 	IV_LOGGER = reinterpret_cast<ILogger*>(v->get("eLogger"));
 
 	IV_VARS = v;
- IV_SETT = reinterpret_cast<ISettings*>(v->get("eSettings"));
+	IV_SETT = reinterpret_cast<ISettings*>(v->get("eSettings"));
 	IV_SETC = reinterpret_cast<ISettCont*>(v->get("eSettCont"));
 
 	MV_CORE_MODS = new MCoreMods();

@@ -41,45 +41,52 @@ void MWorldRender::render() {
 }
 
 void MWorldRender::selectBlock() {
-	IVec3i c;
+	IVec3i enPos, t1;
 	IVec3 t;
 	float pt, yw;
+
 	if(lock){
-		c = ep;
+		enPos = ep;
 		yw = py;
 		pt = pp;
 	}else{
-		c = en->pos();
+		enPos = en->pos();
 		yw = en->yaw();
 		pt = en->pitch();
 	}
+
 	//IVec3i c(10,5,11);
-	float sc = 1.0f;
+	float sc = 0.5f;
 	float x = 0.0f;
  int ic = 0;
- c.x += 1;
-	c.z += 1;
+ //c.x += 1;
+//	c.z += 1;
+
 	IVec3 i(
 		cosf(pt) * cosf(yw),
 		sinf(yw),
 		sinf(pt) * cosf(yw)
 	);
 
-	while(x < 10.0f){
+	while(x < 20.0f){
 		x += sc;
-		t.x = c.x + int(i.x * x);
-		t.y = c.y + int(i.y * x);
-		t.z = c.z + int(i.z * x);
-		if(c != t){
-			c = t;
+		t.x = enPos.x + i.x * x;
+		t.y = enPos.y + i.y * x;
+		t.z = enPos.z + i.z * x;
+
+		if(t1 != IVec3i(t)){
+			t1 = IVec3i(t);
 			t = randomColors->value(ic++);
 			glColor3f(t.x, t.y, t.z);
-			drawBorder(c);
-			if(level->isBlock(c)) break;
+			drawBorder(t1);
+			if(level->isBlock(t1)) break;
 		}
 	}
 
-	if(c != IVec3i(en->pos()))drawBorder(c);
+	glColor3f(0.0f, 1.0f, 0.0f);
+	if(t1 != IVec3i(en->pos())) drawBorder(t1);
+
+
 }
 
 

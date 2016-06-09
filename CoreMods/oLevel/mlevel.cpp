@@ -113,8 +113,9 @@ void MLevel::save() {
 }
 
 void MLevel::generateWorld() {
- for(int x = -16 ; x < 16 ; x++)
-	 for(int z = -16 ; z < 16 ; z++)
+	int size = 4;
+	for( int x = -size; x < size; x++)
+	 for( int z = -size; z < size; z++)
 		 addNewChunk(IAChunkPos(x, 0, z));
 }
 

@@ -2,6 +2,7 @@
 #define GLOBALQT_MAIN_H
 #include <idefines.h>
 #include <mrender.h>
+#include <perf/mperfw.h>
 #include <texture/mtexturemanager.h>
 
 class CM_O_RENDER : public QObject, public ICoreMod{
@@ -10,6 +11,8 @@ class CM_O_RENDER : public QObject, public ICoreMod{
 	Q_INTERFACES(ICoreMod)
 
 	IGlWidget* r = nullptr;
+	MPerformanceWidget* perf = nullptr;
+
  QOpenGLContext* context;
 
 public:

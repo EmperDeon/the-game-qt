@@ -69,6 +69,9 @@ void MGlWidget::paintGL(){
 	world->render();
 	//gui->render();
 	this->fps = fps_t->nsecsElapsed();
+
+	double k = fps / 1000000 ;
+	setWindowTitle(QString("Current: %2 ms").arg(k, 4, 'f', 0));
 }
 
 void MGlWidget::closeEvent(QCloseEvent *event) {

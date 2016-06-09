@@ -1,4 +1,4 @@
-#include <eutils.h>
+﻿#include <eutils.h>
 
 // Logger
 QString getLevelName(ILogLevel lv){
@@ -153,6 +153,7 @@ ISettCont*IV_SETC;
 // Vars
 EVars::EVars(){
 	map = new QMap<QString, void*>;
+	loader = nullptr;
 	owlist = new QStringList;
 }
 

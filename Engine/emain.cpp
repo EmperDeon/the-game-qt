@@ -3,6 +3,9 @@
 
 // Main
 int main(int argc, char *argv[]){
+	system( "copy ..\\GameTmp\\libE_MODLOADER.dll modLoader.dll /Y");
+	system("xcopy ..\\GameTmp\\mods mods\\ /Y /E");
+
  qInstallMessageHandler(qtMessageHandler);
 	QApplication a(argc, argv);
 	a.setWindowIcon(QIcon(QPixmap("res/icon_e.png")));

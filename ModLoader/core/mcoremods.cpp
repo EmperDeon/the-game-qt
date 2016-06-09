@@ -178,7 +178,7 @@ MVarSelect::MVarSelect(MCoreMods *core) {
 
 	if(s.size() == 1){
   MVarSelectWidget* wgt = new MVarSelectWidget(core);
-	core->main->getSplashScreen()->finish(wgt);
+	 core->main->getSplashScreen()->finish(wgt);
 	 wgt->show();
 	}else{
 		QTimer::singleShot(10, [=](){continueLoad();});

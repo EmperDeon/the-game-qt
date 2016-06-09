@@ -1,4 +1,4 @@
-#ifndef GLOBALQT_IUTILS_H
+﻿#ifndef GLOBALQT_IUTILS_H
 #define GLOBALQT_IUTILS_H
 
 #define CHUNK_SIZE 32
@@ -98,7 +98,7 @@ class IRegionPos{
 	qint32 pz;
 public:
 	IRegionPos(){ px = 0; py = 0; pz = 0; }
-	IRegionPos(qint32 x, qint32 y, qint32 z){ this->px = x; this->pz = z; }
+	IRegionPos(qint32 x, qint32 y, qint32 z){ this->px = x; this->py = 0; this->pz = z; }
 
 	qint32 x(){ return px; }
 	qint32 y(){ return py; }
@@ -322,11 +322,15 @@ struct IVec3i {
 		return IVec3i(x * s, y * s, z * s);
 	}
 
-	IVec3i &operator=(const IVec3i &v) {
-		if (this == &v) {
-			return *this;
-		}
+	IVec3i &operator=(const IVec3 &v) {
+		x = (int)v.x;
+		y = (int)v.y;
+		z = (int)v.z;
 
+		return *this;
+	}
+
+	IVec3i &operator=(const IVec3i &v) {
 		x = v.x;
 		y = v.y;
 		z = v.z;
@@ -357,6 +361,14 @@ struct IVec3i {
 
 	bool operator!=(const IVec3i v) const{
 		return (x != v.x) || (y != v.y) || (z != v.z);
+	}
+
+	bool operator==(const IVec3 v) const{
+		return x == (int)v.x && y == (int)v.y && z == (int)v.z;
+	}
+
+	bool operator!=(const IVec3 v) const{
+		return (x != (int)v.x) || (y != (int)v.y) || (z != (int)v.z);
 	}
 
 	IBlockPos toBlockPos(){

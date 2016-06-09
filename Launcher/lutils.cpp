@@ -220,11 +220,11 @@ void LLocalServer::readyRead(){
 			in.setVersion(QDataStream::Qt_5_4);
 
 			if (in.atEnd())
-				return;
+				continue;
 
 			if (blockSize == 0) {
 				if (client->bytesAvailable() < (int)sizeof(quint16))
-					return;
+					continue;
 				in >> blockSize;
 			}
 

@@ -1,4 +1,4 @@
-#include "main.h"
+﻿#include "main.h"
 
 QStringList CM_O_PLAYER::getOwList() {	return {"mPlayer", "nPlayer"};}
 
@@ -49,5 +49,7 @@ void *CM_O_PLAYER::getN(QString name) {
 void *CM_O_PLAYER::getN(QString name, QJsonObject arg) {
 	if(name == "nPlayer"){
 		return new MPlayer(arg);
+	}else{
+		return nullptr;
 	}
 }
